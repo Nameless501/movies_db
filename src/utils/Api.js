@@ -2,16 +2,12 @@ function handleResponseCheck(response) {
     return response.ok ? response.json() : Promise.reject(response.status);
 }
 
-export const handleFetch = (config, payload = null) => {
-    const { url, method, credentials, headers } = config;
-    const options = { method, credentials, headers };
-
+export const handleFetch = (url, options, payload = null) => {
     if (payload) {
         options.body = JSON.stringify({ ...payload });
     }
 
-    return fetch(url, options)
-        .then(handleResponseCheck);
+    return fetch(url, options);
 };
 
 export const handleFetchById = (config, id) => {

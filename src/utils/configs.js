@@ -1,10 +1,11 @@
-import { BASE_URL_MAIN, BASE_URL_MOVIES } from "./constants";
+import { BASE_URL_MAIN, BASE_URL_MOVIES, MOVIES_API_KEY } from "./constants";
 
 // routes inside application
 
 export const routesConfig = {
     main: '/',
-    movies: '/movies',
+    topRated: '/top-rated',
+    search: '/find-movie',
     savedMovies: '/saved-movies',
     profile: '/profile',
     signIn: '/sign-in',
@@ -13,6 +14,15 @@ export const routesConfig = {
 };
 
 // config for fetch
+
+export const moviesApiConfig = {
+    topRated: {
+        url: BASE_URL_MOVIES + '/movie/top_rated?' + MOVIES_API_KEY,
+        options: {
+            method: 'GET',
+        },
+    }
+}
 
 export const apiConfig = {
     signIn: {

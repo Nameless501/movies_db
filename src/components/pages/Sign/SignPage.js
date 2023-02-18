@@ -58,7 +58,7 @@ function SignPage() {
 
     useEffect(() => {
         if (userIsLogged) {
-            history.push(routesConfig.movies);
+            history.push(routesConfig.topRated);
         }
     }, [userIsLogged, history]);
 

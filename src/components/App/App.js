@@ -3,7 +3,8 @@ import { routesConfig } from '../../utils/configs';
 import { CurrentUserProvider } from '../../contexts/UserContext';
 import ProtectedRoute from '../pages/ProtectedRoute/ProtectedRoute';
 import LandingPage from '../pages/Landing/LandingPage';
-import MoviesPage from '../pages/Movies/MoviesPage';
+import TopRatedPage from '../pages/TopRated/TopRatedPage';
+import SearchPage from '../pages/Search/SearchPage';
 import SavedMoviesPage from '../pages/SavedMovies/SavedMoviesPage';
 import ProfilePage from '../pages/Profile/ProfilePage';
 import SignPage from '../pages/Sign/SignPage';
@@ -18,9 +19,12 @@ function App() {
                     <Route exact path={routesConfig.main}>
                         <LandingPage />
                     </Route>
-                    <ProtectedRoute path={routesConfig.movies}>
-                        <MoviesPage />
-                    </ProtectedRoute>
+                    <Route path={routesConfig.topRated}>
+                        <TopRatedPage />
+                    </Route>
+                    <Route path={routesConfig.search}>
+                        <SearchPage />
+                    </Route>
                     <ProtectedRoute path={routesConfig.savedMovies}>
                         <SavedMoviesPage />
                     </ProtectedRoute>

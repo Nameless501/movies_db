@@ -1,53 +1,54 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
-import { apiConfig } from '../../utils/configs';
-import { handleMovieDataFormat } from '../../utils/utils';
-import { ERROR_MOVIES_FETCH, ERROR_NO_MOVIES, SHORTFILM_DURATION } from '../../utils/constants';
+import { moviesApiConfig } from '../../utils/configs';
+import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-    const response = await handleFetch(apiConfig.movies);
-    return response;
-})
+    const { url, options } = moviesApiConfig.topRated;
+    const response = await handleFetch(url + '&page=1', options);
+    return response.json();
+});
+
+export const fetchMoreMovies = createAsyncThunk('movies/fetchMoreMovies', async (arg, { getState }) => {
+    const { movies } = getState();
+    const { url, options } = moviesApiConfig.topRated;
+
+    const response = await handleFetch(url + `&page=${movies.page}`, options);
+    return response.json();
+});
 
 export const moviesSlice = createSlice({
     name: 'movies',
     initialState: {
+        page: 1,
         movies: [],
-        result: [],
         loading: false,
         error: '',
     },
-    reducers: {
-        filterMovies: (state, { payload }) => {
-            const { keyword, shortfilms } = payload;
-
-            let filteredMovies = keyword ?
-                state.movies.filter(({ nameRU }) => nameRU.toLowerCase().includes(keyword))
-                :
-                state.movies;
-
-            if (!shortfilms) {
-                filteredMovies = filteredMovies.filter(({ duration }) => duration >= SHORTFILM_DURATION);
-            }
-
-            state.error = filteredMovies.length === 0 ? ERROR_NO_MOVIES : '';
-            state.result = filteredMovies;
-        }
-    },
+    reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchMovies.pending, (state, action) => {
+            .addCase(fetchMovies.pending, (state) => {
                 state.loading = true;
             })
             .addCase(fetchMovies.fulfilled, (state, action) => {
-                const normalizedResult = action.payload.map(movie => handleMovieDataFormat(movie));
-
-                state.movies = normalizedResult;
-                state.result = normalizedResult;
+                const { results } = action.payload;
+                state.movies = results;
                 state.loading = false;
                 state.error = '';
+                state.page += 1;
             })
-            .addCase(fetchMovies.rejected, (state, action) => {
+            .addCase(fetchMovies.rejected, (state) => {
+                state.error = ERROR_MOVIES_FETCH;
+            })
+
+        builder
+            .addCase(fetchMoreMovies.fulfilled, (state, action) => {
+                const { results } = action.payload;
+                state.movies = [...state.movies, ...results];
+                state.page += 1;
+            })
+            .addCase(fetchMoreMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
     }

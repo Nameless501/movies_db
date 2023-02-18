@@ -22,8 +22,15 @@ function NavigationBar({ place, showMainLink = false }) {
                 }
                 <li>
                     <NavigationLink
-                        to={routesConfig.movies}
-                        text='Фильмы'
+                        to={routesConfig.topRated}
+                        text='Популярное'
+                        place={place}
+                    />
+                </li>
+                <li>
+                    <NavigationLink
+                        to={routesConfig.search}
+                        text='Поиск'
                         place={place}
                     />
                 </li>

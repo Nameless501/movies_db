@@ -23,7 +23,8 @@
 
 .text-input_place_search {
     padding: 16px 20px;
-    max-width: 1086px;
+    max-width: 100%;
+    border-radius: 40px;
 }
 
 .text-input_place_search:focus {

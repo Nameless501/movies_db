@@ -13,7 +13,7 @@ function SearchInput({ value, handleChange }) {
                 value={value}
                 handleChange={handleChange}
             />
-            {/* <SearchButton /> */}
+            <SearchButton />
         </fieldset>
     );
 }

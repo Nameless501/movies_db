@@ -1,18 +1,26 @@
 .card-button {
     margin: 0;
     padding: 0;
-    width: 100px;
-    height: 29px;
+    width: 30px;
+    height: 30px;
     border: 0;
-    border-radius: 30px;
+    border-radius: 50%;
     background-color: var(--colors_btn_gray);
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 11px;
-    color: var(--fonts_colors_main);
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    background-image: url('../../../images/icon_save.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px 16px;
 }
 
 .card-button:hover {
     cursor: pointer;
     opacity: 0.8;
+}
+
+.card-button_active {
+    background-color: var(--colors_checkbox_bg_checked);
+    background-image: url('../../../images/icon_save_active.svg');
 }

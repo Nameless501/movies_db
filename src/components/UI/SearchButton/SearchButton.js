@@ -1,14 +1,13 @@
 import './SearchButton.css';
 
-function SearchButton({ handleClick }) {
+function SearchButton({ handleClick, disabled = true }) {
     return (
         <button
             className='search-button'
-            type='submit'
+            type='button'
             onChange={handleClick}
+            disabled={disabled}
         >
-            <span className='search-button__icon-line' />
-            <span className='search-button__icon-arrow' />
         </button>
     );
 }

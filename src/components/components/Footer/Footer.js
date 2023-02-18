@@ -5,7 +5,7 @@ function Footer() {
     return (
         <footer className='footer' >
             <h3 className='footer__title' >
-                Учебный проект Яндекс.Практикум х BeatFilm.
+                Учебный проект
             </h3>
             <div className='footer__content-wrapper' >
                 <p className='footer__copyright' >
@@ -15,14 +15,7 @@ function Footer() {
                     <ul className='footer__links-list' >
                         <li>
                             <Link
-                                href='https://practicum.yandex.ru/'
-                                place='footer'
-                                text='Яндекс.Практикум'
-                            />
-                        </li>
-                        <li>
-                            <Link
-                                href='https://github.com/'
+                                href='https://github.com/Nameless501/movies_db'
                                 place='footer'
                                 text='GitHub'
                             />
