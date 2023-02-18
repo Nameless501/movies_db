@@ -1,0 +1,18 @@
+.portfolio-links-list {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.portfolio-links-list__item {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--colors_bg_accent_darkGray);
+}
+
+.portfolio-links-list__item:last-of-type {
+    border: 0;
+}

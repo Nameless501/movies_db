@@ -1,0 +1,58 @@
+.close-button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    background-color: transparent;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.close-button__line {
+    margin: 0;
+    padding: 0;
+    background-color: var(--colors_btn_black);
+    position: absolute;
+}
+
+.close-button__line_horizontal {
+    width: 100%;
+    height: 3px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.close-button__line_vertical {
+    width: 3px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.close-button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.close-button_place_side-bar {
+    position: absolute;
+    top: 27px;
+    right: 27px;
+}
+
+.close-button_place_tooltip {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+@media screen and (max-width: 767px) {
+    .close-button_place_side-bar {
+        top: 18px;
+        right: 18px;
+    }
+}

@@ -1,0 +1,47 @@
+@import url('./vendor/fonts/inter.css');
+
+body {
+    /* css variables */
+
+    /* colors variables */
+
+    --colors_bg_main: #FFFFFF;
+    --colors_bg_card: #FDFDFD;
+    --colors_bg_accent_purple: #F3C1F8;
+    --colors_bg_accent_gray: #F5F5F5;
+    --colors_bg_accent_lightGray: #F2F2F2;
+    --colors_bg_accent_darkGray: #E8E8E8;
+    --colors_btn_black: #000000;
+    --colors_btn_white: #FFFFFF;
+    --colors_btn_gray: #F9F9F9;
+    --colors_btn_crimson: #FF4062;
+    --colors_checkbox_bg: #EBEBEB;
+    --colors_checkbox_bg_checked: #2BE080;
+    --colors_checkbox_slider: #F5F5F5;
+    --colors_checkbox_slider_checked: #FFFFFF;
+
+    /* fonts variables */
+
+    --fonts_family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    --fonts_colors_main: #000000;
+    --fonts_colors_fade: #A0A0A0;
+    --fonts_colors_btn: #FFFFFF;
+    --fonts_colors_error: #FF4062;
+
+    /* global styles */
+
+    margin: 0;
+    padding: 0;
+    font-family: var(--fonts_family);
+    background-color: var(--colors_bg_main);
+    color: var(--fonts_colors_main);
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}

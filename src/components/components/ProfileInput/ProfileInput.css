@@ -1,0 +1,23 @@
+.profile-input {
+    margin: 0;
+    padding: 7px 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--colors_bg_accent_darkGray);
+    position: relative;
+}
+
+.profile-input:last-of-type {
+    border: 0;
+}
+
+.profile-input__label {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+}

@@ -1,0 +1,37 @@
+.burger-button {
+    margin: 0;
+    padding: 7px 8px;
+    width: 44px;
+    height: 38px;
+    box-sizing: border-box;
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.burger-button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.burger-button__line {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--colors_btn_black);
+}
+
+@media screen and (max-width: 767px) {
+    .burger-button {
+        padding: 8.5px 9px;
+        width: 40px;
+    }
+
+    .burger-button__line {
+        height: 2.5px;
+    }
+}

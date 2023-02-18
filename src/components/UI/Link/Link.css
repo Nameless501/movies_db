@@ -1,0 +1,35 @@
+.link {
+    margin: 0;
+    padding: 0;
+    color: var(--fonts_colors_main);
+    text-decoration: none;
+    width: fit-content;
+}
+
+.link:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.link:visited {
+    color: var(--fonts_colors_main);
+}
+
+.link_place_profile {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.link_place_footer {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+@media screen and (max-width: 767px) {
+    .link_place_footer {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

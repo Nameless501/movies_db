@@ -1,0 +1,36 @@
+.header-menu-main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 1058px;
+}
+
+.header-menu-main__desktop-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-menu-main__mobile-wrapper {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .header-menu-main {
+        width: fit-content;
+    }
+
+    .header-menu-main__desktop-wrapper {
+        display: none;
+    }
+
+    .header-menu-main__mobile-wrapper {
+        display: block;
+    }
+}

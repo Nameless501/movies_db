@@ -1,0 +1,18 @@
+.card-button {
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: 29px;
+    border: 0;
+    border-radius: 30px;
+    background-color: var(--colors_btn_gray);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 11px;
+    color: var(--fonts_colors_main);
+}
+
+.card-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}

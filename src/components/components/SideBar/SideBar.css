@@ -1,0 +1,31 @@
+.side-bar {
+    margin: 0;
+    padding: 159px 90px 90px;
+    box-sizing: border-box;
+    width: 520px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--colors_bg_main);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1023px) {
+    .side-bar {
+        display: flex;
+        gap: 625px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .side-bar {
+        padding: 144px 10px 46px;
+        width: 320px;
+        gap: 445px;
+    }
+}

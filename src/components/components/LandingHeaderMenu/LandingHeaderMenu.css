@@ -1,0 +1,29 @@
+.header-menu-landing {
+    margin: 0;
+    padding: 0;
+}
+
+.header-menu-landing__desktop-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.header-menu-landing__mobile-wrapper {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .header-menu-landing__desktop-wrapper {
+        display: none;
+    }
+
+    .header-menu-landing__mobile-wrapper {
+        display: block;
+    }
+}
