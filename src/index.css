@@ -7,6 +7,8 @@ body {
 
     --colors_bg_main: #FFFFFF;
     --colors_bg_card: #FDFDFD;
+    --colors_bg_dark_transparent: rgb(0, 0, 0, .15);
+    --colors_bg_black_transparent: rgb(0, 0, 0, .5);
     --colors_bg_accent_purple: #F3C1F8;
     --colors_bg_accent_gray: #F5F5F5;
     --colors_bg_accent_lightGray: #F2F2F2;
@@ -28,7 +30,12 @@ body {
     --fonts_colors_main: #000000;
     --fonts_colors_fade: #A0A0A0;
     --fonts_colors_btn: #FFFFFF;
+    --fonts_colors_crimson: #E67776;
     --fonts_colors_error: #FF4062;
+
+    /* section variables */
+
+    --section_max_width: 1440px;
 
     /* global styles */
 

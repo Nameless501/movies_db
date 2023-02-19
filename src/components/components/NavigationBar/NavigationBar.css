@@ -10,12 +10,12 @@
     display: flex;
 }
 
-.navigation-bar__links-list_place_main {
-    gap: 16px;
+.navigation-bar__links-list_place_main-page {
+    gap: 30px;
 }
 
-.navigation-bar__links-list_place_landing {
-    gap: 20px;
+.navigation-bar__links-list_place_movies {
+    gap: 30px;
 }
 
 .navigation-bar__links-list_place_side-bar {

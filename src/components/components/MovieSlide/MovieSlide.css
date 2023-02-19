@@ -1,0 +1,104 @@
+.movie-slide {
+    margin: 0;
+    padding: 200px 150px;
+    box-sizing: border-box;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.movie-slide::after {
+    content: '';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to right, var(--colors_bg_black_transparent), transparent);
+}
+
+.movie-slide__content-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.movie-slide__title {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--fonts_colors_btn);
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.movie-slide__info {
+    margin: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-left: 2px solid var(--fonts_colors_fade);
+}
+
+.movie-slide__release-date {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--fonts_colors_btn);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.movie-slide__description {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--fonts_colors_btn);
+    font-weight: 400;
+    font-size: 15px;
+    opacity: .8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.movie-slide__button {
+    margin: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 3px;
+    background-color: var(--colors_btn_crimson);
+    color: var(--fonts_colors_btn);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.movie-slide__button:hover {
+    cursor: pointer;
+    opacity: .8;
+}

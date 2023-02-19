@@ -7,14 +7,21 @@ function HeaderWrapper({ sideBarIsOpen, handleSideBarToggle, place, children }) 
         <>
             <header
                 className={`
-                    header-wrapper
-                    ${ place ? 'header-wrapper_place_' + place : null }
+                    header
+                    ${place ? 'header_place_' + place : null}
                 `}
             >
-                <LogoLink />
-                <>
-                    {children}
-                </>
+                <div
+                    className={`
+                        header__content-wrapper
+                        ${place ? 'header__content-wrapper_place_' + place : null}
+                    `}
+                >
+                    <LogoLink />
+                    <>
+                        {children}
+                    </>
+                </div>
             </header>
             <SideBar
                 isOpen={sideBarIsOpen}

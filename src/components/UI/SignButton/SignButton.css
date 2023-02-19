@@ -17,13 +17,13 @@
     cursor: pointer;
 }
 
-.sign-button_type_sign-up {
-    background-color: var(--colors_btn_black);
+.sign-button_type_sign-in {
     color: var(--fonts_colors_btn);
 }
 
-.sign-button_type_sign-in {
-    color: var(--fonts_colors_main);
+.sign-button_type_sign-up {
+    background-color: var(--colors_btn_crimson);
+    color: var(--fonts_colors_btn);
 }
 
 @media screen and (max-width: 767px) {

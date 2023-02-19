@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useUserContext } from '../../../contexts/UserContext';
 import useDataFetch from '../../../hooks/useDataFetch';
 import { routesConfig, profileErrorsConfig, apiConfig } from '../../../utils/configs';
-import HeaderMain from '../../modules/HeaderMain/HeaderMain';
+import Header from '../../modules/Header/Header';
 import ProfileForm from '../../modules/ProfileForm/ProfileForm';
 import InfoTooltip from '../../components/InfoTooltip/InfoTooltip';
 import './ProfilePage.css';
@@ -49,7 +49,7 @@ function ProfilePage() {
     return (
         <>
             <div className='profile-page' >
-                <HeaderMain />
+                <Header />
                 <main className='profile-page__content' >
                     <h2 className='profile-page__title' >
                         {`Привет, ${userData?.name || ''}!`}

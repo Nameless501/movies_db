@@ -1,11 +1,11 @@
-.header-menu-main {
+.header-menu {
     margin: 0;
     padding: 0;
     width: 100%;
     max-width: 1058px;
 }
 
-.header-menu-main__desktop-wrapper {
+.header-menu__desktop-wrapper {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -15,22 +15,22 @@
     justify-content: space-between;
 }
 
-.header-menu-main__mobile-wrapper {
+.header-menu__mobile-wrapper {
     margin: 0;
     padding: 0;
     display: none;
 }
 
 @media screen and (max-width: 1023px) {
-    .header-menu-main {
+    .header-menu {
         width: fit-content;
     }
 
-    .header-menu-main__desktop-wrapper {
+    .header-menu__desktop-wrapper {
         display: none;
     }
 
-    .header-menu-main__mobile-wrapper {
+    .header-menu__mobile-wrapper {
         display: block;
     }
 }

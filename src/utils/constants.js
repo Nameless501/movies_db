@@ -1,34 +1,3 @@
-// links
-
-export const PORTFOLIO_LINKS = [
-    {
-        text: 'Статичный сайт',
-        url: 'https://github.com/Nameless501/how-to-learn',
-    },
-    {
-        text: 'Адаптивный сайт',
-        url: 'https://github.com/Nameless501/russian-travel',
-    },
-    {
-        text: 'Одностраничное приложение',
-        url: 'https://github.com/Nameless501/react-mesto-api-full',
-    },
-];
-
-
-// movies cards count
-
-
-export const MOVIES_COUNT_DESKTOP = 12;
-
-export const MOVIES_COUNT_TABLET = 8;
-
-export const MOVIES_COUNT_MOBILE = 5;
-
-export const MOVIES_MORE_DESKTOP = 3;
-
-export const MOVIES_MORE_MOBILE = 2;
-
 // movies filter props
 
 
@@ -55,3 +24,7 @@ export const MOVIES_API_KEY = 'api_key=7dc59b842d86576bd986dae0db4b7703';
 // export const BASE_URL_MAIN = 'http://movies-explorer-api-production-f471.up.railway.app';
 
 export const BASE_URL_MAIN = 'http://localhost:3000';
+
+export const POSTER_HORIZONTAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
+
+export const POSTER_HORIZONTAL_ORIGINAL = 'https://image.tmdb.org/t/p/original/';

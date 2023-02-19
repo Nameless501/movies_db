@@ -21,6 +21,12 @@ export const moviesApiConfig = {
         options: {
             method: 'GET',
         },
+    },
+    nowPlaying: {
+        url: BASE_URL_MOVIES + '/movie/now_playing?' + MOVIES_API_KEY,
+        options: {
+            method: 'GET',
+        },
     }
 }
 

@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import { routesConfig } from '../../utils/configs';
 import { CurrentUserProvider } from '../../contexts/UserContext';
 import ProtectedRoute from '../pages/ProtectedRoute/ProtectedRoute';
-import LandingPage from '../pages/Landing/LandingPage';
+import MainPage from '../pages/Main/MainPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
 import SearchPage from '../pages/Search/SearchPage';
 import SavedMoviesPage from '../pages/SavedMovies/SavedMoviesPage';
@@ -17,7 +17,7 @@ function App() {
             <CurrentUserProvider>
                 <Switch>
                     <Route exact path={routesConfig.main}>
-                        <LandingPage />
+                        <MainPage />
                     </Route>
                     <Route path={routesConfig.topRated}>
                         <TopRatedPage />
