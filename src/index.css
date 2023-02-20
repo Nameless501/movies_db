@@ -5,7 +5,7 @@ body {
 
     /* colors variables */
 
-    --colors_bg_main: #FFFFFF;
+    --colors_bg_main: #020418;
     --colors_bg_card: #FDFDFD;
     --colors_bg_dark_transparent: rgb(0, 0, 0, .15);
     --colors_bg_black_transparent: rgb(0, 0, 0, .5);
@@ -27,9 +27,10 @@ body {
     --fonts_family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
-    --fonts_colors_main: #000000;
+    --fonts_colors_main: #FFFFFF;
     --fonts_colors_fade: #A0A0A0;
     --fonts_colors_btn: #FFFFFF;
+    --fonts_colors_dark: #02051E;
     --fonts_colors_crimson: #E67776;
     --fonts_colors_error: #FF4062;
 

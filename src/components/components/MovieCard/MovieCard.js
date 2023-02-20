@@ -19,13 +19,16 @@ const MovieCard = memo(function MovieCard({ movie }) {
                     </span>
                 </figcaption>
             </figure>
-            <CardButton
-                isActive={movie.id % 2 === 0}
-            />
-            <MovieRating
-                rating={movie.vote_average}
-                place='movie-card'
-            />
+            <div className='movie-card__wrapper'>
+                <div className='movie-card__controls' >
+                    <MovieRating
+                        rating={movie.vote_average}
+                    />
+                    <CardButton
+                        isActive={movie.id % 2 === 0}
+                    />
+                </div>
+            </div>
         </div>
     );
 })

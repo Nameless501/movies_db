@@ -17,22 +17,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--fonts_colors_btn);
+    color: var(--fonts_colors_dark);
     font-weight: 700;
     font-size: 16px;
-}
-
-.movie-rating_place_movie-card {
-    position: absolute;
-    top: 15px;
-    left: 18px;
-    width: 30px;
-    height: 30px;
-    background-image: none;
-    border-radius: 50%;
-    background-color: rgb(0, 0, 0, .1);
-}
-
-.movie-rating_place_movie-card > .movie-rating__count {
-    color: var(--fonts_colors_crimson);
 }

@@ -17,7 +17,7 @@ function TopRatedPage() {
             <Header
                 place='movies'
             />
-            <main className='top-page__content' >
+            <main className='top-page__content'>
                 <SectionTitle
                     text='Популярные фильмы'
                     link={movies[getRandom(19)]?.backdrop_path}
