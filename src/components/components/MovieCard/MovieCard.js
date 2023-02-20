@@ -4,9 +4,14 @@ import MovieRating from '../../UI/MovieRating/MovieRating';
 import { POSTER_HORIZONTAL_SMALL } from '../../../utils/constants';
 import './MovieCard.css';
 
-const MovieCard = memo(function MovieCard({ movie }) {
+const MovieCard = memo(function MovieCard({ movie, place }) {
     return (
-        <div className='movie-card' >
+        <div
+            className={`
+                movie-card
+                ${place && 'movie-card_place_' + place}
+            `}
+        >
             <figure className='movie-card__figure' >
                 <img
                     src={POSTER_HORIZONTAL_SMALL + movie.poster_path}

@@ -5,16 +5,16 @@ body {
 
     /* colors variables */
 
-    --colors_bg_main: #020418;
+    --colors_bg_main: #020313;
     --colors_bg_card: #FDFDFD;
     --colors_bg_dark_transparent: rgb(0, 0, 0, .15);
     --colors_bg_black_transparent: rgb(0, 0, 0, .5);
     --colors_bg_accent_purple: #F3C1F8;
     --colors_bg_accent_gray: #F5F5F5;
     --colors_bg_accent_lightGray: #F2F2F2;
-    --colors_bg_accent_darkGray: #E8E8E8;
+    --colors_bg_accent_darkGray: #747687;
     --colors_btn_black: #000000;
-    --colors_btn_white: #FFFFFF;
+    --colors_btn_white: #F7F8FF;
     --colors_btn_gray: #F9F9F9;
     --colors_btn_crimson: #E67776;
     --colors_checkbox_bg: #EBEBEB;
@@ -27,9 +27,9 @@ body {
     --fonts_family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
-    --fonts_colors_main: #FFFFFF;
-    --fonts_colors_fade: #A0A0A0;
-    --fonts_colors_btn: #FFFFFF;
+    --fonts_colors_main: #F7F8FF;
+    --fonts_colors_fade: #A8AABC;
+    --fonts_colors_btn: #F7F8FF;
     --fonts_colors_dark: #02051E;
     --fonts_colors_crimson: #E67776;
     --fonts_colors_error: #FF4062;

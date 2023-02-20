@@ -1,11 +1,10 @@
 import MoviesListWrapper from '../MoviesListWrapper/MoviesListWrapper';
 import MovieCard from '../MovieCard/MovieCard';
-import CardButtonDelete from '../../UI/CardButtonDelete/CardButtonDelete';
 
 function UserMoviesList({ moviesList, handleMovieDelete }) {
     return (
         <MoviesListWrapper >
-            {moviesList.map(currentMovie => {
+            {/* {moviesList.map(currentMovie => {
                 const handleDelete = handleMovieDelete.bind(null, currentMovie._id);
 
                 return (
@@ -18,7 +17,7 @@ function UserMoviesList({ moviesList, handleMovieDelete }) {
                     </li>
                 )
             })
-            }
+            } */}
         </MoviesListWrapper>
     );
 }

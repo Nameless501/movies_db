@@ -22,7 +22,7 @@
     padding: 0;
     width: 100%;
     height: 3px;
-    background-color: var(--colors_btn_black);
+    background-color: var(--colors_btn_white);
 }
 
 @media screen and (max-width: 767px) {

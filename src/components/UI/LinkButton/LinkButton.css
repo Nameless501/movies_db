@@ -1,0 +1,23 @@
+.link-button {
+    margin: 0;
+    padding: 8px 17px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 6px;
+    font-family: var(--fonts_family);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: var(--colors_btn_crimson);
+    color: var(--fonts_colors_btn);
+}
+
+.link-button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.link-button:visited {
+    text-decoration: none;
+    color: var(--fonts_colors_btn);
+}

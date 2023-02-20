@@ -4,18 +4,17 @@
     font-weight: 400;
     box-sizing: border-box;
     text-decoration: none;
+    color: var(--fonts_colors_main);
 }
 
 .navigation-link_place_main-page {
     font-size: 14px;
     line-height: 18px;
-    color: var(--fonts_colors_btn);
 }
 
 .navigation-link_place_movies {
     font-size: 14px;
     line-height: 18px;
-    color: var(--fonts_colors_btn);
 }
 
 .navigation-link_place_form {

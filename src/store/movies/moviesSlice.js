@@ -5,7 +5,7 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
     const { url, options } = moviesApiConfig.topRated;
-    const response = await handleFetch(url + '&page=1', options);
+    const response = await handleFetch(url + '&language=ru-RU&page=1', options);
     return response.json();
 });
 
@@ -13,7 +13,7 @@ export const fetchMoreMovies = createAsyncThunk('movies/fetchMoreMovies', async 
     const { movies } = getState();
     const { url, options } = moviesApiConfig.topRated;
 
-    const response = await handleFetch(url + `&page=${movies.page}`, options);
+    const response = await handleFetch(url + `&language=ru-RU&page=${movies.page}`, options);
     return response.json();
 });
 

@@ -91,7 +91,7 @@
     padding: 10px 20px;
     box-sizing: border-box;
     border: 0;
-    border-radius: 3px;
+    border-radius: 6px;
     background-color: var(--colors_btn_crimson);
     color: var(--fonts_colors_btn);
     font-weight: 500;

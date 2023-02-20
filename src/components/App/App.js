@@ -22,7 +22,7 @@ function App() {
                     <Route path={routesConfig.topRated}>
                         <TopRatedPage />
                     </Route>
-                    <Route path={routesConfig.search}>
+                    {/* <Route path={routesConfig.search}>
                         <SearchPage />
                     </Route>
                     <ProtectedRoute path={routesConfig.savedMovies}>
@@ -36,7 +36,7 @@ function App() {
                     </Route>
                     <Route path={routesConfig.signUp}>
                         <SignPage />
-                    </Route>
+                    </Route> */}
                     <Route path='*' >
                         <NotFoundPage />
                     </Route>

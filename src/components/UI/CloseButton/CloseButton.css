@@ -13,7 +13,7 @@
 .close-button__line {
     margin: 0;
     padding: 0;
-    background-color: var(--colors_btn_black);
+    background-color: var(--colors_btn_white);
     position: absolute;
 }
 
