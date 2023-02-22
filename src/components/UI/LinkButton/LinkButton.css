@@ -12,6 +12,12 @@
     color: var(--fonts_colors_btn);
 }
 
+.link-button_place_slider-main {
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
 .link-button:hover {
     cursor: pointer;
     opacity: .8;

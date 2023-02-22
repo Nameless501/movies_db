@@ -39,6 +39,7 @@
             "last 1 safari version"
         ]
     },
+    "homepage": "https://nameless501.github.io/movies_db/",
     "devDependencies": {
         "gh-pages": "^4.0.0"
     }

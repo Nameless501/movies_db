@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
-import Header from '../../modules/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import SectionTitle from '../../UI/SectionTitle/SectionTitle';
 import TopRatedMovies from '../../modules/TopRatedMovies/TopRatedMovies';
+import MoviesPageWrapper from '../../components/MoviesPageWrapper/MoviesPageWrapper';
 import './TopRatedPage.css';
 
 function TopRatedPage() {
@@ -13,19 +11,12 @@ function TopRatedPage() {
     }
 
     return (
-        <div className='top-page' >
-            <Header
-                place='movies'
-            />
-            <main className='top-page__content'>
-                <SectionTitle
-                    text='Популярные фильмы'
-                    link={movies[getRandom(19)]?.backdrop_path}
-                />
-                <TopRatedMovies />
-            </main>
-            <Footer />
-        </div>
+        <MoviesPageWrapper
+            title='Популярные фильмы'
+            poster={movies[getRandom(19)]?.backdrop_path}
+        >
+            <TopRatedMovies />
+        </MoviesPageWrapper>
     );
 }
 

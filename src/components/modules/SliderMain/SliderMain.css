@@ -8,21 +8,30 @@
     --swiper-navigation-color: var(--fonts_colors_btn);
 }
 
-.slider {
+.slider-main__swiper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
+    width: 100%;
 }
 
-.slider__slides-list {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    list-style: none;
-    display: flex;
+.slider-main__swiper .swiper-button-prev {
+    color: var(--colors_btn_white);
+    left: 45px;
+}
+
+.slider-main__swiper .swiper-button-prev::after {
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.slider-main__swiper .swiper-button-next {
+    color: var(--colors_btn_white);
+    right: 45px;
+}
+
+.slider-main__swiper .swiper-button-next::after {
+    font-weight: 900;
+    font-size: 50px;
 }

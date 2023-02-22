@@ -8,8 +8,10 @@
 }
 
 .main-page__content {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    width: 100%;
+    max-width: var(--section_max_width);
     display: flex;
     flex-direction: column;
     box-sizing: border-box;

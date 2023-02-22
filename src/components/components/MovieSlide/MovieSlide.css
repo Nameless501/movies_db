@@ -3,28 +3,20 @@
     padding: 200px 150px;
     box-sizing: border-box;
     display: block;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     position: relative;
     display: flex;
     align-items: center;
-}
-
-.movie-slide::after {
-    content: '';
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: linear-gradient(to right, var(--colors_bg_black_transparent), transparent);
+    background:
+        linear-gradient(45deg, transparent 95%, var(--colors_bg_main)),
+        linear-gradient(315deg, transparent 95%, var(--colors_bg_main)),
+        linear-gradient(135deg, transparent 95%, var(--colors_bg_main)),
+        linear-gradient(225deg, transparent 95%, var(--colors_bg_main)),
+        linear-gradient(90deg, transparent 70%, var(--colors_bg_main)),
+        linear-gradient(270deg, transparent 70%, var(--colors_bg_main)),
+        linear-gradient(to right, rgb(0,0,0, .3) 50%, transparent),
+        var(--image_url) center / cover no-repeat;
 }
 
 .movie-slide__content-wrapper {
@@ -65,7 +57,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--fonts_colors_btn);
+    color: var(--fonts_colors_main);
     font-weight: 500;
     font-size: 20px;
 }
@@ -74,31 +66,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--fonts_colors_btn);
-    font-weight: 400;
+    color: var(--fonts_colors_main);
+    font-weight: 500;
     font-size: 15px;
-    opacity: .8;
+    opacity: .9;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     line-clamp: 4;
     -webkit-box-orient: vertical;
-}
-
-.movie-slide__button {
-    margin: 0;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 6px;
-    background-color: var(--colors_btn_crimson);
-    color: var(--fonts_colors_btn);
-    font-weight: 500;
-    font-size: 15px;
-}
-
-.movie-slide__button:hover {
-    cursor: pointer;
-    opacity: .8;
 }

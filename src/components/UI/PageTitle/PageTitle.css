@@ -1,0 +1,9 @@
+.page-title {
+    margin: 0;
+    padding: 0;
+    color: var(--fonts_colors_btn);
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 1.2em;
+    text-align: center;
+}

@@ -4,6 +4,7 @@ import { BASE_URL_MAIN, BASE_URL_MOVIES, MOVIES_API_KEY } from "./constants";
 
 export const routesConfig = {
     main: '/',
+    movieInfo: '/movie',
     topRated: '/top-rated',
     search: '/find-movie',
     savedMovies: '/saved-movies',
@@ -17,13 +18,19 @@ export const routesConfig = {
 
 export const moviesApiConfig = {
     topRated: {
-        url: BASE_URL_MOVIES + '/movie/top_rated?' + MOVIES_API_KEY,
+        url: BASE_URL_MOVIES + '/movie/top_rated' + MOVIES_API_KEY,
         options: {
             method: 'GET',
         },
     },
     nowPlaying: {
-        url: BASE_URL_MOVIES + '/movie/now_playing?' + MOVIES_API_KEY,
+        url: BASE_URL_MOVIES + '/movie/now_playing' + MOVIES_API_KEY,
+        options: {
+            method: 'GET',
+        },
+    },
+    movieInfo: {
+        url: BASE_URL_MOVIES + '/movie/',
         options: {
             method: 'GET',
         },

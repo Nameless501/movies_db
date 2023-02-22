@@ -3,22 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     width: 100%;
-}
-
-.header_place_main-page {
-    background-color: var(--colors_bg_dark_transparent);
     position: fixed;
     top: 0;
     z-index: 10;
+    backdrop-filter: blur(5px);
+    background-color: var(--colors_bg_dark_transparent);
+}
+
+.header_place_main-page {
 }
 
 .header_place_movies {
-    background-color: var(--colors_bg_dark_transparent);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
 }
 
 .header__content-wrapper {

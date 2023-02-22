@@ -1,7 +1,8 @@
 .footer {
-    margin: 0;
+    margin: 0 auto;
     padding: 79px 70px 20px;
     width: 100%;
+    max-width: var(--section_max_width);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

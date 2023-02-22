@@ -14,6 +14,7 @@ function MoviesSliderSmall({ movies }) {
                 spaceBetween={30}
                 navigation={true}
                 modules={[Navigation]}
+                slidesPerGroup={2}
                 className="slider-small__swiper"
             >
                 {

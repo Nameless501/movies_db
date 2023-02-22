@@ -1,14 +1,20 @@
 import MovieRating from '../../UI/MovieRating/MovieRating';
+import LinkButton from '../../UI/LinkButton/LinkButton';
 import { POSTER_HORIZONTAL_ORIGINAL } from '../../../utils/constants';
+import { routesConfig } from '../../../utils/configs';
 import './MovieSlide.css';
 
-function MovieSlide({ title, backdrop_path, overview, vote_average, release_date }) {
+function MovieSlide({ title, backdrop_path, overview, vote_average, release_date, id }) {
     const release = new Date(release_date);
+
+    const styles = {
+        '--image_url': `url(${POSTER_HORIZONTAL_ORIGINAL + backdrop_path})`
+    }
 
     return (
         <div
             className='movie-slide'
-            style={{ backgroundImage: `url(${POSTER_HORIZONTAL_ORIGINAL + backdrop_path})` }}
+            style={styles}
         >
             <div className='movie-slide__content-wrapper'>
                 <h2 className='movie-slide__title' >
@@ -25,12 +31,11 @@ function MovieSlide({ title, backdrop_path, overview, vote_average, release_date
                 <p className='movie-slide__description' >
                     {overview}
                 </p>
-                <button
-                    className='movie-slide__button'
-                    type='button'
-                >
-                    Подробнее
-                </button>
+                <LinkButton
+                    link={routesConfig.movieInfo + '/' + id}
+                    text='Подробнее'
+                    place='slider-main'
+                />
             </div>
         </div>
     );
