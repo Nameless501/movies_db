@@ -10,9 +10,18 @@ export const fetchNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchNow
     return response.json();
 });
 
+export const fetchMoreNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchMoreNowPlayingMovies', async (arg, { getState }) => {
+    const { nowPlaying } = getState();
+    const { url, options } = moviesApiConfig.nowPlaying;
+
+    const response = await handleFetch(url + `&language=ru-RU&page=${nowPlaying.page}`, options);
+    return response.json();
+});
+
 export const nowPlayingMoviesSlice = createSlice({
     name: 'nowPlaying',
     initialState: {
+        page: 1,
         movies: [],
         loading: false,
         error: '',
@@ -34,9 +43,19 @@ export const nowPlayingMoviesSlice = createSlice({
             .addCase(fetchNowPlayingMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
+
+        builder
+            .addCase(fetchMoreNowPlayingMovies.fulfilled, (state, action) => {
+                const { results } = action.payload;
+                state.movies = [...state.movies, ...results];
+                state.page += 1;
+            })
+            .addCase(fetchMoreNowPlayingMovies.rejected, (state) => {
+                state.error = ERROR_MOVIES_FETCH;
+            })
     }
 })
 
-export const {  } = nowPlayingMoviesSlice.actions;
+export const { } = nowPlayingMoviesSlice.actions;
 
 export default nowPlayingMoviesSlice.reducer;

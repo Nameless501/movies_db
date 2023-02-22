@@ -6,6 +6,7 @@ export const routesConfig = {
     main: '/',
     movieInfo: '/movie',
     topRated: '/top-rated',
+    nowPlaying: '/now-playing',
     search: '/find-movie',
     savedMovies: '/saved-movies',
     profile: '/profile',

@@ -1,39 +1,39 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMovies, fetchMoreMovies } from '../../../store/movies/moviesSlice';
+import { fetchNowPlayingMovies, fetchMoreNowPlayingMovies } from '../../../store/nowPlayingMovies/nowPlayingMoviesSlice';
 import MoviesList from '../../components/MoviesList/MoviesList';
 import MoreButton from '../../UI/MoreButton/MoreButton';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
-import './TopRatedMovies.css';
+import './NowPlayingMovies.css';
 
-function TopRatedMovies() {
+function NowPlayingMovies() {
     const scrollRef = useRef(0);
-    const { movies: popular, loading, error } = useSelector(state => state.movies);
+    const { movies, loading, error } = useSelector(state => state.nowPlaying);
     const dispatch = useDispatch();
 
     // API fetch
 
     useEffect(() => {
-        dispatch(fetchMovies());
+        dispatch(fetchNowPlayingMovies());
     }, [dispatch]);
 
     function loadMoreMovies() {
         scrollRef.current = window.pageYOffset;
-        dispatch(fetchMoreMovies());
+        dispatch(fetchMoreNowPlayingMovies());
     }
 
     // restore scroll position after rerender movies list
 
     useLayoutEffect(() => {
         window.scrollTo(0, scrollRef.current);
-    }, [popular])
+    }, [movies])
 
     return (
         <section className='movies'>
-            {(!loading && popular.length > 0) &&
+            {(!loading && movies.length > 0) &&
                 <>
                     <MoviesList
-                        moviesList={popular}
+                        moviesList={movies}
                         userMoviesList={[]}
                     />
                     <MoreButton
@@ -41,7 +41,7 @@ function TopRatedMovies() {
                     />
                 </>
             }
-            {(popular.length === 0 && error) &&
+            {(movies.length === 0 && error) &&
                 <ErrorMessage
                     text={error}
                     place='movies'
@@ -51,4 +51,4 @@ function TopRatedMovies() {
     );
 }
 
-export default TopRatedMovies;
+export default NowPlayingMovies;

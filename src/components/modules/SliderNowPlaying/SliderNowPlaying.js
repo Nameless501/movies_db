@@ -18,7 +18,7 @@ function SliderNowPlaying() {
     return (
         <MoviesSliderWrapper
             title='Сейчас в кинотеатрах'
-            link={routesConfig.topRated}
+            link={routesConfig.nowPlaying}
         >
             <MoviesSliderSmall
                 movies={movies}

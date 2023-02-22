@@ -3,6 +3,7 @@ import { routesConfig } from '../../utils/configs';
 import { CurrentUserProvider } from '../../contexts/UserContext';
 import MainPage from '../pages/Main/MainPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
+import NowPlayingPage from '../pages/NowPlaying/NowPlayingPage';
 import MovieInfoPage from '../pages/MovieInfo/MovieInfoPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import './App.css';
@@ -17,6 +18,9 @@ function App() {
                     </Route>
                     <Route path={routesConfig.topRated}>
                         <TopRatedPage />
+                    </Route>
+                    <Route path={routesConfig.nowPlaying}>
+                        <NowPlayingPage />
                     </Route>
                     <Route path={routesConfig.movieInfo + '/:id'}>
                         <MovieInfoPage />

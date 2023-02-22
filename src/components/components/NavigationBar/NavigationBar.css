@@ -1,13 +1,16 @@
 .navigation-bar {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 .navigation-bar__links-list {
     margin: 0;
     padding: 0;
+    height: 100%;
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 .navigation-bar__links-list_place_main-page {

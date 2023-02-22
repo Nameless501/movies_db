@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import TopRatedMovies from '../../modules/TopRatedMovies/TopRatedMovies';
+import NowPlayingMovies from '../../modules/NowPlayingMovies/NowPlayingMovies';
 import MoviesPageWrapper from '../../components/MoviesPageWrapper/MoviesPageWrapper';
 
-function TopRatedPage() {
-    const { movies } = useSelector(store => store.movies);
+function NowPlayingPage() {
+    const { movies } = useSelector(store => store.nowPlaying);
 
     function getRandom(max) {
         return Math.floor(Math.random() * max);
@@ -11,12 +11,12 @@ function TopRatedPage() {
 
     return (
         <MoviesPageWrapper
-            title='Популярные фильмы'
+            title='Сейчас в прокате'
             poster={movies[getRandom(19)]?.backdrop_path}
         >
-            <TopRatedMovies />
+            <NowPlayingMovies />
         </MoviesPageWrapper>
     );
 }
 
-export default TopRatedPage;
+export default NowPlayingPage;

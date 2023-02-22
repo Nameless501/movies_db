@@ -1,0 +1,64 @@
+.navigation-submenu {
+    margin: 0;
+    padding: 15px 0;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.navigation-submenu__title-wrapper {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navigation-submenu__title-icon {
+    margin: 0;
+    padding: 0;
+    width: 10px;
+    height: 14px;
+    box-sizing: border-box;
+    display: block;
+    background-image: url('../../../images/icon_arrow.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 7px 7px;
+    transform: rotate(90deg);
+}
+
+.navigation-submenu__title {
+    margin: 0;
+}
+
+.navigation-submenu__links-list {
+    margin: 0;
+    padding: 15px;
+    width: max-content;
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    border-radius: 3px;
+    gap: 20px;
+    position: absolute;
+    z-index: 11;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    background-color: rgb(0,0,0, .7);
+}
+
+.navigation-submenu__links-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation-submenu:hover > .navigation-submenu__links-list {
+    display: flex;
+}
+
+.navigation-submenu:hover > .navigation-submenu__title-icon {
+    transform: rotate(-90deg);
+}
