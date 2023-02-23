@@ -13,8 +13,10 @@ function MainPage() {
             />
             <main className='main-page__content'>
                 <SliderMain />
-                <SliderTopRated />
-                <SliderNowPlaying />
+                <div className='main-page__content-wrapper' >
+                    <SliderTopRated />
+                    <SliderNowPlaying />
+                </div>
             </main>
             <Footer />
         </div>

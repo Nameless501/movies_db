@@ -4,42 +4,37 @@ import { moviesApiConfig } from '../../utils/configs';
 import { MOVIES_API_KEY } from '../../utils/constants';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchActors = createAsyncThunk('actors/fetchActors', async (id) => {
+export const fetchReviews = createAsyncThunk('reviews/fetchReviews', async (id) => {
     const { url, options } = moviesApiConfig.movieInfo;
 
-    const response = await handleFetch(url + id + '/credits' + MOVIES_API_KEY, options);
+    const response = await handleFetch(url + id + '/reviews' + MOVIES_API_KEY, options);
     return response.json();
 });
 
-export const actorsSlice = createSlice({
-    name: 'actors',
+export const reviewsSlice = createSlice({
+    name: 'reviews',
     initialState: {
-        cast: [],
-        crew: [],
+        reviews: [],
         loading: false,
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchActors.pending, (state) => {
+            .addCase(fetchReviews.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchActors.fulfilled, (state, action) => {
-                const { cast, crew } = action.payload;
+            .addCase(fetchReviews.fulfilled, (state, action) => {
+                const { results } = action.payload;
 
-                state.cast = cast;
-                state.crew = crew;
-
+                state.reviews = results;
                 state.loading = false;
                 state.error = '';
             })
-            .addCase(fetchActors.rejected, (state) => {
+            .addCase(fetchReviews.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
     }
 })
 
-export const { } = actorsSlice.actions;
-
-export default actorsSlice.reducer;
+export default reviewsSlice.reducer;

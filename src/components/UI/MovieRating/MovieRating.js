@@ -9,7 +9,7 @@ function MovieRating({ rating, place }) {
             `}
         >
             <span className='movie-rating__count' >
-                {rating}
+                {rating.toFixed(1)}
             </span>
         </div>
     );

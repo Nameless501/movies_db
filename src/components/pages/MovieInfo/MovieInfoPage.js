@@ -8,6 +8,7 @@ import PagePoster from '../../UI/PagePoster/PagePoster';
 import SliderActors from '../../modules/SliderActors/SliderActors';
 import MovieInfoCard from '../../modules/MovieInfoCard/MovieInfoCard';
 import SliderSimilarMovies from '../../modules/SliderSimilarMovies/SliderSimilarMovies';
+import MovieReviews from '../../modules/MovieReviews/MovieReviews';
 import './MovieInfoPage.css';
 
 function MovieInfoPage() {
@@ -37,6 +38,9 @@ function MovieInfoPage() {
                     </div>
                     <div className='movie-info-page__similar-wrapper' >
                         <SliderSimilarMovies />
+                    </div>
+                    <div className='movie-info-page__reviews-wrapper' >
+                        <MovieReviews />
                     </div>
                 </div>
             </main>

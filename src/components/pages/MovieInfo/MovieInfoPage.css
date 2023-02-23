@@ -26,13 +26,15 @@
     box-sizing: border-box;
     width: 100%;
     display: grid;
-    grid-template-columns: 2fr .5fr 1fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 3fr .5fr 1fr;
+    grid-template-rows: repeat(4, auto);
     grid-template-areas:
         'movieCard . actorsList'
         '. . actorsList'
-        'similarMovies similarMovies similarMovies';
+        'similarMovies similarMovies similarMovies'
+        'reviews reviews .';
     justify-content: center;
+    row-gap: 50px;
 }
 
 .movie-info-page__card-wrapper {
@@ -58,4 +60,14 @@
     box-sizing: border-box;
     width: 100%;
     grid-area: similarMovies;
+}
+
+.movie-info-page__reviews-wrapper {
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    grid-area: reviews;
 }
