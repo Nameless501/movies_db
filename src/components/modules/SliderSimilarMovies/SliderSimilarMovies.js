@@ -1,24 +1,24 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTopRatedMovies } from '../../../store/topRatedMovies/topRatedMoviesSlice';
-import { routesConfig } from '../../../utils/configs';
+import { useParams } from 'react-router-dom';
+import { fetchSimilarMovies } from '../../../store/similarMovies/similarMoviesSlice';
 import MoviesSliderSmall from '../../components/MoviesSliderSmall/MoviesSliderSmall';
 import MoviesSliderWrapper from '../../components/MoviesSliderWrapper/MoviesSliderWrapper';
 
-function SliderTopRated() {
-    const { movies } = useSelector(state => state.topRated);
+function SliderSimilarMovies() {
+    const { id } = useParams();
+    const { movies } = useSelector(state => state.similarMovies);
     const dispatch = useDispatch();
 
     // API fetch
 
     useEffect(() => {
-        dispatch(fetchTopRatedMovies());
-    }, [dispatch]);
+        dispatch(fetchSimilarMovies(id));
+    }, [dispatch, id]);
 
     return (
         <MoviesSliderWrapper
-            title='Популярные фильмы'
-            link={routesConfig.topRated}
+            title='Похожие фильмы'
         >
             <MoviesSliderSmall
                 movies={movies}
@@ -27,4 +27,4 @@ function SliderTopRated() {
     );
 }
 
-export default SliderTopRated;
+export default SliderSimilarMovies;

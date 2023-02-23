@@ -8,11 +8,13 @@ function MoviesSliderWrapper({ title, link, children }) {
                 <h2 className='movies-slider-wrapper__title' >
                     {title}
                 </h2>
-                <LinkButton
-                    link={link}
-                    place='movies-slider-small'
-                    text='Смотреть еще'
-                />
+                {link &&
+                    <LinkButton
+                        link={link}
+                        place='movies-slider-small'
+                        text='Смотреть еще'
+                    />
+                }
             </div>
             {children}
         </section>

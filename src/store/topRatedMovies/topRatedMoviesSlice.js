@@ -3,21 +3,21 @@ import { handleFetch } from '../../utils/Api';
 import { moviesApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
+export const fetchTopRatedMovies = createAsyncThunk('topRatedMovies/fetchTopRatedMovies', async () => {
     const { url, options } = moviesApiConfig.topRated;
     const response = await handleFetch(url + '&language=ru-RU&page=1', options);
     return response.json();
 });
 
-export const fetchMoreMovies = createAsyncThunk('movies/fetchMoreMovies', async (arg, { getState }) => {
-    const { movies } = getState();
+export const fetchMoreTopRatedMovies = createAsyncThunk('topRatedMovies/fetchMoreTopRatedMovies', async (arg, { getState }) => {
+    const { topRated } = getState();
     const { url, options } = moviesApiConfig.topRated;
 
-    const response = await handleFetch(url + `&language=ru-RU&page=${movies.page}`, options);
+    const response = await handleFetch(url + `&language=ru-RU&page=${topRated.page}`, options);
     return response.json();
 });
 
-export const moviesSlice = createSlice({
+export const topRatedMoviesSlice = createSlice({
     name: 'movies',
     initialState: {
         page: 1,
@@ -28,32 +28,32 @@ export const moviesSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchMovies.pending, (state) => {
+            .addCase(fetchTopRatedMovies.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchMovies.fulfilled, (state, action) => {
+            .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
                 const { results } = action.payload;
                 state.movies = results;
                 state.loading = false;
                 state.error = '';
                 state.page += 1;
             })
-            .addCase(fetchMovies.rejected, (state) => {
+            .addCase(fetchTopRatedMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
 
         builder
-            .addCase(fetchMoreMovies.fulfilled, (state, action) => {
+            .addCase(fetchMoreTopRatedMovies.fulfilled, (state, action) => {
                 const { results } = action.payload;
                 state.movies = [...state.movies, ...results];
                 state.page += 1;
             })
-            .addCase(fetchMoreMovies.rejected, (state) => {
+            .addCase(fetchMoreTopRatedMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
     }
 })
 
-export const { filterMovies } = moviesSlice.actions;
+export const { filterMovies } = topRatedMoviesSlice.actions;
 
-export default moviesSlice.reducer;
+export default topRatedMoviesSlice.reducer;

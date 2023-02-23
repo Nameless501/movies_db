@@ -35,7 +35,7 @@ export const moviesApiConfig = {
         options: {
             method: 'GET',
         },
-    }
+    },
 }
 
 export const apiConfig = {
