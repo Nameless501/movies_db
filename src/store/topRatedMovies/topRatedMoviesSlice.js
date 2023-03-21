@@ -4,16 +4,16 @@ import { moviesApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchTopRatedMovies = createAsyncThunk('topRatedMovies/fetchTopRatedMovies', async () => {
-    const { url, options } = moviesApiConfig.topRated;
-    const response = await handleFetch(url + '&language=ru-RU&page=1', options);
+    const { getUrl, options } = moviesApiConfig.topRated;
+    const response = await handleFetch(getUrl(), options);
     return response.json();
 });
 
 export const fetchMoreTopRatedMovies = createAsyncThunk('topRatedMovies/fetchMoreTopRatedMovies', async (arg, { getState }) => {
     const { topRated } = getState();
-    const { url, options } = moviesApiConfig.topRated;
+    const { getUrl, options } = moviesApiConfig.topRated;
 
-    const response = await handleFetch(url + `&language=ru-RU&page=${topRated.page}`, options);
+    const response = await handleFetch(getUrl('ru-RU', topRated.page), options);
     return response.json();
 });
 

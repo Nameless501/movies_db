@@ -1,34 +1,36 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { findMovies } from '../../../store/search/searchSlice';
 import useFormStateAndValidation from '../../../hooks/useFormStateAndValidation';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import ToggleInput from '../../UI/ToggleInput/ToggleInput';
 import './MoviesSearch.css';
 
-function MoviesSearch({ action }) {
-    const { inputsValues, handleInputChange, handleToggleChange } = useFormStateAndValidation({ shortfilms: true });
+function MoviesSearch() {
+    const { inputsValues, handleInputChange, handleToggleChange } = useFormStateAndValidation({ tvShows: false });
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(action(inputsValues));
-    // }, [inputsValues, dispatch, action]);
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        dispatch(findMovies(inputsValues.keyword));
+    };
 
     return (
         <section className='movies-search' >
             <form
                 className='movies-search__form'
                 noValidate
+                onSubmit={handleSubmit}
             >
                 <SearchInput
                     value={inputsValues.keyword}
                     handleChange={handleInputChange}
                 />
                 <ToggleInput
-                    name='shortfilms'
-                    id='shortfilms-selector'
-                    title='Короткометражки'
+                    name='tvShows'
+                    id='tvShows-selector'
+                    title={inputsValues.tvShows ? 'Сериалы' : 'Фильмы'}
                     handleChange={handleToggleChange}
-                    checked={inputsValues.shortfilms}
+                    checked={inputsValues.tvShows}
                 />
             </form>
         </section>

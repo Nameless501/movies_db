@@ -5,8 +5,8 @@ function TextInput({ type='text', placeholder, pattern, required=false, place, h
         <input
             className={`
                 text-input
-                ${ place ? 'text-input_place_' + place : null }
-                ${ errorMessage ? 'text-input_state_error' : null }
+                ${ place ? 'text-input_place_' + place : '' }
+                ${ errorMessage ? 'text-input_state_error' : '' }
             `}
             type={type}
             placeholder={placeholder}

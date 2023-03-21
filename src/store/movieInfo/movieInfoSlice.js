@@ -2,12 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
 import { moviesApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
-import { MOVIES_API_KEY } from '../../utils/constants';
 
 export const fetchMovieInfo = createAsyncThunk('movieInfo/fetchMovieInfo', async (id) => {
-    const { url, options } = moviesApiConfig.movieInfo;
+    const { getUrl, options } = moviesApiConfig.movieInfo;
 
-    const response = await handleFetch(url + id + MOVIES_API_KEY + '&language=ru-RU', options);
+    const response = await handleFetch(getUrl(id), options);
     return response.json();
 });
 

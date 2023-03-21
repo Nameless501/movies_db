@@ -1,11 +1,8 @@
 // movies filter props
 
-
 export const SHORTFILM_DURATION = 40;
 
-
 // error messages
-
 
 export const ERROR_NO_MOVIES = 'Ничего не найдено';
 
@@ -15,11 +12,33 @@ export const ERROR_MOVIES_FETCH = 'Во время запроса произош
 
 export const ERROR_NO_USER_MOVIES = 'Нет сохраненных фильмов';
 
-// base fetch URLs
+// movies API URL's and params
 
-export const BASE_URL_MOVIES = 'https://api.themoviedb.org/3';
+export const MOVIES_API_BASE_URL = 'https://api.themoviedb.org/3';
+
+export const MOVIES_API_PATH_TOP_RATED = MOVIES_API_BASE_URL + '/movie/top_rated';
+
+export const MOVIES_API_PATH_NOW_PLAYING = MOVIES_API_BASE_URL + '/movie/now_playing';
+
+export const MOVIES_API_PATH_SEARCH = MOVIES_API_BASE_URL + '/search/movie';
 
 export const MOVIES_API_KEY = '?api_key=7dc59b842d86576bd986dae0db4b7703';
+
+export const getMoviePath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}`;
+
+export const getMovieCreditsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/credits`;
+
+export const getMovieReviewsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/reviews`;
+
+export const getMovieRecommendationsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/recommendations`;
+
+export const getMovieLangParam = (lang) => `&language=${lang}`;
+
+export const getMoviePageParam = (page) => `&page=${page}`;
+
+export const getQueryParam = (query) => `&query=${query}`;
+
+// user API URL's
 
 // export const BASE_URL_MAIN = 'http://movies-explorer-api-production-f471.up.railway.app';
 

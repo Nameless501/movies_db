@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { fetchMovieInfo } from '../../../store/movieInfo/movieInfoSlice';
+import { useLayoutEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import PagePoster from '../../UI/PagePoster/PagePoster';
@@ -14,11 +12,9 @@ import './MovieInfoPage.css';
 function MovieInfoPage() {
     const { movieData } = useSelector(store => store.movieInfo);
 
-    const dispatch = useDispatch();
-    const { id } = useParams();
-    useEffect(() => {
-        dispatch(fetchMovieInfo(id));
-    }, [dispatch, id]);
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [movieData]);
 
     return (
         <div className='movie-info-page' >

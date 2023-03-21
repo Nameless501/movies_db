@@ -5,6 +5,7 @@ import MainPage from '../pages/Main/MainPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
 import NowPlayingPage from '../pages/NowPlaying/NowPlayingPage';
 import MovieInfoPage from '../pages/MovieInfo/MovieInfoPage';
+import SearchPage from '../pages/Search/SearchPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import './App.css';
 
@@ -24,6 +25,9 @@ function App() {
                     </Route>
                     <Route path={routesConfig.movieInfo + '/:id'}>
                         <MovieInfoPage />
+                    </Route>
+                    <Route path={routesConfig.search}>
+                        <SearchPage />
                     </Route>
                     <Route path='*' >
                         <NotFoundPage />

@@ -56,8 +56,9 @@
 .toggle__title {
     margin: 0;
     padding: 0;
+    min-width: 70px;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
 }
 

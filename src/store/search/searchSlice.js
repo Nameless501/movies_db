@@ -3,37 +3,37 @@ import { handleFetch } from '../../utils/Api';
 import { moviesApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchReviews = createAsyncThunk('reviews/fetchReviews', async (id) => {
-    const { getUrl, options } = moviesApiConfig.movieReviews;
+export const findMovies = createAsyncThunk('search/findMovies', async (keyword) => {
+    const { getUrl, options } = moviesApiConfig.search;
 
-    const response = await handleFetch(getUrl(id), options);
+    const response = await handleFetch(getUrl(keyword), options);
     return response.json();
 });
 
-export const reviewsSlice = createSlice({
-    name: 'reviews',
+export const searchSlice = createSlice({
+    name: 'search',
     initialState: {
-        reviews: [],
+        result: [],
         loading: false,
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchReviews.pending, (state) => {
+            .addCase(findMovies.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchReviews.fulfilled, (state, action) => {
+            .addCase(findMovies.fulfilled, (state, action) => {
                 const { results } = action.payload;
 
-                state.reviews = results;
+                state.result = results;
                 state.loading = false;
                 state.error = '';
             })
-            .addCase(fetchReviews.rejected, (state) => {
+            .addCase(findMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
     }
 })
 
-export default reviewsSlice.reducer;
+export default searchSlice.reducer;

@@ -17,10 +17,10 @@ body {
     --colors_btn_white: #F7F8FF;
     --colors_btn_gray: #F9F9F9;
     --colors_btn_crimson: #E67776;
-    --colors_checkbox_bg: #EBEBEB;
-    --colors_checkbox_bg_checked: #2BE080;
-    --colors_checkbox_slider: #F5F5F5;
-    --colors_checkbox_slider_checked: #FFFFFF;
+    --colors_checkbox_bg: #F7F8FF;
+    --colors_checkbox_bg_checked: #E67776;
+    --colors_checkbox_slider: #E67776;
+    --colors_checkbox_slider_checked: #F7F8FF;
 
     /* fonts variables */
 

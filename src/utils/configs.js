@@ -1,4 +1,18 @@
-import { BASE_URL_MAIN, BASE_URL_MOVIES, MOVIES_API_KEY } from "./constants";
+import {
+    BASE_URL_MAIN,
+    MOVIES_API_BASE_URL,
+    MOVIES_API_PATH_TOP_RATED,
+    MOVIES_API_PATH_NOW_PLAYING,
+    MOVIES_API_PATH_SEARCH,
+    MOVIES_API_KEY,
+    getMoviePath,
+    getMovieCreditsPath,
+    getMovieReviewsPath,
+    getMovieRecommendationsPath,
+    getMovieLangParam,
+    getMoviePageParam,
+    getQueryParam,
+} from "./constants";
 
 // routes inside application
 
@@ -19,23 +33,61 @@ export const routesConfig = {
 
 export const moviesApiConfig = {
     topRated: {
-        url: BASE_URL_MOVIES + '/movie/top_rated' + MOVIES_API_KEY,
         options: {
             method: 'GET',
         },
+        getUrl: (lang = 'ru-RU', page = 1) => {
+            return `${MOVIES_API_PATH_TOP_RATED}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
+        }
     },
     nowPlaying: {
-        url: BASE_URL_MOVIES + '/movie/now_playing' + MOVIES_API_KEY,
         options: {
             method: 'GET',
         },
+        getUrl: (lang = 'ru-RU', page = 1) => {
+            return `${MOVIES_API_PATH_NOW_PLAYING}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
+        }
     },
     movieInfo: {
-        url: BASE_URL_MOVIES + '/movie/',
         options: {
             method: 'GET',
         },
+        getUrl: (id, lang = 'ru-RU') => {
+            return `${getMoviePath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
+        }
     },
+    movieCredits: {
+        options: {
+            method: 'GET',
+        },
+        getUrl: (id, lang = 'en-US') => {
+            return `${getMovieCreditsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
+        }
+    },
+    movieReviews: {
+        options: {
+            method: 'GET',
+        },
+        getUrl: (id, lang = 'en-US', page = 1) => {
+            return `${getMovieReviewsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
+        }
+    },
+    movieRecommendations: {
+        options: {
+            method: 'GET',
+        },
+        getUrl: (id, lang = 'ru-RU', page = 1) => {
+            return `${getMovieRecommendationsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
+        }
+    },
+    search: {
+        options: {
+            method: 'GET',
+        },
+        getUrl: (keyword, lang = 'ru-RU', page = 1) => {
+            return `${MOVIES_API_PATH_SEARCH}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}${getQueryParam(encodeURI(keyword))}`;
+        }
+    }
 }
 
 export const apiConfig = {
@@ -95,7 +147,7 @@ export const apiConfig = {
         credentials: 'include',
     },
     movies: {
-        url: BASE_URL_MOVIES + '/beatfilm-movies',
+        url: MOVIES_API_BASE_URL + '/beatfilm-movies',
         method: 'GET',
     }
 }

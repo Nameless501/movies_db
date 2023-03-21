@@ -7,7 +7,7 @@
     background-color: var(--colors_btn_gray);
     border-radius: 8px;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 16px;
     color: var(--fonts_colors_main);
     font-family: var(--fonts_family);
@@ -22,14 +22,15 @@
 }
 
 .text-input_place_search {
-    padding: 16px 20px;
+    padding: 15px 19px;
     max-width: 100%;
-    border-radius: 40px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid var(--fonts_colors_fade);
+    background-color: transparent;
 }
 
 .text-input_place_search:focus {
     border: 1px solid var(--fonts_colors_main);
-    padding: 15px 19px;
 }
 
 .text-input_place_form {

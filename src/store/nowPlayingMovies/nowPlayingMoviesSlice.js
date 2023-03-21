@@ -4,24 +4,25 @@ import { moviesApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchNowPlayingMovies', async () => {
-    const { url, options } = moviesApiConfig.nowPlaying;
+    const { getUrl, options } = moviesApiConfig.nowPlaying;
 
-    const response = await handleFetch(url + '&language=ru-RU&page=1', options);
+    const response = await handleFetch(getUrl(), options);
     return response.json();
 });
 
 export const fetchMoreNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchMoreNowPlayingMovies', async (arg, { getState }) => {
     const { nowPlaying } = getState();
-    const { url, options } = moviesApiConfig.nowPlaying;
+    const { getUrl, options } = moviesApiConfig.nowPlaying;
 
-    const response = await handleFetch(url + `&language=ru-RU&page=${nowPlaying.page}`, options);
+    const response = await handleFetch(getUrl('ru-RU', nowPlaying.currentPage + 1), options);
     return response.json();
 });
 
 export const nowPlayingMoviesSlice = createSlice({
     name: 'nowPlaying',
     initialState: {
-        page: 1,
+        totalPages: 1,
+        currentPage: 1,
         movies: [],
         loading: false,
         error: '',
@@ -33,12 +34,14 @@ export const nowPlayingMoviesSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchNowPlayingMovies.fulfilled, (state, action) => {
-                const { results } = action.payload;
+                const { results, page, total_pages } = action.payload;
 
                 state.movies = results;
                 state.loading = false;
                 state.error = '';
-                state.page += 1;
+
+                state.currentPage = page;
+                state.totalPages = total_pages;
             })
             .addCase(fetchNowPlayingMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;

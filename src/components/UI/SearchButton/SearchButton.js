@@ -1,10 +1,10 @@
 import './SearchButton.css';
 
-function SearchButton({ handleClick, disabled = true }) {
+function SearchButton({ handleClick, disabled = false }) {
     return (
         <button
             className='search-button'
-            type='button'
+            type='submit'
             onChange={handleClick}
             disabled={disabled}
         >
