@@ -49,9 +49,11 @@ export const nowPlayingMoviesSlice = createSlice({
 
         builder
             .addCase(fetchMoreNowPlayingMovies.fulfilled, (state, action) => {
-                const { results } = action.payload;
+                const { results, page, total_pages } = action.payload;
+
                 state.movies = [...state.movies, ...results];
-                state.page += 1;
+                state.currentPage = page;
+                state.totalPages = total_pages;
             })
             .addCase(fetchMoreNowPlayingMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;

@@ -1,14 +1,11 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchNowPlayingMovies, fetchMoreNowPlayingMovies } from '../../../store/nowPlayingMovies/nowPlayingMoviesSlice';
-import MoviesList from '../../components/MoviesList/MoviesList';
-import MoreButton from '../../UI/MoreButton/MoreButton';
-import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
-import './NowPlayingMovies.css';
+import MoviesFeed from '../../components/MoviesFeed/MoviesFeed';
 
 function NowPlayingMovies() {
     const scrollRef = useRef(0);
-    const { movies, loading, error } = useSelector(state => state.nowPlaying);
+    const { movies, loading, error, currentPage, totalPages } = useSelector(state => state.nowPlaying);
     const dispatch = useDispatch();
 
     // API fetch
@@ -17,7 +14,7 @@ function NowPlayingMovies() {
         dispatch(fetchNowPlayingMovies());
     }, [dispatch]);
 
-    function loadMoreMovies() {
+    function handleLoadMore() {
         scrollRef.current = window.pageYOffset;
         dispatch(fetchMoreNowPlayingMovies());
     }
@@ -29,25 +26,14 @@ function NowPlayingMovies() {
     }, [movies])
 
     return (
-        <section className='movies'>
-            {(!loading && movies.length > 0) &&
-                <>
-                    <MoviesList
-                        moviesList={movies}
-                        userMoviesList={[]}
-                    />
-                    <MoreButton
-                        handleClick={loadMoreMovies}
-                    />
-                </>
-            }
-            {(movies.length === 0 && error) &&
-                <ErrorMessage
-                    text={error}
-                    place='movies'
-                />
-            }
-        </section>
+        <MoviesFeed
+            movies={movies}
+            loading={loading}
+            error={error}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handleLoadMore={handleLoadMore}
+        />
     );
 }
 

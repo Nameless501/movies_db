@@ -13,14 +13,15 @@ export const fetchMoreTopRatedMovies = createAsyncThunk('topRatedMovies/fetchMor
     const { topRated } = getState();
     const { getUrl, options } = moviesApiConfig.topRated;
 
-    const response = await handleFetch(getUrl('ru-RU', topRated.page), options);
+    const response = await handleFetch(getUrl('ru-RU', topRated.currentPage + 1), options);
     return response.json();
 });
 
 export const topRatedMoviesSlice = createSlice({
     name: 'movies',
     initialState: {
-        page: 1,
+        totalPages: 1,
+        currentPage: 1,
         movies: [],
         loading: false,
         error: '',
@@ -32,11 +33,14 @@ export const topRatedMoviesSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
-                const { results } = action.payload;
+                const { results, page, total_pages } = action.payload;
+
                 state.movies = results;
                 state.loading = false;
                 state.error = '';
-                state.page += 1;
+
+                state.currentPage = page;
+                state.totalPages = total_pages;
             })
             .addCase(fetchTopRatedMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
@@ -44,9 +48,11 @@ export const topRatedMoviesSlice = createSlice({
 
         builder
             .addCase(fetchMoreTopRatedMovies.fulfilled, (state, action) => {
-                const { results } = action.payload;
+                const { results, page, total_pages } = action.payload;
+
                 state.movies = [...state.movies, ...results];
-                state.page += 1;
+                state.currentPage = page;
+                state.totalPages = total_pages;
             })
             .addCase(fetchMoreTopRatedMovies.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;

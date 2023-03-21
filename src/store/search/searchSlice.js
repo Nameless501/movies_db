@@ -10,6 +10,14 @@ export const findMovies = createAsyncThunk('search/findMovies', async (keyword) 
     return response.json();
 });
 
+export const fetchMoreMovies = createAsyncThunk('search/fetchMoreMovies', async (arg, { getState }) => {
+    const { search } = getState();
+    const { getUrl, options } = moviesApiConfig.searchMovies;
+
+    const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
+    return response.json();
+});
+
 export const findShows = createAsyncThunk('search/findShows', async (keyword) => {
     const { getUrl, options } = moviesApiConfig.searchShows;
 
@@ -17,16 +25,29 @@ export const findShows = createAsyncThunk('search/findShows', async (keyword) =>
     return response.json();
 });
 
+export const fetchMoreShows = createAsyncThunk('search/fetchMoreShows', async (arg, { getState }) => {
+    const { search } = getState();
+    const { getUrl, options } = moviesApiConfig.searchMovies;
+
+    const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
+    return response.json();
+});
+
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
+        query: { keyword: '', tvShows: false },
         totalPages: 1,
         currentPage: 1,
         result: [],
         loading: false,
         error: '',
     },
-    reducers: {},
+    reducers: {
+        updateQuery: (state, action) => {
+            state.query = action.payload;
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(findMovies.pending, (state) => {
@@ -51,8 +72,6 @@ export const searchSlice = createSlice({
                 state.loading = true;
             })
             .addCase(findShows.fulfilled, (state, action) => {
-                console.log(action.payload);
-
                 const { results, page, total_pages } = action.payload;
 
                 state.result = results;
@@ -64,8 +83,34 @@ export const searchSlice = createSlice({
             })
             .addCase(findShows.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+            });
+
+        builder
+            .addCase(fetchMoreMovies.fulfilled, (state, action) => {
+                const { results, page, total_pages } = action.payload;
+
+                state.result = [...state.result, ...results];
+                state.currentPage = page;
+                state.totalPages = total_pages;
             })
+            .addCase(fetchMoreMovies.rejected, (state) => {
+                state.error = ERROR_MOVIES_FETCH;
+            });
+
+        builder
+            .addCase(fetchMoreShows.fulfilled, (state, action) => {
+                const { results, page, total_pages } = action.payload;
+
+                state.result = [...state.result, ...results];
+                state.currentPage = page;
+                state.totalPages = total_pages;
+            })
+            .addCase(fetchMoreShows.rejected, (state) => {
+                state.error = ERROR_MOVIES_FETCH;
+            });
     }
 })
+
+export const { updateQuery } = searchSlice.actions
 
 export default searchSlice.reducer;

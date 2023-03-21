@@ -1,24 +1,3 @@
-.more-button__wrapper {
-    margin: -450px 0 0;
-    padding: 0 0 175px;
-    box-sizing: border-box;
-    height: 400px;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    background:
-        linear-gradient(180deg, rgba(2, 3, 19, 0) 0%, rgba(2, 3, 19, 0.84) 52.77%, var(--colors_bg_main) 94.27%),
-        linear-gradient(135deg, transparent 70%, var(--colors_bg_main)),
-        /* linear-gradient(90deg, transparent 80%, var(--colors_bg_main)), */
-        linear-gradient(225deg, transparent 70%, var(--colors_bg_main)),
-        /* linear-gradient(270deg, transparent 80%, var(--colors_bg_main)), */
-        rgba(2, 3, 19, 0.3);
-    backdrop-filter: blur(2px);
-    position: relative;
-    z-index: 2;
-}
-
 .more-button {
     margin: 0;
     padding: 0;

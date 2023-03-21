@@ -1,23 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { findMovies, findShows } from '../../../store/search/searchSlice';
 import useFormStateAndValidation from '../../../hooks/useFormStateAndValidation';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import ToggleInput from '../../UI/ToggleInput/ToggleInput';
 import './MoviesSearch.css';
 
-function MoviesSearch() {
-    const { inputsValues, handleInputChange, handleToggleChange } = useFormStateAndValidation({ tvShows: false });
-    const dispatch = useDispatch();
+function MoviesSearch({ initialState, handleSubmit }) {
+    const { inputsValues, handleInputChange, handleToggleChange } = useFormStateAndValidation(initialState);
 
-    function handleSubmit(evt) {
+    function onSubmit(evt) {
         evt.preventDefault();
-        const { keyword, tvShows } = inputsValues;
-
-        if(tvShows) {
-            dispatch(findShows(keyword));
-        } else {
-            dispatch(findMovies(keyword));
-        }
+        handleSubmit(inputsValues);
     };
 
     return (
@@ -25,7 +16,7 @@ function MoviesSearch() {
             <form
                 className='movies-search__form'
                 noValidate
-                onSubmit={handleSubmit}
+                onSubmit={onSubmit}
             >
                 <SearchInput
                     value={inputsValues.keyword}
