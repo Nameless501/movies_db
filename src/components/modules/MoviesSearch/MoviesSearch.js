@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { findMovies } from '../../../store/search/searchSlice';
+import { findMovies, findShows } from '../../../store/search/searchSlice';
 import useFormStateAndValidation from '../../../hooks/useFormStateAndValidation';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import ToggleInput from '../../UI/ToggleInput/ToggleInput';
@@ -11,7 +11,13 @@ function MoviesSearch() {
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        dispatch(findMovies(inputsValues.keyword));
+        const { keyword, tvShows } = inputsValues;
+
+        if(tvShows) {
+            dispatch(findShows(keyword));
+        } else {
+            dispatch(findMovies(keyword));
+        }
     };
 
     return (

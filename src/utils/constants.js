@@ -20,7 +20,9 @@ export const MOVIES_API_PATH_TOP_RATED = MOVIES_API_BASE_URL + '/movie/top_rated
 
 export const MOVIES_API_PATH_NOW_PLAYING = MOVIES_API_BASE_URL + '/movie/now_playing';
 
-export const MOVIES_API_PATH_SEARCH = MOVIES_API_BASE_URL + '/search/movie';
+export const MOVIES_API_PATH_MOVIES_SEARCH = MOVIES_API_BASE_URL + '/search/movie';
+
+export const MOVIES_API_PATH_SHOWS_SEARCH = MOVIES_API_BASE_URL + '/search/tv';
 
 export const MOVIES_API_KEY = '?api_key=7dc59b842d86576bd986dae0db4b7703';
 

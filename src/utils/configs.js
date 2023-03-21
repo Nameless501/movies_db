@@ -3,7 +3,8 @@ import {
     MOVIES_API_BASE_URL,
     MOVIES_API_PATH_TOP_RATED,
     MOVIES_API_PATH_NOW_PLAYING,
-    MOVIES_API_PATH_SEARCH,
+    MOVIES_API_PATH_MOVIES_SEARCH,
+    MOVIES_API_PATH_SHOWS_SEARCH,
     MOVIES_API_KEY,
     getMoviePath,
     getMovieCreditsPath,
@@ -80,14 +81,22 @@ export const moviesApiConfig = {
             return `${getMovieRecommendationsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
         }
     },
-    search: {
+    searchMovies: {
         options: {
             method: 'GET',
         },
         getUrl: (keyword, lang = 'ru-RU', page = 1) => {
-            return `${MOVIES_API_PATH_SEARCH}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}${getQueryParam(encodeURI(keyword))}`;
+            return `${MOVIES_API_PATH_MOVIES_SEARCH}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}${getQueryParam(encodeURI(keyword))}`;
         }
-    }
+    },
+    searchShows: {
+        options: {
+            method: 'GET',
+        },
+        getUrl: (keyword, lang = 'ru-RU', page = 1) => {
+            return `${MOVIES_API_PATH_SHOWS_SEARCH}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}${getQueryParam(encodeURI(keyword))}`;
+        }
+    },
 }
 
 export const apiConfig = {
