@@ -18,3 +18,10 @@
     cursor: pointer;
     opacity: .9;
 }
+
+.more-button_place_reviews {
+    width: 10%;
+    height: 30px;
+    font-size: 12px;
+    line-height: 16px;
+}

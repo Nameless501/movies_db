@@ -10,9 +10,19 @@ export const fetchReviews = createAsyncThunk('reviews/fetchReviews', async (id) 
     return response.json();
 });
 
+export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', async (id, { getState }) => {
+    const { reviews } = getState();
+    const { getUrl, options } = moviesApiConfig.movieReviews;
+
+    const response = await handleFetch(getUrl(id, 'en-US', reviews.currentPage + 1), options);
+    return response.json();
+});
+
 export const reviewsSlice = createSlice({
     name: 'reviews',
     initialState: {
+        totalPages: 1,
+        currentPage: 1,
         reviews: [],
         loading: false,
         error: '',
@@ -24,15 +34,30 @@ export const reviewsSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchReviews.fulfilled, (state, action) => {
-                const { results } = action.payload;
+                const { results, page, total_pages } = action.payload;
 
                 state.reviews = results;
                 state.loading = false;
                 state.error = '';
+
+                state.currentPage = page;
+                state.totalPages = total_pages;
             })
             .addCase(fetchReviews.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
+
+        builder
+            .addCase(fetchMoreReviews.fulfilled, (state, action) => {
+                const { results, page, total_pages } = action.payload;
+
+                state.reviews = [...state.reviews, ...results];
+                state.currentPage = page;
+                state.totalPages = total_pages;
+            })
+            .addCase(fetchMoreReviews.rejected, (state) => {
+                state.error = ERROR_MOVIES_FETCH;
+            });
     }
 })
 

@@ -5,12 +5,14 @@
     display: flex;
     align-items: flex-start;
     gap: 30px;
+    position: relative;
 }
 
 .review-card__avatar {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    min-width: 75px;
     width: 75px;
     height: 75px;
     border-radius: 50%;
@@ -55,12 +57,49 @@
     opacity: .8;
 }
 
+.review-card__text-wrapper {
+    margin: 0;
+    padding: 10px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgb(255, 255, 255, .2);
+}
+
 .review-card__text {
     margin: 0;
-    padding: 5px 0;
+    padding: 0;
     box-sizing: border-box;
     color: var(--fonts_colors_main);
     font-size: 14px;
     font-weight: 400;
-    border-top: 1px solid rgb(255, 255, 255, .2);
+}
+
+.review-card__button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    background-image: url('../../../images/icon_arrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(90deg) translate(100%, 50%);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+}
+
+.review-card__button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.review-card__button_active {
+    transform: rotate(-90deg);
 }

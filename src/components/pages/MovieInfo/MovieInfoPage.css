@@ -32,7 +32,7 @@
         'movieCard . actorsList'
         '. . actorsList'
         'similarMovies similarMovies similarMovies'
-        'reviews reviews .';
+        'reviews reviews reviews';
     justify-content: center;
     row-gap: 50px;
 }

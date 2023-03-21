@@ -1,10 +1,13 @@
 import './MoreButton.css';
 
-function MoreButton({ handleClick }) {
+function MoreButton({ handleClick, place }) {
     return (
         <button
             type='button'
-            className='more-button'
+            className={`
+                more-button
+                ${place && 'more-button_place_' + place}
+            `}
             onClick={handleClick}
         >
             Ещё
