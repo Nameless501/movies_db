@@ -4,11 +4,14 @@ import ToggleInput from '../../UI/ToggleInput/ToggleInput';
 import './MoviesSearch.css';
 
 function MoviesSearch({ initialState, handleSubmit }) {
-    const { inputsValues, handleInputChange, handleToggleChange } = useFormStateAndValidation(initialState);
+    const { inputsValues, formIsValid, errorMessages, handleInputChange, handleToggleChange } = useFormStateAndValidation(initialState);
 
     function onSubmit(evt) {
         evt.preventDefault();
-        handleSubmit(inputsValues);
+
+        if(formIsValid) {
+            handleSubmit(inputsValues);
+        }
     };
 
     return (
@@ -21,6 +24,8 @@ function MoviesSearch({ initialState, handleSubmit }) {
                 <SearchInput
                     value={inputsValues.keyword}
                     handleChange={handleInputChange}
+                    isValid={formIsValid}
+                    error={errorMessages.keyword}
                 />
                 <ToggleInput
                     name='tvShows'
