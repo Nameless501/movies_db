@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movies_db/static/css/main.06271d99.css",
-    "main.js": "/movies_db/static/js/main.6c7744ab.js",
+    "main.css": "/movies_db/static/css/main.88bc5034.css",
+    "main.js": "/movies_db/static/js/main.3128ff8c.js",
     "static/media/Inter-Bold.woff?v=3.19": "/movies_db/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff?v=3.19": "/movies_db/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Medium.woff?v=3.19": "/movies_db/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
@@ -14,16 +14,18 @@
     "static/media/poster_fallback.png": "/movies_db/static/media/poster_fallback.c75b4ff4f102e705e483.png",
     "static/media/icon_vote.svg": "/movies_db/static/media/icon_vote.da191bfdf29fe6d48f93.svg",
     "index.html": "/movies_db/index.html",
-    "static/media/icon_search.svg": "/movies_db/static/media/icon_search.d51c4ea2e92c5f33ca59.svg",
+    "static/media/icon_share.svg": "/movies_db/static/media/icon_share.547ebe6524caf7b080de.svg",
+    "static/media/icon_search.svg": "/movies_db/static/media/icon_search.b5445e755c49a8f57fdc.svg",
     "static/media/profile_btn_icon.svg": "/movies_db/static/media/profile_btn_icon.e711d9fe79db02ed555e.svg",
-    "static/media/icon_save.svg": "/movies_db/static/media/icon_save.bcc99e06b11b8eb9a94b.svg",
+    "static/media/icon_play.svg": "/movies_db/static/media/icon_play.e03f25028f73d04b9585.svg",
+    "static/media/icon_save.svg": "/movies_db/static/media/icon_save.2bd8bf24e3c195b77586.svg",
     "static/media/icon_save_active.svg": "/movies_db/static/media/icon_save_active.19838eb1b938816bcf13.svg",
     "static/media/icon_arrow.svg": "/movies_db/static/media/icon_arrow.441ce4d13a4f17fa1209.svg",
-    "main.06271d99.css.map": "/movies_db/static/css/main.06271d99.css.map",
-    "main.6c7744ab.js.map": "/movies_db/static/js/main.6c7744ab.js.map"
+    "main.88bc5034.css.map": "/movies_db/static/css/main.88bc5034.css.map",
+    "main.3128ff8c.js.map": "/movies_db/static/js/main.3128ff8c.js.map"
   },
   "entrypoints": [
-    "static/css/main.06271d99.css",
-    "static/js/main.6c7744ab.js"
+    "static/css/main.88bc5034.css",
+    "static/js/main.3128ff8c.js"
   ]
 }
