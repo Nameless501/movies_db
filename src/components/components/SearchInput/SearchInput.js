@@ -3,7 +3,7 @@ import SearchButton from '../../UI/SearchButton/SearchButton';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SearchInput.css';
 
-function SearchInput({ value, handleChange, isValid, error }) {
+function SearchInput({ value, handleChange, isValid, error, placeholder }) {
     return (
         <fieldset className='search-input' >
             {
@@ -16,7 +16,7 @@ function SearchInput({ value, handleChange, isValid, error }) {
             <TextInput
                 place='search'
                 name='keyword'
-                placeholder='Фильм'
+                placeholder={placeholder}
                 required={true}
                 value={value}
                 handleChange={handleChange}

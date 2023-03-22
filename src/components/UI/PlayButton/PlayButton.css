@@ -1,0 +1,30 @@
+.play-button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url('../../../images/icon_play.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+}
+
+.play-button:hover {
+    cursor: pointer;
+    background-color: var(--colors_btn_crimson);
+}
+
+.play-button_place_movie-card {
+    display: none;
+}
+
+.play-button_place_movie-info {
+    width: 32px;
+    height: 32px;
+}
+
+.play-button_place_movie-slide {
+    width: 30px;
+    height: 30px;
+}

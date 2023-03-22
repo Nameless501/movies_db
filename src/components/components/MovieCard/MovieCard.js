@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import CardButton from '../../UI/CardButton/CardButton';
+import MovieInfoButtons from '../MovieInfoButtons/MovieInfoButtons';
 import MovieRating from '../../UI/MovieRating/MovieRating';
 import { POSTER_HORIZONTAL_SMALL } from '../../../utils/constants';
 import { routesConfig } from '../../../utils/configs';
@@ -35,8 +35,9 @@ const MovieCard = memo(function MovieCard({ movie, place }) {
                 />
             </div>
             <div className='movie-card__button-wrapper' >
-                <CardButton
-                    isActive={movie.id % 3 === 0}
+                <MovieInfoButtons
+                    place='movie-card'
+                    isSaved={movie.id % 3 === 0}
                 />
             </div>
         </div>

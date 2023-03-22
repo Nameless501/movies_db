@@ -2,8 +2,16 @@
     margin: 0;
     padding: 0;
     max-width: var(--section_max_width);
-    display: flex;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: 1.25fr 2fr;
+    grid-auto-rows: auto;
+    grid-template-areas:
+    'poster title'
+    'poster info'
+    'poster description'
+    'poster buttons'
+    'poster .';
+    gap: 35px 40px;
     position: relative;
     z-index: 2;
 }
@@ -14,18 +22,10 @@
     box-sizing: border-box;
     display: block;
     aspect-ratio: 2/3;
-    max-height: 500px;
+    width: 100%;
     box-shadow: 0px 4px 30px rgba(255, 255, 255, 0.05);
     border-radius: 6px;
-}
-
-.movie-info__info {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-    max-width: 500px;
+    grid-area: poster;
 }
 
 .movie-info__title {
@@ -34,6 +34,7 @@
     color: var(--fonts_colors_main);
     font-weight: 700;
     font-size: 30px;
+    grid-area: title;
 }
 
 .movie-info__description {
@@ -41,7 +42,10 @@
     padding: 0;
     color: var(--fonts_colors_main);
     font-weight: 500;
-    font-size: 20px;
+    font-size: 17px;
+    line-height: 22px;
+    opacity: .8;
+    grid-area: description;
 }
 
 .movie-info__subtitle {
@@ -49,9 +53,10 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     align-items: flex-start;
     align-self: flex-start;
+    grid-area: info;
 }
 
 .movie-info__genres {
@@ -60,6 +65,21 @@
     list-style: none;
     display: flex;
     gap: 10px;
+}
+
+.movie-info__genre {
+    margin: 0;
+    padding: 5px 7.5px;
+    background-color: var(--colors_btn_white);
+    border-radius: 4px;
+    color: var(--fonts_colors_dark);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.movie-info__genre::first-letter {
+    text-transform: capitalize;
 }
 
 .movie-info__text-fade {

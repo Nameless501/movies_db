@@ -1,10 +1,14 @@
 import './CardButton.css';
 
-function CardButton({ handleClick, isActive }) {
+function CardButton({ handleClick, isSaved, place }) {
     return (
         <button
             type='button'
-            className={`card-button ${isActive && 'card-button_active'}`}
+            className={`
+                card-button
+                ${ isSaved && 'card-button_saved' }
+                ${ place && 'card-button_place_' + place }
+            `}
             onClick={handleClick}
         >
         </button>

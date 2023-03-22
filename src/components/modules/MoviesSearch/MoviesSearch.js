@@ -26,6 +26,7 @@ function MoviesSearch({ initialState, handleSubmit }) {
                     handleChange={handleInputChange}
                     isValid={formIsValid}
                     error={errorMessages.keyword}
+                    placeholder={inputsValues.tvShows ? 'Название сериала' : 'Название фильма'}
                 />
                 <ToggleInput
                     name='tvShows'

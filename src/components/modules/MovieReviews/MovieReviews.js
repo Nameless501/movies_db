@@ -46,6 +46,12 @@ function MovieReviews() {
                     />
                 }
             </div>
+            {
+                (reviews.length === 0 && !error) &&
+                <p className="movie-reviews__empty-message" >
+                    Рецензий пока нет.
+                </p>
+            }
         </section>
     );
 }

@@ -1,5 +1,6 @@
 import MovieRating from '../../UI/MovieRating/MovieRating';
 import LinkButton from '../../UI/LinkButton/LinkButton';
+import MovieInfoButtons from '../../components/MovieInfoButtons/MovieInfoButtons'
 import { POSTER_HORIZONTAL_ORIGINAL } from '../../../utils/constants';
 import { routesConfig } from '../../../utils/configs';
 import './MovieSlide.css';
@@ -31,6 +32,9 @@ function MovieSlide({ title, backdrop_path, overview, vote_average, release_date
                 <p className='movie-slide__description' >
                     {overview}
                 </p>
+                <MovieInfoButtons
+                    place='movie-slide'
+                />
                 <LinkButton
                     link={routesConfig.movieInfo + '/' + id}
                     text='Подробнее'
