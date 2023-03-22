@@ -3,7 +3,6 @@ import PortalContext from "../context/PortalContext";
 
 export function PortalContextProvider({ children }) {
     const [movieId, setMovieId] = useState(null);
-    const [shareLink, setShareLink] = useState(null);
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
 
@@ -12,7 +11,6 @@ export function PortalContextProvider({ children }) {
         setSharePopupState(false);
 
         setMovieId(null);
-        setShareLink(null);
     };
 
     function openTrailerPopup(id) {
@@ -20,8 +18,8 @@ export function PortalContextProvider({ children }) {
         setTrailerPopupState(true);
     }
 
-    function openSharePopup(link) {
-        setShareLink(link);
+    function openSharePopup(id) {
+        setMovieId(id);
         setSharePopupState(true);
     }
 
@@ -29,7 +27,6 @@ export function PortalContextProvider({ children }) {
         <PortalContext.Provider
             value={{
                 movieId,
-                shareLink,
                 trailerPopupIsOpen,
                 sharePopupIsOpen,
                 openTrailerPopup,

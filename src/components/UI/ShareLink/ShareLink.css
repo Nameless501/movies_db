@@ -1,0 +1,39 @@
+.share-link {
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.share-link__text {
+    margin: 0;
+    padding: 0;
+    color: var(--fonts_colors_main);
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.share-link__icon {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    object-position: center;
+    object-fit: contain;
+}
+
+.share-link:hover {
+    cursor: pointer;
+    padding: 14px;
+    border: 1px solid var(--fonts_colors_main);
+    border-radius: 8px;
+}

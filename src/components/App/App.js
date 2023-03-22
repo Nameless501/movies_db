@@ -10,10 +10,11 @@ import SearchPage from '../pages/Search/SearchPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Portal from '../components/Portal/Portal';
 import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
+import SharePopup from '../modules/SharePopup/SharePopup';
 import './App.css';
 
 function App() {
-    const { trailerPopupIsOpen } = usePortalContext();
+    const { trailerPopupIsOpen, sharePopupIsOpen } = usePortalContext();
 
     return (
         <div className="App">
@@ -41,6 +42,9 @@ function App() {
                 <Portal>
                     {
                         trailerPopupIsOpen && <TrailerPopup />
+                    }
+                    {
+                        sharePopupIsOpen && <SharePopup />
                     }
                 </Portal>
             </CurrentUserProvider>

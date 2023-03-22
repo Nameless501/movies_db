@@ -42,10 +42,6 @@ export const getMoviePageParam = (page) => `&page=${page}`;
 
 export const getQueryParam = (query) => `&query=${query}`;
 
-// user API URL's
-
-// export const BASE_URL_MAIN = 'http://movies-explorer-api-production-f471.up.railway.app';
-
 export const BASE_URL_MAIN = 'http://localhost:3000';
 
 export const POSTER_HORIZONTAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
@@ -55,3 +51,9 @@ export const POSTER_HORIZONTAL_ORIGINAL = 'https://image.tmdb.org/t/p/original/'
 export const POSTER_VERTICAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
 
 export const TRAILER_BASE_URL = 'https://www.youtube.com/embed/';
+
+// share links
+
+export const getTelegramShareLink = (url) => `https://t.me/share/url?url=${url}`;
+
+export const getWhatsappShareLink = (url) => `https://api.whatsapp.com/send?text=${url}`;
