@@ -34,6 +34,8 @@ export const getMovieReviewsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/r
 
 export const getMovieRecommendationsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/recommendations`;
 
+export const getMovieTrailerPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/videos`;
+
 export const getMovieLangParam = (lang) => `&language=${lang}`;
 
 export const getMoviePageParam = (page) => `&page=${page}`;
@@ -51,3 +53,5 @@ export const POSTER_HORIZONTAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
 export const POSTER_HORIZONTAL_ORIGINAL = 'https://image.tmdb.org/t/p/original/';
 
 export const POSTER_VERTICAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
+
+export const TRAILER_BASE_URL = 'https://www.youtube.com/embed/';

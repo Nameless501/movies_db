@@ -42,6 +42,7 @@ function MovieInfoCard() {
             </p>
             <MovieInfoButtons
                 place='movie-info'
+                movieId={id}
             />
         </div>
     );

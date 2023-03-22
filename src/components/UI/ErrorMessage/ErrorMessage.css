@@ -68,3 +68,9 @@
     font-size: 13px;
     line-height: 15px;
 }
+
+.error-message_place_trailer-popup {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
+}

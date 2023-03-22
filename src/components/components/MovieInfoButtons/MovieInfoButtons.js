@@ -1,9 +1,16 @@
+import { usePortalContext } from '../../../contexts/PortalContext';
 import ShareButton from '../../UI/ShareButton/ShareButton';
 import CardButton from '../../UI/CardButton/CardButton';
 import PlayButton from '../../UI/PlayButton/PlayButton';
 import './MovieInfoButtons.css';
 
-function MovieInfoButtons({ isSaved, place }) {
+function MovieInfoButtons({ isSaved, place, movieId, shareLink }) {
+    const { openTrailerPopup, openSharePopup } = usePortalContext();
+
+    function handleTrailerPopupOpen() {
+        openTrailerPopup(movieId);
+    }
+
     return (
         <div
             className={`
@@ -22,6 +29,7 @@ function MovieInfoButtons({ isSaved, place }) {
                 place !== 'movie-card' &&
                     <PlayButton
                         place={place}
+                        handleClick={handleTrailerPopupOpen}
                     />
             }
         </div>

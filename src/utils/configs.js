@@ -10,6 +10,7 @@ import {
     getMovieCreditsPath,
     getMovieReviewsPath,
     getMovieRecommendationsPath,
+    getMovieTrailerPath,
     getMovieLangParam,
     getMoviePageParam,
     getQueryParam,
@@ -79,6 +80,14 @@ export const moviesApiConfig = {
         },
         getUrl: (id, lang = 'ru-RU', page = 1) => {
             return `${getMovieRecommendationsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
+        }
+    },
+    movieTrailer: {
+        options: {
+            method: 'GET',
+        },
+        getUrl: (id, lang = 'ru-RU') => {
+            return `${getMovieTrailerPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
         }
     },
     searchMovies: {

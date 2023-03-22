@@ -1,15 +1,20 @@
 import { Switch, Route } from 'react-router-dom';
 import { routesConfig } from '../../utils/configs';
 import { CurrentUserProvider } from '../../contexts/UserContext';
+import { usePortalContext } from '../../contexts/PortalContext';
 import MainPage from '../pages/Main/MainPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
 import NowPlayingPage from '../pages/NowPlaying/NowPlayingPage';
 import MovieInfoPage from '../pages/MovieInfo/MovieInfoPage';
 import SearchPage from '../pages/Search/SearchPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
+import Portal from '../components/Portal/Portal';
+import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
 import './App.css';
 
 function App() {
+    const { trailerPopupIsOpen } = usePortalContext();
+
     return (
         <div className="App">
             <CurrentUserProvider>
@@ -33,6 +38,11 @@ function App() {
                         <NotFoundPage />
                     </Route>
                 </Switch>
+                <Portal>
+                    {
+                        trailerPopupIsOpen && <TrailerPopup />
+                    }
+                </Portal>
             </CurrentUserProvider>
         </div >
     );

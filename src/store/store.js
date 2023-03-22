@@ -7,6 +7,7 @@ import actorsReducer from './actors/actorsSlice';
 import similarMoviesReducer from './similarMovies/similarMoviesSlice';
 import reviewsReducer from './reviews/reviewsSlice';
 import searchReducer from './search/searchSlice';
+import trailerReducer from './trailer/trailerSlice';
 
 export default configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export default configureStore({
         actors: actorsReducer,
         reviews: reviewsReducer,
         search: searchReducer,
+        trailer: trailerReducer,
         userMovies: userMoviesReducer,
         nowPlaying: nowPlayingMoviesReducer,
         movieInfo: movieInfoReducer,

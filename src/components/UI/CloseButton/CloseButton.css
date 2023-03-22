@@ -50,6 +50,14 @@
     right: 15px;
 }
 
+.close-button_place_popup {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -25px;
+    right: -25px;
+}
+
 @media screen and (max-width: 767px) {
     .close-button_place_side-bar {
         top: 18px;

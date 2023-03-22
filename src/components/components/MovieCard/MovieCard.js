@@ -38,6 +38,7 @@ const MovieCard = memo(function MovieCard({ movie, place }) {
                 <MovieInfoButtons
                     place='movie-card'
                     isSaved={movie.id % 3 === 0}
+                    movieId={movie.id}
                 />
             </div>
         </div>
