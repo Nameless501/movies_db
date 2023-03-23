@@ -86,7 +86,7 @@ export const moviesApiConfig = {
         options: {
             method: 'GET',
         },
-        getUrl: (id, lang = 'ru-RU') => {
+        getUrl: (id, lang = 'en-US') => {
             return `${getMovieTrailerPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
         }
     },
