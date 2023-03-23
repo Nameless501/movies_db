@@ -5,6 +5,7 @@ import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import MoviesSearch from '../../modules/MoviesSearch/MoviesSearch';
 import MoviesFeed from '../../components/MoviesFeed/MoviesFeed';
+import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SearchPage.css';
 
 function SearchPage() {
@@ -15,7 +16,7 @@ function SearchPage() {
     function handleLoadMore() {
         scrollRef.current = window.pageYOffset;
 
-        if(query.tvShows) {
+        if (query.tvShows) {
             dispatch(fetchMoreShows());
         } else {
             dispatch(fetchMoreMovies());
@@ -25,7 +26,7 @@ function SearchPage() {
     function handleSubmit(inputsValues) {
         const { keyword, tvShows } = inputsValues;
 
-        if(tvShows) {
+        if (tvShows) {
             dispatch(findShows(keyword));
         } else {
             dispatch(findMovies(keyword));
@@ -50,14 +51,24 @@ function SearchPage() {
                     initialState={query}
                     handleSubmit={handleSubmit}
                 />
-                <MoviesFeed
-                    movies={result}
-                    loading={loading}
-                    error={error}
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    handleLoadMore={handleLoadMore}
-                />
+                {
+                    (!error && result.length > 0) &&
+                        <MoviesFeed
+                            movies={result}
+                            loading={loading}
+                            error={error}
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            handleLoadMore={handleLoadMore}
+                        />
+                }
+                {
+                    (error && result.length === 0) &&
+                        <ErrorMessage
+                            text={error}
+                            place='movies'
+                        />
+                }
             </main>
             <Footer />
         </div>

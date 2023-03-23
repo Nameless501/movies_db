@@ -58,7 +58,7 @@ export const searchSlice = createSlice({
 
                 state.result = results;
                 state.loading = false;
-                state.error = '';
+                state.error = results.length > 0 ? '' : 'Ничего не нашлось';
 
                 state.totalPages = total_pages;
                 state.currentPage = page;
@@ -76,7 +76,7 @@ export const searchSlice = createSlice({
 
                 state.result = results;
                 state.loading = false;
-                state.error = '';
+                state.error = results.length > 0 ? '' : 'Ничего не нашлось';
 
                 state.totalPages = total_pages;
                 state.currentPage = page;
