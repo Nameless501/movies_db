@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import PortalContext from "../context/PortalContext";
 
 export function PortalContextProvider({ children }) {
     const [movieId, setMovieId] = useState(null);
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
+
+    const location = useLocation();
 
     function closeAll() {
         setTrailerPopupState(false);
@@ -22,6 +25,12 @@ export function PortalContextProvider({ children }) {
         setMovieId(id);
         setSharePopupState(true);
     }
+
+    // Автоматическое закритие попапов, если перейти на другой роут
+
+    useEffect(() => {
+        closeAll();
+    }, [location]);
 
     return (
         <PortalContext.Provider
