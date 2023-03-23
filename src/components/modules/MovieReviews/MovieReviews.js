@@ -39,7 +39,7 @@ function MovieReviews({ type = 'movies' }) {
                     }
                 </ul>
                 {
-                    (reviews.length > 0 && currentPage < totalPages) &&
+                    (reviews?.length > 0 && currentPage < totalPages) &&
                     <MoreButton
                         handleClick={handleLoadMore}
                         place='reviews'
@@ -47,7 +47,7 @@ function MovieReviews({ type = 'movies' }) {
                 }
             </div>
             {
-                (reviews.length === 0 && !error) &&
+                (reviews?.length === 0 && !error) &&
                 <p className="movie-reviews__empty-message" >
                     Рецензий пока нет.
                 </p>

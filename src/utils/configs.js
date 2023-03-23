@@ -2,10 +2,8 @@ import {
     MOVIES_API_PATH_TOP_RATED,
     MOVIES_API_PATH_POPULAR,
     MOVIES_API_PATH_NOW_PLAYING,
-    MOVIES_API_PATH_LATEST,
     SHOWS_API_PATH_TOP_RATED,
     SHOWS_API_PATH_POPULAR,
-    SHOWS_API_PATH_LATEST,
     SEARCH_API_PATH_MOVIES,
     SEARCH_API_PATH_SHOWS,
     DB_API_KEY,
@@ -37,13 +35,11 @@ export const routesConfig = {
         topRated: '/movies/top-rated',
         nowPlaying: '/movies/now-playing',
         popular: '/movies/popular',
-        latest: '/movies/latest',
     },
     shows: {
         info: '/shows',
         topRated: '/shows/top-rated',
         popular: '/shows/popular',
-        latest: '/shows/latest',
     },
     search: '/search',
     saved: '/saved',
@@ -51,6 +47,24 @@ export const routesConfig = {
     signIn: '/sign-in',
     signUp: '/sign-up',
     notFound: '/not-found',
+};
+
+
+
+// navigation bar config
+
+
+
+export const navBarConfig = {
+    movies: [
+        { url: routesConfig.movies.popular, name: 'Популярные' },
+        { url: routesConfig.movies.topRated, name: 'С наивысшим рейтингом' },
+        { url: routesConfig.movies.nowPlaying, name: 'Сейчас в кино' },
+    ],
+    shows: [
+        { url: routesConfig.shows.popular, name: 'Популярные' },
+        { url: routesConfig.shows.topRated, name: 'С наивысшим рейтингом' },
+    ],
 };
 
 
@@ -83,14 +97,6 @@ export const dbApiConfig = {
             },
             getUrl: (lang = 'ru-RU', page = 1) => {
                 return `${MOVIES_API_PATH_POPULAR}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
-            }
-        },
-        latest: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${MOVIES_API_PATH_LATEST}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         info: {
@@ -149,14 +155,6 @@ export const dbApiConfig = {
             },
             getUrl: (lang = 'ru-RU', page = 1) => {
                 return `${SHOWS_API_PATH_POPULAR}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
-            }
-        },
-        latest: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${SHOWS_API_PATH_LATEST}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         info: {

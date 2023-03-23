@@ -36,7 +36,7 @@ function SliderActors({ type = 'movies' }) {
                 className="slider-actors__swiper"
             >
                 {
-                    cast.map(actor => {
+                    cast?.map(actor => {
                         return (
                             <SwiperSlide key={actor.id}>
                                 <ActorCard

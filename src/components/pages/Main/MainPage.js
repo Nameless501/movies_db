@@ -14,8 +14,8 @@ function MainPage() {
             <main className='main-page__content'>
                 <SliderMain />
                 <div className='main-page__content-wrapper' >
-                    <SliderTopRated />
-                    <SliderNowPlaying />
+                    <SliderTopRated type='movies' />
+                    <SliderNowPlaying type='movies' />
                 </div>
             </main>
             <Footer />

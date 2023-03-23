@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { fetchInfo } from '../../../store/info/infoSlice';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import MovieInfoButtons from '../../components/MovieInfoButtons/MovieInfoButtons';
-import './MovieInfoCard.css';
+import './Description.css';
 
-function MovieInfoCard({ type = 'movies' }) {
+function Description({ type = 'movies' }) {
     const { id } = useParams();
     const { info } = useSelector(store => store.info);
     const dispatch = useDispatch();
@@ -16,20 +16,20 @@ function MovieInfoCard({ type = 'movies' }) {
     }, [dispatch, id, type]);
 
     return (
-        <div className='movie-info' >
-            <img src={POSTER_VERTICAL_SMALL + info?.poster_path} alt='Постер фильма' className='movie-info__poster' />
-            <h2 className='movie-info__title' >
+        <div className='description' >
+            <img src={POSTER_VERTICAL_SMALL + info?.poster_path} alt='Постер фильма' className='description__poster' />
+            <h2 className='description__title' >
                 {`${info?.title} ${info?.release_date && '(' + new Date(info?.release_date).getFullYear() + ')'}`}
             </h2>
-            <div className='movie-info__subtitle' >
-                <p className='movie-info__text-fade'>
+            <div className='description__subtitle' >
+                <p className='description__text-fade'>
                     {info?.runtime?.toLocaleString('ru', { style: 'unit', unit: 'minute', unitDisplay: 'long' })}
                 </p>
-                <ul className='movie-info__genres'>
+                <ul className='description__genres'>
                     {info?.genres?.map(genre => {
                         return (
                             <li key={genre.id}>
-                                <p className='movie-info__genre'>
+                                <p className='description__genre'>
                                     {genre.name}
                                 </p>
                             </li>
@@ -37,11 +37,11 @@ function MovieInfoCard({ type = 'movies' }) {
                     })}
                 </ul>
             </div>
-            <p className='movie-info__description'>
+            <p className='description__description'>
                 {info?.overview ? info?.overview : 'Кажется описание пока не добавили'}
             </p>
             <MovieInfoButtons
-                place='movie-info'
+                place='description'
                 id={id}
                 type={type}
             />
@@ -49,4 +49,4 @@ function MovieInfoCard({ type = 'movies' }) {
     );
 }
 
-export default MovieInfoCard;
+export default Description;

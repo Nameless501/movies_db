@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchNowPlayingMovies } from '../../../store/nowPlayingMovies/nowPlayingMoviesSlice';
+import { fetchNowPlaying } from '../../../store/nowPlaying/nowPlayingSlice';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import MovieSlide from '../../components/MovieSlide/MovieSlide';
 import './SliderMain.css';
 
 function SliderMain() {
-    const { movies } = useSelector((state) => state.nowPlaying);
+    const { results } = useSelector((state) => state.nowPlaying);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchNowPlayingMovies());
+        dispatch(fetchNowPlaying());
     }, [dispatch]);
 
     return (
@@ -25,7 +25,7 @@ function SliderMain() {
                 className="slider-main__swiper"
             >
                 {
-                    movies.slice(0, 5).map(movie => {
+                    results.slice(0, 5).map(movie => {
                         return(
                             <SwiperSlide key={movie.id}>
                                 <MovieSlide {...movie} />

@@ -1,4 +1,4 @@
-.movie-info-page {
+.info-page {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-.movie-info-page__content {
+.info-page__content {
     margin: 0 auto;
     padding: 0;
     width: 100%;
@@ -20,7 +20,7 @@
     box-sizing: border-box;
 }
 
-.movie-info-page__content-wrapper {
+.info-page__content-wrapper {
     margin: -300px 0 0;
     padding: 70px;
     box-sizing: border-box;
@@ -37,7 +37,7 @@
     row-gap: 50px;
 }
 
-.movie-info-page__card-wrapper {
+.info-page__card-wrapper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -46,7 +46,7 @@
     grid-area: movieCard;
 }
 
-.movie-info-page__actors-wrapper {
+.info-page__actors-wrapper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -54,7 +54,7 @@
     grid-area: actorsList;
 }
 
-.movie-info-page__similar-wrapper {
+.info-page__similar-wrapper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -62,7 +62,7 @@
     grid-area: similarMovies;
 }
 
-.movie-info-page__reviews-wrapper {
+.info-page__reviews-wrapper {
     margin: 0;
     padding: 0;
     margin: 0;

@@ -18,7 +18,7 @@ function MoviesSliderSmall({ movies }) {
                 className="slider-small__swiper"
             >
                 {
-                    movies.map(movie => {
+                    movies?.map(movie => {
                         return(
                             <SwiperSlide key={movie.id}>
                                 <MovieCard
