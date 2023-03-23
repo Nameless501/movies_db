@@ -1,22 +1,31 @@
 import {
-    BASE_URL_MAIN,
-    MOVIES_API_BASE_URL,
     MOVIES_API_PATH_TOP_RATED,
     MOVIES_API_PATH_NOW_PLAYING,
-    MOVIES_API_PATH_MOVIES_SEARCH,
-    MOVIES_API_PATH_SHOWS_SEARCH,
-    MOVIES_API_KEY,
-    getMoviePath,
+    SHOWS_API_PATH_POPULAR,
+    SHOWS_API_PATH_LATEST,
+    SEARCH_API_PATH_MOVIES,
+    SEARCH_API_PATH_SHOWS,
+    DB_API_KEY,
+    getMovieInfoPath,
     getMovieCreditsPath,
     getMovieReviewsPath,
     getMovieRecommendationsPath,
     getMovieTrailerPath,
-    getMovieLangParam,
-    getMoviePageParam,
+    getShowInfoPath,
+    getShowCreditsPath,
+    getShowReviewsPath,
+    getShowRecommendationsPath,
+    getShowTrailerPath,
+    getLangParam,
+    getPageParam,
     getQueryParam,
 } from "./constants";
 
+
+
 // routes inside application
+
+
 
 export const routesConfig = {
     main: '/',
@@ -31,146 +40,154 @@ export const routesConfig = {
     notFound: '/not-found',
 };
 
-// config for fetch
 
-export const moviesApiConfig = {
-    topRated: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (lang = 'ru-RU', page = 1) => {
-            return `${MOVIES_API_PATH_TOP_RATED}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
-        }
-    },
-    nowPlaying: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (lang = 'ru-RU', page = 1) => {
-            return `${MOVIES_API_PATH_NOW_PLAYING}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
-        }
-    },
-    movieInfo: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (id, lang = 'ru-RU') => {
-            return `${getMoviePath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
-        }
-    },
-    movieCredits: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (id, lang = 'en-US') => {
-            return `${getMovieCreditsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
-        }
-    },
-    movieReviews: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (id, lang = 'en-US', page = 1) => {
-            return `${getMovieReviewsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
-        }
-    },
-    movieRecommendations: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (id, lang = 'ru-RU', page = 1) => {
-            return `${getMovieRecommendationsPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}`;
-        }
-    },
-    movieTrailer: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (id, lang = 'en-US') => {
-            return `${getMovieTrailerPath(id)}${MOVIES_API_KEY}${getMovieLangParam(lang)}`;
-        }
-    },
-    searchMovies: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (keyword, lang = 'ru-RU', page = 1) => {
-            return `${MOVIES_API_PATH_MOVIES_SEARCH}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}${getQueryParam(encodeURI(keyword))}`;
-        }
-    },
-    searchShows: {
-        options: {
-            method: 'GET',
-        },
-        getUrl: (keyword, lang = 'ru-RU', page = 1) => {
-            return `${MOVIES_API_PATH_SHOWS_SEARCH}${MOVIES_API_KEY}${getMovieLangParam(lang)}${getMoviePageParam(page)}${getQueryParam(encodeURI(keyword))}`;
-        }
-    },
-}
 
-export const apiConfig = {
-    signIn: {
-        url: BASE_URL_MAIN + '/signin',
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json",
-        },
-    },
-    signUp: {
-        url: BASE_URL_MAIN + '/signup',
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json"
-        },
-    },
-    signOut: {
-        url: BASE_URL_MAIN + '/signout',
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json",
-        },
-    },
-    userData: {
-        url: BASE_URL_MAIN + '/users/me',
-        method: 'PATCH',
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json",
-        },
-    },
-    tokenCheck: {
-        url: BASE_URL_MAIN + '/users/me',
-        method: 'GET',
-        credentials: 'include',
-    },
-    userMovies: {
-        url: BASE_URL_MAIN + '/movies',
-        method: 'GET',
-        credentials: 'include',
-    },
-    saveMovie: {
-        url: BASE_URL_MAIN + '/movies',
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json",
-        },
-    },
-    deleteMovie: {
-        url: BASE_URL_MAIN + '/movies',
-        method: 'DELETE',
-        credentials: 'include',
-    },
+// database API config
+
+
+
+export const dbApiConfig = {
     movies: {
-        url: MOVIES_API_BASE_URL + '/beatfilm-movies',
-        method: 'GET',
-    }
+        topRated: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${MOVIES_API_PATH_TOP_RATED}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        nowPlaying: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${MOVIES_API_PATH_NOW_PLAYING}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        info: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'ru-RU') => {
+                return `${getMovieInfoPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            }
+        },
+        credits: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'en-US') => {
+                return `${getMovieCreditsPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            }
+        },
+        reviews: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'en-US', page = 1) => {
+                return `${getMovieReviewsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        recommendations: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'ru-RU', page = 1) => {
+                return `${getMovieRecommendationsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        trailer: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'en-US') => {
+                return `${getMovieTrailerPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            }
+        },
+    },
+    shows: {
+        popular: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${SHOWS_API_PATH_POPULAR}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        latest: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${SHOWS_API_PATH_LATEST}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        info: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'ru-RU') => {
+                return `${getShowInfoPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            }
+        },
+        credits: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'en-US') => {
+                return `${getShowCreditsPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            }
+        },
+        reviews: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'en-US', page = 1) => {
+                return `${getShowReviewsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        recommendations: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'ru-RU', page = 1) => {
+                return `${getShowRecommendationsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        trailer: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (id, lang = 'en-US') => {
+                return `${getShowTrailerPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            }
+        },
+    },
+    search: {
+        movies: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (keyword, lang = 'ru-RU', page = 1) => {
+                return `${SEARCH_API_PATH_MOVIES}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}${getQueryParam(encodeURI(keyword))}`;
+            }
+        },
+        shows: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (keyword, lang = 'ru-RU', page = 1) => {
+                return `${SEARCH_API_PATH_SHOWS}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}${getQueryParam(encodeURI(keyword))}`;
+            }
+        },
+    },
 }
+
+
 
 // errors configs
+
+
 
 export const signInErrorsConfig = {
     401: 'Вы ввели неправильный логин или пароль.',
@@ -188,7 +205,11 @@ export const profileErrorsConfig = {
     signOut: 'На сервере произошла ошибка. ',
 }
 
+
+
 // inputs validation config
+
+
 
 export const validationConfig = {
     name: {

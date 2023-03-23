@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
-import { moviesApiConfig } from '../../utils/configs';
+import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchSimilarMovies = createAsyncThunk('similarMovies/fetchSimilarMovies', async (id) => {
-    const { getUrl, options } = moviesApiConfig.movieRecommendations;
+    const { getUrl, options } = dbApiConfig.movies.recommendations;
 
     const response = await handleFetch(getUrl(id), options);
     return response.json();

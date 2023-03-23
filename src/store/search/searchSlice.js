@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
-import { moviesApiConfig } from '../../utils/configs';
+import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const findMovies = createAsyncThunk('search/findMovies', async (keyword) => {
-    const { getUrl, options } = moviesApiConfig.searchMovies;
+    const { getUrl, options } = dbApiConfig.search.movies;
 
     const response = await handleFetch(getUrl(keyword), options);
     return response.json();
@@ -12,14 +12,14 @@ export const findMovies = createAsyncThunk('search/findMovies', async (keyword) 
 
 export const fetchMoreMovies = createAsyncThunk('search/fetchMoreMovies', async (arg, { getState }) => {
     const { search } = getState();
-    const { getUrl, options } = moviesApiConfig.searchMovies;
+    const { getUrl, options } = dbApiConfig.search.movies;
 
     const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
     return response.json();
 });
 
 export const findShows = createAsyncThunk('search/findShows', async (keyword) => {
-    const { getUrl, options } = moviesApiConfig.searchShows;
+    const { getUrl, options } = dbApiConfig.search.shows;
 
     const response = await handleFetch(getUrl(keyword), options);
     return response.json();
@@ -27,7 +27,7 @@ export const findShows = createAsyncThunk('search/findShows', async (keyword) =>
 
 export const fetchMoreShows = createAsyncThunk('search/fetchMoreShows', async (arg, { getState }) => {
     const { search } = getState();
-    const { getUrl, options } = moviesApiConfig.searchMovies;
+    const { getUrl, options } = dbApiConfig.search.shows;
 
     const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
     return response.json();

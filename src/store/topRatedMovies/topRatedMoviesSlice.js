@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
-import { moviesApiConfig } from '../../utils/configs';
+import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchTopRatedMovies = createAsyncThunk('topRatedMovies/fetchTopRatedMovies', async () => {
-    const { getUrl, options } = moviesApiConfig.topRated;
+    const { getUrl, options } = dbApiConfig.movies.topRated;
     const response = await handleFetch(getUrl(), options);
     return response.json();
 });
 
 export const fetchMoreTopRatedMovies = createAsyncThunk('topRatedMovies/fetchMoreTopRatedMovies', async (arg, { getState }) => {
     const { topRated } = getState();
-    const { getUrl, options } = moviesApiConfig.topRated;
+    const { getUrl, options } = dbApiConfig.movies.topRated;
 
     const response = await handleFetch(getUrl('ru-RU', topRated.currentPage + 1), options);
     return response.json();

@@ -21,7 +21,7 @@ const MovieCard = memo(function MovieCard({ movie, place }) {
                 </div>
                 <figcaption className='movie-card__caption' >
                     <span className='movie-card__title' >
-                        {movie.title}
+                        {movie.title ?? movie.name}
                     </span>
                 </figcaption>
             </figure>

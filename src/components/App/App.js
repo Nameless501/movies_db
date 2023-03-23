@@ -1,6 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
 import { routesConfig } from '../../utils/configs';
-import { CurrentUserProvider } from '../../contexts/UserContext';
 import { usePortalContext } from '../../contexts/PortalContext';
 import MainPage from '../pages/Main/MainPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
@@ -19,39 +18,37 @@ function App() {
 
     return (
         <div className="App">
-            <CurrentUserProvider>
-                <Switch>
-                    <Route exact path={routesConfig.main}>
-                        <MainPage />
-                    </Route>
-                    <Route path={routesConfig.topRated}>
-                        <TopRatedPage />
-                    </Route>
-                    <Route path={routesConfig.nowPlaying}>
-                        <NowPlayingPage />
-                    </Route>
-                    <Route path={routesConfig.movieInfo + '/:id'}>
-                        <MovieInfoPage />
-                    </Route>
-                    <Route path={routesConfig.search}>
-                        <SearchPage />
-                    </Route>
-                    <Route path='*' >
-                        <NotFoundPage />
-                    </Route>
-                </Switch>
-                <Portal>
-                    {
-                        trailerPopupIsOpen && <TrailerPopup />
-                    }
-                    {
-                        sharePopupIsOpen && <SharePopup />
-                    }
-                    {
-                        constructionPopupIsOpen && <ConstructionSitePopup />
-                    }
-                </Portal>
-            </CurrentUserProvider>
+            <Switch>
+                <Route exact path={routesConfig.main}>
+                    <MainPage />
+                </Route>
+                <Route path={routesConfig.topRated}>
+                    <TopRatedPage />
+                </Route>
+                <Route path={routesConfig.nowPlaying}>
+                    <NowPlayingPage />
+                </Route>
+                <Route path={routesConfig.movieInfo + '/:id'}>
+                    <MovieInfoPage />
+                </Route>
+                <Route path={routesConfig.search}>
+                    <SearchPage />
+                </Route>
+                <Route path='*' >
+                    <NotFoundPage />
+                </Route>
+            </Switch>
+            <Portal>
+                {
+                    trailerPopupIsOpen && <TrailerPopup />
+                }
+                {
+                    sharePopupIsOpen && <SharePopup />
+                }
+                {
+                    constructionPopupIsOpen && <ConstructionSitePopup />
+                }
+            </Portal>
         </div >
     );
 }

@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
-import { moviesApiConfig } from '../../utils/configs';
+import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchNowPlayingMovies', async () => {
-    const { getUrl, options } = moviesApiConfig.nowPlaying;
+    const { getUrl, options } = dbApiConfig.movies.nowPlaying;
 
     const response = await handleFetch(getUrl(), options);
     return response.json();
@@ -12,7 +12,7 @@ export const fetchNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchNow
 
 export const fetchMoreNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchMoreNowPlayingMovies', async (arg, { getState }) => {
     const { nowPlaying } = getState();
-    const { getUrl, options } = moviesApiConfig.nowPlaying;
+    const { getUrl, options } = dbApiConfig.movies.nowPlaying;
 
     const response = await handleFetch(getUrl('ru-RU', nowPlaying.currentPage + 1), options);
     return response.json();

@@ -1,8 +1,6 @@
-// movies filter props
-
-export const SHORTFILM_DURATION = 40;
-
 // error messages
+
+
 
 export const ERROR_NO_MOVIES = 'Ничего не найдено';
 
@@ -12,37 +10,63 @@ export const ERROR_MOVIES_FETCH = 'Во время запроса произош
 
 export const ERROR_NO_USER_MOVIES = 'Нет сохраненных фильмов';
 
-// movies API URL's and params
 
-export const MOVIES_API_BASE_URL = 'https://api.themoviedb.org/3';
 
-export const MOVIES_API_PATH_TOP_RATED = MOVIES_API_BASE_URL + '/movie/top_rated';
+// database API URL's and params
 
-export const MOVIES_API_PATH_NOW_PLAYING = MOVIES_API_BASE_URL + '/movie/now_playing';
 
-export const MOVIES_API_PATH_MOVIES_SEARCH = MOVIES_API_BASE_URL + '/search/movie';
 
-export const MOVIES_API_PATH_SHOWS_SEARCH = MOVIES_API_BASE_URL + '/search/tv';
+export const DB_API_BASE_URL = 'https://api.themoviedb.org/3';
 
-export const MOVIES_API_KEY = '?api_key=7dc59b842d86576bd986dae0db4b7703';
+export const DB_API_KEY = '?api_key=7dc59b842d86576bd986dae0db4b7703';
 
-export const getMoviePath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}`;
 
-export const getMovieCreditsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/credits`;
 
-export const getMovieReviewsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/reviews`;
+export const MOVIES_API_PATH_TOP_RATED = DB_API_BASE_URL + '/movie/top_rated';
 
-export const getMovieRecommendationsPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/recommendations`;
+export const MOVIES_API_PATH_NOW_PLAYING = DB_API_BASE_URL + '/movie/now_playing';
 
-export const getMovieTrailerPath = (id) => `${MOVIES_API_BASE_URL}/movie/${id}/videos`;
+export const getMovieInfoPath = (id) => `${DB_API_BASE_URL}/movie/${id}`;
 
-export const getMovieLangParam = (lang) => `&language=${lang}`;
+export const getMovieCreditsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/credits`;
 
-export const getMoviePageParam = (page) => `&page=${page}`;
+export const getMovieReviewsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/reviews`;
+
+export const getMovieRecommendationsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/recommendations`;
+
+export const getMovieTrailerPath = (id) => `${DB_API_BASE_URL}/movie/${id}/videos`;
+
+
+
+export const SHOWS_API_PATH_POPULAR = DB_API_BASE_URL + '/tv/popular';
+
+export const SHOWS_API_PATH_LATEST = DB_API_BASE_URL + '/tv/latest';
+
+export const getShowInfoPath = (id) => `${DB_API_BASE_URL}/tv/${id}`;
+
+export const getShowCreditsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/credits`;
+
+export const getShowReviewsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/reviews`;
+
+export const getShowRecommendationsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/recommendations`;
+
+export const getShowTrailerPath = (id) => `${DB_API_BASE_URL}/tv/${id}/videos`;
+
+
+
+export const SEARCH_API_PATH_MOVIES = DB_API_BASE_URL + '/search/movie';
+
+export const SEARCH_API_PATH_SHOWS = DB_API_BASE_URL + '/search/tv';
+
+
+
+export const getLangParam = (lang) => `&language=${lang}`;
+
+export const getPageParam = (page) => `&page=${page}`;
 
 export const getQueryParam = (query) => `&query=${query}`;
 
-export const BASE_URL_MAIN = 'http://localhost:3000';
+
 
 export const POSTER_HORIZONTAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
 
@@ -52,7 +76,11 @@ export const POSTER_VERTICAL_SMALL = 'https://image.tmdb.org/t/p/w500/';
 
 export const TRAILER_BASE_URL = 'https://www.youtube.com/embed/';
 
+
+
 // share links
+
+
 
 export const MOVIE_URL_FOR_SHARE = window.location.protocol + '//' + window.location.host + '/movies_db/#/movie/';
 

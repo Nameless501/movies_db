@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { useUserContext } from '../../../contexts/UserContext';
 import HeaderWrapper from '../../components/HeaderWrapper/HeaderWrapper';
 import HeaderMenu from '../../components/HeaderMenu/HeaderMenu';
 
 function Header({ place }) {
-    const { userIsLogged } = useUserContext();
     const [sideBarIsOpen, setSideBarState] = useState(false);
 
     function handleSideBarToggle() {
@@ -19,7 +17,7 @@ function Header({ place }) {
         >
             <HeaderMenu
                 handleSideBarOpen={handleSideBarToggle}
-                isLogged={userIsLogged}
+                isLogged={false}
                 place={place}
             />
         </HeaderWrapper>

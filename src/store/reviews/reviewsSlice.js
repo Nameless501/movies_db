@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
-import { moviesApiConfig } from '../../utils/configs';
+import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchReviews = createAsyncThunk('reviews/fetchReviews', async (id) => {
-    const { getUrl, options } = moviesApiConfig.movieReviews;
+    const { getUrl, options } = dbApiConfig.movies.reviews;
 
     const response = await handleFetch(getUrl(id), options);
     return response.json();
@@ -12,7 +12,7 @@ export const fetchReviews = createAsyncThunk('reviews/fetchReviews', async (id) 
 
 export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', async (id, { getState }) => {
     const { reviews } = getState();
-    const { getUrl, options } = moviesApiConfig.movieReviews;
+    const { getUrl, options } = dbApiConfig.movies.reviews;
 
     const response = await handleFetch(getUrl(id, 'en-US', reviews.currentPage + 1), options);
     return response.json();
