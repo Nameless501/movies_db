@@ -11,10 +11,11 @@ import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Portal from '../components/Portal/Portal';
 import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
 import SharePopup from '../modules/SharePopup/SharePopup';
+import ConstructionSitePopup from '../modules/ConstructionSitePopup/ConstructionSitePopup';
 import './App.css';
 
 function App() {
-    const { trailerPopupIsOpen, sharePopupIsOpen } = usePortalContext();
+    const { trailerPopupIsOpen, sharePopupIsOpen, constructionPopupIsOpen } = usePortalContext();
 
     return (
         <div className="App">
@@ -45,6 +46,9 @@ function App() {
                     }
                     {
                         sharePopupIsOpen && <SharePopup />
+                    }
+                    {
+                        constructionPopupIsOpen && <ConstructionSitePopup />
                     }
                 </Portal>
             </CurrentUserProvider>

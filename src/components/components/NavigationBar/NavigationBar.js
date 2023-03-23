@@ -1,9 +1,12 @@
+import { usePortalContext } from '../../../contexts/PortalContext';
 import NavigationLink from '../../UI/NavigationLink/NavigationLink';
 import NavigationBarSubmenu from '../NavigationBarSubmenu/NavigationBarSubmenu';
 import { routesConfig } from '../../../utils/configs';
 import './NavigationBar.css';
 
 function NavigationBar({ place, showMainLink = false }) {
+    const { openConstructionPopup } = usePortalContext();
+
     const moviesLinks = [
         { url: routesConfig.topRated, name: 'Популярные' },
         { url: routesConfig.nowPlaying, name: 'Сейчас в кино' },
@@ -32,11 +35,15 @@ function NavigationBar({ place, showMainLink = false }) {
                     />
                 </li>
                 <li>
-                    <NavigationBarSubmenu
-                        title='Сериалы'
-                        place={place}
-                        links={moviesLinks}
-                    />
+                    <button
+                        className={`
+                            navigation-link
+                            ${place ? 'navigation-link_place_' + place : null}
+                        `}
+                        onClick={openConstructionPopup}
+                    >
+                        Сериалы
+                    </button>
                 </li>
                 <li>
                     <NavigationLink
@@ -46,11 +53,15 @@ function NavigationBar({ place, showMainLink = false }) {
                     />
                 </li>
                 <li>
-                    <NavigationLink
-                        to={routesConfig.savedMovies}
-                        text='Сохранённые фильмы'
-                        place={place}
-                    />
+                    <button
+                        className={`
+                            navigation-link
+                            ${place ? 'navigation-link_place_' + place : null}
+                        `}
+                        onClick={openConstructionPopup}
+                    >
+                        Сохранённые фильмы
+                    </button>
                 </li>
             </ul>
         </nav>

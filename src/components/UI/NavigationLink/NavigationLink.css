@@ -7,6 +7,8 @@
     box-sizing: border-box;
     text-decoration: none;
     color: var(--fonts_colors_main);
+    background-color: transparent;
+    border: 0;
 }
 
 .navigation-link_place_main-page {

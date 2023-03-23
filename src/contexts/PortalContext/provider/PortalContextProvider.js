@@ -6,12 +6,14 @@ export function PortalContextProvider({ children }) {
     const [movieId, setMovieId] = useState(null);
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
+    const [constructionPopupIsOpen, setConstructionPopupState] = useState(false);
 
     const location = useLocation();
 
     function closeAll() {
         setTrailerPopupState(false);
         setSharePopupState(false);
+        setConstructionPopupState(false);
 
         setMovieId(null);
     };
@@ -26,6 +28,10 @@ export function PortalContextProvider({ children }) {
         setSharePopupState(true);
     }
 
+    function openConstructionPopup() {
+        setConstructionPopupState(true);
+    }
+
     // Автоматическое закритие попапов, если перейти на другой роут
 
     useEffect(() => {
@@ -38,8 +44,10 @@ export function PortalContextProvider({ children }) {
                 movieId,
                 trailerPopupIsOpen,
                 sharePopupIsOpen,
+                constructionPopupIsOpen,
                 openTrailerPopup,
                 openSharePopup,
+                openConstructionPopup,
                 closeAll
             }}
         >

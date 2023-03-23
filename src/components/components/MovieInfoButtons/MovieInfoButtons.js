@@ -5,7 +5,7 @@ import PlayButton from '../../UI/PlayButton/PlayButton';
 import './MovieInfoButtons.css';
 
 function MovieInfoButtons({ isSaved, place, movieId }) {
-    const { openTrailerPopup, openSharePopup } = usePortalContext();
+    const { openTrailerPopup, openSharePopup, openConstructionPopup } = usePortalContext();
 
     function handleTrailerPopupOpen() {
         openTrailerPopup(movieId);
@@ -25,6 +25,7 @@ function MovieInfoButtons({ isSaved, place, movieId }) {
             <CardButton
                 place={place}
                 isSaved={isSaved}
+                handleClick={openConstructionPopup}
             />
             <ShareButton
                 place={place}
