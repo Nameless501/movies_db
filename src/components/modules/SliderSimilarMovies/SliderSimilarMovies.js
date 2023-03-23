@@ -22,6 +22,7 @@ function SliderSimilarMovies({ type = 'movies' }) {
         >
             <MoviesSliderSmall
                 movies={recommendations}
+                type={type}
             />
         </MoviesSliderWrapper>
     );

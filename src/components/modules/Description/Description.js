@@ -19,7 +19,8 @@ function Description({ type = 'movies' }) {
         <div className='description' >
             <img src={POSTER_VERTICAL_SMALL + info?.poster_path} alt='Постер фильма' className='description__poster' />
             <h2 className='description__title' >
-                {`${info?.title} ${info?.release_date && '(' + new Date(info?.release_date).getFullYear() + ')'}`}
+                {type === 'movies' && `${info?.title} ${info?.release_date && '(' + new Date(info?.release_date).getFullYear() + ')'}`}
+                {type === 'shows' && `${info?.name} ${info?.first_air_date && '(' + new Date(info?.first_air_date).getFullYear() + ')'}`}
             </h2>
             <div className='description__subtitle' >
                 <p className='description__text-fade'>

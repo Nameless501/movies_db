@@ -22,6 +22,7 @@ function SliderNowPlaying({ type = 'movies' }) {
         >
             <MoviesSliderSmall
                 movies={results}
+                type={type}
             />
         </MoviesSliderWrapper>
     );

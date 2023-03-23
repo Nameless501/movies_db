@@ -1,7 +1,7 @@
 import MovieCard from '../MovieCard/MovieCard';
 import './MoviesList.css';
 
-function MoviesList({ moviesList }) {
+function MoviesList({ moviesList, type }) {
     return (
         <ul className='movies-list' >
             {
@@ -10,6 +10,7 @@ function MoviesList({ moviesList }) {
                         <li key={currentMovie.id} >
                             <MovieCard
                                 movie={currentMovie}
+                                type={type}
                             />
                         </li>
                     )

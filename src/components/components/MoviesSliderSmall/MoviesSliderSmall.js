@@ -5,7 +5,7 @@ import './MoviesSliderSmall.css';
 import "swiper/css";
 import "swiper/css/navigation";
 
-function MoviesSliderSmall({ movies }) {
+function MoviesSliderSmall({ movies, type }) {
     return (
         <div className='slider-small'>
             <Swiper
@@ -24,6 +24,7 @@ function MoviesSliderSmall({ movies }) {
                                 <MovieCard
                                     movie={movie}
                                     place='slider'
+                                    type={type}
                                 />
                             </SwiperSlide>
                         )

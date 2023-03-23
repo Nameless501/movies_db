@@ -42,6 +42,7 @@ function TopRatedPage({ title, type = 'movies' }) {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 handleLoadMore={handleLoadMore}
+                type={type}
             />
         </MoviesPageWrapper>
     );
