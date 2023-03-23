@@ -7,7 +7,7 @@ import { routesConfig } from '../../../utils/configs';
 import posterFallback from '../../../images/poster_fallback.png';
 import './MovieCard.css';
 
-const MovieCard = memo(function MovieCard({ movie, place }) {
+const MovieCard = memo(function MovieCard({ movie, place, type = 'movie' }) {
     return (
         <div className='movie-card'>
             <figure className='movie-card__figure' >
@@ -37,8 +37,8 @@ const MovieCard = memo(function MovieCard({ movie, place }) {
             <div className='movie-card__button-wrapper' >
                 <MovieInfoButtons
                     place='movie-card'
-                    isSaved={movie.id % 3 === 0}
-                    movieId={movie.id}
+                    id={movie.id}
+                    type={type}
                 />
             </div>
         </div>

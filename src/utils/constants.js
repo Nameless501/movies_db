@@ -82,12 +82,12 @@ export const TRAILER_BASE_URL = 'https://www.youtube.com/embed/';
 
 
 
-export const MOVIE_URL_FOR_SHARE = window.location.protocol + '//' + window.location.host + '/movies_db/#/movie/';
+export const URL_FOR_SHARE = window.location.protocol + '//' + window.location.host + '/movies_db/#';
 
-export const MOVIE_URL_FOR_SHARE_ENCODED = encodeURIComponent(MOVIE_URL_FOR_SHARE);
+export const getEncodedUrlForShare = (type, id) => encodeURIComponent(`${URL_FOR_SHARE}/${type}/${id}`);
 
-export const getTelegramShareLink = (id) => `https://t.me/share/url?url=${MOVIE_URL_FOR_SHARE_ENCODED + id}`;
+export const getTelegramShareLink = (type, id) => `https://t.me/share/url?url=${getEncodedUrlForShare(type, id)}`;
 
-export const getWhatsappShareLink = (id) => `https://api.whatsapp.com/send?text=${MOVIE_URL_FOR_SHARE_ENCODED + id}`;
+export const getWhatsappShareLink = (type, id) => `https://api.whatsapp.com/send?text=${getEncodedUrlForShare(type, id)}`;
 
-export const getLinkForCopy = (id) => MOVIE_URL_FOR_SHARE + id;
+export const getLinkForCopy = (type, id) => `${URL_FOR_SHARE}/${type}/${id}`;

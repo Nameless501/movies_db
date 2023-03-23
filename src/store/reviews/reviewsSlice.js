@@ -3,16 +3,16 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchReviews = createAsyncThunk('reviews/fetchReviews', async (id) => {
-    const { getUrl, options } = dbApiConfig.movies.reviews;
+export const fetchReviews = createAsyncThunk('reviews/fetchMovieReviews', async ({ type, id }) => {
+    const { getUrl, options } = dbApiConfig[type].reviews;
 
     const response = await handleFetch(getUrl(id), options);
     return response.json();
 });
 
-export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', async (id, { getState }) => {
+export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', async ({ type, id }, { getState }) => {
     const { reviews } = getState();
-    const { getUrl, options } = dbApiConfig.movies.reviews;
+    const { getUrl, options } = dbApiConfig[type].reviews;
 
     const response = await handleFetch(getUrl(id, 'en-US', reviews.currentPage + 1), options);
     return response.json();
@@ -45,7 +45,7 @@ export const reviewsSlice = createSlice({
             })
             .addCase(fetchReviews.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
-            })
+            });
 
         builder
             .addCase(fetchMoreReviews.fulfilled, (state, action) => {

@@ -1,6 +1,6 @@
 import { useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMoreMovies, fetchMoreShows, findMovies, findShows, updateQuery } from '../../../store/search/searchSlice';
+import { fetchSearchQuery, fetchNextPage, updateQuery } from '../../../store/search/searchSlice';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import MoviesSearch from '../../modules/MoviesSearch/MoviesSearch';
@@ -15,23 +15,14 @@ function SearchPage() {
 
     function handleLoadMore() {
         scrollRef.current = window.pageYOffset;
-
-        if (query.tvShows) {
-            dispatch(fetchMoreShows());
-        } else {
-            dispatch(fetchMoreMovies());
-        }
+        dispatch(fetchNextPage());
     };
 
     function handleSubmit(inputsValues) {
         const { keyword, tvShows } = inputsValues;
+        const type = tvShows ? 'shows' : 'movies';
 
-        if (tvShows) {
-            dispatch(findShows(keyword));
-        } else {
-            dispatch(findMovies(keyword));
-        }
-
+        dispatch(fetchSearchQuery({ type, keyword }));
         dispatch(updateQuery(inputsValues));
 
         scrollRef.current = 0;

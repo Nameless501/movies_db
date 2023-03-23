@@ -3,39 +3,37 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchSimilarMovies = createAsyncThunk('similarMovies/fetchSimilarMovies', async (id) => {
-    const { getUrl, options } = dbApiConfig.movies.recommendations;
+export const fetchRecommendations = createAsyncThunk('recommendations/fetchRecommendations', async ({ type, id }) => {
+    const { getUrl, options } = dbApiConfig[type].recommendations;
 
     const response = await handleFetch(getUrl(id), options);
     return response.json();
 });
 
-export const similarMoviesSlice = createSlice({
-    name: 'similarMovies',
+export const recommendationsSlice = createSlice({
+    name: 'recommendations',
     initialState: {
-        movies: [],
+        recommendations: [],
         loading: false,
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchSimilarMovies.pending, (state) => {
+            .addCase(fetchRecommendations.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchSimilarMovies.fulfilled, (state, action) => {
+            .addCase(fetchRecommendations.fulfilled, (state, action) => {
                 const { results } = action.payload;
 
-                state.movies = results;
+                state.recommendations = results;
                 state.loading = false;
                 state.error = '';
             })
-            .addCase(fetchSimilarMovies.rejected, (state) => {
+            .addCase(fetchRecommendations.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
     }
 })
 
-export const { filterMovies } = similarMoviesSlice.actions;
-
-export default similarMoviesSlice.reducer;
+export default recommendationsSlice.reducer;

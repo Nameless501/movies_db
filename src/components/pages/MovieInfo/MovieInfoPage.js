@@ -10,11 +10,11 @@ import MovieReviews from '../../modules/MovieReviews/MovieReviews';
 import './MovieInfoPage.css';
 
 function MovieInfoPage() {
-    const { movieData } = useSelector(store => store.movieInfo);
+    const { info } = useSelector(store => store.info);
 
     useLayoutEffect(() => {
         window.scrollTo(0, 0);
-    }, [movieData]);
+    }, [info]);
 
     return (
         <div className='movie-info-page' >
@@ -23,7 +23,7 @@ function MovieInfoPage() {
             />
             <main className='movie-info-page__content'>
                 <PagePoster
-                    poster={movieData?.backdrop_path}
+                    poster={info?.backdrop_path}
                 />
                 <div className='movie-info-page__content-wrapper' >
                     <div className='movie-info-page__card-wrapper' >

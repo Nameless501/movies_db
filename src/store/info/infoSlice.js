@@ -3,37 +3,35 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchMovieInfo = createAsyncThunk('movieInfo/fetchMovieInfo', async (id) => {
-    const { getUrl, options } = dbApiConfig.movies.info;
+export const fetchInfo = createAsyncThunk('info/fetchMovieInfo', async ({ type, id }) => {
+    const { getUrl, options } = dbApiConfig[type].info;
 
     const response = await handleFetch(getUrl(id), options);
     return response.json();
 });
 
-export const movieInfoSlice = createSlice({
-    name: 'movies',
+export const infoSlice = createSlice({
+    name: 'info',
     initialState: {
-        movieData: {},
+        info: {},
         loading: false,
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchMovieInfo.pending, (state) => {
+            .addCase(fetchInfo.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchMovieInfo.fulfilled, (state, action) => {
-                state.movieData = action.payload;
+            .addCase(fetchInfo.fulfilled, (state, action) => {
+                state.info = action.payload;
                 state.loading = false;
                 state.error = '';
             })
-            .addCase(fetchMovieInfo.rejected, (state) => {
+            .addCase(fetchInfo.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
-            })
+            });
     }
 })
 
-export const { filterMovies } = movieInfoSlice.actions;
-
-export default movieInfoSlice.reducer;
+export default infoSlice.reducer;

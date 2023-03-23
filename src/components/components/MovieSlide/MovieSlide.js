@@ -34,7 +34,8 @@ function MovieSlide({ title, backdrop_path, overview, vote_average, release_date
                 </p>
                 <MovieInfoButtons
                     place='movie-slide'
-                    movieId={id}
+                    id={id}
+                    type='movies'
                 />
                 <LinkButton
                     link={routesConfig.movieInfo + '/' + id}

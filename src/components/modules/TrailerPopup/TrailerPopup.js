@@ -9,15 +9,13 @@ import { TRAILER_BASE_URL } from '../../../utils/constants';
 import './TrailerPopup.css';
 
 function TrailerPopup() {
-    const { movieId, closeAll } = usePortalContext();
+    const { data, closeAll } = usePortalContext();
     const { key, loading, error } = useSelector(state => state.trailer);
     const dispatch = useDispatch();
 
-    // API fetch
-
     useEffect(() => {
-        dispatch(fetchTrailer(movieId));
-    }, [dispatch, movieId]);
+        dispatch(fetchTrailer(data));
+    }, [dispatch, data]);
 
     return (
         <PopupWrapper

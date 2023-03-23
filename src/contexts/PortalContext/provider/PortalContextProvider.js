@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import PortalContext from "../context/PortalContext";
 
 export function PortalContextProvider({ children }) {
-    const [movieId, setMovieId] = useState(null);
+    const [data, setData] = useState({ type: 'movie', id: null });
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
     const [constructionPopupIsOpen, setConstructionPopupState] = useState(false);
@@ -15,16 +15,16 @@ export function PortalContextProvider({ children }) {
         setSharePopupState(false);
         setConstructionPopupState(false);
 
-        setMovieId(null);
+        setData({ type: 'movie', id: null });
     };
 
-    function openTrailerPopup(id) {
-        setMovieId(id);
+    function openTrailerPopup(type, id) {
+        setData({ type, id });
         setTrailerPopupState(true);
     }
 
-    function openSharePopup(id) {
-        setMovieId(id);
+    function openSharePopup(type, id) {
+        setData({ type, id });
         setSharePopupState(true);
     }
 
@@ -41,7 +41,7 @@ export function PortalContextProvider({ children }) {
     return (
         <PortalContext.Provider
             value={{
-                movieId,
+                data,
                 trailerPopupIsOpen,
                 sharePopupIsOpen,
                 constructionPopupIsOpen,

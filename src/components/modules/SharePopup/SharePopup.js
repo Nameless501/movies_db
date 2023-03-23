@@ -9,10 +9,11 @@ import { getTelegramShareLink, getWhatsappShareLink, getLinkForCopy } from '../.
 import './SharePopup.css';
 
 function SharePopup() {
-    const { movieId, closeAll } = usePortalContext();
+    const { data, closeAll } = usePortalContext();
+    const { type, id } = data;
 
     function handleLinkCopy() {
-        navigator.clipboard.writeText(getLinkForCopy(movieId));
+        navigator.clipboard.writeText(getLinkForCopy(type, id));
         closeAll();
     }
 
@@ -34,14 +35,14 @@ function SharePopup() {
                         <ShareLink
                             text='Telegram'
                             icon={telegramIcon}
-                            link={getTelegramShareLink(movieId)}
+                            link={getTelegramShareLink(type, id)}
                         />
                     </li>
                     <li className='share-popup__options-item' >
                         <ShareLink
                             text='WhatsApp'
                             icon={whatsAppIcon}
-                            link={getWhatsappShareLink(movieId)}
+                            link={getWhatsappShareLink(type, id)}
                         />
                     </li>
                 </ul>

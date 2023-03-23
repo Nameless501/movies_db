@@ -6,7 +6,7 @@ import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import MoreButton from '../../UI/MoreButton/MoreButton';
 import './MovieReviews.css';
 
-function MovieReviews() {
+function MovieReviews({ type = 'movies' }) {
     const { id } = useParams();
     const { reviews, loading, error, currentPage, totalPages } = useSelector(state => state.reviews);
     const dispatch = useDispatch();
@@ -14,11 +14,11 @@ function MovieReviews() {
     // API fetch
 
     useEffect(() => {
-        dispatch(fetchReviews(id));
-    }, [dispatch, id]);
+        dispatch(fetchReviews({ type, id }));
+    }, [dispatch, id, type]);
 
     function handleLoadMore() {
-        dispatch(fetchMoreReviews(id));
+        dispatch(fetchMoreReviews({ type, id }));
     }
 
     return (

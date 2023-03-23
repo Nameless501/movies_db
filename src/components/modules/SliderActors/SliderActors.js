@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import './SliderActors.css';
 
-function SliderActors() {
+function SliderActors({ type = 'movies' }) {
     const { id } = useParams();
     const { cast } = useSelector(state => state.actors);
     const dispatch = useDispatch();
@@ -17,8 +17,8 @@ function SliderActors() {
     // API fetch
 
     useEffect(() => {
-        dispatch(fetchActors(id));
-    }, [dispatch, id]);
+        dispatch(fetchActors({ type, id }));
+    }, [dispatch, id, type]);
 
     return (
         <section className="slider-actors" >

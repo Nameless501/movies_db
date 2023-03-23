@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef, useLayoutEffect } from "react";
+import { useCallback, useState, useRef, useEffect } from "react";
 import { validationConfig } from "../utils/configs";
 
 function useFormStateAndValidation(initialValue = {}) {
@@ -81,12 +81,12 @@ function useFormStateAndValidation(initialValue = {}) {
 
     // set form validity depending on default validation and errors
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const isValid = formRef.current?.checkValidity();
         const isError = Object.keys(errorMessages).some(name => errorMessages[name]);
 
         setFormValidity(() => isValid && !isError);
-    }, [inputsValues, errorMessages])
+    }, [inputsValues, errorMessages]);
 
     return { inputsValues, errorMessages, formIsValid, handleInputChange, handleToggleChange, resetFormValues }
 }

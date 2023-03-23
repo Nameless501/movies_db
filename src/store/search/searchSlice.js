@@ -3,31 +3,16 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const findMovies = createAsyncThunk('search/findMovies', async (keyword) => {
-    const { getUrl, options } = dbApiConfig.search.movies;
+export const fetchSearchQuery = createAsyncThunk('search/fetchSearchQuery', async ({ type, keyword }) => {
+    const { getUrl, options } = dbApiConfig.search[type];
 
     const response = await handleFetch(getUrl(keyword), options);
     return response.json();
 });
 
-export const fetchMoreMovies = createAsyncThunk('search/fetchMoreMovies', async (arg, { getState }) => {
+export const fetchNextPage = createAsyncThunk('search/fetchNextPage', async (arg, { getState }) => {
     const { search } = getState();
-    const { getUrl, options } = dbApiConfig.search.movies;
-
-    const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
-    return response.json();
-});
-
-export const findShows = createAsyncThunk('search/findShows', async (keyword) => {
-    const { getUrl, options } = dbApiConfig.search.shows;
-
-    const response = await handleFetch(getUrl(keyword), options);
-    return response.json();
-});
-
-export const fetchMoreShows = createAsyncThunk('search/fetchMoreShows', async (arg, { getState }) => {
-    const { search } = getState();
-    const { getUrl, options } = dbApiConfig.search.shows;
+    const { getUrl, options } = dbApiConfig.search[search.query.type];
 
     const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
     return response.json();
@@ -36,7 +21,7 @@ export const fetchMoreShows = createAsyncThunk('search/fetchMoreShows', async (a
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
-        query: { keyword: '', tvShows: false },
+        query: { keyword: '', type: 'movies', tvShows: false },
         totalPages: 1,
         currentPage: 1,
         result: [],
@@ -45,15 +30,18 @@ export const searchSlice = createSlice({
     },
     reducers: {
         updateQuery: (state, action) => {
-            state.query = action.payload;
+            const { keyword, tvShows } = action.payload;
+            const type = tvShows ? 'shows' : 'movies';
+
+            state.query = { keyword, type, tvShows };
         },
     },
     extraReducers: builder => {
         builder
-            .addCase(findMovies.pending, (state) => {
+            .addCase(fetchSearchQuery.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(findMovies.fulfilled, (state, action) => {
+            .addCase(fetchSearchQuery.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.result = results;
@@ -63,49 +51,19 @@ export const searchSlice = createSlice({
                 state.totalPages = total_pages;
                 state.currentPage = page;
             })
-            .addCase(findMovies.rejected, (state) => {
+            .addCase(fetchSearchQuery.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             });
 
         builder
-            .addCase(findShows.pending, (state) => {
-                state.loading = true;
-            })
-            .addCase(findShows.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
-
-                state.result = results;
-                state.loading = false;
-                state.error = results.length > 0 ? '' : 'Ничего не нашлось';
-
-                state.totalPages = total_pages;
-                state.currentPage = page;
-            })
-            .addCase(findShows.rejected, (state) => {
-                state.error = ERROR_MOVIES_FETCH;
-            });
-
-        builder
-            .addCase(fetchMoreMovies.fulfilled, (state, action) => {
+            .addCase(fetchNextPage.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.result = [...state.result, ...results];
                 state.currentPage = page;
                 state.totalPages = total_pages;
             })
-            .addCase(fetchMoreMovies.rejected, (state) => {
-                state.error = ERROR_MOVIES_FETCH;
-            });
-
-        builder
-            .addCase(fetchMoreShows.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
-
-                state.result = [...state.result, ...results];
-                state.currentPage = page;
-                state.totalPages = total_pages;
-            })
-            .addCase(fetchMoreShows.rejected, (state) => {
+            .addCase(fetchNextPage.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             });
     }
