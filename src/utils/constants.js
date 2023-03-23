@@ -54,6 +54,12 @@ export const TRAILER_BASE_URL = 'https://www.youtube.com/embed/';
 
 // share links
 
-export const getTelegramShareLink = (url) => `https://t.me/share/url?url=${url}`;
+export const MOVIE_URL_FOR_SHARE = window.location.protocol + '//' + window.location.host + '/movies_db/#/movie/';
 
-export const getWhatsappShareLink = (url) => `https://api.whatsapp.com/send?text=${url}`;
+export const MOVIE_URL_FOR_SHARE_ENCODED = encodeURIComponent(MOVIE_URL_FOR_SHARE);
+
+export const getTelegramShareLink = (id) => `https://t.me/share/url?url=${MOVIE_URL_FOR_SHARE_ENCODED + id}`;
+
+export const getWhatsappShareLink = (id) => `https://api.whatsapp.com/send?text=${MOVIE_URL_FOR_SHARE_ENCODED + id}`;
+
+export const getLinkForCopy = (id) => MOVIE_URL_FOR_SHARE + id;

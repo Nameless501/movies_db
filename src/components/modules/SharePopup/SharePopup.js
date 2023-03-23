@@ -5,16 +5,14 @@ import ShareLink from '../../UI/ShareLink/ShareLink';
 import copyIcon from '../../../images/icon_copy.svg';
 import telegramIcon from '../../../images/icon_telegram.svg';
 import whatsAppIcon from '../../../images/icon_whatsapp.svg';
-import { getTelegramShareLink, getWhatsappShareLink } from '../../../utils/constants';
+import { getTelegramShareLink, getWhatsappShareLink, getLinkForCopy } from '../../../utils/constants';
 import './SharePopup.css';
 
 function SharePopup() {
     const { movieId, closeAll } = usePortalContext();
-    const movieUrl = window.location.protocol + '//' + window.location.host + '/movies_db/#/movie/' + movieId;
-    const encodedMovieUrl = window.location.protocol + '//' + window.location.host + '%2Fmovies_db%2F%23%2Fmovie%2F' + movieId;
 
     function handleLinkCopy() {
-        navigator.clipboard.writeText(movieUrl);
+        navigator.clipboard.writeText(getLinkForCopy(movieId));
         closeAll();
     }
 
@@ -36,14 +34,14 @@ function SharePopup() {
                         <ShareLink
                             text='Telegram'
                             icon={telegramIcon}
-                            link={getTelegramShareLink(encodedMovieUrl)}
+                            link={getTelegramShareLink(movieId)}
                         />
                     </li>
                     <li className='share-popup__options-item' >
                         <ShareLink
                             text='WhatsApp'
                             icon={whatsAppIcon}
-                            link={getWhatsappShareLink(encodedMovieUrl)}
+                            link={getWhatsappShareLink(movieId)}
                         />
                     </li>
                 </ul>
