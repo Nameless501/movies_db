@@ -26,6 +26,10 @@ export const MOVIES_API_PATH_TOP_RATED = DB_API_BASE_URL + '/movie/top_rated';
 
 export const MOVIES_API_PATH_NOW_PLAYING = DB_API_BASE_URL + '/movie/now_playing';
 
+export const MOVIES_API_PATH_POPULAR = DB_API_BASE_URL + '/movie/popular';
+
+export const MOVIES_API_PATH_LATEST = DB_API_BASE_URL + '/movie/latest';
+
 export const getMovieInfoPath = (id) => `${DB_API_BASE_URL}/movie/${id}`;
 
 export const getMovieCreditsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/credits`;
@@ -37,6 +41,7 @@ export const getMovieRecommendationsPath = (id) => `${DB_API_BASE_URL}/movie/${i
 export const getMovieTrailerPath = (id) => `${DB_API_BASE_URL}/movie/${id}/videos`;
 
 
+export const SHOWS_API_PATH_TOP_RATED = DB_API_BASE_URL + '/movie/top_rated';
 
 export const SHOWS_API_PATH_POPULAR = DB_API_BASE_URL + '/tv/popular';
 

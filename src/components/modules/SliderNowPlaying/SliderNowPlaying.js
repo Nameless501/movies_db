@@ -5,7 +5,7 @@ import { routesConfig } from '../../../utils/configs';
 import MoviesSliderSmall from '../../components/MoviesSliderSmall/MoviesSliderSmall';
 import MoviesSliderWrapper from '../../components/MoviesSliderWrapper/MoviesSliderWrapper';
 
-function SliderNowPlaying() {
+function SliderNowPlaying({ type = 'movies' }) {
     const { movies } = useSelector(state => state.nowPlaying);
     const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ function SliderNowPlaying() {
     return (
         <MoviesSliderWrapper
             title='Сейчас в кинотеатрах'
-            link={routesConfig.nowPlaying}
+            link={routesConfig[type].nowPlaying}
         >
             <MoviesSliderSmall
                 movies={movies}

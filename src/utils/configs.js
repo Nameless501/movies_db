@@ -1,6 +1,9 @@
 import {
     MOVIES_API_PATH_TOP_RATED,
+    MOVIES_API_PATH_POPULAR,
     MOVIES_API_PATH_NOW_PLAYING,
+    MOVIES_API_PATH_LATEST,
+    SHOWS_API_PATH_TOP_RATED,
     SHOWS_API_PATH_POPULAR,
     SHOWS_API_PATH_LATEST,
     SEARCH_API_PATH_MOVIES,
@@ -29,12 +32,21 @@ import {
 
 export const routesConfig = {
     main: '/',
-    movieInfo: '/movies',
-    showInfo: '/shows',
-    topRated: '/top-rated',
-    nowPlaying: '/now-playing',
-    search: '/find-movie',
-    savedMovies: '/saved-movies',
+    movies: {
+        info: '/movies',
+        topRated: '/movies/top-rated',
+        nowPlaying: '/movies/now-playing',
+        popular: '/movies/popular',
+        latest: '/movies/latest',
+    },
+    shows: {
+        info: '/shows',
+        topRated: '/shows/top-rated',
+        popular: '/shows/popular',
+        latest: '/shows/latest',
+    },
+    search: '/search',
+    saved: '/saved',
     profile: '/profile',
     signIn: '/sign-in',
     signUp: '/sign-up',
@@ -63,6 +75,22 @@ export const dbApiConfig = {
             },
             getUrl: (lang = 'ru-RU', page = 1) => {
                 return `${MOVIES_API_PATH_NOW_PLAYING}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        popular: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${MOVIES_API_PATH_POPULAR}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
+        latest: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${MOVIES_API_PATH_LATEST}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         info: {
@@ -107,6 +135,14 @@ export const dbApiConfig = {
         },
     },
     shows: {
+        topRated: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (lang = 'ru-RU', page = 1) => {
+                return `${SHOWS_API_PATH_TOP_RATED}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            }
+        },
         popular: {
             options: {
                 method: 'GET',

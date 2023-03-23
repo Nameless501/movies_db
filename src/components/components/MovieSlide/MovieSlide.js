@@ -38,7 +38,7 @@ function MovieSlide({ title, backdrop_path, overview, vote_average, release_date
                     type='movies'
                 />
                 <LinkButton
-                    link={routesConfig.movieInfo + '/' + id}
+                    link={routesConfig.movies.info + '/' + id}
                     text='Подробнее'
                     place='slider-main'
                 />

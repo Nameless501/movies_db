@@ -3,7 +3,7 @@ import TopRatedMovies from '../../modules/TopRatedMovies/TopRatedMovies';
 import MoviesPageWrapper from '../../components/MoviesPageWrapper/MoviesPageWrapper';
 
 function TopRatedPage() {
-    const { movies } = useSelector(store => store.topRated);
+    const { results } = useSelector(store => store.topRated);
 
     function getRandom(max) {
         return Math.floor(Math.random() * max);
@@ -12,7 +12,7 @@ function TopRatedPage() {
     return (
         <MoviesPageWrapper
             title='Популярные фильмы'
-            poster={movies[getRandom(19)]?.backdrop_path}
+            poster={results[getRandom(19)]?.backdrop_path}
         >
             <TopRatedMovies />
         </MoviesPageWrapper>

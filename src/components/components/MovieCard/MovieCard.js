@@ -26,7 +26,7 @@ const MovieCard = memo(function MovieCard({ movie, place, type = 'movies' }) {
                 </figcaption>
             </figure>
             <Link
-                to={routesConfig.movieInfo + '/' + movie.id}
+                to={routesConfig[type].info + '/' + movie.id}
                 className='movie-card__link-wrapper'
             />
             <div className='movie-card__rating-wrapper' >

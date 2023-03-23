@@ -8,8 +8,8 @@ function NavigationBar({ place, showMainLink = false }) {
     const { openConstructionPopup } = usePortalContext();
 
     const moviesLinks = [
-        { url: routesConfig.topRated, name: 'Популярные' },
-        { url: routesConfig.nowPlaying, name: 'Сейчас в кино' },
+        { url: routesConfig.movies.topRated, name: 'Популярные' },
+        { url: routesConfig.movies.nowPlaying, name: 'Сейчас в кино' },
     ]
 
     return (

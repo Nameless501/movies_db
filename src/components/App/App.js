@@ -22,13 +22,13 @@ function App() {
                 <Route exact path={routesConfig.main}>
                     <MainPage />
                 </Route>
-                <Route path={routesConfig.topRated}>
+                <Route path={routesConfig.movies.topRated}>
                     <TopRatedPage />
                 </Route>
-                <Route path={routesConfig.nowPlaying}>
+                <Route path={routesConfig.movies.nowPlaying}>
                     <NowPlayingPage />
                 </Route>
-                <Route path={routesConfig.movieInfo + '/:id'}>
+                <Route path={routesConfig.movies.info + '/:id'}>
                     <MovieInfoPage />
                 </Route>
                 <Route path={routesConfig.search}>

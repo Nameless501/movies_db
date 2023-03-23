@@ -3,62 +3,62 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchNowPlayingMovies', async () => {
-    const { getUrl, options } = dbApiConfig.movies.nowPlaying;
+export const fetchLatest = createAsyncThunk('latest/fetchLatest', async (type) => {
+    const { getUrl, options } = dbApiConfig[type].latest;
 
     const response = await handleFetch(getUrl(), options);
     return response.json();
 });
 
-export const fetchMoreNowPlayingMovies = createAsyncThunk('nowPlayingMovies/fetchMoreNowPlayingMovies', async (arg, { getState }) => {
-    const { nowPlaying } = getState();
-    const { getUrl, options } = dbApiConfig.movies.nowPlaying;
+export const fetchMoreLatest = createAsyncThunk('latest/fetchMoreLatest', async (type, { getState }) => {
+    const { latest } = getState();
+    const { getUrl, options } = dbApiConfig[type].latest;
 
-    const response = await handleFetch(getUrl('ru-RU', nowPlaying.currentPage + 1), options);
+    const response = await handleFetch(getUrl('ru-RU', latest.currentPage + 1), options);
     return response.json();
 });
 
-export const nowPlayingMoviesSlice = createSlice({
-    name: 'nowPlaying',
+export const latestSlice = createSlice({
+    name: 'latest',
     initialState: {
         totalPages: 1,
         currentPage: 1,
-        movies: [],
+        results: [],
         loading: false,
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchNowPlayingMovies.pending, (state) => {
+            .addCase(fetchLatest.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchNowPlayingMovies.fulfilled, (state, action) => {
+            .addCase(fetchLatest.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
-                state.movies = results;
+                state.results = results;
                 state.loading = false;
                 state.error = '';
 
                 state.currentPage = page;
                 state.totalPages = total_pages;
             })
-            .addCase(fetchNowPlayingMovies.rejected, (state) => {
+            .addCase(fetchLatest.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
-            })
+            });
 
         builder
-            .addCase(fetchMoreNowPlayingMovies.fulfilled, (state, action) => {
+            .addCase(fetchMoreLatest.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
-                state.movies = [...state.movies, ...results];
+                state.results = [...state.results, ...results];
                 state.currentPage = page;
                 state.totalPages = total_pages;
             })
-            .addCase(fetchMoreNowPlayingMovies.rejected, (state) => {
+            .addCase(fetchMoreLatest.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
-            })
+            });
     }
 })
 
-export default nowPlayingMoviesSlice.reducer;
+export default latestSlice.reducer;

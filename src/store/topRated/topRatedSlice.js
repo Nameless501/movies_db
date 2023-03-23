@@ -3,63 +3,61 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchTopRatedMovies = createAsyncThunk('topRatedMovies/fetchTopRatedMovies', async () => {
-    const { getUrl, options } = dbApiConfig.movies.topRated;
+export const fetchTopRated = createAsyncThunk('topRated/fetchTopRated', async (type) => {
+    const { getUrl, options } = dbApiConfig[type].topRated;
     const response = await handleFetch(getUrl(), options);
     return response.json();
 });
 
-export const fetchMoreTopRatedMovies = createAsyncThunk('topRatedMovies/fetchMoreTopRatedMovies', async (arg, { getState }) => {
+export const fetchMoreTopRated = createAsyncThunk('topRated/fetchMoreTopRated', async (type, { getState }) => {
     const { topRated } = getState();
-    const { getUrl, options } = dbApiConfig.movies.topRated;
+    const { getUrl, options } = dbApiConfig[type].topRated;
 
     const response = await handleFetch(getUrl('ru-RU', topRated.currentPage + 1), options);
     return response.json();
 });
 
-export const topRatedMoviesSlice = createSlice({
-    name: 'movies',
+export const topRatedSlice = createSlice({
+    name: 'topRated',
     initialState: {
         totalPages: 1,
         currentPage: 1,
-        movies: [],
+        results: [],
         loading: false,
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchTopRatedMovies.pending, (state) => {
+            .addCase(fetchTopRated.pending, (state) => {
                 state.loading = true;
             })
-            .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
+            .addCase(fetchTopRated.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
-                state.movies = results;
+                state.results = results;
                 state.loading = false;
                 state.error = '';
 
                 state.currentPage = page;
                 state.totalPages = total_pages;
             })
-            .addCase(fetchTopRatedMovies.rejected, (state) => {
+            .addCase(fetchTopRated.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
 
         builder
-            .addCase(fetchMoreTopRatedMovies.fulfilled, (state, action) => {
+            .addCase(fetchMoreTopRated.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
-                state.movies = [...state.movies, ...results];
+                state.results = [...state.results, ...results];
                 state.currentPage = page;
                 state.totalPages = total_pages;
             })
-            .addCase(fetchMoreTopRatedMovies.rejected, (state) => {
+            .addCase(fetchMoreTopRated.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
             })
     }
 })
 
-export const { filterMovies } = topRatedMoviesSlice.actions;
-
-export default topRatedMoviesSlice.reducer;
+export default topRatedSlice.reducer;
