@@ -7,7 +7,7 @@ import { routesConfig } from '../../../utils/configs';
 import posterFallback from '../../../images/poster_fallback.png';
 import './MovieCard.css';
 
-const MovieCard = memo(function MovieCard({ movie, place, type = 'movie' }) {
+const MovieCard = memo(function MovieCard({ movie, place, type = 'movies' }) {
     return (
         <div className='movie-card'>
             <figure className='movie-card__figure' >

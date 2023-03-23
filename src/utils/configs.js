@@ -29,7 +29,8 @@ import {
 
 export const routesConfig = {
     main: '/',
-    movieInfo: '/movie',
+    movieInfo: '/movies',
+    showInfo: '/shows',
     topRated: '/top-rated',
     nowPlaying: '/now-playing',
     search: '/find-movie',
