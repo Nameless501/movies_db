@@ -9,7 +9,7 @@ function Rating({ rating, place }) {
             `}
         >
             <span className='rating__count' >
-                {rating.toFixed(1)}
+                {rating === Math.trunc(rating) ? rating : rating.toFixed(1)}
             </span>
         </div>
     );
