@@ -16,10 +16,6 @@ function PopularGrid({ type }) {
         dispatch(fetchPopular(type));
     }, [dispatch, type]);
 
-    useEffect(() => {
-        console.log(results);
-    }, [results]);
-
     return (
         <SliderSmallWrapper
             title='Популярные сериалы'
@@ -27,7 +23,7 @@ function PopularGrid({ type }) {
         >
             <ul className='popular-grid'>
                 {
-                    results?.slice(0, 7).map((show, index) => {
+                    results && [...results].sort((a,b) => b.vote_average - a.vote_average).slice(0, 7).map((show, index) => {
                         return (
                             <li
                                 className={`popular-grid__item popular-grid__item_number_${index + 1}`}
