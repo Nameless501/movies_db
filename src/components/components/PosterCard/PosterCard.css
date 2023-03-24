@@ -12,6 +12,14 @@
     container-type: size;
 }
 
+.poster-card_vertical {
+    aspect-ratio: 2/3;
+}
+
+.poster-card_horizontal {
+    aspect-ratio: 16/9;
+}
+
 .poster-card__figure {
     margin: 0;
     padding: 0;

@@ -1,0 +1,56 @@
+.popular-grid {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    list-style: none;
+    display: grid;
+    gap: 15px 20px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas:
+    'first first third third fourth fifth'
+    'sixth seventh third third second second';
+}
+
+.popular-grid__item {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    border-radius: 8px;
+}
+
+.popular-grid__item_number_1 {
+    grid-area: first;
+}
+
+.popular-grid__item_number_2 {
+    grid-area: second;
+}
+
+.popular-grid__item_number_3 {
+    grid-area: third;
+}
+
+.popular-grid__item_number_4 {
+    grid-area: fourth;
+}
+
+.popular-grid__item_number_5 {
+    grid-area: fifth;
+}
+
+.popular-grid__item_number_6 {
+    grid-area: sixth;
+}
+
+.popular-grid__item_number_7 {
+    grid-area: seventh;
+}
+
+.popular-grid__item_number_8 {
+    grid-area: eighth;
+}
