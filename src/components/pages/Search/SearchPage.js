@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchSearchQuery, fetchNextPage, updateQuery } from '../../../store/search/searchSlice';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import MoviesSearch from '../../modules/MoviesSearch/MoviesSearch';
-import MoviesFeed from '../../components/MoviesFeed/MoviesFeed';
+import SearchForm from '../../modules/SearchForm/SearchForm';
+import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SearchPage.css';
 
@@ -38,13 +38,13 @@ function SearchPage() {
                 place='search'
             />
             <main className='search-page__content' >
-                <MoviesSearch
+                <SearchForm
                     initialState={query}
                     handleSubmit={handleSubmit}
                 />
                 {
                     (!error && result.length > 0) &&
-                        <MoviesFeed
+                        <CardsFeed
                             movies={result}
                             loading={loading}
                             error={error}

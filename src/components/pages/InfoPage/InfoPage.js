@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import PagePoster from '../../UI/PagePoster/PagePoster';
-import SliderActors from '../../modules/SliderActors/SliderActors';
+import CreditsSlider from '../../modules/CreditsSlider/CreditsSlider';
 import Description from '../../modules/Description/Description';
-import SliderSimilarMovies from '../../modules/SliderSimilarMovies/SliderSimilarMovies';
-import MovieReviews from '../../modules/MovieReviews/MovieReviews';
+import RecommendationsSlider from '../../modules/RecommendationsSlider/RecommendationsSlider';
+import Reviews from '../../modules/Reviews/Reviews';
 import './InfoPage.css';
 
 function InfoPage({ type = 'movies' }) {
@@ -30,13 +30,13 @@ function InfoPage({ type = 'movies' }) {
                         <Description type={type} />
                     </div>
                     <div className='info-page__actors-wrapper' >
-                        <SliderActors type={type} />
+                        <CreditsSlider type={type} />
                     </div>
                     <div className='info-page__similar-wrapper' >
-                        <SliderSimilarMovies type={type} />
+                        <RecommendationsSlider type={type} />
                     </div>
                     <div className='info-page__reviews-wrapper' >
-                        <MovieReviews type={type} />
+                        <Reviews type={type} />
                     </div>
                 </div>
             </main>

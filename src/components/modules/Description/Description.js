@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchInfo } from '../../../store/info/infoSlice';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
-import MovieInfoButtons from '../../components/MovieInfoButtons/MovieInfoButtons';
+import CardButtons from '../../components/CardButtons/CardButtons';
 import './Description.css';
 
 function Description({ type = 'movies' }) {
@@ -24,7 +24,8 @@ function Description({ type = 'movies' }) {
             </h2>
             <div className='description__subtitle' >
                 <p className='description__text-fade'>
-                    {info?.runtime?.toLocaleString('ru', { style: 'unit', unit: 'minute', unitDisplay: 'long' })}
+                    {type === 'movies' && info?.runtime?.toLocaleString('ru', { style: 'unit', unit: 'minute', unitDisplay: 'long' })}
+                    {type === 'shows' && 'Сезонов: ' + info?.number_of_seasons}
                 </p>
                 <ul className='description__genres'>
                     {info?.genres?.map(genre => {
@@ -41,7 +42,7 @@ function Description({ type = 'movies' }) {
             <p className='description__description'>
                 {info?.overview ? info?.overview : 'Кажется описание пока не добавили'}
             </p>
-            <MovieInfoButtons
+            <CardButtons
                 place='description'
                 id={id}
                 type={type}

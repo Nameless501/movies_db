@@ -1,9 +1,8 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPopular, fetchMorePopular } from '../../../store/popular/popularSlice';
-import MoviesFeed from '../../components/MoviesFeed/MoviesFeed';
-
-import MoviesPageWrapper from '../../components/MoviesPageWrapper/MoviesPageWrapper';
+import CardsFeed from '../../components/CardsFeed/CardsFeed';
+import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
 
 function PopularPage({ title, type = 'movies' }) {
     const scrollRef = useRef(0);
@@ -32,11 +31,11 @@ function PopularPage({ title, type = 'movies' }) {
     }
 
     return (
-        <MoviesPageWrapper
+        <FeedPageWrapper
             title={title}
             poster={results[getRandom(19)]?.backdrop_path}
         >
-            <MoviesFeed
+            <CardsFeed
                 movies={results}
                 loading={loading}
                 error={error}
@@ -45,7 +44,7 @@ function PopularPage({ title, type = 'movies' }) {
                 handleLoadMore={handleLoadMore}
                 type={type}
             />
-        </MoviesPageWrapper>
+        </FeedPageWrapper>
     );
 }
 

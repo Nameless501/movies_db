@@ -15,16 +15,16 @@
     background-color: var(--colors_btn_crimson);
 }
 
-.play-button_place_movie-card {
+.play-button_place_poster-card{
     display: none;
 }
 
-.play-button_place_movie-info {
+.play-button_place_description {
     width: 32px;
     height: 32px;
 }
 
-.play-button_place_movie-slide {
+.play-button_place_slide-main {
     width: 30px;
     height: 30px;
 }

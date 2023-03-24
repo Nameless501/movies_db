@@ -1,0 +1,48 @@
+.cards-feed {
+    margin: 0;
+    padding: 0 70px 80px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.cards-feed__movies-list {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 500px;
+}
+
+.cards-feed__more-button {
+    margin: -450px 0 0;
+    padding: 0 0 175px;
+    box-sizing: border-box;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background:
+        linear-gradient(180deg, rgba(2, 3, 19, 0) 0%, rgba(2, 3, 19, 0.84) 52.77%, var(--colors_bg_main) 94.27%),
+        linear-gradient(135deg, transparent 70%, var(--colors_bg_main)),
+        linear-gradient(225deg, transparent 70%, var(--colors_bg_main)),
+        rgba(2, 3, 19, 0.3);
+    backdrop-filter: blur(2px);
+    position: relative;
+    z-index: 2;
+}
+
+@media screen and (max-width: 1023px) {
+    .cards-feed {
+        padding: 70px 30px 80px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .cards-feed {
+        padding: 40px 10px 80px;
+    }
+}

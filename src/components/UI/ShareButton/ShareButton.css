@@ -14,17 +14,17 @@
     opacity: 0.8;
 }
 
-.share-button_place_movie-card {
+.share-button_place_poster-card{
     width: 25px;
     height: 25px;
 }
 
-.share-button_place_movie-info {
+.share-button_place_description {
     width: 32px;
     height: 32px;
 }
 
-.share-button_place_movie-slide {
+.share-button_place_slide-main {
     width: 30px;
     height: 30px;
 }

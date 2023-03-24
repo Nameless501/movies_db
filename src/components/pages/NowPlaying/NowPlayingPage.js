@@ -1,8 +1,8 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchNowPlaying, fetchMoreNowPlaying } from '../../../store/nowPlaying/nowPlayingSlice';
-import MoviesFeed from '../../components/MoviesFeed/MoviesFeed';
-import MoviesPageWrapper from '../../components/MoviesPageWrapper/MoviesPageWrapper';
+import CardsFeed from '../../components/CardsFeed/CardsFeed';
+import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
 
 function NowPlayingPage() {
     const scrollRef = useRef(0);
@@ -31,11 +31,11 @@ function NowPlayingPage() {
     }
 
     return (
-        <MoviesPageWrapper
+        <FeedPageWrapper
             title='Сейчас в прокате'
             poster={results[getRandom(19)]?.backdrop_path}
         >
-            <MoviesFeed
+            <CardsFeed
                 movies={results}
                 loading={loading}
                 error={error}
@@ -44,7 +44,7 @@ function NowPlayingPage() {
                 handleLoadMore={handleLoadMore}
                 type='movies'
             />
-        </MoviesPageWrapper>
+        </FeedPageWrapper>
     );
 }
 

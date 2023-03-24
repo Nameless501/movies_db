@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchNowPlaying } from '../../../store/nowPlaying/nowPlayingSlice';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import MovieSlide from '../../components/MovieSlide/MovieSlide';
+import SlideMain from '../../components/SlideMain/SlideMain';
 import './SliderMain.css';
 
 function SliderMain() {
@@ -28,7 +28,7 @@ function SliderMain() {
                     results.slice(0, 5).map(movie => {
                         return(
                             <SwiperSlide key={movie.id}>
-                                <MovieSlide {...movie} />
+                                <SlideMain {...movie} />
                             </SwiperSlide>
                         )
                     })
