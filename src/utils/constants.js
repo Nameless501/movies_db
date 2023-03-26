@@ -91,4 +91,6 @@ export const getTelegramShareLink = (type, id) => `https://t.me/share/url?url=${
 
 export const getWhatsappShareLink = (type, id) => `https://api.whatsapp.com/send?text=${getEncodedUrlForShare(type, id)}`;
 
+export const getTwitterShareLink = (type, id) => `https://twitter.com/intent/tweet?url=${getEncodedUrlForShare(type, id)}`;
+
 export const getLinkForCopy = (type, id) => `${URL_FOR_SHARE}/${type}/${id}`;

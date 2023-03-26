@@ -2,10 +2,11 @@ import { usePortalContext } from '../../../contexts/PortalContext';
 import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import CloseButton from '../../UI/CloseButton/CloseButton';
 import ShareLink from '../../UI/ShareLink/ShareLink';
+import { getTelegramShareLink, getWhatsappShareLink, getTwitterShareLink, getLinkForCopy } from '../../../utils/constants';
 import copyIcon from '../../../images/icon_copy.svg';
 import telegramIcon from '../../../images/icon_telegram.svg';
 import whatsAppIcon from '../../../images/icon_whatsapp.svg';
-import { getTelegramShareLink, getWhatsappShareLink, getLinkForCopy } from '../../../utils/constants';
+import twitterIcon from '../../../images/icon_twitter.svg';
 import './SharePopup.css';
 
 function SharePopup() {
@@ -43,6 +44,13 @@ function SharePopup() {
                             text='WhatsApp'
                             icon={whatsAppIcon}
                             link={getWhatsappShareLink(type, id)}
+                        />
+                    </li>
+                    <li className='share-popup__options-item' >
+                        <ShareLink
+                            text='Twitter'
+                            icon={twitterIcon}
+                            link={getTwitterShareLink(type, id)}
                         />
                     </li>
                 </ul>
