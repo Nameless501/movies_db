@@ -44,6 +44,7 @@ function SearchPage() {
                             currentPage={currentPage}
                             totalPages={totalPages}
                             handleLoadMore={handleLoadMore}
+                            type={query.type}
                         />
                 }
                 {
