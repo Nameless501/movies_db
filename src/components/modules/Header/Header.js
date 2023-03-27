@@ -1,26 +1,40 @@
-import { useState } from 'react';
-import HeaderWrapper from '../../components/HeaderWrapper/HeaderWrapper';
-import HeaderMenu from '../../components/HeaderMenu/HeaderMenu';
+import { usePortalContext } from '../../../contexts/PortalContext';
+import LogoLink from '../../components/LogoLink/LogoLink';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
+import ProfileButton from '../../UI/ProfileButton/ProfileButton';
+import BurgerButton from '../../UI/BurgerButton/BurgerButton';
+import AuthMenu from '../../components/AuthMenu/AuthMenu';
+import './Header.css';
 
 function Header({ place }) {
-    const [sideBarIsOpen, setSideBarState] = useState(false);
-
-    function handleSideBarToggle() {
-        setSideBarState(current => !current);
-    }
+    const { toggleSideBar } = usePortalContext();
+    const isLogged = false;
 
     return (
-        <HeaderWrapper
-            sideBarIsOpen={sideBarIsOpen}
-            handleSideBarToggle={handleSideBarToggle}
-            place={place}
-        >
-            <HeaderMenu
-                handleSideBarOpen={handleSideBarToggle}
-                isLogged={false}
-                place={place}
-            />
-        </HeaderWrapper>
+        <>
+            <header className='header' >
+                <div className='header__content-wrapper' >
+                    <LogoLink />
+                    <div className='header__menu'>
+                        <div className='header__menu-desktop'>
+                            <NavigationBar place='header' />
+                            {
+                                isLogged ?
+                                    <ProfileButton place={place} />
+                                    :
+                                    <AuthMenu place={place} />
+                            }
+                        </div>
+                        <div className='header__menu-mobile'>
+                            <BurgerButton
+                                handleClick={toggleSideBar}
+                                place={place}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </>
     );
 }
 

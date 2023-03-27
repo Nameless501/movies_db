@@ -1,59 +1,41 @@
-import { usePortalContext } from '../../../contexts/PortalContext';
 import NavigationLink from '../../UI/NavigationLink/NavigationLink';
 import NavigationBarSubmenu from '../NavigationBarSubmenu/NavigationBarSubmenu';
-import { routesConfig, navBarConfig } from '../../../utils/configs';
+import { navBarConfig } from '../../../utils/configs';
 import './NavigationBar.css';
 
-function NavigationBar({ place, showMainLink = false }) {
-    const { openConstructionPopup } = usePortalContext();
-
+function NavigationBar({ place }) {
     return (
         <nav className='navigation-bar' >
             <ul
                 className={`
                     navigation-bar__links-list
-                    ${place ? 'navigation-bar__links-list_place_' + place : null}
+                    ${ place && 'navigation-bar__links-list_place_' + place }
                 `}
             >
-                <li>
-                    <NavigationLink
-                        to={routesConfig.main}
-                        text='Главная'
-                        place={place}
-                    />
-                </li>
-                <li>
-                    <NavigationBarSubmenu
-                        title='Фильмы'
-                        place={place}
-                        links={navBarConfig.movies}
-                    />
-                </li>
-                <li>
-                    <NavigationBarSubmenu
-                        title='Сериалы'
-                        place={place}
-                        links={navBarConfig.shows}
-                    />
-                </li>
-                <li>
-                    <NavigationLink
-                        to={routesConfig.search}
-                        text='Поиск'
-                        place={place}
-                    />
-                </li>
-                <li>
-                    <button
-                        className={`
-                            navigation-link
-                            ${place ? 'navigation-link_place_' + place : null}
-                        `}
-                        onClick={openConstructionPopup}
-                    >
-                        Сохранённые фильмы
-                    </button>
-                </li>
+                {
+                    navBarConfig.map((item, index) => {
+                        return (
+                            <li
+                                key={index}
+                                className='navigation-bar__list-item'
+                            >
+                                {item.isDropdown ?
+                                    <NavigationBarSubmenu
+                                        title={item.title}
+                                        place={place}
+                                        links={item.links}
+                                    />
+                                    :
+                                    <NavigationLink
+                                        to={item.link}
+                                        text={item.title}
+                                        place={place}
+                                    />
+                                }
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </nav>
     );

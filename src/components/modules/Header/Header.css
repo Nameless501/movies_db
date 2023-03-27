@@ -10,12 +10,6 @@
     background-color: var(--colors_bg_dark_transparent);
 }
 
-.header_place_main-page {
-}
-
-.header_place_movies {
-}
-
 .header__content-wrapper {
     margin: 0 auto;
     padding: 0 70px;
@@ -24,11 +18,46 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 50px;
+}
+
+.header__menu {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.header__menu-desktop {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__menu-mobile {
+    margin: 0;
+    padding: 0;
+    display: none;
 }
 
 @media screen and (max-width: 1023px) {
     .header__content-wrapper {
         padding: 18px 30px;
+    }
+
+    .header__menu {
+        width: fit-content;
+    }
+
+    .header__menu-desktop {
+        display: none;
+    }
+
+    .header__menu-mobile {
+        display: block;
     }
 }
 

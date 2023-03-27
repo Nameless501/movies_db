@@ -4,6 +4,7 @@
     font-size: 14px;
     line-height: 18px;
     font-weight: 500;
+    display: block;
     box-sizing: border-box;
     text-decoration: none;
     color: var(--fonts_colors_main);
@@ -11,12 +12,7 @@
     border: 0;
 }
 
-.navigation-link_place_main-page {
-    font-size: 14px;
-    line-height: 18px;
-}
-
-.navigation-link_place_movies {
+.navigation-link_place_header {
     font-size: 14px;
     line-height: 18px;
 }

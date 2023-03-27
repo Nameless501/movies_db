@@ -25,8 +25,8 @@ function NavigationBarSubmenu({ place, title, links = [] }) {
                         return (
                             <li key={index}>
                                 <NavigationLink
-                                    to={link.url}
-                                    text={link.name}
+                                    to={link.link}
+                                    text={link.title}
                                     place='submenu'
                                 />
                             </li>

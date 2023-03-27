@@ -14,10 +14,11 @@
     gap: 30px;
 }
 
-.navigation-bar__links-list_place_main-page {
-}
-
-.navigation-bar__links-list_place_movies {
+.navigation-bar__list-item {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
 }
 
 .navigation-bar__links-list_place_side-bar {

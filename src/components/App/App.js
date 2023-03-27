@@ -12,10 +12,11 @@ import Portal from '../components/Portal/Portal';
 import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
 import SharePopup from '../modules/SharePopup/SharePopup';
 import ConstructionSitePopup from '../modules/ConstructionSitePopup/ConstructionSitePopup';
+import SideBar from '../components/SideBar/SideBar';
 import './App.css';
 
 function App() {
-    const { trailerPopupIsOpen, sharePopupIsOpen, constructionPopupIsOpen } = usePortalContext();
+    const { trailerPopupIsOpen, sharePopupIsOpen, sideBarIsOpen, constructionPopupIsOpen } = usePortalContext();
 
     return (
         <div className="App">
@@ -92,6 +93,7 @@ function App() {
                 { trailerPopupIsOpen && <TrailerPopup /> }
                 { sharePopupIsOpen && <SharePopup /> }
                 { constructionPopupIsOpen && <ConstructionSitePopup /> }
+                { sideBarIsOpen && <SideBar /> }
             </Portal>
         </div >
     );

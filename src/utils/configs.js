@@ -55,17 +55,23 @@ export const routesConfig = {
 
 
 
-export const navBarConfig = {
-    movies: [
-        { url: routesConfig.movies.popular, name: 'Популярные' },
-        { url: routesConfig.movies.topRated, name: 'С наивысшим рейтингом' },
-        { url: routesConfig.movies.nowPlaying, name: 'Сейчас в кино' },
-    ],
-    shows: [
-        { url: routesConfig.shows.popular, name: 'Популярные' },
-        { url: routesConfig.shows.topRated, name: 'С наивысшим рейтингом' },
-    ],
-};
+export const navBarConfig = [
+    { title: 'Главная', link: routesConfig.main, isDropdown: false },
+    {
+        title: 'Фильмы', isDropdown: true, links: [
+            { link: routesConfig.movies.popular, title: 'Популярные' },
+            { link: routesConfig.movies.topRated, title: 'С наивысшим рейтингом' },
+            { link: routesConfig.movies.nowPlaying, title: 'Сейчас в кино' },
+        ]
+    },
+    {
+        title: 'Сериалы', isDropdown: true, links: [
+            { link: routesConfig.shows.popular, title: 'Популярные' },
+            { link: routesConfig.shows.topRated, title: 'С наивысшим рейтингом' },
+        ]
+    },
+    { title: 'Поиск', link: routesConfig.search, isDropdown: false },
+]
 
 
 
