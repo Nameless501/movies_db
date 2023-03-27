@@ -4,6 +4,7 @@ import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './CardsFeed.css';
 
 function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalPages, type }) {
+
     return (
         <section className='cards-feed'>
             {

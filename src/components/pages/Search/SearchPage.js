@@ -1,4 +1,3 @@
-import { useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSearchQuery, fetchNextPage, updateQuery } from '../../../store/search/searchSlice';
 import Header from '../../modules/Header/Header';
@@ -9,12 +8,10 @@ import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SearchPage.css';
 
 function SearchPage() {
-    const scrollRef = useRef(0);
     const { result, loading, error, currentPage, totalPages, query } = useSelector((state) => state.search);
     const dispatch = useDispatch();
 
-    function handleLoadMore() {
-        scrollRef.current = window.pageYOffset;
+    function handleLoadMore() {;
         dispatch(fetchNextPage());
     };
 
@@ -25,12 +22,8 @@ function SearchPage() {
         dispatch(fetchSearchQuery({ type, keyword }));
         dispatch(updateQuery(inputsValues));
 
-        scrollRef.current = 0;
+        window.scrollTo(0, 0);
     };
-
-    useLayoutEffect(() => {
-        window.scrollTo(0, scrollRef.current);
-    }, [result]);
 
     return (
         <div className='search-page' >

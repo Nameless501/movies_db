@@ -1,11 +1,10 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTopRated, fetchMoreTopRated } from '../../../store/topRated/topRatedSlice';
 import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
 
 function TopRatedPage({ title, type = 'movies' }) {
-    const scrollRef = useRef(0);
     const { results, loading, error, currentPage, totalPages } = useSelector(state => state.topRated);
     const dispatch = useDispatch();
 
@@ -16,15 +15,8 @@ function TopRatedPage({ title, type = 'movies' }) {
     }, [dispatch, type]);
 
     function handleLoadMore() {
-        scrollRef.current = window.pageYOffset;
         dispatch(fetchMoreTopRated(type));
     };
-
-    // restore scroll position after rerender movies list
-
-    useLayoutEffect(() => {
-        window.scrollTo(0, scrollRef.current);
-    }, [results]);
 
     function getRandom(max) {
         return Math.floor(Math.random() * max);
