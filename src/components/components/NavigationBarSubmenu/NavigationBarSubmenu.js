@@ -38,7 +38,7 @@ function NavigationBarSubmenu({ place, title, links = [] }) {
                                 <NavigationLink
                                     to={link.link}
                                     text={link.title}
-                                    place='sub-menu'
+                                    place={place + '-sub-menu'}
                                 />
                             </li>
                         )

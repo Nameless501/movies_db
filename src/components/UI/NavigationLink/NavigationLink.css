@@ -28,9 +28,21 @@
     line-height: 25px;
 }
 
-.navigation-link_place_sub-menu {
+.navigation-link_place_header-sub-menu {
     font-size: 14px;
     line-height: 18px;
+}
+
+.navigation-link_place_footer {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.navigation-link_place_footer-sub-menu {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
 }
 
 .navigation-link_place_not-found {
@@ -85,5 +97,15 @@
         font-weight: 500;
         font-size: 18px;
         line-height: 22px;
+    }
+
+    .navigation-link_place_footer {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .navigation-link_place_footer-sub-menu {
+        font-size: 12px;
+        line-height: 15px;
     }
 }

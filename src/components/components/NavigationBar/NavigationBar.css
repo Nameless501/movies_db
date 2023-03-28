@@ -26,6 +26,11 @@
     gap: 40px;
 }
 
+.navigation-bar__links-list_place_footer {
+    align-items: flex-start;
+    gap: 25px;
+}
+
 @media screen and (max-width: 767px) {
     .navigation-bar__links-list_place_side-bar {
         gap: 30px;

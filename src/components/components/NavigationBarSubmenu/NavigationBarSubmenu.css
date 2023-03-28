@@ -81,3 +81,25 @@
     display: flex;
     align-items: center;
 }
+
+.navigation-submenu_place_footer {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.navigation-submenu__title-icon_place_footer {
+    display: none;
+}
+
+.navigation-submenu__links-list_place_footer {
+    padding: 0;
+    position: relative;
+    transform: translateY(0);
+    background-color: transparent;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
