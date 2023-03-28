@@ -8,7 +8,12 @@ function AuthMenu({ place }) {
 
     return (
         <nav className='auth-menu' >
-            <ul className='auth-menu__buttons' >
+            <ul
+                className={`
+                    auth-menu__buttons
+                    ${ place && 'auth-menu__buttons_place_' + place }
+                `}
+            >
                 <li>
                     {/* <SignButton
                         classType='sign-in'

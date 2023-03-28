@@ -94,3 +94,10 @@ export const getWhatsappShareLink = (type, id) => `https://api.whatsapp.com/send
 export const getTwitterShareLink = (type, id) => `https://twitter.com/intent/tweet?url=${getEncodedUrlForShare(type, id)}`;
 
 export const getLinkForCopy = (type, id) => `${URL_FOR_SHARE}/${type}/${id}`;
+
+
+// screen sizes
+
+export const SCREEN_SIZE_TABLET = 1024;
+
+export const SCREEN_SIZE_MOBILE = 678;

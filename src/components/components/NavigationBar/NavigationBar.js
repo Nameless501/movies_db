@@ -5,11 +5,16 @@ import './NavigationBar.css';
 
 function NavigationBar({ place }) {
     return (
-        <nav className='navigation-bar' >
+        <nav
+            className={`
+                    navigation-bar
+                    ${place && 'navigation-bar_place_' + place}
+                `}
+        >
             <ul
                 className={`
                     navigation-bar__links-list
-                    ${ place && 'navigation-bar__links-list_place_' + place }
+                    ${place && 'navigation-bar__links-list_place_' + place}
                 `}
             >
                 {

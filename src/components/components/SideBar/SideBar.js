@@ -1,24 +1,41 @@
-import { usePortalContext } from '../../../contexts/PortalContext';
+import { useState } from 'react';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import ProfileButton from '../../UI/ProfileButton/ProfileButton';
-import CloseButton from '../../UI/CloseButton/CloseButton';
+import BurgerButton from '../../UI/BurgerButton/BurgerButton';
+import AuthMenu from '../AuthMenu/AuthMenu';
 import './SideBar.css';
 
-function SideBar() {
-    const { toggleSideBar } = usePortalContext();
+function SideBar({ isLogged = false }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function toggleSideBar() {
+        setIsOpen(current => !current)
+    }
 
     return (
-        <div className='side-bar' >
-            <NavigationBar
-                place='side-bar'
-                showMainLink={true}
-            />
-            <ProfileButton />
-            <CloseButton
-                place='side-bar'
+        <>
+            <BurgerButton
                 handleClick={toggleSideBar}
+                place='side-bar'
             />
-        </div>
+            <div
+                className={`
+                    side-bar
+                    ${isOpen && 'side-bar_opened'}
+                `}
+            >
+                <NavigationBar
+                    place='side-bar'
+                    showMainLink={true}
+                />
+                {
+                    isLogged ?
+                        <ProfileButton place='side-bar' />
+                        :
+                        <AuthMenu place='side-bar' />
+                }
+            </div>
+        </>
     );
 }
 

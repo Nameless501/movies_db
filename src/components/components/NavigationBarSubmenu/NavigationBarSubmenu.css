@@ -1,7 +1,6 @@
 .navigation-submenu {
     margin: 0;
     padding: 15px 0;
-    height: 100%;
     box-sizing: border-box;
     position: relative;
 }
@@ -63,9 +62,22 @@
     transform: rotate(-90deg);
 }
 
-.navigation-submenu__links-list_place_side-bar {
+.navigation-submenu_place_side-bar {
+    padding: 0;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation-submenu__title-icon_place_side-bar {
+    display: none;
+}
+
+.navigation-submenu__links-list_place_side-bar {
     position: relative;
     transform: translateY(0);
     background-color: transparent;
+    display: flex;
+    align-items: center;
 }

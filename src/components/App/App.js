@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import { routesConfig } from '../../utils/configs';
 import { usePortalContext } from '../../contexts/PortalContext';
+import useResize from '../../hooks/useResize';
 import MainPage from '../pages/Main/MainPage';
 import InfoPage from '../pages/InfoPage/InfoPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
@@ -16,7 +17,8 @@ import SideBar from '../components/SideBar/SideBar';
 import './App.css';
 
 function App() {
-    const { trailerPopupIsOpen, sharePopupIsOpen, sideBarIsOpen, constructionPopupIsOpen } = usePortalContext();
+    const { trailerPopupIsOpen, sharePopupIsOpen, constructionPopupIsOpen } = usePortalContext();
+    const { isTablet, isMobile } = useResize();
 
     return (
         <div className="App">
@@ -93,7 +95,7 @@ function App() {
                 { trailerPopupIsOpen && <TrailerPopup /> }
                 { sharePopupIsOpen && <SharePopup /> }
                 { constructionPopupIsOpen && <ConstructionSitePopup /> }
-                { sideBarIsOpen && <SideBar /> }
+                { (isTablet || isMobile) && <SideBar /> }
             </Portal>
         </div >
     );

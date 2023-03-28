@@ -6,7 +6,6 @@ export function PortalContextProvider({ children }) {
     const [data, setData] = useState({ type: 'movie', id: null });
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
-    const [sideBarIsOpen, setSideBarState] = useState(false);
 
     const [constructionPopupIsOpen, setConstructionPopupState] = useState(false);
 
@@ -16,7 +15,6 @@ export function PortalContextProvider({ children }) {
         setTrailerPopupState(false);
         setSharePopupState(false);
         setConstructionPopupState(false);
-        setSideBarState(false);
 
         setData({ type: 'movie', id: null });
     };
@@ -35,10 +33,6 @@ export function PortalContextProvider({ children }) {
         setConstructionPopupState(true);
     }
 
-    function toggleSideBar() {
-        setSideBarState(current => !current);
-    }
-
     // Автоматическое закритие попапов, если перейти на другой роут
 
     useEffect(() => {
@@ -51,12 +45,10 @@ export function PortalContextProvider({ children }) {
                 data,
                 trailerPopupIsOpen,
                 sharePopupIsOpen,
-                sideBarIsOpen,
                 constructionPopupIsOpen,
                 openTrailerPopup,
                 openSharePopup,
                 openConstructionPopup,
-                toggleSideBar,
                 closeAll
             }}
         >

@@ -1,10 +1,13 @@
 import './BurgerButton.css';
 
-function BurgerButton({ handleClick }) {
+function BurgerButton({ place, handleClick }) {
     return (
         <button
             type='button'
-            className='burger-button'
+            className={`
+                burger-button
+                ${place && 'burger-button_place_' + place}
+            `}
             onClick={handleClick}
         >
             <div className='burger-button__line' />
