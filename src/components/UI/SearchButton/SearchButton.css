@@ -16,3 +16,10 @@
     cursor: pointer;
     opacity: 0.85;
 }
+
+@media screen and (max-width: 767px) {
+    .search-button {
+        width: 44px;
+        height: 44px;
+    }
+}

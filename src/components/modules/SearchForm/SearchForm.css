@@ -20,20 +20,20 @@
 
 @media screen and (max-width: 1023px) {
     .search-form {
-        padding: 80px 30px 10px;
+        padding: 60px 30px 10px;
     }
 
     .search-form__form {
-        gap: 40px;
+        gap: 35px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .search-form {
-        padding: 80px 14px 10px;
+        padding: 40px 14px 10px;
     }
 
     .search-form__form {
-        gap: 46px;
+        gap: 25px;
     }
 }
