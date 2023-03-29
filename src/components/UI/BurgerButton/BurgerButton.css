@@ -13,7 +13,7 @@
 }
 
 .burger-button_place_side-bar {
-    position: absolute;
+    position: fixed;
     top: 36px;
     right: 30px;
     z-index: 12;
