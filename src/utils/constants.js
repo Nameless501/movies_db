@@ -100,4 +100,4 @@ export const getLinkForCopy = (type, id) => `${URL_FOR_SHARE}/${type}/${id}`;
 
 export const SCREEN_SIZE_TABLET = 1024;
 
-export const SCREEN_SIZE_MOBILE = 678;
+export const SCREEN_SIZE_MOBILE = 768;

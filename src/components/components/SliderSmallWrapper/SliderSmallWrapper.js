@@ -11,7 +11,7 @@ function SliderSmallWrapper({ title, link, children }) {
                 {link &&
                     <LinkButton
                         link={link}
-                        place='movies-slider-small'
+                        place='slider-small'
                         text='Смотреть еще'
                     />
                 }

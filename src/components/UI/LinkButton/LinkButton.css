@@ -27,3 +27,19 @@
     text-decoration: none;
     color: var(--fonts_colors_btn);
 }
+
+@media screen and (max-width: 1023px) {
+    .link-button_place_slider-small {
+        padding: 6px 15px;
+        font-weight: 600;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .link-button_place_slider-small {
+        padding: 4px 10px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+}

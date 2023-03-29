@@ -1,17 +1,20 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import useResize from '../../../hooks/useResize';
 import PosterCard from '../PosterCard/PosterCard';
 import './SliderSmall.css';
 import "swiper/css";
 import "swiper/css/navigation";
 
 function SliderSmall({ movies, type }) {
+    const { isDesktop, isTablet, isMobile } = useResize();
+
     return (
         <div className='slider-small'>
             <Swiper
                 loop={true}
-                slidesPerView={6}
-                spaceBetween={30}
+                slidesPerView={isMobile ? 4 : isTablet ? 5 : 6}
+                spaceBetween={isMobile ? 10 : isTablet ? 15 : 30}
                 navigation={true}
                 modules={[Navigation]}
                 slidesPerGroup={2}
