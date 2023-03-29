@@ -66,10 +66,5 @@
 @media screen and (max-width: 767px) {
     .popular-grid {
         gap: 5px 5px;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: auto;
-        grid-template-areas:
-        'first first third fourth'
-        'fifth sixth second second';
     }
 }
