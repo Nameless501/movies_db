@@ -100,6 +100,13 @@
         padding: 79px 30px 20px;
     }
 
+    .footer__content-wrapper {
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px 30px;
+    }
+
     .footer__logos {
         margin: 0;
         padding: 0;
@@ -121,7 +128,6 @@
 
     .footer__content-wrapper {
         flex-direction: column;
-        align-items: center;
         gap: 30px;
     }
 
