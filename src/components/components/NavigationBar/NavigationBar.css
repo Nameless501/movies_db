@@ -31,8 +31,19 @@
     gap: 25px;
 }
 
+@media screen and (max-width: 1023px) {
+    .navigation-bar__links-list_place_footer {
+        gap: 15px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .navigation-bar__links-list_place_side-bar {
         gap: 30px;
+    }
+
+    .navigation-bar__links-list_place_footer {
+        flex-direction: column;
+        align-items: center;
     }
 }

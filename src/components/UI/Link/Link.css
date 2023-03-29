@@ -25,6 +25,11 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
+    color: var(--fonts_colors_fade);
+}
+
+.link_place_footer:visited {
+    color: var(--fonts_colors_fade);
 }
 
 @media screen and (max-width: 767px) {

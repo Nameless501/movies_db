@@ -103,3 +103,13 @@
     align-items: flex-start;
     gap: 10px;
 }
+
+@media screen and (max-width: 767px) {
+    .navigation-submenu_place_footer {
+        align-items: center;
+    }
+
+    .navigation-submenu__links-list_place_footer {
+        align-items: center;
+    }
+}
