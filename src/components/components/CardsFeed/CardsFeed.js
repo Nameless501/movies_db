@@ -1,9 +1,12 @@
+import useResize from '../../../hooks/useResize';
 import CardsList from '../CardsList/CardsList';
 import MoreButton from '../../UI/MoreButton/MoreButton';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './CardsFeed.css';
 
 function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalPages, type }) {
+    const { isDesktop, isTablet } = useResize();
+    const columnsCount = isDesktop ? 5 : isTablet ? 4 : 2;
 
     return (
         <section className='cards-feed'>
@@ -18,7 +21,10 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
             }
             {
                 (movies.length > 0 && currentPage < totalPages) &&
-                    <div className='cards-feed__more-button' >
+                    <div
+                        className='cards-feed__more-button'
+                        style={{'height': `${100 / (movies.length / columnsCount)}%`}}  // get dynamic size of last row in %
+                    >
                         <MoreButton
                             handleClick={handleLoadMore}
                         />

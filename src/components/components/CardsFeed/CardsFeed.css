@@ -21,7 +21,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    height: 375px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -36,16 +35,4 @@
     bottom: 0;
     left: 0;
     right: 0;
-}
-
-@media screen and (max-width: 1023px) {
-    .cards-feed__more-button {
-        height: 300px;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .cards-feed__more-button {
-        height: 225px;
-    }
 }
