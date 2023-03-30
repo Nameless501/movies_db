@@ -53,6 +53,10 @@
     text-align: end;
 }
 
+.text-input_place_search {
+    height: 48px;
+}
+
 .text-input_place_profile:focus {
     padding-right: 5px;
     box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -65,5 +69,6 @@
 @media screen and (max-width: 767px) {
     .text-input_place_search {
         padding: 13px;
+        height: 44px;
     }
 }
