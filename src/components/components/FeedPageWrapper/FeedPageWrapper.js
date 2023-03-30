@@ -1,10 +1,10 @@
 import Header from '../../modules/Header/Header';
 import Footer from '../Footer/Footer';
-import PagePoster from '../../UI/PagePoster/PagePoster';
+import PagePoster from '../PagePoster/PagePoster';
 import PageTitle from '../../UI/PageTitle/PageTitle';
 import './FeedPageWrapper.css';
 
-function FeedPageWrapper({ title, poster, children }) {
+function FeedPageWrapper({ title, posterHorizontal, posterVertical, children }) {
     return (
         <div className='feed-page' >
             <Header
@@ -12,7 +12,8 @@ function FeedPageWrapper({ title, poster, children }) {
             />
             <main className='feed-page__content'>
                 <PagePoster
-                    poster={poster}
+                    posterHorizontal={posterHorizontal}
+                    posterVertical={posterVertical}
                 />
                 <div className='feed-page__content-wrapper' >
                     <PageTitle

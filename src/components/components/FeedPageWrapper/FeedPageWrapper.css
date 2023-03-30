@@ -7,6 +7,7 @@
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
+    gap: 100px;
 }
 
 .feed-page__content {
@@ -21,7 +22,7 @@
 
 .feed-page__content-wrapper {
     margin: -250px 0 0;
-    padding: 0;
+    padding: 0 70px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -29,4 +30,27 @@
     gap: 50px;
     position: relative;
     z-index: 1;
+}
+
+@media screen and (max-width: 1023px) {
+    .feed-page {
+        gap: 80px;
+    }
+
+    .feed-page__content-wrapper {
+        margin-top: -300px;
+        padding: 0 30px;
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .feed-page {
+        gap: 60px;
+    }
+
+    .feed-page__content-wrapper {
+        padding: 0 10px;
+        gap: 30px;
+    }
 }

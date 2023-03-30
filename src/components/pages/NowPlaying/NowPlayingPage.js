@@ -25,7 +25,8 @@ function NowPlayingPage() {
     return (
         <FeedPageWrapper
             title='Сейчас в прокате'
-            poster={results[getRandom(19)]?.backdrop_path}
+            posterHorizontal={results[getRandom(19)]?.backdrop_path}
+            posterVertical={results[getRandom(19)]?.poster_path}
         >
             <CardsFeed
                 movies={results}

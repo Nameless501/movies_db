@@ -2,7 +2,7 @@ import { useLayoutEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import PagePoster from '../../UI/PagePoster/PagePoster';
+import PagePoster from '../../components/PagePoster/PagePoster';
 import CreditsSlider from '../../modules/CreditsSlider/CreditsSlider';
 import Description from '../../modules/Description/Description';
 import RecommendationsSlider from '../../modules/RecommendationsSlider/RecommendationsSlider';
@@ -23,7 +23,8 @@ function InfoPage({ type = 'movies' }) {
             />
             <main className='info-page__content'>
                 <PagePoster
-                    poster={info?.backdrop_path}
+                    posterHorizontal={info?.backdrop_path}
+                    posterVertical={info?.poster_path}
                 />
                 <div className='info-page__content-wrapper' >
                     <div className='info-page__card-wrapper' >
