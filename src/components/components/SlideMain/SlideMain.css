@@ -1,6 +1,6 @@
 .slide-main {
     margin: 0;
-    padding: 200px 150px;
+    padding: 0 150px;
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -15,7 +15,7 @@
         linear-gradient(225deg, transparent 95%, var(--colors_bg_main)),
         linear-gradient(90deg, transparent 70%, var(--colors_bg_main)),
         linear-gradient(270deg, transparent 70%, var(--colors_bg_main)),
-        linear-gradient(to right, rgb(0,0,0, .3) 50%, transparent),
+        linear-gradient(to right, rgb(0, 0, 0, .3) 50%, transparent),
         var(--image_url) center / cover no-repeat;
 }
 
@@ -67,8 +67,9 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--fonts_colors_main);
-    font-weight: 500;
-    font-size: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
     opacity: .9;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -76,4 +77,57 @@
     -webkit-line-clamp: 4;
     line-clamp: 4;
     -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 1023px) {
+    .slide-main {
+        padding: 0 90px;
+    }
+
+    .slide-main__content-wrapper {
+        gap: 25px;
+    }
+
+    .slide-main__title {
+        font-size: 35px;
+    }
+
+    .slide-main__description {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .slide-main {
+        padding: 0 30px;
+        background:
+            linear-gradient(45deg, transparent 95%, var(--colors_bg_main)),
+            linear-gradient(315deg, transparent 95%, var(--colors_bg_main)),
+            linear-gradient(135deg, transparent 95%, var(--colors_bg_main)),
+            linear-gradient(225deg, transparent 95%, var(--colors_bg_main)),
+            linear-gradient(90deg, transparent 70%, var(--colors_bg_main)),
+            linear-gradient(270deg, transparent 70%, var(--colors_bg_main)),
+            radial-gradient(rgb(0, 0, 0, .5), transparent),
+            var(--image_url) center / cover no-repeat;
+    }
+
+    .slide-main__content-wrapper {
+        max-width: 100%;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .slide-main__title {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .slide-main__description {
+        text-align: center;
+        font-size: 16px;
+        line-height: 18px;
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+    }
 }

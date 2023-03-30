@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchNowPlaying } from '../../../store/nowPlaying/nowPlayingSlice';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import useResize from '../../../hooks/useResize';
 import SlideMain from '../../components/SlideMain/SlideMain';
 import './SliderMain.css';
 
 function SliderMain() {
     const { results } = useSelector((state) => state.nowPlaying);
     const dispatch = useDispatch();
+    const { isMobile } = useResize();
 
     useEffect(() => {
         dispatch(fetchNowPlaying());
@@ -20,7 +22,7 @@ function SliderMain() {
                 loop={true}
                 slidesPerView={1}
                 spaceBetween={0}
-                navigation={true}
+                navigation={!isMobile}
                 modules={[Navigation]}
                 className="slider-main__swiper"
             >
