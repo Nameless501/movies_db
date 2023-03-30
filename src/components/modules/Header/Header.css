@@ -45,7 +45,7 @@
 
 @media screen and (max-width: 1023px) {
     .header__content-wrapper {
-        padding: 18px 30px;
+        padding: 0 30px;
     }
 
     .header__menu {
@@ -63,6 +63,6 @@
 
 @media screen and (max-width: 767px) {
     .header__content-wrapper {
-        padding: 18px 14px;
+        padding: 0 14px;
     }
 }
