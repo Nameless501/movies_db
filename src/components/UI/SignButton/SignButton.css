@@ -26,9 +26,15 @@
     color: var(--fonts_colors_btn);
 }
 
+@media screen and (max-width: 1023px) {
+    .sign-button {
+        font-size: 16px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .sign-button {
         padding: 5px 12px;
-        font-size: 10px;
+        font-size: 14px;
     }
 }

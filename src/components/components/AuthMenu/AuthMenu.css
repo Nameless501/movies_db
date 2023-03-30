@@ -15,5 +15,5 @@
 .auth-menu__buttons_place_side-bar {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
