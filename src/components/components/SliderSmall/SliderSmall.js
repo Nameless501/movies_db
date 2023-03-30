@@ -7,13 +7,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 function SliderSmall({ movies, type }) {
-    const { isDesktop, isTablet, isMobile } = useResize();
+    const { isTablet, isMobile } = useResize();
 
     return (
         <div className='slider-small'>
             <Swiper
                 loop={true}
-                slidesPerView={isMobile ? 4 : isTablet ? 5 : 6}
+                slidesPerView={isMobile ? 3 : isTablet ? 4 : 6}
                 spaceBetween={isMobile ? 10 : isTablet ? 15 : 30}
                 navigation={true}
                 modules={[Navigation]}

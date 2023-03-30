@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 1023px) {
     .slider-small-wrapper {
-        gap: 25px;
+        gap: 35px;
     }
 
     .slider-small-wrapper__title {
@@ -38,7 +38,7 @@
 
 @media screen and (max-width: 767px) {
     .slider-small-wrapper {
-        gap: 20px;
+        gap: 30px;
     }
 
     .slider-small-wrapper__title {
