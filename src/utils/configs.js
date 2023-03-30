@@ -60,14 +60,14 @@ export const navBarConfig = [
     {
         title: 'Фильмы', isDropdown: true, links: [
             { link: routesConfig.movies.popular, title: 'Популярные' },
-            { link: routesConfig.movies.topRated, title: 'С наивысшим рейтингом' },
+            { link: routesConfig.movies.topRated, title: 'С высоким рейтингом' },
             { link: routesConfig.movies.nowPlaying, title: 'Сейчас в кино' },
         ]
     },
     {
         title: 'Сериалы', isDropdown: true, links: [
             { link: routesConfig.shows.popular, title: 'Популярные' },
-            { link: routesConfig.shows.topRated, title: 'С наивысшим рейтингом' },
+            { link: routesConfig.shows.topRated, title: 'С высоким рейтингом' },
         ]
     },
     { title: 'Поиск', link: routesConfig.search, isDropdown: false },

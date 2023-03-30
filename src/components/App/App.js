@@ -35,13 +35,13 @@ function App() {
                 <Route path={routesConfig.movies.topRated}>
                     <TopRatedPage
                         type='movies'
-                        title='Фильмы с наивысшим рейтингом'
+                        title='Фильмы с высоким рейтингом'
                     />
                 </Route>
                 <Route path={routesConfig.shows.topRated}>
                     <TopRatedPage
                         type='shows'
-                        title='Сериалы с наивысшим рейтингом'
+                        title='Сериалы с высоким рейтингом'
                     />
                 </Route>
 
