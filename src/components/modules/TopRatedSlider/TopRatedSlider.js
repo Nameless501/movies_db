@@ -6,7 +6,7 @@ import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
 function TopRatedSlider({ type = 'movies' }) {
-    const { results } = useSelector(state => state.topRated);
+    const { results } = useSelector(state => state.topRated[type]);
     const dispatch = useDispatch();
 
     // API fetch

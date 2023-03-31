@@ -7,57 +7,77 @@ export const fetchPopular = createAsyncThunk('popular/fetchPopular', async (type
     const { getUrl, options } = dbApiConfig[type].popular;
 
     const response = await handleFetch(getUrl(), options);
-    return response.json();
+    const data = await response.json();
+
+    return data;
 });
 
 export const fetchMorePopular = createAsyncThunk('popular/fetchMorePopular', async (type, { getState }) => {
     const { popular } = getState();
     const { getUrl, options } = dbApiConfig[type].popular;
 
-    const response = await handleFetch(getUrl('ru-RU', popular.currentPage + 1), options);
-    return response.json();
+    const response = await handleFetch(getUrl('ru-RU', popular[type].currentPage + 1), options);
+    const data = await response.json();
+
+    return data;
 });
 
 export const popularSlice = createSlice({
     name: 'popular',
     initialState: {
-        totalPages: 1,
-        currentPage: 1,
-        results: [],
-        loading: false,
-        error: '',
+        movies: {
+            totalPages: 1,
+            currentPage: 1,
+            results: [],
+            loading: false,
+            error: '',
+        },
+        shows: {
+            totalPages: 1,
+            currentPage: 1,
+            results: [],
+            loading: false,
+            error: '',
+        },
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchPopular.pending, (state) => {
-                state.loading = true;
-            })
-            .addCase(fetchPopular.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
+        .addCase(fetchPopular.pending, (state, { meta }) => {
+            const type = meta.arg;
+            state[type].loading = true;
+        })
+        .addCase(fetchPopular.fulfilled, (state, { payload, meta }) => {
+            const { results, page, total_pages } = payload;
+            const type = meta.arg;
+            const current = state[type];
 
-                state.results = results;
-                state.loading = false;
-                state.error = '';
+            current.results = results;
+            current.loading = false;
+            current.error = '';
 
-                state.currentPage = page;
-                state.totalPages = total_pages;
-            })
-            .addCase(fetchPopular.rejected, (state) => {
-                state.error = ERROR_MOVIES_FETCH;
-            });
+            current.currentPage = page;
+            current.totalPages = total_pages;
+        })
+        .addCase(fetchPopular.rejected, (state, { meta }) => {
+            const type = meta.arg;
+            state[type].error = ERROR_MOVIES_FETCH;
+        });
 
-        builder
-            .addCase(fetchMorePopular.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
+    builder
+        .addCase(fetchMorePopular.fulfilled, (state, { payload, meta }) => {
+            const { results, page, total_pages } = payload;
+            const type = meta.arg;
+            const current = state[type];
 
-                state.results = [...state.results, ...results];
-                state.currentPage = page;
-                state.totalPages = total_pages;
-            })
-            .addCase(fetchMorePopular.rejected, (state) => {
-                state.error = ERROR_MOVIES_FETCH;
-            });
+            current.results = [...current.results, ...results];
+            current.currentPage = page;
+            current.totalPages = total_pages;
+        })
+        .addCase(fetchMorePopular.rejected, (state, { meta }) => {
+            const type = meta.arg;
+            state[type].error = ERROR_MOVIES_FETCH;
+        });
     }
 })
 

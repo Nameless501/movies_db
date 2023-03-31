@@ -5,7 +5,7 @@ import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
 
 function TopRatedPage({ title, type = 'movies' }) {
-    const { results, loading, error, currentPage, totalPages } = useSelector(state => state.topRated);
+    const { results, loading, error, currentPage, totalPages } = useSelector(state => state.topRated[type]);
     const dispatch = useDispatch();
 
     // API fetch

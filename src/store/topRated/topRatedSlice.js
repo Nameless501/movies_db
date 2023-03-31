@@ -6,57 +6,77 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchTopRated = createAsyncThunk('topRated/fetchTopRated', async (type) => {
     const { getUrl, options } = dbApiConfig[type].topRated;
     const response = await handleFetch(getUrl(), options);
-    return response.json();
+    const data = await response.json();
+
+    return data;
 });
 
 export const fetchMoreTopRated = createAsyncThunk('topRated/fetchMoreTopRated', async (type, { getState }) => {
     const { topRated } = getState();
     const { getUrl, options } = dbApiConfig[type].topRated;
 
-    const response = await handleFetch(getUrl('ru-RU', topRated.currentPage + 1), options);
-    return response.json();
+    const response = await handleFetch(getUrl('ru-RU', topRated[type].currentPage + 1), options);
+    const data = await response.json();
+
+    return data;
 });
 
 export const topRatedSlice = createSlice({
     name: 'topRated',
     initialState: {
-        totalPages: 1,
-        currentPage: 1,
-        results: [],
-        loading: false,
-        error: '',
+        movies: {
+            totalPages: 1,
+            currentPage: 1,
+            results: [],
+            loading: false,
+            error: '',
+        },
+        shows: {
+            totalPages: 1,
+            currentPage: 1,
+            results: [],
+            loading: false,
+            error: '',
+        },
     },
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchTopRated.pending, (state) => {
-                state.loading = true;
+            .addCase(fetchTopRated.pending, (state, { meta }) => {
+                const type = meta.arg;
+                state[type].loading = true;
             })
-            .addCase(fetchTopRated.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
+            .addCase(fetchTopRated.fulfilled, (state, { payload, meta }) => {
+                const { results, page, total_pages } = payload;
+                const type = meta.arg;
+                const current = state[type];
 
-                state.results = results;
-                state.loading = false;
-                state.error = '';
+                current.results = results;
+                current.loading = false;
+                current.error = '';
 
-                state.currentPage = page;
-                state.totalPages = total_pages;
+                current.currentPage = page;
+                current.totalPages = total_pages;
             })
-            .addCase(fetchTopRated.rejected, (state) => {
-                state.error = ERROR_MOVIES_FETCH;
-            })
+            .addCase(fetchTopRated.rejected, (state, { meta }) => {
+                const type = meta.arg;
+                state[type].error = ERROR_MOVIES_FETCH;
+            });
 
         builder
-            .addCase(fetchMoreTopRated.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
+            .addCase(fetchMoreTopRated.fulfilled, (state, { payload, meta }) => {
+                const { results, page, total_pages } = payload;
+                const type = meta.arg;
+                const current = state[type];
 
-                state.results = [...state.results, ...results];
-                state.currentPage = page;
-                state.totalPages = total_pages;
+                current.results = [...current.results, ...results];
+                current.currentPage = page;
+                current.totalPages = total_pages;
             })
-            .addCase(fetchMoreTopRated.rejected, (state) => {
-                state.error = ERROR_MOVIES_FETCH;
-            })
+            .addCase(fetchMoreTopRated.rejected, (state, { meta }) => {
+                const type = meta.arg;
+                state[type].error = ERROR_MOVIES_FETCH;
+            });
     }
 })
 
