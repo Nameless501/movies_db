@@ -21,25 +21,22 @@ function ReviewCard({ review }) {
                 className='review-card__avatar'
                 onError={(evt) => evt.target.src = avatarFallback}
             />
-            <div className='review-card__review-wrapper' >
-                <div className='review-card__review-header' >
-                    <h3 className='review-card__author' >
-                        {review?.author}
-                    </h3>
-                    <span className='review-card__date' >
-                        {new Date(review?.created_at).toLocaleDateString('ru', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </span>
-                </div>
-                <div className='review-card__text-wrapper' >
-                    <p className='review-card__text' >
-                        {isLongRead ?
-                            (isOpen ? review?.content : reviewText.slice(0, 75).join(' ') + '...')
-                            :
-                            review?.content
-                        }
-                    </p>
-                </div>
+            <div className='review-card__review-header' >
+                <h3 className='review-card__author' >
+                    {review?.author}
+                </h3>
+                <span className='review-card__date' >
+                    {new Date(review?.created_at).toLocaleDateString('ru', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </span>
             </div>
+            <div className='review-card__divider' />
+            <p className='review-card__text' >
+                {isLongRead ?
+                    (isOpen ? review?.content : reviewText.slice(0, 75).join(' ') + '...')
+                    :
+                    review?.content
+                }
+            </p>
             {isLongRead &&
                 <button
                     className={`

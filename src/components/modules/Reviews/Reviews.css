@@ -36,7 +36,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
 }
 
 .review__list li {
@@ -54,4 +54,25 @@
     color: var(--fonts_colors_main);
     opacity: .8;
     align-self: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .reviews__wrapper {
+        gap: 35px;
+    }
+
+    .reviews__title  {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .reviews__wrapper {
+        gap: 30px;
+    }
+
+    .reviews__title  {
+        font-size: 18px;
+        font-weight: 600;
+    }
 }

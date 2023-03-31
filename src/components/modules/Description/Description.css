@@ -6,11 +6,11 @@
     grid-template-columns: 1.25fr 2fr;
     grid-auto-rows: auto;
     grid-template-areas:
-    'poster title'
-    'poster info'
-    'poster description'
-    'poster buttons'
-    'poster .';
+        'poster title'
+        'poster info'
+        'poster description'
+        'poster buttons'
+        'poster .';
     gap: 35px 40px;
     position: relative;
     z-index: 2;
@@ -85,8 +85,66 @@
 .description__text-fade {
     margin: 0;
     padding: 0;
-    color: var(--fonts_colors_main);
-    font-weight: 400;
+    color: var(--fonts_colors_fade);
+    font-weight: 500;
     font-size: 15px;
-    opacity: .8;
+}
+
+@media screen and (max-width: 1023px) {
+    .description {
+        grid-template-columns: 1fr 2fr;
+        gap: 25px 30px;
+    }
+
+    .description__title {
+        font-size: 25px;
+    }
+
+    .description__description {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .description__genre {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    .description__text-fade {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .description {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            'poster title'
+            'poster info'
+            'poster buttons'
+            'poster .'
+            'description description';
+        ;
+        gap: 20px 30px;
+    }
+
+    .description__title {
+        font-size: 20px;
+    }
+
+    .description__description {
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .description__genre {
+        padding: 3px 5px;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .description__text-fade {
+        font-size: 13px;
+    }
 }

@@ -7,6 +7,7 @@
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
+    gap: 100px;
 }
 
 .info-page__content {
@@ -21,8 +22,8 @@
 }
 
 .info-page__content-wrapper {
-    margin: -300px 0 0;
-    padding: 70px;
+    margin: -200px 0 0;
+    padding: 0 70px;
     box-sizing: border-box;
     width: 100%;
     display: grid;
@@ -70,4 +71,23 @@
     box-sizing: border-box;
     width: 100%;
     grid-area: reviews;
+}
+
+@media screen and (max-width: 1023px) {
+    .info-page__content-wrapper {
+        margin-top: -250px;
+        padding: 0 35px;
+        grid-template-areas:
+        'movieCard movieCard movieCard'
+        'actorsList actorsList actorsList'
+        'similarMovies similarMovies similarMovies'
+        'reviews reviews reviews';
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .info-page__content-wrapper {
+        margin-top: -325px;
+        padding: 0 15px;
+    }
 }
