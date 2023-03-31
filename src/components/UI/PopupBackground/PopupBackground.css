@@ -13,5 +13,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity .2s linear;
+}
+
+.popup-background_disabled {
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .2s linear;
 }

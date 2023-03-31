@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import PopupBackground from "../../UI/PopupBackground/PopupBackground";
 
-function PopupWrapper({ handleClose, children }) {
+function PopupWrapper({ handleClose, disabled = false, children }) {
     function handleClickOutside(evt) {
         if (evt.target === evt.currentTarget) {
             handleClose();
@@ -26,6 +26,7 @@ function PopupWrapper({ handleClose, children }) {
     return (
         <PopupBackground
             handleClick={handleClickOutside}
+            disabled={disabled}
         >
             {children}
         </PopupBackground>

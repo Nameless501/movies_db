@@ -4,24 +4,13 @@
     width: 44px;
     height: 38px;
     box-sizing: border-box;
-    border: 0;
     background-color: transparent;
+    border: 0;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
-}
-
-.burger-button_place_side-bar {
-    position: fixed;
-    top: 18px;
-    right: 30px;
-    z-index: 12;
-}
-
-.burger-button:hover {
-    cursor: pointer;
-    opacity: .8;
+    overflow: hidden;
 }
 
 .burger-button__line {
@@ -31,6 +20,40 @@
     width: 100%;
     height: 3px;
     background-color: var(--colors_btn_white);
+    transform: rotate(0) transition(0, 0);
+    transition: transform .2s linear;
+}
+
+.burger-button_active {
+    justify-content: center;
+}
+
+.burger-button_active .burger-button__line_middle {
+    display: none;
+}
+
+.burger-button_active .burger-button__line_top {
+    transform: translate(0, 50%) rotate(45deg);
+    transition: transform .2s linear;
+}
+
+.burger-button_active .burger-button__line_bottom {
+    transform: translate(0, -50%) rotate(-45deg);
+    transition: transform .2s linear;
+}
+
+.burger-button_place_side-bar {
+    position: fixed;
+    top: 18.5px;
+    right: 30px;
+    z-index: 11;
+}
+
+@media screen and (min-width: 1024px) {
+    .burger-button:hover {
+        cursor: pointer;
+        opacity: .8;
+    }
 }
 
 @media screen and (max-width: 767px) {

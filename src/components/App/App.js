@@ -13,7 +13,7 @@ import Portal from '../components/Portal/Portal';
 import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
 import SharePopup from '../modules/SharePopup/SharePopup';
 import ConstructionSitePopup from '../modules/ConstructionSitePopup/ConstructionSitePopup';
-import SideBar from '../components/SideBar/SideBar';
+import SideBar from '../modules/SideBar/SideBar';
 import './App.css';
 
 function App() {

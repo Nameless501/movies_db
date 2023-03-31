@@ -1,9 +1,12 @@
 import './PopupBackground.css';
 
-function PopupBackground({ handleClick, children }) {
+function PopupBackground({ handleClick, disabled = false, children }) {
     return (
         <div
-            className="popup-background"
+            className={`
+                popup-background
+                ${ disabled && 'popup-background_disabled' }
+            `}
             onClick={handleClick}
         >
             {children}
