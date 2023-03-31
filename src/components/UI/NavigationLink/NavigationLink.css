@@ -28,6 +28,10 @@
     line-height: 25px;
 }
 
+.navigation-link_place_side-bar-sub-menu {
+    color: var(--fonts_colors_fade);
+}
+
 .navigation-link_place_header-sub-menu {
     font-size: 14px;
     line-height: 18px;
