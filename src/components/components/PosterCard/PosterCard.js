@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import useResize from '../../../hooks/useResize';
 import CardButtons from '../CardButtons/CardButtons';
 import Rating from '../../UI/Rating/Rating';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
@@ -8,6 +9,8 @@ import posterFallback from '../../../images/poster_fallback.png';
 import './PosterCard.css';
 
 const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vertical = true }) {
+    const { isDesktop } = useResize();
+
     return (
         <div
             className={`
@@ -34,18 +37,23 @@ const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vert
                 to={routesConfig[type].info + '/' + movie.id}
                 className='poster-card__link-wrapper'
             />
-            <div className='poster-card__rating-wrapper' >
-                <Rating
-                    rating={movie.vote_average}
-                />
-            </div>
-            <div className='poster-card__button-wrapper' >
-                <CardButtons
-                    place='poster-card'
-                    id={movie.id}
-                    type={type}
-                />
-            </div>
+            {
+                isDesktop &&
+                <>
+                    <div className='poster-card__rating-wrapper' >
+                        <Rating
+                            rating={movie.vote_average}
+                        />
+                    </div>
+                    <div className='poster-card__button-wrapper' >
+                        <CardButtons
+                            place='poster-card'
+                            id={movie.id}
+                            type={type}
+                        />
+                    </div>
+                </>
+            }
         </div>
     );
 })
