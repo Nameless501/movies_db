@@ -64,6 +64,7 @@
     padding: 0;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -117,7 +118,7 @@
 
 @media screen and (max-width: 767px) {
     .description {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1.25fr 2fr;
         grid-template-areas:
             'poster title'
             'poster info'
@@ -125,7 +126,7 @@
             'poster .'
             'description description';
         ;
-        gap: 20px 30px;
+        gap: 20px 15px;
     }
 
     .description__title {
