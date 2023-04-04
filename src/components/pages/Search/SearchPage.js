@@ -11,7 +11,8 @@ function SearchPage() {
     const { result, loading, error, currentPage, totalPages, prev } = useSelector((state) => state.search);
     const dispatch = useDispatch();
 
-    function handleLoadMore() {;
+    function handleLoadMore() {
+        ;
         dispatch(fetchNextPage());
     };
 
@@ -34,24 +35,21 @@ function SearchPage() {
                     initialState={{ keyword: prev.keyword, tvShows: prev.type === 'shows' }}
                     handleSubmit={handleSubmit}
                 />
-                {
-                    (!error && result.length > 0) &&
-                        <CardsFeed
-                            movies={result}
-                            loading={loading}
-                            error={error}
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            handleLoadMore={handleLoadMore}
-                            type={prev.type}
-                        />
-                }
+                <CardsFeed
+                    movies={result}
+                    loading={loading}
+                    error={error}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    handleLoadMore={handleLoadMore}
+                    type={prev.type}
+                />
                 {
                     (error && result.length === 0) &&
-                        <ErrorMessage
-                            text={error}
-                            place='movies'
-                        />
+                    <ErrorMessage
+                        text={error}
+                        place='movies'
+                    />
                 }
             </main>
             <Footer />

@@ -15,7 +15,7 @@ export const fetchReviews = createAsyncThunk(
         condition: (curr, { getState }) => {
             const { reviews: { prev } } = getState();
 
-            if(prev.id === curr.id && prev.type === curr.type) {
+            if (prev.id === curr.id && prev.type === curr.type) {
                 return false;
             }
         }
@@ -63,6 +63,9 @@ export const reviewsSlice = createSlice({
             });
 
         builder
+            .addCase(fetchMoreReviews.pending, (state) => {
+                state.loading = 'pendingNextPage';
+            })
             .addCase(fetchMoreReviews.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 

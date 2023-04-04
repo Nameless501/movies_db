@@ -18,7 +18,7 @@ export const fetchPopular = createAsyncThunk(
             const { popular } = getState();
             const { loading } = popular[type];
 
-            if(loading === 'pending' || loading === 'fulfilled') {
+            if (loading === 'pending' || loading === 'fulfilled') {
                 return false;
             }
         }
@@ -80,6 +80,9 @@ export const popularSlice = createSlice({
             });
 
         builder
+            .addCase(fetchMorePopular.pending, (state) => {
+                state.loading = 'pendingNextPage';
+            })
             .addCase(fetchMorePopular.fulfilled, (state, { payload, meta }) => {
                 const { results, page, total_pages } = payload;
                 const type = meta.arg;

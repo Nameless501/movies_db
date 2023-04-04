@@ -17,7 +17,7 @@ export const fetchTopRated = createAsyncThunk(
             const { topRated } = getState();
             const { loading } = topRated[type];
 
-            if(loading === 'pending' || loading === 'fulfilled') {
+            if (loading === 'pending' || loading === 'fulfilled') {
                 return false;
             }
         }
@@ -79,6 +79,9 @@ export const topRatedSlice = createSlice({
             });
 
         builder
+            .addCase(fetchMoreTopRated.pending, (state) => {
+                state.loading = 'pendingNextPage';
+            })
             .addCase(fetchMoreTopRated.fulfilled, (state, { payload, meta }) => {
                 const { results, page, total_pages } = payload;
                 const type = meta.arg;

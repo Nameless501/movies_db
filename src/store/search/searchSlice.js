@@ -63,6 +63,9 @@ export const searchSlice = createSlice({
             });
 
         builder
+            .addCase(fetchNextPage.pending, (state) => {
+                state.loading = 'pendingNextPage';
+            })
             .addCase(fetchNextPage.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 

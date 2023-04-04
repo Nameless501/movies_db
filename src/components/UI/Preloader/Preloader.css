@@ -78,7 +78,7 @@
 }
 
 .preloader__round::after {
-    background: white;
+    background: var(--colors_btn_white);
     animation: preloader-inside-white 1s ease-in-out infinite;
 }
 

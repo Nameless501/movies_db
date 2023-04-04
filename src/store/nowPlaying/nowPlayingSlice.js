@@ -14,7 +14,7 @@ export const fetchNowPlaying = createAsyncThunk(
     {
         condition: (arg, { getState }) => {
             const { nowPlaying: { loading } } = getState();
-            if(loading === 'pending' || loading === 'fulfilled') {
+            if (loading === 'pending' || loading === 'fulfilled') {
                 return false;
             }
         }
@@ -60,6 +60,9 @@ export const nowPlayingSlice = createSlice({
             })
 
         builder
+            .addCase(fetchMoreNowPlaying.pending, (state) => {
+                state.loading = 'pendingNextPage';
+            })
             .addCase(fetchMoreNowPlaying.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
