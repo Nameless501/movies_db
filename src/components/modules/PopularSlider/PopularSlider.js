@@ -6,7 +6,7 @@ import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
 function PopularSlider({ type = 'movies' }) {
-    const { results } = useSelector(state => state.popular[type]);
+    const { results, loading } = useSelector(state => state.popular[type]);
     const dispatch = useDispatch();
 
     // API fetch
@@ -17,8 +17,9 @@ function PopularSlider({ type = 'movies' }) {
 
     return (
         <SliderSmallWrapper
-            title={ type === 'movies' ? 'Популярные фильмы' : 'Популяные сериалы' }
+            title={type === 'movies' ? 'Популярные фильмы' : 'Популяные сериалы'}
             link={routesConfig[type].popular}
+            loading={loading}
         >
             <SliderSmall
                 movies={results}

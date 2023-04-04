@@ -20,6 +20,7 @@ function TopRatedGrid({ type = 'movies' }) {
         <SliderSmallWrapper
             title='Сериалы с высоким рейтингом'
             link={routesConfig[type].popular}
+            loading={loading}
         >
             <ul className='top-rated-grid'>
                 {

@@ -9,6 +9,16 @@
 .preloader-small {
     margin: 0;
     padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-small__spinner {
+    margin: 0;
+    padding: 0;
     width: 5%;
     aspect-ratio: 1/1;
     box-sizing: border-box;

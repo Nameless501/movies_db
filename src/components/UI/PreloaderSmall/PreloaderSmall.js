@@ -3,7 +3,9 @@ import './PreloaderSmall.css';
 
 const PreloaderSmall = () => {
     return (
-        <span className="preloader-small" />
+        <div className="preloader-small">
+            <span className="preloader-small__spinner" />
+        </div>
     )
 };
 

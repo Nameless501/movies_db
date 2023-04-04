@@ -1,7 +1,8 @@
 import LinkButton from '../../UI/LinkButton/LinkButton';
+import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './SliderSmallWrapper.css';
 
-function SliderSmallWrapper({ title, link, children }) {
+function SliderSmallWrapper({ title, link, loading, children }) {
     return (
         <section className='slider-small-wrapper'>
             <div className='slider-small-wrapper__flex'>
@@ -16,7 +17,12 @@ function SliderSmallWrapper({ title, link, children }) {
                     />
                 }
             </div>
-            {children}
+            {
+                loading === 'pending' && <PreloaderSmall />
+            }
+            {
+                loading === 'fulfilled' && children
+            }
         </section>
     );
 }
