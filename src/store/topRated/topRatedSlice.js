@@ -66,10 +66,6 @@ export const topRatedSlice = createSlice({
             });
 
         builder
-            .addCase(fetchMoreTopRated.pending, (state, { meta }) => {
-                const type = meta.arg;
-                state[type].loading = 'pending';
-            })
             .addCase(fetchMoreTopRated.fulfilled, (state, { payload, meta }) => {
                 const { results, page, total_pages } = payload;
                 const type = meta.arg;

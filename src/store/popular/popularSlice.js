@@ -67,10 +67,6 @@ export const popularSlice = createSlice({
             });
 
         builder
-            .addCase(fetchMorePopular.pending, (state, { meta }) => {
-                const type = meta.arg;
-                state[type].loading = 'pending';
-            })
             .addCase(fetchMorePopular.fulfilled, (state, { payload, meta }) => {
                 const { results, page, total_pages } = payload;
                 const type = meta.arg;
@@ -79,6 +75,7 @@ export const popularSlice = createSlice({
                 current.results = [...current.results, ...results];
                 current.currentPage = page;
                 current.totalPages = total_pages;
+                current.loading = 'fulfilled';
             })
             .addCase(fetchMorePopular.rejected, (state, { meta }) => {
                 const type = meta.arg;

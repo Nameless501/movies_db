@@ -11,7 +11,7 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
     return (
         <section className='cards-feed'>
             {
-                (!loading && movies.length > 0) &&
+                (loading === 'fulfilled') &&
                     <div className='cards-feed__movies-list' >
                         <CardsList
                             moviesList={movies}
@@ -20,7 +20,7 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
                     </div>
             }
             {
-                (movies.length > 0 && currentPage < totalPages) &&
+                (loading === 'fulfilled' && currentPage < totalPages) &&
                     <div
                         className='cards-feed__more-button'
                         style={{'height': `${100 / (movies.length / columnsCount)}%`}}  // get dynamic size of last row in %
@@ -31,7 +31,7 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
                     </div>
             }
             {
-                (movies.length === 0 && error) &&
+                (loading === 'rejected') &&
                     <ErrorMessage
                         text={error}
                         place='movies'

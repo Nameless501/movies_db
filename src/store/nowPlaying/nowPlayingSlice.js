@@ -55,9 +55,11 @@ export const nowPlayingSlice = createSlice({
                 state.results = [...state.results, ...results];
                 state.currentPage = page;
                 state.totalPages = total_pages;
+                state.loading = 'fulfilled';
             })
             .addCase(fetchMoreNowPlaying.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             })
     }
 })

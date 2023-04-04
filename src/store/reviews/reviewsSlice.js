@@ -49,9 +49,6 @@ export const reviewsSlice = createSlice({
             });
 
         builder
-            .addCase(fetchMoreReviews.pending, (state) => {
-                state.loading = 'pending';
-            })
             .addCase(fetchMoreReviews.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
