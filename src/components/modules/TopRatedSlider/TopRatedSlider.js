@@ -17,7 +17,7 @@ function TopRatedSlider({ type = 'movies' }) {
 
     return (
         <SliderSmallWrapper
-            title='Популярные фильмы'
+            title='Фильмы с высоким рейтингом'
             link={routesConfig[type].topRated}
         >
             <SliderSmall
