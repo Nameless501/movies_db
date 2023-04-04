@@ -14,14 +14,14 @@ export const trailerSlice = createSlice({
     name: 'trailer',
     initialState: {
         key: '',
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchTrailer.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchTrailer.fulfilled, (state, action) => {
                 const { results } = action.payload;
@@ -35,10 +35,11 @@ export const trailerSlice = createSlice({
                     state.error = 'Не удалось найти трейлер';
                 }
 
-                state.loading = false;
+                state.loading = 'fulfilled';
             })
             .addCase(fetchTrailer.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             })
     }
 })

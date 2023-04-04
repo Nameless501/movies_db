@@ -25,7 +25,7 @@ export const searchSlice = createSlice({
         totalPages: 1,
         currentPage: 1,
         result: [],
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {
@@ -39,13 +39,13 @@ export const searchSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchSearchQuery.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchSearchQuery.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.result = results;
-                state.loading = false;
+                state.loading = 'fulfilled';
                 state.error = results.length > 0 ? '' : 'Ничего не нашлось';
 
                 state.totalPages = total_pages;
@@ -53,18 +53,24 @@ export const searchSlice = createSlice({
             })
             .addCase(fetchSearchQuery.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             });
 
         builder
+            .addCase(fetchNextPage.pending, (state) => {
+                state.loading = 'pending';
+            })
             .addCase(fetchNextPage.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.result = [...state.result, ...results];
                 state.currentPage = page;
                 state.totalPages = total_pages;
+                state.loading = 'fulfilled';
             })
             .addCase(fetchNextPage.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             });
     }
 })

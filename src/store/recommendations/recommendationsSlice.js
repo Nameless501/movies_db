@@ -14,24 +14,25 @@ export const recommendationsSlice = createSlice({
     name: 'recommendations',
     initialState: {
         recommendations: [],
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchRecommendations.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchRecommendations.fulfilled, (state, action) => {
                 const { results } = action.payload;
 
                 state.recommendations = results;
-                state.loading = false;
+                state.loading = 'fulfilled';
                 state.error = '';
             })
             .addCase(fetchRecommendations.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             })
     }
 })

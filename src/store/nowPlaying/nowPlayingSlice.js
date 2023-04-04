@@ -24,20 +24,20 @@ export const nowPlayingSlice = createSlice({
         totalPages: 1,
         currentPage: 1,
         results: [],
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchNowPlaying.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchNowPlaying.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.results = results;
-                state.loading = false;
+                state.loading = 'fulfilled';
                 state.error = '';
 
                 state.currentPage = page;
@@ -45,6 +45,7 @@ export const nowPlayingSlice = createSlice({
             })
             .addCase(fetchNowPlaying.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             })
 
         builder

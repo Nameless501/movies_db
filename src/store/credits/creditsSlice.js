@@ -15,14 +15,14 @@ export const creditsSlice = createSlice({
     initialState: {
         cast: [],
         crew: [],
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchCredits.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchCredits.fulfilled, (state, action) => {
                 const { cast, crew } = action.payload;
@@ -30,11 +30,12 @@ export const creditsSlice = createSlice({
                 state.cast = cast;
                 state.crew = crew;
 
-                state.loading = false;
+                state.loading = 'fulfilled';
                 state.error = '';
             })
             .addCase(fetchCredits.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             });
     }
 })

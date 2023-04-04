@@ -14,22 +14,23 @@ export const infoSlice = createSlice({
     name: 'info',
     initialState: {
         info: {},
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchInfo.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchInfo.fulfilled, (state, action) => {
                 state.info = action.payload;
-                state.loading = false;
+                state.loading = 'fulfilled';
                 state.error = '';
             })
             .addCase(fetchInfo.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             });
     }
 })

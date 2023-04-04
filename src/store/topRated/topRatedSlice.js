@@ -28,14 +28,14 @@ export const topRatedSlice = createSlice({
             totalPages: 1,
             currentPage: 1,
             results: [],
-            loading: false,
+            loading: 'idle',
             error: '',
         },
         shows: {
             totalPages: 1,
             currentPage: 1,
             results: [],
-            loading: false,
+            loading: 'idle',
             error: '',
         },
     },
@@ -44,7 +44,7 @@ export const topRatedSlice = createSlice({
         builder
             .addCase(fetchTopRated.pending, (state, { meta }) => {
                 const type = meta.arg;
-                state[type].loading = true;
+                state[type].loading = 'pending';
             })
             .addCase(fetchTopRated.fulfilled, (state, { payload, meta }) => {
                 const { results, page, total_pages } = payload;
@@ -52,7 +52,7 @@ export const topRatedSlice = createSlice({
                 const current = state[type];
 
                 current.results = results;
-                current.loading = false;
+                current.loading = 'fulfilled';
                 current.error = '';
 
                 current.currentPage = page;
@@ -60,10 +60,16 @@ export const topRatedSlice = createSlice({
             })
             .addCase(fetchTopRated.rejected, (state, { meta }) => {
                 const type = meta.arg;
+
                 state[type].error = ERROR_MOVIES_FETCH;
+                state[type].loading = 'rejected';
             });
 
         builder
+            .addCase(fetchMoreTopRated.pending, (state, { meta }) => {
+                const type = meta.arg;
+                state[type].loading = 'pending';
+            })
             .addCase(fetchMoreTopRated.fulfilled, (state, { payload, meta }) => {
                 const { results, page, total_pages } = payload;
                 const type = meta.arg;
@@ -72,10 +78,13 @@ export const topRatedSlice = createSlice({
                 current.results = [...current.results, ...results];
                 current.currentPage = page;
                 current.totalPages = total_pages;
+                current.loading = 'fulfilled';
             })
             .addCase(fetchMoreTopRated.rejected, (state, { meta }) => {
                 const type = meta.arg;
+
                 state[type].error = ERROR_MOVIES_FETCH;
+                state[type].loading = 'rejected';
             });
     }
 })

@@ -24,20 +24,20 @@ export const reviewsSlice = createSlice({
         totalPages: 1,
         currentPage: 1,
         reviews: [],
-        loading: false,
+        loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchReviews.pending, (state) => {
-                state.loading = true;
+                state.loading = 'pending';
             })
             .addCase(fetchReviews.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.reviews = results;
-                state.loading = false;
+                state.loading = 'fulfilled';
                 state.error = '';
 
                 state.currentPage = page;
@@ -45,18 +45,24 @@ export const reviewsSlice = createSlice({
             })
             .addCase(fetchReviews.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             });
 
         builder
+            .addCase(fetchMoreReviews.pending, (state) => {
+                state.loading = 'pending';
+            })
             .addCase(fetchMoreReviews.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
 
                 state.reviews = [...state.reviews, ...results];
                 state.currentPage = page;
                 state.totalPages = total_pages;
+                state.loading = 'fulfilled';
             })
             .addCase(fetchMoreReviews.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
+                state.loading = 'rejected';
             });
     }
 })
