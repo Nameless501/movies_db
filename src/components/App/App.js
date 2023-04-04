@@ -2,6 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 import { routesConfig } from '../../utils/configs';
 import { usePortalContext } from '../../contexts/PortalContext';
 import useResize from '../../hooks/useResize';
+import usePageScroll from '../../hooks/usePageScroll';
 import MainPage from '../pages/Main/MainPage';
 import InfoPage from '../pages/InfoPage/InfoPage';
 import TopRatedPage from '../pages/TopRated/TopRatedPage';
@@ -19,6 +20,7 @@ import './App.css';
 function App() {
     const { trailerPopupIsOpen, sharePopupIsOpen, constructionPopupIsOpen } = usePortalContext();
     const { isTablet, isMobile } = useResize();
+    usePageScroll();
 
     return (
         <div className="App">
