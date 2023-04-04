@@ -85,9 +85,8 @@
 .navigation-submenu_place_footer {
     padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     gap: 15px;
+    align-items: center;
 }
 
 .navigation-submenu__title-icon_place_footer {
@@ -107,6 +106,7 @@
 
 @media screen and (max-width: 767px) {
     .navigation-submenu_place_footer {
+        flex-direction: column;
         align-items: center;
     }
 

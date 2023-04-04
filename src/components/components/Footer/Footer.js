@@ -21,6 +21,9 @@ function Footer() {
                     <p className='footer__attribution'>
                         Для проекта использовано API the movies DB. Проект не проходил сертификацию TMDB.
                     </p>
+                    <p className='footer__copyright' >
+                        &copy; 2023
+                    </p>
                 </div>
                 <div className='footer__column' >
                     <h4 className='footer__column-title'>
@@ -50,9 +53,9 @@ function Footer() {
                     </ul>
                 </div>
             </div>
-            <p className='footer__copyright' >
+            {/* <p className='footer__copyright' >
                 &copy; 2023
-            </p>
+            </p> */}
         </footer>
     );
 }
