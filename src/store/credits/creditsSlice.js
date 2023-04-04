@@ -3,16 +3,29 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchCredits = createAsyncThunk('credits/fetchCredits', async ({ type, id }) => {
-    const { getUrl, options } = dbApiConfig[type].credits;
+export const fetchCredits = createAsyncThunk(
+    'credits/fetchCredits',
+    async ({ type, id }) => {
+        const { getUrl, options } = dbApiConfig[type].credits;
 
-    const response = await handleFetch(getUrl(id), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(id), options);
+        return response.json();
+    },
+    {
+        condition: (curr, { getState }) => {
+            const { credits: { prev } } = getState();
+
+            if(prev.id === curr.id && prev.type === curr.type) {
+                return false;
+            }
+        }
+    }
+);
 
 export const creditsSlice = createSlice({
     name: 'credits',
     initialState: {
+        prev: {},
         cast: [],
         crew: [],
         loading: 'idle',
@@ -21,8 +34,9 @@ export const creditsSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchCredits.pending, (state) => {
+            .addCase(fetchCredits.pending, (state, { meta }) => {
                 state.loading = 'pending';
+                state.prev = meta.arg;
             })
             .addCase(fetchCredits.fulfilled, (state, action) => {
                 const { cast, crew } = action.payload;

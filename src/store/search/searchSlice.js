@@ -3,43 +3,49 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchSearchQuery = createAsyncThunk('search/fetchSearchQuery', async ({ type, keyword }) => {
-    const { getUrl, options } = dbApiConfig.search[type];
+export const fetchSearchQuery = createAsyncThunk(
+    'search/fetchSearchQuery',
+    async ({ type, keyword }) => {
+        const { getUrl, options } = dbApiConfig.search[type];
 
-    const response = await handleFetch(getUrl(keyword), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(keyword), options);
+        return response.json();
+    },
+    {
+        condition: (curr, { getState }) => {
+            const { search: { prev } } = getState();
+
+            if (prev.keyword === curr.keyword && prev.type === curr.type) {
+                return false;
+            }
+        }
+    }
+);
 
 export const fetchNextPage = createAsyncThunk('search/fetchNextPage', async (arg, { getState }) => {
     const { search } = getState();
-    const { getUrl, options } = dbApiConfig.search[search.query.type];
+    const { getUrl, options } = dbApiConfig.search[search.prev.type];
 
-    const response = await handleFetch(getUrl(search.query.keyword, 'ru-RU', search.currentPage + 1), options);
+    const response = await handleFetch(getUrl(search.prev.keyword, 'ru-RU', search.currentPage + 1), options);
     return response.json();
 });
 
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
-        query: { keyword: '', type: 'movies', tvShows: false },
+        prev: { keyword: '', type: 'movies' },
         totalPages: 1,
         currentPage: 1,
         result: [],
         loading: 'idle',
         error: '',
     },
-    reducers: {
-        updateQuery: (state, action) => {
-            const { keyword, tvShows } = action.payload;
-            const type = tvShows ? 'shows' : 'movies';
-
-            state.query = { keyword, type, tvShows };
-        },
-    },
+    reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchSearchQuery.pending, (state) => {
+            .addCase(fetchSearchQuery.pending, (state, { meta }) => {
                 state.loading = 'pending';
+                state.prev = meta.arg;
             })
             .addCase(fetchSearchQuery.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;
@@ -70,8 +76,6 @@ export const searchSlice = createSlice({
                 state.loading = 'rejected';
             });
     }
-})
-
-export const { updateQuery } = searchSlice.actions
+});
 
 export default searchSlice.reducer;

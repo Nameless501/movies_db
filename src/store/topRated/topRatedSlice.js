@@ -3,13 +3,26 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchTopRated = createAsyncThunk('topRated/fetchTopRated', async (type) => {
-    const { getUrl, options } = dbApiConfig[type].topRated;
-    const response = await handleFetch(getUrl(), options);
-    const data = await response.json();
+export const fetchTopRated = createAsyncThunk(
+    'topRated/fetchTopRated',
+    async (type) => {
+        const { getUrl, options } = dbApiConfig[type].topRated;
+        const response = await handleFetch(getUrl(), options);
+        const data = await response.json();
 
-    return data;
-});
+        return data;
+    },
+    {
+        condition: (type, { getState }) => {
+            const { topRated } = getState();
+            const { loading } = topRated[type];
+
+            if(loading === 'pending' || loading === 'fulfilled') {
+                return false;
+            }
+        }
+    }
+);
 
 export const fetchMoreTopRated = createAsyncThunk('topRated/fetchMoreTopRated', async (type, { getState }) => {
     const { topRated } = getState();

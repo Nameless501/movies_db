@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchSearchQuery, fetchNextPage, updateQuery } from '../../../store/search/searchSlice';
+import { fetchSearchQuery, fetchNextPage } from '../../../store/search/searchSlice';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import SearchForm from '../../modules/SearchForm/SearchForm';
@@ -8,7 +8,7 @@ import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SearchPage.css';
 
 function SearchPage() {
-    const { result, loading, error, currentPage, totalPages, query } = useSelector((state) => state.search);
+    const { result, loading, error, currentPage, totalPages, prev } = useSelector((state) => state.search);
     const dispatch = useDispatch();
 
     function handleLoadMore() {;
@@ -20,7 +20,6 @@ function SearchPage() {
         const type = tvShows ? 'shows' : 'movies';
 
         dispatch(fetchSearchQuery({ type, keyword }));
-        dispatch(updateQuery(inputsValues));
 
         window.scrollTo(0, 0);
     };
@@ -32,7 +31,7 @@ function SearchPage() {
             />
             <main className='search-page__content' >
                 <SearchForm
-                    initialState={query}
+                    initialState={{ keyword: prev.keyword, tvShows: prev.type === 'shows' }}
                     handleSubmit={handleSubmit}
                 />
                 {
@@ -44,7 +43,7 @@ function SearchPage() {
                             currentPage={currentPage}
                             totalPages={totalPages}
                             handleLoadMore={handleLoadMore}
-                            type={query.type}
+                            type={prev.type}
                         />
                 }
                 {

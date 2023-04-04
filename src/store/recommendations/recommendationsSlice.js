@@ -3,16 +3,29 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchRecommendations = createAsyncThunk('recommendations/fetchRecommendations', async ({ type, id }) => {
-    const { getUrl, options } = dbApiConfig[type].recommendations;
+export const fetchRecommendations = createAsyncThunk(
+    'recommendations/fetchRecommendations',
+    async ({ type, id }) => {
+        const { getUrl, options } = dbApiConfig[type].recommendations;
 
-    const response = await handleFetch(getUrl(id), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(id), options);
+        return response.json();
+    },
+    {
+        condition: (curr, { getState }) => {
+            const { recommendations: { prev } } = getState();
+
+            if (prev.id === curr.id && prev.type === curr.type) {
+                return false;
+            }
+        }
+    }
+);
 
 export const recommendationsSlice = createSlice({
     name: 'recommendations',
     initialState: {
+        prev: {},
         recommendations: [],
         loading: 'idle',
         error: '',
@@ -20,8 +33,9 @@ export const recommendationsSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchRecommendations.pending, (state) => {
+            .addCase(fetchRecommendations.pending, (state, { meta }) => {
                 state.loading = 'pending';
+                state.prev = meta.arg;
             })
             .addCase(fetchRecommendations.fulfilled, (state, action) => {
                 const { results } = action.payload;

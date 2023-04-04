@@ -3,16 +3,29 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchInfo = createAsyncThunk('info/fetchMovieInfo', async ({ type, id }) => {
-    const { getUrl, options } = dbApiConfig[type].info;
+export const fetchInfo = createAsyncThunk(
+    'info/fetchMovieInfo',
+    async ({ type, id }) => {
+        const { getUrl, options } = dbApiConfig[type].info;
 
-    const response = await handleFetch(getUrl(id), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(id), options);
+        return response.json();
+    },
+    {
+        condition: (curr, { getState }) => {
+            const { info: { prev } } = getState();
+
+            if(prev.id === curr.id && prev.type === curr.type) {
+                return false;
+            }
+        }
+    }
+);
 
 export const infoSlice = createSlice({
     name: 'info',
     initialState: {
+        prev: {},
         info: {},
         loading: 'idle',
         error: '',
@@ -20,8 +33,9 @@ export const infoSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchInfo.pending, (state) => {
+            .addCase(fetchInfo.pending, (state, { meta }) => {
                 state.loading = 'pending';
+                state.prev = meta.arg;
             })
             .addCase(fetchInfo.fulfilled, (state, action) => {
                 state.info = action.payload;

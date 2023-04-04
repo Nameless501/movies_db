@@ -3,12 +3,24 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchReviews = createAsyncThunk('reviews/fetchMovieReviews', async ({ type, id }) => {
-    const { getUrl, options } = dbApiConfig[type].reviews;
+export const fetchReviews = createAsyncThunk(
+    'reviews/fetchMovieReviews',
+    async ({ type, id }) => {
+        const { getUrl, options } = dbApiConfig[type].reviews;
 
-    const response = await handleFetch(getUrl(id), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(id), options);
+        return response.json();
+    },
+    {
+        condition: (curr, { getState }) => {
+            const { reviews: { prev } } = getState();
+
+            if(prev.id === curr.id && prev.type === curr.type) {
+                return false;
+            }
+        }
+    }
+);
 
 export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', async ({ type, id }, { getState }) => {
     const { reviews } = getState();
@@ -21,6 +33,7 @@ export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', asy
 export const reviewsSlice = createSlice({
     name: 'reviews',
     initialState: {
+        prev: {},
         totalPages: 1,
         currentPage: 1,
         reviews: [],
@@ -30,8 +43,9 @@ export const reviewsSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchReviews.pending, (state) => {
+            .addCase(fetchReviews.pending, (state, { meta }) => {
                 state.loading = 'pending';
+                state.prev = meta.arg;
             })
             .addCase(fetchReviews.fulfilled, (state, action) => {
                 const { results, page, total_pages } = action.payload;

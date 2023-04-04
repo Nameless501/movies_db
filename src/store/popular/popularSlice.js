@@ -3,14 +3,27 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchPopular = createAsyncThunk('popular/fetchPopular', async (type) => {
-    const { getUrl, options } = dbApiConfig[type].popular;
+export const fetchPopular = createAsyncThunk(
+    'popular/fetchPopular',
+    async (type) => {
+        const { getUrl, options } = dbApiConfig[type].popular;
 
-    const response = await handleFetch(getUrl(), options);
-    const data = await response.json();
+        const response = await handleFetch(getUrl(), options);
+        const data = await response.json();
 
-    return data;
-});
+        return data;
+    },
+    {
+        condition: (type, { getState }) => {
+            const { popular } = getState();
+            const { loading } = popular[type];
+
+            if(loading === 'pending' || loading === 'fulfilled') {
+                return false;
+            }
+        }
+    }
+);
 
 export const fetchMorePopular = createAsyncThunk('popular/fetchMorePopular', async (type, { getState }) => {
     const { popular } = getState();

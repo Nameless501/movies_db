@@ -3,16 +3,29 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchTrailer = createAsyncThunk('trailer/fetchTrailer', async ({ type, id}) => {
-    const { getUrl, options } = dbApiConfig[type].trailer;
+export const fetchTrailer = createAsyncThunk(
+    'trailer/fetchTrailer',
+    async ({ type, id }) => {
+        const { getUrl, options } = dbApiConfig[type].trailer;
 
-    const response = await handleFetch(getUrl(id), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(id), options);
+        return response.json();
+    },
+    {
+        condition: (curr, { getState }) => {
+            const { trailer: { prev } } = getState();
+
+            if (prev.id === curr.id && prev.type === curr.type) {
+                return false;
+            }
+        }
+    }
+);
 
 export const trailerSlice = createSlice({
     name: 'trailer',
     initialState: {
+        prev: {},
         key: '',
         loading: 'idle',
         error: '',
@@ -20,8 +33,9 @@ export const trailerSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchTrailer.pending, (state) => {
+            .addCase(fetchTrailer.pending, (state, { meta }) => {
                 state.loading = 'pending';
+                state.prev = meta.arg;
             })
             .addCase(fetchTrailer.fulfilled, (state, action) => {
                 const { results } = action.payload;

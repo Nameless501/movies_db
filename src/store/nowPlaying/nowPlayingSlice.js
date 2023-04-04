@@ -3,12 +3,23 @@ import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
-export const fetchNowPlaying = createAsyncThunk('nowPlaying/fetchNowPlaying', async () => {
-    const { getUrl, options } = dbApiConfig.movies.nowPlaying;
+export const fetchNowPlaying = createAsyncThunk(
+    'nowPlaying/fetchNowPlaying',
+    async () => {
+        const { getUrl, options } = dbApiConfig.movies.nowPlaying;
 
-    const response = await handleFetch(getUrl(), options);
-    return response.json();
-});
+        const response = await handleFetch(getUrl(), options);
+        return response.json();
+    },
+    {
+        condition: (arg, { getState }) => {
+            const { nowPlaying: { loading } } = getState();
+            if(loading === 'pending' || loading === 'fulfilled') {
+                return false;
+            }
+        }
+    }
+);
 
 export const fetchMoreNowPlaying = createAsyncThunk('nowPlaying/fetchMoreNowPlayingMovies', async (arg, { getState }) => {
     const { nowPlaying } = getState();
