@@ -5,6 +5,7 @@ import { usePortalContext } from '../../../contexts/PortalContext';
 import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import CloseButton from '../../UI/CloseButton/CloseButton';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
+import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import { TRAILER_BASE_URL } from '../../../utils/constants';
 import './TrailerPopup.css';
 
@@ -23,7 +24,7 @@ function TrailerPopup() {
         >
             <div className='trailer-popup'>
                 {
-                    (!loading && key) &&
+                    (loading === 'fulfilled') &&
                     <iframe
                         title='Трейлер фильма'
                         src={TRAILER_BASE_URL + key}
@@ -34,13 +35,14 @@ function TrailerPopup() {
                     />
                 }
                 {
-                    (!loading && error) &&
-                    <div className='trailer-popup__error-wrapper'>
-                        <ErrorMessage
-                            text={error}
-                            place='trailer-popup'
-                        />
-                    </div>
+                    (loading === 'rejected') &&
+                    <ErrorMessage
+                        text={error}
+                        place='trailer-popup'
+                    />
+                }
+                {
+                    (loading === 'pending') && <PreloaderSmall />
                 }
                 <CloseButton
                     place='popup'

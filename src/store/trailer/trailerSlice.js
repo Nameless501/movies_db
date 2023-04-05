@@ -44,12 +44,12 @@ export const trailerSlice = createSlice({
                 if (key) {
                     state.key = key;
                     state.error = '';
+                    state.loading = 'fulfilled';
                 } else {
                     state.key = '';
                     state.error = 'Не удалось найти трейлер';
+                    state.loading = 'rejected';
                 }
-
-                state.loading = 'fulfilled';
             })
             .addCase(fetchTrailer.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;
