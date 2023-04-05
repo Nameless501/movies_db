@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchNowPlaying, fetchMoreNowPlaying } from '../../../store/nowPlaying/nowPlayingSlice';
 import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
+import { getRandomElement } from '../../../utils/utils';
 
 function NowPlayingPage() {
     const { results, loading, error, currentPage, totalPages } = useSelector(state => state.nowPlaying);
@@ -18,15 +19,11 @@ function NowPlayingPage() {
         dispatch(fetchMoreNowPlaying());
     }
 
-    function getRandom(max) {
-        return Math.floor(Math.random() * max);
-    }
-
     return (
         <FeedPageWrapper
             title='Сейчас в прокате'
-            posterHorizontal={results[getRandom(19)]?.backdrop_path}
-            posterVertical={results[getRandom(19)]?.poster_path}
+            posterHorizontal={getRandomElement(results)?.backdrop_path}
+            posterVertical={getRandomElement(results)?.poster_path}
         >
             <CardsFeed
                 movies={results}

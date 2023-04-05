@@ -5,7 +5,7 @@ import CardButtons from '../CardButtons/CardButtons';
 import Rating from '../../UI/Rating/Rating';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import { routesConfig } from '../../../utils/configs';
-import posterFallback from '../../../images/poster_fallback.png';
+import { handlePosterFetchError } from '../../../utils/utils';
 import './PosterCard.css';
 
 const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vertical = true }) {
@@ -24,7 +24,7 @@ const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vert
                         src={vertical ? POSTER_VERTICAL_SMALL + movie.poster_path : POSTER_VERTICAL_SMALL + movie.backdrop_path}
                         alt='постер фильма'
                         className='poster-card__poster'
-                        onError={(evt) => evt.target.src = posterFallback}
+                        onError={handlePosterFetchError}
                     />
                 </div>
                 <figcaption className='poster-card__caption' >

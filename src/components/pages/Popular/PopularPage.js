@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPopular, fetchMorePopular } from '../../../store/popular/popularSlice';
 import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
+import { getRandomElement } from '../../../utils/utils';
 
 function PopularPage({ title, type = 'movies' }) {
     const { results, loading, error, currentPage, totalPages } = useSelector(state => state.popular[type]);
@@ -18,15 +19,11 @@ function PopularPage({ title, type = 'movies' }) {
         dispatch(fetchMorePopular(type));
     };
 
-    function getRandom(max) {
-        return Math.floor(Math.random() * max);
-    }
-
     return (
         <FeedPageWrapper
             title={title}
-            posterHorizontal={results[getRandom(19)]?.backdrop_path}
-            posterVertical={results[getRandom(19)]?.poster_path}
+            posterHorizontal={getRandomElement(results)?.backdrop_path}
+            posterVertical={getRandomElement(results)?.poster_path}
         >
             <CardsFeed
                 movies={results}

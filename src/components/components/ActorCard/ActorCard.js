@@ -1,5 +1,5 @@
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
-import photoFallback from '../../../images/icon_photo_fallback.png';
+import { handleAvatarFetchError } from '../../../utils/utils';
 import './ActorCard.css';
 
 function ActorCard({ actor }) {
@@ -9,7 +9,7 @@ function ActorCard({ actor }) {
                 src={POSTER_VERTICAL_SMALL + actor?.profile_path}
                 alt='Фото актера'
                 className='actor-card__photo'
-                onError={(evt) => evt.target.src = photoFallback}
+                onError={handleAvatarFetchError}
             />
             <figcaption className='actor-card__caption' >
                 <p className='actor-card__name'>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
-import avatarFallback from '../../../images/icon_photo_fallback.png';
+import { handleAvatarFetchError } from '../../../utils/utils';
 import './ReviewCard.css';
 
 function ReviewCard({ review }) {
@@ -19,7 +19,7 @@ function ReviewCard({ review }) {
                 src={POSTER_VERTICAL_SMALL + review?.author_details?.avatar_path}
                 alt='Аватар пользователя'
                 className='review-card__avatar'
-                onError={(evt) => evt.target.src = avatarFallback}
+                onError={handleAvatarFetchError}
             />
             <div className='review-card__review-header' >
                 <h3 className='review-card__author' >
