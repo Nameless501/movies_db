@@ -28,32 +28,32 @@ const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vert
                     />
                 </div>
                 <figcaption className='poster-card__caption' >
+                    {
+                        isDesktop &&
+                        <>
+                            <div className='poster-card__rating-wrapper' >
+                                <Rating
+                                    rating={movie.vote_average}
+                                />
+                            </div>
+                            <div className='poster-card__button-wrapper' >
+                                <CardButtons
+                                    place='poster-card'
+                                    id={movie.id}
+                                    type={type}
+                                />
+                            </div>
+                        </>
+                    }
                     <span className='poster-card__title' >
                         {movie.title ?? movie.name}
                     </span>
+                    <Link
+                        to={routesConfig[type].info + '/' + movie.id}
+                        className='poster-card__link-wrapper'
+                    />
                 </figcaption>
             </figure>
-            <Link
-                to={routesConfig[type].info + '/' + movie.id}
-                className='poster-card__link-wrapper'
-            />
-            {
-                isDesktop &&
-                <>
-                    <div className='poster-card__rating-wrapper' >
-                        <Rating
-                            rating={movie.vote_average}
-                        />
-                    </div>
-                    <div className='poster-card__button-wrapper' >
-                        <CardButtons
-                            place='poster-card'
-                            id={movie.id}
-                            type={type}
-                        />
-                    </div>
-                </>
-            }
         </div>
     );
 })
