@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movies_db/static/css/main.6109a9e6.css",
-    "main.js": "/movies_db/static/js/main.d42037fb.js",
+    "main.css": "/movies_db/static/css/main.72a3ae86.css",
+    "main.js": "/movies_db/static/js/main.e437f9db.js",
     "static/media/Inter-Bold.woff?v=3.19": "/movies_db/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff?v=3.19": "/movies_db/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Medium.woff?v=3.19": "/movies_db/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
@@ -27,11 +27,11 @@
     "static/media/icon_save_active.svg": "/movies_db/static/media/icon_save_active.19838eb1b938816bcf13.svg",
     "static/media/icon_copy.svg": "/movies_db/static/media/icon_copy.8f9ec6bc6bb1962990bb70c7fbfe8eee.svg",
     "static/media/icon_arrow.svg": "/movies_db/static/media/icon_arrow.441ce4d13a4f17fa1209.svg",
-    "main.6109a9e6.css.map": "/movies_db/static/css/main.6109a9e6.css.map",
-    "main.d42037fb.js.map": "/movies_db/static/js/main.d42037fb.js.map"
+    "main.72a3ae86.css.map": "/movies_db/static/css/main.72a3ae86.css.map",
+    "main.e437f9db.js.map": "/movies_db/static/js/main.e437f9db.js.map"
   },
   "entrypoints": [
-    "static/css/main.6109a9e6.css",
-    "static/js/main.d42037fb.js"
+    "static/css/main.72a3ae86.css",
+    "static/js/main.e437f9db.js"
   ]
 }
