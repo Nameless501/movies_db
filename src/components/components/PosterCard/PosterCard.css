@@ -57,13 +57,16 @@
     -moz-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
+    background-image: url('../../../images/poster_fallback.png');
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .poster-card__poster {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    display: block;
     width: 100%;
     height: 100%;
     object-position: center;
@@ -71,6 +74,11 @@
     background-color: transparent;
     transform: scale(1);
     transition: transform .2s linear;
+    display: none;
+}
+
+.poster-card__poster_loaded {
+    display: block;
 }
 
 .poster-card__caption {

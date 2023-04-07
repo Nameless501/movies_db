@@ -13,16 +13,33 @@
     gap: 10px 30px;
 }
 
-.review-card__avatar {
+.review-card__avatar-wrapper {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    overflow: hidden;
+    background-image: url('../../../images/icon_photo_fallback.png');
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.review-card__avatar {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 1/1;
     object-fit: cover;
     object-position: center;
-    grid-area: avatar;
+    display: none;
+}
+
+.review-card__avatar_loaded {
+    display: block;
 }
 
 .review-card__review-header {

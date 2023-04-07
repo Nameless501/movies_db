@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
-import { handleAvatarFetchError } from '../../../utils/utils';
+import useImageLoad from '../../../hooks/useImageLoad';
 import './ReviewCard.css';
 
 function ReviewCard({ review }) {
     const [isOpen, setIsOpen] = useState(false);
+    const { imageState, checkImageLoading } = useImageLoad();
 
     const reviewText = review?.content.split(' ');
     const isLongRead = reviewText.length > 75;
@@ -15,12 +16,17 @@ function ReviewCard({ review }) {
 
     return (
         <article className='review-card' >
-            <img
-                src={POSTER_VERTICAL_SMALL + review?.author_details?.avatar_path}
-                alt='Аватар пользователя'
-                className='review-card__avatar'
-                onError={handleAvatarFetchError}
-            />
+            <div className='review-card__avatar-wrapper' >
+                <img
+                    src={POSTER_VERTICAL_SMALL + review?.author_details?.avatar_path}
+                    alt='Аватар пользователя'
+                    className={`
+                        review-card__avatar
+                        ${ imageState === 'loaded' && 'review-card__avatar_loaded' }
+                    `}
+                    onLoad={checkImageLoading}
+                />
+            </div>
             <div className='review-card__review-header' >
                 <h3 className='review-card__author' >
                     {review?.author}

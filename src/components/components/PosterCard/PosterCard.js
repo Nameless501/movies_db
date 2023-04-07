@@ -1,15 +1,16 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import useResize from '../../../hooks/useResize';
+import useImageLoad from '../../../hooks/useImageLoad';
 import CardButtons from '../CardButtons/CardButtons';
 import Rating from '../../UI/Rating/Rating';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import { routesConfig } from '../../../utils/configs';
-import { handlePosterFetchError } from '../../../utils/utils';
 import './PosterCard.css';
 
 const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vertical = true }) {
     const { isDesktop } = useResize();
+    const { imageState, checkImageLoading } = useImageLoad();
 
     return (
         <div
@@ -23,8 +24,11 @@ const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vert
                     <img
                         src={vertical ? POSTER_VERTICAL_SMALL + movie.poster_path : POSTER_VERTICAL_SMALL + movie.backdrop_path}
                         alt='постер фильма'
-                        className='poster-card__poster'
-                        onError={handlePosterFetchError}
+                        className={`
+                            poster-card__poster
+                            ${ imageState === 'loaded' && 'poster-card__poster_loaded' }
+                        `}
+                        onLoad={checkImageLoading}
                     />
                 </div>
                 <figcaption className='poster-card__caption' >
