@@ -1,17 +1,17 @@
-import useResize from '../../../hooks/useResize';
-import { POSTER_HORIZONTAL_ORIGINAL, POSTER_VERTICAL_SMALL } from '../../../utils/constants';
+import PosterLazyLoad from '../../components/PosterLazyLoad/PosterLazyLoad';
 import './PagePoster.css';
 
 function PagePoster({ posterHorizontal, posterVertical }) {
-    const { isMobile } = useResize();
-
-    const posterUrl = isMobile ? POSTER_VERTICAL_SMALL + posterVertical : POSTER_HORIZONTAL_ORIGINAL + posterHorizontal;
-
     return (
         <div
             className='page-poster'
-            style={{'--image_url': `url(${posterUrl})`}}
-        />
+        >
+            <PosterLazyLoad
+                posterHorizontal={posterHorizontal}
+                posterVertical={posterVertical}
+                place='feed'
+            />
+        </div>
     );
 }
 
