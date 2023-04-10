@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function usePageScroll() {
+function useImageLoad() {
     const [imageState, setImageState] = useState('pending');
 
     function checkImageLoading () {
@@ -15,4 +15,4 @@ function usePageScroll() {
     return { imageState, checkImageLoading, checkImageError };
 }
 
-export default usePageScroll;
+export default useImageLoad;

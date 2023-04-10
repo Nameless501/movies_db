@@ -1,12 +1,25 @@
 .slide-main {
     margin: 0;
-    padding: 0 150px;
+    padding: 0;
     box-sizing: border-box;
     width: 100%;
     height: 100vh;
     position: relative;
-    display: flex;
-    align-items: center;
+}
+
+.slide-main::after {
+    content: '';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     background:
         linear-gradient(45deg, transparent 95%, var(--colors_bg_main)),
         linear-gradient(315deg, transparent 95%, var(--colors_bg_main)),
@@ -14,8 +27,7 @@
         linear-gradient(225deg, transparent 95%, var(--colors_bg_main)),
         linear-gradient(90deg, transparent 70%, var(--colors_bg_main)),
         linear-gradient(270deg, transparent 70%, var(--colors_bg_main)),
-        linear-gradient(to right, rgb(0, 0, 0, .3) 50%, transparent),
-        var(--image_url) center / cover no-repeat;
+        linear-gradient(to right, rgb(0, 0, 0, .3) 50%, transparent);
 }
 
 .slide-main__content-wrapper {
@@ -29,7 +41,10 @@
     align-items: flex-start;
     justify-content: center;
     gap: 20px;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 150px;
+    transform: translateY(-50%);
     z-index: 1;
 }
 
@@ -79,12 +94,9 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .slide-main {
-        padding: 0 90px;
-    }
-
     .slide-main__content-wrapper {
         gap: 25px;
+        left: 90px;
     }
 
     .slide-main__title {
@@ -98,24 +110,12 @@
 }
 
 @media screen and (max-width: 767px) {
-    .slide-main {
-        padding: 0 30px;
-        background:
-            linear-gradient(45deg, transparent 95%, var(--colors_bg_main)),
-            linear-gradient(315deg, transparent 95%, var(--colors_bg_main)),
-            linear-gradient(135deg, transparent 95%, var(--colors_bg_main)),
-            linear-gradient(225deg, transparent 95%, var(--colors_bg_main)),
-            linear-gradient(90deg, transparent 70%, var(--colors_bg_main)),
-            linear-gradient(270deg, transparent 70%, var(--colors_bg_main)),
-            radial-gradient(rgb(0, 0, 0, .5), transparent),
-            var(--image_url) center / cover no-repeat;
-        justify-content: center;
-    }
-
     .slide-main__content-wrapper {
+        padding: 0 30px;
         max-width: 100%;
         align-items: center;
         gap: 30px;
+        left: 0;
     }
 
     .slide-main__title {
