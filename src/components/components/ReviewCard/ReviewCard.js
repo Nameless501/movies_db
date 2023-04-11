@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import useImageLoad from '../../../hooks/useImageLoad';
+import avatarFallback from '../../../images/icon_photo_fallback.png';
 import './ReviewCard.css';
 
 function ReviewCard({ review }) {
@@ -16,14 +17,15 @@ function ReviewCard({ review }) {
 
     return (
         <article className='review-card' >
-            <div className='review-card__avatar-wrapper' >
+            <div
+                className='review-card__avatar-wrapper'
+                style={{'backgroundImage': `url(${ imageState !== 'loaded' && avatarFallback })`}}
+            >
                 <img
                     src={POSTER_VERTICAL_SMALL + review?.author_details?.avatar_path}
                     alt='Аватар пользователя'
-                    className={`
-                        review-card__avatar
-                        ${ imageState === 'loaded' && 'review-card__avatar_loaded' }
-                    `}
+                    className='review-card__avatar'
+                    style={{'display': `${ imageState === 'loaded' && 'block'}`}}
                     onLoad={checkImageLoading}
                 />
             </div>

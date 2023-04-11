@@ -6,6 +6,7 @@ import useImageLoad from '../../../hooks/useImageLoad';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import CardButtons from '../../components/CardButtons/CardButtons';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
+import posterFallback from '../../../images/poster_fallback.png';
 import './Description.css';
 
 function Description({ type = 'movies' }) {
@@ -20,14 +21,15 @@ function Description({ type = 'movies' }) {
 
     return (
         <div className='description' >
-            <div className='description__poster-wrapper'>
+            <div
+                className='description__poster-wrapper'
+                style={{'backgroundImage': `url(${ imageState !== 'loaded' && posterFallback })`}}
+            >
                 <img
                     src={POSTER_VERTICAL_SMALL + info?.poster_path}
                     alt='Постер фильма'
-                    className={`
-                        description__poster
-                        ${ imageState === 'loaded' && 'description__poster_loaded' }
-                    `}
+                    className='description__poster'
+                    style={{'display': `${ imageState === 'loaded' && 'block'}`}}
                     onLoad={checkImageLoading}
                 />
             </div>

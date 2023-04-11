@@ -6,6 +6,7 @@ import CardButtons from '../CardButtons/CardButtons';
 import Rating from '../../UI/Rating/Rating';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import { routesConfig } from '../../../utils/configs';
+import posterFallback from '../../../images/poster_fallback.png';
 import './PosterCard.css';
 
 const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vertical = true }) {
@@ -20,14 +21,15 @@ const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vert
             `}
         >
             <figure className='poster-card__figure' >
-                <div className='poster-card__poster-wrapper' >
+                <div
+                    className='poster-card__poster-wrapper'
+                    style={{'backgroundImage': `url(${ imageState !== 'loaded' && posterFallback })`}}
+                >
                     <img
                         src={vertical ? POSTER_VERTICAL_SMALL + movie.poster_path : POSTER_VERTICAL_SMALL + movie.backdrop_path}
                         alt='постер фильма'
-                        className={`
-                            poster-card__poster
-                            ${ imageState === 'loaded' && 'poster-card__poster_loaded' }
-                        `}
+                        className='poster-card__poster'
+                        style={{'display': `${ imageState === 'loaded' && 'block'}`}}
                         onLoad={checkImageLoading}
                     />
                 </div>

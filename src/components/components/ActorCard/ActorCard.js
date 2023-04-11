@@ -1,5 +1,6 @@
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import useImageLoad from '../../../hooks/useImageLoad';
+import photoFallback from '../../../images/icon_photo_fallback.png';
 import './ActorCard.css';
 
 function ActorCard({ actor }) {
@@ -7,14 +8,15 @@ function ActorCard({ actor }) {
 
     return (
         <figure className='actor-card' >
-            <div className='actor-card__photo-wrapper' >
+            <div
+                className='actor-card__photo-wrapper'
+                style={{'backgroundImage': `url(${ imageState !== 'loaded' && photoFallback })`}}
+            >
                 <img
                     src={POSTER_VERTICAL_SMALL + actor?.profile_path}
                     alt='Фото актера'
-                    className={`
-                        actor-card__photo
-                        ${ imageState === 'loaded' && 'actor-card__photo_loaded' }
-                    `}
+                    className='actor-card__photo'
+                    style={{'display': `${ imageState === 'loaded' && 'block'}`}}
                     onLoad={checkImageLoading}
                 />
             </div>

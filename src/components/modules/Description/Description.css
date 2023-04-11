@@ -23,7 +23,6 @@
     grid-area: poster;
     aspect-ratio: 2/3;
     width: 100%;
-    background-image: url('../../../images/poster_fallback.png');
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -41,10 +40,6 @@
     width: 100%;
     box-shadow: 0px 4px 30px rgba(255, 255, 255, 0.05);
     border-radius: 6px;
-}
-
-.description__poster_loaded {
-    display: block;
 }
 
 .description__title {
