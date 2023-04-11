@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
+import useResize from '../../../hooks/useResize';
 import Rating from '../../UI/Rating/Rating';
 import LinkButton from '../../UI/LinkButton/LinkButton';
 import CardButtons from '../CardButtons/CardButtons';
@@ -10,6 +11,7 @@ import './SlideMain.css';
 function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, release_date, id }) {
     const slideRef = useRef();
     const [slideIsVisible, setSlideIsVisible] = useState(false);
+    const { isMobile } = useResize();
 
     // load posters only when slide visible
 
@@ -31,7 +33,7 @@ function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, 
             ref={slideRef}
         >
             {
-                slideIsVisible &&
+                (slideIsVisible || isMobile) &&
                 <PosterLazyLoad
                     posterVertical={poster_path}
                     posterHorizontal={backdrop_path}
