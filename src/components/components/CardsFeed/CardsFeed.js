@@ -1,14 +1,28 @@
+import { useRef } from 'react';
 import useResize from '../../../hooks/useResize';
+import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import CardsList from '../CardsList/CardsList';
-import MoreButton from '../../UI/MoreButton/MoreButton';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import Preloader from '../../UI/Preloader/Preloader';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './CardsFeed.css';
 
 function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalPages, type }) {
+    const listEndRef = useRef();
     const { isDesktop, isTablet } = useResize();
+
     const columnsCount = isDesktop ? 5 : isTablet ? 4 : 2;
+
+    useIntersectionObserver(
+        listEndRef,
+        ([{ isIntersecting }]) => {
+            if (isIntersecting) {
+                handleLoadMore();
+            }
+        },
+        '0px',
+        0.5
+    );
 
     return (
         <section className='cards-feed'>
@@ -26,14 +40,9 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
                 <div
                     className='cards-feed__more-button'
                     style={{ 'height': `${100 / (movies.length / columnsCount)}%` }}  // get dynamic size of last row in %
+                    ref={listEndRef}
                 >
-                    {loading === 'pendingNextPage' ?
-                        <PreloaderSmall />
-                        :
-                        <MoreButton
-                            handleClick={handleLoadMore}
-                        />
-                    }
+                    { loading !== 'rejected' && <PreloaderSmall /> }
                 </div>
             }
             {
