@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/movies_db/static/css/main.c9c726d9.css",
+    "main.css": "/movies_db/static/css/main.4218bf54.css",
     "main.js": "/movies_db/static/js/main.9ab73315.js",
     "static/media/Inter-Bold.woff?v=3.19": "/movies_db/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff?v=3.19": "/movies_db/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
@@ -19,20 +19,22 @@
     "static/media/icon_whatsapp.svg": "/movies_db/static/media/icon_whatsapp.81e1aa1ee8bd9038062e85b1cae08e9f.svg",
     "index.html": "/movies_db/index.html",
     "static/media/icon_share.svg": "/movies_db/static/media/icon_share.547ebe6524caf7b080de.svg",
+    "static/media/icon_share_crimson.svg": "/movies_db/static/media/icon_share_crimson.916a864e29c4bca6add8.svg",
     "static/media/icon_search.svg": "/movies_db/static/media/icon_search.b5445e755c49a8f57fdc.svg",
     "static/media/profile_btn_icon.svg": "/movies_db/static/media/profile_btn_icon.e711d9fe79db02ed555e.svg",
     "static/media/icon_spinner.svg": "/movies_db/static/media/icon_spinner.b5118a6e97eb035e9e5a.svg",
     "static/media/icon_play.svg": "/movies_db/static/media/icon_play.e03f25028f73d04b9585.svg",
+    "static/media/icon_play_crimson.svg": "/movies_db/static/media/icon_play_crimson.77592d276a13e6fa8504.svg",
     "static/media/icon_save.svg": "/movies_db/static/media/icon_save.2bd8bf24e3c195b77586.svg",
     "static/media/icon_save_active.svg": "/movies_db/static/media/icon_save_active.19838eb1b938816bcf13.svg",
     "static/media/icon_copy.svg": "/movies_db/static/media/icon_copy.8f9ec6bc6bb1962990bb70c7fbfe8eee.svg",
     "static/media/icon_arrow.svg": "/movies_db/static/media/icon_arrow.fbe039773c0bd5110c69.svg",
     "static/media/icon_arrow_crimson.svg": "/movies_db/static/media/icon_arrow_crimson.e2d8868dbfa2acea3e2b.svg",
-    "main.c9c726d9.css.map": "/movies_db/static/css/main.c9c726d9.css.map",
+    "main.4218bf54.css.map": "/movies_db/static/css/main.4218bf54.css.map",
     "main.9ab73315.js.map": "/movies_db/static/js/main.9ab73315.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9c726d9.css",
+    "static/css/main.4218bf54.css",
     "static/js/main.9ab73315.js"
   ]
 }
