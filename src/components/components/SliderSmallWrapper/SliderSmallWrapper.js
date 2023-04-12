@@ -1,22 +1,26 @@
-import LinkButton from '../../UI/LinkButton/LinkButton';
+import { Link } from 'react-router-dom';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './SliderSmallWrapper.css';
 
 function SliderSmallWrapper({ title, link, loading, children }) {
     return (
         <section className='slider-small-wrapper'>
-            <div className='slider-small-wrapper__flex'>
-                <h2 className='slider-small-wrapper__title' >
-                    {title}
-                </h2>
-                {link &&
-                    <LinkButton
-                        link={link}
-                        place='slider-small'
-                        text='Смотреть еще'
-                    />
-                }
-            </div>
+            {
+                link ?
+                    <Link
+                        to={link}
+                        className='slider-small-wrapper__link'
+                    >
+                        <h2 className='slider-small-wrapper__title' >
+                            {title}
+                            <span className='slider-small-wrapper__icon' />
+                        </h2>
+                    </Link>
+                    :
+                    <h2 className='slider-small-wrapper__title' >
+                        {title}
+                    </h2>
+            }
             {
                 loading === 'pending' && <PreloaderSmall />
             }

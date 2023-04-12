@@ -18,6 +18,7 @@ body {
     --colors_btn_white: #F7F8FF;
     --colors_btn_gray: #F9F9F9;
     --colors_btn_crimson: #E67776;
+    --colors_btn_crimson_hover: #AA4346;
     --colors_checkbox_bg: #F7F8FF;
     --colors_checkbox_bg_checked: #E67776;
     --colors_checkbox_slider: #E67776;
