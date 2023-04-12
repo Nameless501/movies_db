@@ -6,7 +6,7 @@ import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
 function TopRatedSlider({ type = 'movies' }) {
-    const { results, loading } = useSelector(state => state.topRated[type]);
+    const { results, loading, error } = useSelector(state => state.topRated[type]);
     const dispatch = useDispatch();
 
     // API fetch
@@ -20,6 +20,7 @@ function TopRatedSlider({ type = 'movies' }) {
             title='Фильмы с высоким рейтингом'
             link={routesConfig[type].topRated}
             loading={loading}
+            error={error}
         >
             <SliderSmall
                 movies={results}

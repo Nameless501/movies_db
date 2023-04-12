@@ -38,11 +38,17 @@ export const recommendationsSlice = createSlice({
                 state.prev = meta.arg;
             })
             .addCase(fetchRecommendations.fulfilled, (state, action) => {
-                const { results } = action.payload;
+                const { results, total_results } = action.payload;
 
-                state.recommendations = results;
-                state.loading = 'fulfilled';
-                state.error = '';
+                if (total_results > 0) {
+                    state.recommendations = results;
+                    state.loading = 'fulfilled';
+                    state.error = '';
+                } else {
+                    state.recommendations = [];
+                    state.loading = 'rejected';
+                    state.error = 'Кажется рекоммендации к этому фильму пока не составлены';
+                }
             })
             .addCase(fetchRecommendations.rejected, (state) => {
                 state.error = ERROR_MOVIES_FETCH;

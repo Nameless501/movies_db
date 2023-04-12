@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
+import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SliderSmallWrapper.css';
 
-function SliderSmallWrapper({ title, link, loading, children }) {
+function SliderSmallWrapper({ title, link, loading, error, children }) {
     return (
         <section className='slider-small-wrapper'>
             {
@@ -23,6 +24,13 @@ function SliderSmallWrapper({ title, link, loading, children }) {
             }
             {
                 loading === 'pending' && <PreloaderSmall />
+            }
+            {
+                loading === 'rejected' &&
+                    <ErrorMessage
+                        text={error}
+                        place='slider-small'
+                    />
             }
             {
                 loading === 'fulfilled' && children

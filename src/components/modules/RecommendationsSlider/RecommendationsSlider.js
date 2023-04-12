@@ -7,7 +7,7 @@ import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallW
 
 function RecommendationsSlider({ type = 'movies' }) {
     const { id } = useParams();
-    const { recommendations, loading } = useSelector(state => state.recommendations);
+    const { recommendations, loading, error } = useSelector(state => state.recommendations);
     const dispatch = useDispatch();
 
     // API fetch
@@ -20,6 +20,7 @@ function RecommendationsSlider({ type = 'movies' }) {
         <SliderSmallWrapper
             title='Похожие фильмы'
             loading={loading}
+            error={error}
         >
             <SliderSmall
                 movies={recommendations}

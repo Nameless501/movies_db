@@ -6,7 +6,7 @@ import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
 function NowPlayingSlider({ type = 'movies' }) {
-    const { results, loading } = useSelector(state => state.nowPlaying);
+    const { results, loading, error } = useSelector(state => state.nowPlaying);
     const dispatch = useDispatch();
 
     // API fetch
@@ -20,6 +20,7 @@ function NowPlayingSlider({ type = 'movies' }) {
             title='Сейчас в кинотеатрах'
             link={routesConfig[type].nowPlaying}
             loading={loading}
+            error={error}
         >
             <SliderSmall
                 movies={results}
