@@ -32,13 +32,11 @@ function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, 
             className='slide-main'
             ref={slideRef}
         >
-            {
-                (slideIsVisible || isMobile) &&
-                <PosterLazyLoad
-                    posterVertical={poster_path}
-                    posterHorizontal={backdrop_path}
-                />
-            }
+            <PosterLazyLoad
+                posterVertical={poster_path}
+                posterHorizontal={backdrop_path}
+                loadFullSize={slideIsVisible && !isMobile}
+            />
             <div className='slide-main__content-wrapper'>
                 <h2 className='slide-main__title' >
                     {title}

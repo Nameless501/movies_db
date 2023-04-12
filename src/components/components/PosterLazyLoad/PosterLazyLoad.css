@@ -30,7 +30,7 @@
 .poster-lazy__full-size {
     margin: 0;
     padding: 0;
-    display: block;
+    display: none;
     box-sizing: border-box;
     width: 100%;
     height: 100%;

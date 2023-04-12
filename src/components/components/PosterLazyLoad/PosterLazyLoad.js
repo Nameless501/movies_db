@@ -3,7 +3,7 @@ import useImageLoad from '../../../hooks/useImageLoad';
 import { POSTER_HORIZONTAL_ORIGINAL, POSTER_VERTICAL_SMALL, POSTER_HORIZONTAL_SMALL } from '../../../utils/constants';
 import './PosterLazyLoad.css';
 
-function PosterLazyLoad({ posterVertical, posterHorizontal, place }) {
+function PosterLazyLoad({ posterVertical, posterHorizontal, loadFullSize, place }) {
     const { isMobile } = useResize();
     const { imageState, checkImageLoading } = useImageLoad();
 
@@ -19,12 +19,13 @@ function PosterLazyLoad({ posterVertical, posterHorizontal, place }) {
             `}
         >
             {
-                !isMobile &&
+                loadFullSize &&
                 <img
                     src={posterFullSize}
                     alt='Постер фильма'
                     className='poster-lazy__full-size'
                     onLoad={checkImageLoading}
+                    style={{ 'display': `${ imageState === 'loaded' && 'block' }` }}
                 />
             }
             <img
