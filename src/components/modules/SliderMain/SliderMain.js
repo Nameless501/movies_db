@@ -21,7 +21,7 @@ function SliderMain() {
             <Swiper
                 loop={true}
                 slidesPerView={1}
-                spaceBetween={0}
+                spaceBetween={10}
                 navigation={!isMobile}
                 modules={[Navigation]}
                 className="slider-main__swiper"
