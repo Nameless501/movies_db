@@ -44,13 +44,6 @@ function SearchPage() {
                     handleLoadMore={handleLoadMore}
                     type={prev.type}
                 />
-                {
-                    (error && result.length === 0) &&
-                    <ErrorMessage
-                        text={error}
-                        place='movies'
-                    />
-                }
             </main>
             <Footer />
         </div>

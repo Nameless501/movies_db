@@ -48,11 +48,18 @@ export const searchSlice = createSlice({
                 state.prev = meta.arg;
             })
             .addCase(fetchSearchQuery.fulfilled, (state, action) => {
-                const { results, page, total_pages } = action.payload;
+                const { results, page, total_pages, total_results } = action.payload;
 
-                state.result = results;
-                state.loading = 'fulfilled';
-                state.error = results.length > 0 ? '' : 'Ничего не нашлось';
+
+                if (total_results > 0) {
+                    state.result = results;
+                    state.loading = 'fulfilled';
+                    state.error = '';
+                } else {
+                    state.result = [];
+                    state.loading = 'rejected';
+                    state.error = 'Ничего не нашлось';
+                }
 
                 state.totalPages = total_pages;
                 state.currentPage = page;
