@@ -7,12 +7,7 @@
     background-image: url('../../../images/icon_play.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 85%;
-}
-
-.play-button:hover {
-    cursor: pointer;
-    background-color: var(--colors_btn_crimson);
+    background-size: 100%;
 }
 
 .play-button_place_poster-card{
@@ -27,4 +22,12 @@
 .play-button_place_slide-main {
     width: 30px;
     height: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+    .play-button:hover {
+        cursor: pointer;
+        background-image: url('../../../images/icon_play_crimson.svg');
+        background-color: var(--colors_btn_white);
+    }
 }

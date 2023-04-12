@@ -9,11 +9,6 @@
     background-size: 65%;
 }
 
-.card-button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
 .card-button_saved {
     background-image: url('../../../images/icon_save_active.svg');
 }
@@ -31,4 +26,11 @@
 .card-button_place_slide-main {
     width: 30px;
     height: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+    .card-button:hover {
+        cursor: pointer;
+        background-image: url('../../../images/icon_save_active.svg');
+    }
 }

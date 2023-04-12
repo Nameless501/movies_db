@@ -9,11 +9,6 @@
     background-size: 80%;
 }
 
-.share-button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
 .share-button_place_poster-card{
     width: 25px;
     height: 25px;
@@ -27,4 +22,11 @@
 .share-button_place_slide-main {
     width: 30px;
     height: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+    .share-button:hover {
+        cursor: pointer;
+        background-image: url('../../../images/icon_share_crimson.svg');
+    }
 }
