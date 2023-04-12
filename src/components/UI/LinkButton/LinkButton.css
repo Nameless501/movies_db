@@ -1,46 +1,70 @@
 .link-button {
     margin: 0;
-    padding: 8px 17px;
+    padding: 6px 14px;
     box-sizing: border-box;
-    min-width: fit-content;
     border: 0;
     border-radius: 6px;
-    font-family: var(--fonts_family);
-    font-weight: 700;
-    font-size: 14px;
     text-decoration: none;
-    background-color: var(--colors_btn_crimson);
     color: var(--fonts_colors_btn);
-}
-
-.link-button_place_slider-main {
-    padding: 10px 20px;
-    font-weight: 700;
-    font-size: 15px;
+    font-family: var(--fonts_family);
+    background-color: transparent;
 }
 
 .link-button:hover {
     cursor: pointer;
-    opacity: .8;
 }
 
-.link-button:visited {
-    text-decoration: none;
-    color: var(--fonts_colors_btn);
+.link-button_place_slide-main {
+    font-weight: 700;
+    font-size: 15px;
+    background-color: var(--colors_btn_crimson);
+}
+
+.link-button_place_sign-in {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.link-button_place_sign-up {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    background-color: var(--colors_btn_crimson);
+}
+
+@media screen and (min-width: 1024px) {
+    .link-button_place_slide-main:hover {
+        background-color: var(--colors_btn_crimson_hover);
+    }
+
+    .link-button_place_sign-in:hover {
+        opacity: .8;
+    }
+
+    .link-button_place_sign-up:hover {
+        background-color: var(--colors_btn_crimson_hover);
+    }
 }
 
 @media screen and (max-width: 1023px) {
-    .link-button_place_slider-small {
-        padding: 6px 15px;
-        font-weight: 600;
-        font-size: 13px;
+    .link-button_place_sign-in {
+        font-size: 16px;
+    }
+
+    .link-button_place_sign-up {
+        font-size: 16px;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .link-button_place_slider-small {
-        padding: 4px 10px;
-        font-weight: 500;
-        font-size: 12px;
+    .link-button_place_sign-in {
+        padding: 5px 12px;
+        font-size: 14px;
+    }
+
+    .link-button_place_sign-up {
+        padding: 5px 12px;
+        font-size: 14px;
     }
 }

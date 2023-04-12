@@ -1,5 +1,5 @@
 import { usePortalContext } from '../../../contexts/PortalContext';
-import SignButton from '../../UI/SignButton/SignButton';
+import LinkButton from '../../UI/LinkButton/LinkButton';
 import { routesConfig } from '../../../utils/configs';
 import './AuthMenu.css';
 
@@ -15,28 +15,26 @@ function AuthMenu({ place }) {
                 `}
             >
                 <li>
-                    {/* <SignButton
-                        classType='sign-in'
+                    {/* <LinkButton
                         text='Регистрация'
-                        to={routesConfig.signUp}
-                        place={place}
+                        link={routesConfig.signUp}
+                        place='sign-in'
                     /> */}
                     <button
-                        className='sign-button sign-button_type_sign-in'
+                        className='link-button link-button_place_sign-in'
                         onClick={openConstructionPopup}
                     >
                         Регистрация
                     </button>
                 </li>
                 <li>
-                    {/* <SignButton
-                        classType='sign-up'
+                    {/* <LinkButton
                         text='Войти'
-                        to={routesConfig.signIn}
-                        place={place}
+                        link={routesConfig.signIn}
+                        place='sign-up'
                     /> */}
                     <button
-                        className='sign-button sign-button_type_sign-up'
+                        className='link-button link-button_place_sign-up'
                         onClick={openConstructionPopup}
                     >
                         Войти
