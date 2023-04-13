@@ -1,5 +1,5 @@
 import SignFormButton from '../../UI/SignFormButton/SignFormButton';
-import FormLink from '../../components/FormLink/FormLink';
+import NavigationLink from '../../UI/NavigationLink/NavigationLink';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import { routesConfig } from '../../../utils/configs';
 import './SignFormWrapper.css';
@@ -18,32 +18,20 @@ function SignFormWrapper({ type, disabled, onSubmit, error, children }) {
                     text={error}
                     place='sign-form'
                 />
-                {type === 'sign-up' &&
-                    <>
-                        <SignFormButton
-                            text='Зарегистрироваться'
-                            disabled={disabled}
-                        />
-                        <FormLink
-                            text='Уже зарегистрированы?'
-                            linkText='Войти'
-                            to={routesConfig.signIn}
-                        />
-                    </>
-                }
-                {type === 'sign-in' &&
-                    <>
-                        <SignFormButton
-                            text='Войти'
-                            disabled={disabled}
-                        />
-                        <FormLink
-                            text='Ещё не зарегистрированы?'
-                            linkText='Регистрация'
-                            to={routesConfig.signUp}
-                        />
-                    </>
-                }
+                <SignFormButton
+                    text='Войти'
+                    disabled={disabled}
+                />
+                <div className='sign-form__link' >
+                    <span className='sign-form__link-text' >
+                        Ещё не зарегистрированы?
+                    </span>
+                    <NavigationLink
+                        text='Регистрация'
+                        to={routesConfig.main}
+                        place='form'
+                    />
+                </div>
             </div>
         </form>
     );

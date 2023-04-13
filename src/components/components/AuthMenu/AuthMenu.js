@@ -28,17 +28,11 @@ function AuthMenu({ place }) {
                     </button>
                 </li>
                 <li>
-                    {/* <LinkButton
+                    <LinkButton
                         text='Войти'
                         link={routesConfig.signIn}
                         place='sign-up'
-                    /> */}
-                    <button
-                        className='link-button link-button_place_sign-up'
-                        onClick={openConstructionPopup}
-                    >
-                        Войти
-                    </button>
+                    />
                 </li>
             </ul>
         </nav>

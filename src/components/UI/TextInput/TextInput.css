@@ -27,6 +27,7 @@
     border-radius: 8px 0 0 8px;
     border: 1px solid var(--fonts_colors_fade);
     background-color: transparent;
+    height: 48px;
 }
 
 .text-input_place_search:focus {
@@ -34,13 +35,15 @@
 }
 
 .text-input_place_form {
-    max-width: 100%;
     padding: 15px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--fonts_colors_fade);
+    background-color: transparent;
 }
 
 .text-input_place_form:focus {
     border: 1px solid var(--fonts_colors_main);
-    padding: 14px;
 }
 
 .text-input_place_profile {
@@ -51,10 +54,6 @@
     font-size: 11px;
     line-height: 13px;
     text-align: end;
-}
-
-.text-input_place_search {
-    height: 48px;
 }
 
 .text-input_place_profile:focus {

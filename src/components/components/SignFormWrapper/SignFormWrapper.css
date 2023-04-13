@@ -2,11 +2,10 @@
     margin: 0;
     padding: 0;
     border: 0;
-    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 100px;
 }
 
 .sign-form__fieldset {
@@ -15,6 +14,7 @@
     border: 0;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .sign-form__button-wrapper {
@@ -27,8 +27,36 @@
     position: relative;
 }
 
+.sign-form__link {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sign-form__link-text {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--fonts_colors_fade);
+}
+
 @media screen and (max-width: 767px) {
+    .sign-form {
+        gap: 70px;
+    }
+
     .sign-form__button-wrapper {
         gap: 16px;
+    }
+
+    .sign-form__link {
+        font-size: 12px;
+        line-height: 15px;
     }
 }

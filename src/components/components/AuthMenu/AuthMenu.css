@@ -9,11 +9,11 @@
     box-sizing: border-box;
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
 .auth-menu__buttons_place_side-bar {
     flex-direction: column;
-    align-items: center;
     gap: 20px;
 }

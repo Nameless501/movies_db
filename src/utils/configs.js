@@ -45,7 +45,6 @@ export const routesConfig = {
     saved: '/saved',
     profile: '/profile',
     signIn: '/sign-in',
-    signUp: '/sign-up',
     notFound: '/not-found',
 };
 
@@ -233,11 +232,6 @@ export const dbApiConfig = {
 export const signInErrorsConfig = {
     401: 'Вы ввели неправильный логин или пароль.',
     500: 'При авторизации произошла ошибка.',
-}
-
-export const signUpErrorsConfig = {
-    409: 'Пользователь с таким email уже существует.',
-    500: 'При регистрации пользователя произошла ошибка.',
 }
 
 export const profileErrorsConfig = {

@@ -9,6 +9,7 @@ import TopRatedPage from '../pages/TopRated/TopRatedPage';
 import NowPlayingPage from '../pages/NowPlaying/NowPlayingPage';
 import PopularPage from '../pages/Popular/PopularPage';
 import SearchPage from '../pages/Search/SearchPage';
+import SignInPage from '../pages/SignIn/SignInPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Portal from '../components/Portal/Portal';
 import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
@@ -77,10 +78,16 @@ function App() {
                     <InfoPage type='shows' />
                 </Route>
 
-                {/* Search pages */}
+                {/* Search page */}
 
                 <Route path={routesConfig.search}>
                     <SearchPage />
+                </Route>
+
+                {/* Sign in page */}
+
+                <Route path={routesConfig.signIn}>
+                    <SignInPage />
                 </Route>
 
                 {/* Not found pages */}
