@@ -6,6 +6,9 @@ import {
     SHOWS_API_PATH_POPULAR,
     SEARCH_API_PATH_MOVIES,
     SEARCH_API_PATH_SHOWS,
+    USER_API_PATH_REQUEST_TOKEN,
+    USER_API_PATH_LOGIN,
+    USER_API_PATH_SESSION_ID,
     DB_API_KEY,
     getMovieInfoPath,
     getMovieCreditsPath,
@@ -221,6 +224,38 @@ export const dbApiConfig = {
             }
         },
     },
+    user: {
+        requestToken: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: () => {
+                return `${USER_API_PATH_REQUEST_TOKEN}${DB_API_KEY}`;
+            }
+        },
+        login: {
+            options: {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+            getUrl: () => {
+                return `${USER_API_PATH_LOGIN}${DB_API_KEY}`;
+            }
+        },
+        sessionId: {
+            options: {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+            getUrl: () => {
+                return `${USER_API_PATH_SESSION_ID}${DB_API_KEY}`;
+            }
+        },
+    }
 }
 
 

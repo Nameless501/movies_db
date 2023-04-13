@@ -25,14 +25,15 @@ function SignInForm({ handleSubmit, isLoading, error }) {
             error={error}
         >
             <FormInput
-                label='E-mail'
-                type='email'
-                name='email'
+                label='Логин'
+                type='text'
+                name='username'
                 required={true}
                 place='form'
-                errorMessage={errorMessages.email}
-                value={inputsValues.email}
-                handleChange={(evt) => handleInputChange(evt, { customValidation: true })}
+                errorMessage={errorMessages.username}
+                value={inputsValues.username}
+                // handleChange={(evt) => handleInputChange(evt, { customValidation: true })}
+                handleChange={handleInputChange}
             />
             <FormInput
                 label='Пароль'

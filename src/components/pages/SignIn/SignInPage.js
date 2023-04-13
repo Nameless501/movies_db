@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import useDataFetch from '../../../hooks/useDataFetch';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSessionId } from '../../../store/user/userSlice';
 import SignInForm from '../../modules/SignInForm/SignInForm';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import { routesConfig, signInErrorsConfig, apiConfig } from '../../../utils/configs';
+import { routesConfig } from '../../../utils/configs';
 import './SignInPage.css';
 
 function SignInPage() {
-    // const history = useHistory();
+    const { isLoggedIn, loading, error } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-    // sign handlers
+    function handleSignIn(inputsValue) {
+        dispatch(fetchSessionId(inputsValue));
+    };
 
-    function handleSignIn() {
-    }
-
-    // redirect authorized user to movies page
-
-    // useEffect(() => {
-    //     if (userIsLogged) {
-    //         history.push(routesConfig.topRated);
-    //     }
-    // }, [userIsLogged, history]);
+    useEffect(() => {
+        if(isLoggedIn) {
+            history.push(routesConfig.main);
+        }
+    }, [isLoggedIn, history]);
 
     return (
         <>
@@ -33,8 +33,8 @@ function SignInPage() {
                     </h2>
                     <SignInForm
                         handleSubmit={handleSignIn}
-                        isLoading={false}
-                        error={''}
+                        loading={loading}
+                        error={error}
                     />
                 </div>
             </main>

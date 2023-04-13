@@ -21,7 +21,6 @@ export const DB_API_BASE_URL = 'https://api.themoviedb.org/3';
 export const DB_API_KEY = '?api_key=7dc59b842d86576bd986dae0db4b7703';
 
 
-
 export const MOVIES_API_PATH_TOP_RATED = DB_API_BASE_URL + '/movie/top_rated';
 
 export const MOVIES_API_PATH_NOW_PLAYING = DB_API_BASE_URL + '/movie/now_playing';
@@ -54,11 +53,16 @@ export const getShowRecommendationsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/r
 export const getShowTrailerPath = (id) => `${DB_API_BASE_URL}/tv/${id}/videos`;
 
 
-
 export const SEARCH_API_PATH_MOVIES = DB_API_BASE_URL + '/search/movie';
 
 export const SEARCH_API_PATH_SHOWS = DB_API_BASE_URL + '/search/tv';
 
+
+export const USER_API_PATH_REQUEST_TOKEN = DB_API_BASE_URL + '/authentication/token/new';
+
+export const USER_API_PATH_LOGIN = DB_API_BASE_URL + '/authentication/token/validate_with_login';
+
+export const USER_API_PATH_SESSION_ID = DB_API_BASE_URL + '/authentication/session/new';
 
 
 export const getLangParam = (lang) => `&language=${lang}`;
@@ -66,7 +70,6 @@ export const getLangParam = (lang) => `&language=${lang}`;
 export const getPageParam = (page) => `&page=${page}`;
 
 export const getQueryParam = (query) => `&query=${query}`;
-
 
 
 export const POSTER_HORIZONTAL_SMALL = 'https://image.tmdb.org/t/p/w500/';

@@ -4,7 +4,6 @@ import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import SearchForm from '../../modules/SearchForm/SearchForm';
 import CardsFeed from '../../components/CardsFeed/CardsFeed';
-import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SearchPage.css';
 
 function SearchPage() {
@@ -12,7 +11,6 @@ function SearchPage() {
     const dispatch = useDispatch();
 
     function handleLoadMore() {
-        ;
         dispatch(fetchNextPage());
     };
 
