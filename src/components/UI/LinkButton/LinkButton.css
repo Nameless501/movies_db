@@ -24,12 +24,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
-}
-
-.link-button_place_sign-up {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 18px;
     background-color: var(--colors_btn_crimson);
 }
 

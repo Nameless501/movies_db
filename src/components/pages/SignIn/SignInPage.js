@@ -29,7 +29,7 @@ function SignInPage() {
             <main className='sign-page'>
                 <div className='sign-page__wrapper' >
                     <h2 className='sign-page__title' >
-                        Placeholder
+                        Вход в аккаунт TMDB
                     </h2>
                     <SignInForm
                         handleSubmit={handleSignIn}

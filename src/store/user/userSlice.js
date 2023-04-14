@@ -2,22 +2,33 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 
+export const fetchRequestToken = createAsyncThunk(
+    'user/fetchRequestToken',
+    async () => {
+        const { getUrl, options } = dbApiConfig.user.requestToken;
+        const requestTokenResponse = await handleFetch(getUrl(), options);
+        const requestTokenResponseEncoded = await requestTokenResponse.json();
+
+        return requestTokenResponseEncoded;
+    }
+);
+
 export const fetchSessionId = createAsyncThunk(
     'user/fetchSessionId',
-    async (inputsValue) => {
-        const { requestToken, login, sessionId } = dbApiConfig.user;
+    async (inputsValue, { dispatch }) => {
+        const { login, sessionId } = dbApiConfig.user;
 
-        const requestTokenResponse = await handleFetch(requestToken.getUrl(), requestToken.options);
-        const requestTokenResponseEncoded = await requestTokenResponse.json();
+        const requestTokenResponse = await dispatch(fetchRequestToken());
+        const requestTokenResponseEncoded = requestTokenResponse.payload.request_token;
 
         const loginResponse = await handleFetch(
             login.getUrl(),
             login.options,
-            { ...inputsValue, request_token: requestTokenResponseEncoded.request_token }
+            { ...inputsValue, request_token: requestTokenResponseEncoded }
         );
         const loginResponseEncoded = await loginResponse.json();
 
-        if(loginResponseEncoded.success) {
+        if (loginResponseEncoded.success) {
             const sessionIdResponse = await handleFetch(
                 sessionId.getUrl(),
                 sessionId.options,
@@ -53,6 +64,19 @@ export const userSlice = createSlice({
                 state.error = '';
             })
             .addCase(fetchSessionId.rejected, (state) => {
+                state.error = 'Error';
+                state.loading = 'rejected';
+            });
+
+        builder
+            .addCase(fetchRequestToken.pending, (state) => {
+                state.loading = 'pending';
+            })
+            .addCase(fetchRequestToken.fulfilled, (state, { payload }) => {
+                state.loading = 'fulfilled';
+                state.error = '';
+            })
+            .addCase(fetchRequestToken.rejected, (state) => {
                 state.error = 'Error';
                 state.loading = 'rejected';
             });

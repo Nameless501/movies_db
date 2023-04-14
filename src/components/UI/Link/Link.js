@@ -1,6 +1,6 @@
 import './Link.css';
 
-function Link({ href, place, text, target = '_blank' }) {
+function Link({ href, place, text, target = '_blank', handleClick }) {
     return (
         <a
             href={href}
@@ -9,6 +9,7 @@ function Link({ href, place, text, target = '_blank' }) {
                 ${place ? 'link_place_' + place : null}
             `}
             target={target}
+            onClick={handleClick}
         >
             {text}
         </a>

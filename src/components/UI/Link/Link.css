@@ -8,7 +8,7 @@
 
 .link:hover {
     cursor: pointer;
-    opacity: .7;
+    opacity: .8;
 }
 
 .link:visited {
@@ -30,6 +30,12 @@
 
 .link_place_footer:visited {
     color: var(--fonts_colors_fade);
+}
+
+.link_place_sign-up {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 @media screen and (max-width: 767px) {

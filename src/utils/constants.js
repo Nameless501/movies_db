@@ -64,6 +64,8 @@ export const USER_API_PATH_LOGIN = DB_API_BASE_URL + '/authentication/token/vali
 
 export const USER_API_PATH_SESSION_ID = DB_API_BASE_URL + '/authentication/session/new';
 
+export const USER_API_PATH_REGISTRATION = 'https://www.themoviedb.org/authenticate/';
+
 
 export const getLangParam = (lang) => `&language=${lang}`;
 
@@ -99,7 +101,10 @@ export const getTwitterShareLink = (type, id) => `https://twitter.com/intent/twe
 export const getLinkForCopy = (type, id) => `${URL_FOR_SHARE}/${type}/${id}`;
 
 
+
 // screen sizes
+
+
 
 export const SCREEN_SIZE_TABLET = 1024;
 

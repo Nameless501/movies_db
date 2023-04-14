@@ -1,11 +1,9 @@
-import { usePortalContext } from '../../../contexts/PortalContext';
 import LinkButton from '../../UI/LinkButton/LinkButton';
+import Link from '../../UI/Link/Link';
 import { routesConfig } from '../../../utils/configs';
 import './AuthMenu.css';
 
-function AuthMenu({ place }) {
-    const { openConstructionPopup } = usePortalContext();
-
+function AuthMenu({ place, handleRegister }) {
     return (
         <nav className='auth-menu' >
             <ul
@@ -15,23 +13,17 @@ function AuthMenu({ place }) {
                 `}
             >
                 <li>
-                    {/* <LinkButton
+                    <Link
+                        handleClick={handleRegister}
                         text='Регистрация'
-                        link={routesConfig.signUp}
-                        place='sign-in'
-                    /> */}
-                    <button
-                        className='link-button link-button_place_sign-in'
-                        onClick={openConstructionPopup}
-                    >
-                        Регистрация
-                    </button>
+                        place='sign-up'
+                    />
                 </li>
                 <li>
                     <LinkButton
                         text='Войти'
                         link={routesConfig.signIn}
-                        place='sign-up'
+                        place='sign-in'
                     />
                 </li>
             </ul>
