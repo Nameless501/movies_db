@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import ProfileButton from '../../UI/ProfileButton/ProfileButton';
@@ -6,8 +7,10 @@ import BurgerButton from '../../UI/BurgerButton/BurgerButton';
 import AuthMenu from '../../components/AuthMenu/AuthMenu';
 import './SideBar.css';
 
-function SideBar({ isLogged = false }) {
+function SideBar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { isLoggedIn } = useSelector((state) => state.user);
+
 
     function toggleSideBar() {
         setIsOpen(current => !current)
@@ -35,7 +38,7 @@ function SideBar({ isLogged = false }) {
                         showMainLink={true}
                     />
                     {
-                        isLogged ?
+                        isLoggedIn ?
                             <ProfileButton place='side-bar' />
                             :
                             <AuthMenu place='side-bar' />

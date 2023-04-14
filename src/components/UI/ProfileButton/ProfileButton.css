@@ -5,16 +5,11 @@
     border: 0;
     box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
     border-radius: 40px;
-    background-color: var(--colors_btn_white);
+    background-color: var(--colors_btn_crimson);
     display: flex;
     align-items: center;
     gap: 7px;
     text-decoration: none;
-}
-
-.profile-button:hover {
-    opacity: .8;
-    cursor: pointer;
 }
 
 .profile-button__text {
@@ -31,9 +26,25 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background-color: var(--colors_btn_gray);
-    background-image: url('../../../images/profile_btn_icon.svg');
+    background-color: var(--colors_btn_white);
+    background-image: url('../../../images/icon_profile_crimson.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10px 10px;
+}
+
+@media screen and (min-width: 1024px) {
+    .profile-button:hover {
+        background-color: var(--colors_btn_white);
+        cursor: pointer;
+    }
+
+    .profile-button:hover .profile-button__text {
+        color: var(--fonts_colors_crimson);
+    }
+
+    .profile-button:hover .profile-button__icon {
+        background-color: var(--colors_btn_crimson);
+        background-image: url('../../../images/icon_profile.svg');
+    }
 }
