@@ -1,7 +1,6 @@
 import SignFormButton from '../../UI/SignFormButton/SignFormButton';
-import NavigationLink from '../../UI/NavigationLink/NavigationLink';
+import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
-import { routesConfig } from '../../../utils/configs';
 import './SignFormWrapper.css';
 
 function SignFormWrapper({ type, disabled, onSubmit, error, children }) {
@@ -26,9 +25,7 @@ function SignFormWrapper({ type, disabled, onSubmit, error, children }) {
                     <span className='sign-form__link-text' >
                         Ещё не зарегистрированы?
                     </span>
-                    <NavigationLink
-                        text='Регистрация'
-                        to={routesConfig.main}
+                    <RegistrationLink
                         place='form'
                     />
                 </div>

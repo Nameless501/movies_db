@@ -1,9 +1,9 @@
 import LinkButton from '../../UI/LinkButton/LinkButton';
-import Link from '../../UI/Link/Link';
+import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import { routesConfig } from '../../../utils/configs';
 import './AuthMenu.css';
 
-function AuthMenu({ place, handleRegister }) {
+function AuthMenu({ place }) {
     return (
         <nav className='auth-menu' >
             <ul
@@ -13,9 +13,7 @@ function AuthMenu({ place, handleRegister }) {
                 `}
             >
                 <li>
-                    <Link
-                        handleClick={handleRegister}
-                        text='Регистрация'
+                    <RegistrationLink
                         place='sign-up'
                     />
                 </li>

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
+import { USER_API_PATH_REGISTRATION } from '../../utils/constants';
 
 export const fetchRequestToken = createAsyncThunk(
     'user/fetchRequestToken',
