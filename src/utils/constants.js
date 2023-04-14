@@ -66,6 +66,8 @@ export const USER_API_PATH_SESSION_ID = DB_API_BASE_URL + '/authentication/sessi
 
 export const USER_API_PATH_REGISTRATION = 'https://www.themoviedb.org/authenticate/';
 
+export const getRegistrationLink = (requestToken) => `${USER_API_PATH_REGISTRATION}${requestToken}?redirect_to=${encodeURIComponent(window.location.href)}`;
+
 
 export const getLangParam = (lang) => `&language=${lang}`;
 

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { fetchRequestToken } from '../../../store/user/userSlice';
 import Link from '../../UI/Link/Link';
-import { USER_API_PATH_REGISTRATION } from '../../../utils/constants';
+import { getRegistrationLink } from '../../../utils/constants';
 
 function RegistrationLink({ place }) {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function RegistrationLink({ place }) {
         const requestTokenResponse = await dispatch(fetchRequestToken());
         const requestToken = requestTokenResponse.payload.request_token;
 
-        const url = USER_API_PATH_REGISTRATION + requestToken;
+        const url = getRegistrationLink(requestToken);
         window.open(url, "_blank", "noreferrer");
     };
 

@@ -1,4 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchSessionId } from '../../../store/user/userSlice';
 import LogoLink from '../../components/LogoLink/LogoLink';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import ProfileButton from '../../UI/ProfileButton/ProfileButton';
@@ -7,6 +10,18 @@ import './Header.css';
 
 function Header({ place }) {
     const { isLoggedIn, loading } = useSelector((state) => state.user);
+    const location = useLocation();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const requestToken = queryParams.get('request_token');
+        const approved = queryParams.get('approved');
+
+        if (requestToken && approved) {
+            dispatch(fetchSessionId(requestToken));
+        }
+    }, [location, dispatch]);
 
     return (
         <>

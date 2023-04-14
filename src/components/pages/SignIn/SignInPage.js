@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSessionId } from '../../../store/user/userSlice';
+import { fetchSessionIdWithLogin } from '../../../store/user/userSlice';
 import SignInForm from '../../modules/SignInForm/SignInForm';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -14,7 +14,7 @@ function SignInPage() {
     const history = useHistory();
 
     function handleSignIn(inputsValue) {
-        dispatch(fetchSessionId(inputsValue));
+        dispatch(fetchSessionIdWithLogin(inputsValue));
     };
 
     useEffect(() => {

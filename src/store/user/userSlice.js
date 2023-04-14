@@ -9,12 +9,30 @@ export const fetchRequestToken = createAsyncThunk(
         const requestTokenResponse = await handleFetch(getUrl(), options);
         const requestTokenResponseEncoded = await requestTokenResponse.json();
 
+        sessionStorage.setItem('requestToken', requestTokenResponseEncoded.request_token);
+
         return requestTokenResponseEncoded;
     }
 );
 
 export const fetchSessionId = createAsyncThunk(
     'user/fetchSessionId',
+    async (requestToken) => {
+        const { getUrl, options } = dbApiConfig.user.sessionId;
+
+        const sessionIdResponse = await handleFetch(
+            getUrl(),
+            options,
+            { request_token: requestToken }
+        );
+        const sessionIdResponseEncoded = await sessionIdResponse.json();
+
+        return sessionIdResponseEncoded;
+    }
+);
+
+export const fetchSessionIdWithLogin = createAsyncThunk(
+    'user/fetchSessionIdWithLogin',
     async (inputsValue, { dispatch }) => {
         const { login, sessionId } = dbApiConfig.user;
 
@@ -29,14 +47,7 @@ export const fetchSessionId = createAsyncThunk(
         const loginResponseEncoded = await loginResponse.json();
 
         if (loginResponseEncoded.success) {
-            const sessionIdResponse = await handleFetch(
-                sessionId.getUrl(),
-                sessionId.options,
-                { request_token: loginResponseEncoded.request_token }
-            );
-            const sessionIdResponseEncoded = await sessionIdResponse.json();
-
-            return sessionIdResponseEncoded.success ? sessionIdResponseEncoded : Promise.reject();
+            dispatch(fetchSessionId(loginResponseEncoded.request_token));
         } else {
             return Promise.reject(loginResponseEncoded.status_message);
         }
@@ -54,16 +65,14 @@ export const userSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchSessionId.pending, (state) => {
+            .addCase(fetchSessionIdWithLogin.pending, (state) => {
                 state.loading = 'pending';
             })
-            .addCase(fetchSessionId.fulfilled, (state, { payload }) => {
-                state.sessionId = payload.session_id;
+            .addCase(fetchSessionIdWithLogin.fulfilled, (state, { payload }) => {
                 state.loading = 'fulfilled';
-                state.isLoggedIn = true;
                 state.error = '';
             })
-            .addCase(fetchSessionId.rejected, (state) => {
+            .addCase(fetchSessionIdWithLogin.rejected, (state) => {
                 state.error = 'Error';
                 state.loading = 'rejected';
             });
@@ -77,6 +86,21 @@ export const userSlice = createSlice({
                 state.error = '';
             })
             .addCase(fetchRequestToken.rejected, (state) => {
+                state.error = 'Error';
+                state.loading = 'rejected';
+            });
+
+        builder
+            .addCase(fetchSessionId.pending, (state) => {
+                state.loading = 'pending';
+            })
+            .addCase(fetchSessionId.fulfilled, (state, { payload }) => {
+                state.sessionId = payload.session_id;
+                state.loading = 'fulfilled';
+                state.isLoggedIn = true;
+                state.error = '';
+            })
+            .addCase(fetchSessionId.rejected, (state) => {
                 state.error = 'Error';
                 state.loading = 'rejected';
             });
