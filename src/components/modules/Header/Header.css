@@ -37,6 +37,17 @@
     justify-content: space-between;
 }
 
+.header__authorization {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: fit-content;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .header__menu-mobile {
     margin: 0;
     padding: 0;

@@ -6,6 +6,7 @@ import LogoLink from '../../components/LogoLink/LogoLink';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import ProfileButton from '../../UI/ProfileButton/ProfileButton';
 import AuthMenu from '../../components/AuthMenu/AuthMenu';
+import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './Header.css';
 
 function Header({ place }) {
@@ -31,14 +32,11 @@ function Header({ place }) {
                     <div className='header__menu'>
                         <div className='header__menu-desktop'>
                             <NavigationBar place='header' />
-                            {
-                                isLoggedIn ?
-                                    <ProfileButton place={place} />
-                                    :
-                                    <AuthMenu
-                                        place={place}
-                                    />
-                            }
+                            <div className='header__authorization'>
+                                { loading === 'pending' && <PreloaderSmall /> }
+                                { (isLoggedIn && loading !== 'pending') && <ProfileButton place={place} /> }
+                                { (!isLoggedIn && loading !== 'pending') && <AuthMenu place={place} /> }
+                            </div>
                         </div>
                     </div>
                 </div>

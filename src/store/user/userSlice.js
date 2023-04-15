@@ -9,8 +9,6 @@ export const fetchRequestToken = createAsyncThunk(
         const requestTokenResponse = await handleFetch(getUrl(), options);
         const requestTokenResponseEncoded = await requestTokenResponse.json();
 
-        sessionStorage.setItem('requestToken', requestTokenResponseEncoded.request_token);
-
         return requestTokenResponseEncoded;
     }
 );
@@ -34,14 +32,14 @@ export const fetchSessionId = createAsyncThunk(
 export const fetchSessionIdWithLogin = createAsyncThunk(
     'user/fetchSessionIdWithLogin',
     async (inputsValue, { dispatch }) => {
-        const { login, sessionId } = dbApiConfig.user;
+        const { getUrl, options } = dbApiConfig.user.login;
 
         const requestTokenResponse = await dispatch(fetchRequestToken());
         const requestTokenResponseEncoded = requestTokenResponse.payload.request_token;
 
         const loginResponse = await handleFetch(
-            login.getUrl(),
-            login.options,
+            getUrl(),
+            options,
             { ...inputsValue, request_token: requestTokenResponseEncoded }
         );
         const loginResponseEncoded = await loginResponse.json();
@@ -49,6 +47,7 @@ export const fetchSessionIdWithLogin = createAsyncThunk(
         if (loginResponseEncoded.success) {
             dispatch(fetchSessionId(loginResponseEncoded.request_token));
         } else {
+            console.log()
             return Promise.reject(loginResponseEncoded.status_message);
         }
     }
@@ -72,8 +71,8 @@ export const userSlice = createSlice({
                 state.loading = 'fulfilled';
                 state.error = '';
             })
-            .addCase(fetchSessionIdWithLogin.rejected, (state) => {
-                state.error = 'Error';
+            .addCase(fetchSessionIdWithLogin.rejected, (state, { error }) => {
+                state.error = error.message;
                 state.loading = 'rejected';
             });
 
@@ -81,12 +80,12 @@ export const userSlice = createSlice({
             .addCase(fetchRequestToken.pending, (state) => {
                 state.loading = 'pending';
             })
-            .addCase(fetchRequestToken.fulfilled, (state, { payload }) => {
+            .addCase(fetchRequestToken.fulfilled, (state) => {
                 state.loading = 'fulfilled';
                 state.error = '';
             })
             .addCase(fetchRequestToken.rejected, (state) => {
-                state.error = 'Error';
+                state.error = 'Что-то пошло не так, попробуйте еще раз позже';
                 state.loading = 'rejected';
             });
 
@@ -99,9 +98,11 @@ export const userSlice = createSlice({
                 state.loading = 'fulfilled';
                 state.isLoggedIn = true;
                 state.error = '';
+
+                localStorage.setItem('sessionId', payload.session_id);
             })
             .addCase(fetchSessionId.rejected, (state) => {
-                state.error = 'Error';
+                state.error = 'Что-то пошло не так, попробуйте еще раз позже';
                 state.loading = 'rejected';
             });
     }

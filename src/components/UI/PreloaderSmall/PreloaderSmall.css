@@ -20,6 +20,7 @@
     margin: 0;
     padding: 0;
     width: 5%;
+    min-width: 25px;
     aspect-ratio: 1/1;
     box-sizing: border-box;
     background-image: url('../../../images/icon_spinner.svg');
