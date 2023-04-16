@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
-import ProfileButton from '../../UI/ProfileButton/ProfileButton';
 import BurgerButton from '../../UI/BurgerButton/BurgerButton';
 import AuthMenu from '../../components/AuthMenu/AuthMenu';
 import './SideBar.css';
@@ -39,7 +38,8 @@ function SideBar() {
                     />
                     {
                         isLoggedIn ?
-                            <ProfileButton place='side-bar' />
+                            // <ProfileButton place='side-bar' />
+                            <></>
                             :
                             <AuthMenu place='side-bar' />
                     }

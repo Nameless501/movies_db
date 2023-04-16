@@ -5,13 +5,16 @@
     background-color: transparent;
     color: var(--colors_btn_crimson);
     font-weight: 500;
-    font-size: 13px;
-    line-height: 16px;
 }
 
 .sign-out-button:hover {
-    opacity: .8;
     cursor: pointer;
+    color: var(--colors_btn_crimson_hover);
+}
+
+.sign-out-button_place_header {
+    font-size: 14px;
+    line-height: 18px;
 }
 
 @media screen and (max-width: 767px) {

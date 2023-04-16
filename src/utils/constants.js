@@ -66,6 +66,8 @@ export const AUTHORIZATION_API_PATH_SESSION_ID = DB_API_BASE_URL + '/authenticat
 
 export const AUTHORIZATION_API_PATH_REGISTRATION = 'https://www.themoviedb.org/authenticate/';
 
+export const AUTHORIZATION_API_PATH_SIGN_OUT = DB_API_BASE_URL + '/authentication/session';
+
 export const getRegistrationLink = (requestToken) => `${AUTHORIZATION_API_PATH_REGISTRATION}${requestToken}?redirect_to=${encodeURIComponent(window.location.protocol + '//' + window.location.host + '/movies_db/#/sign-in')}`;
 
 

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import LogoLink from '../../components/LogoLink/LogoLink';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
-import ProfileButton from '../../UI/ProfileButton/ProfileButton';
 import AuthMenu from '../../components/AuthMenu/AuthMenu';
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './Header.css';
 
@@ -19,7 +19,7 @@ function Header({ place }) {
                             <NavigationBar place='header' />
                             <div className='header__authorization'>
                                 { loading === 'pending' && <PreloaderSmall /> }
-                                { (isLoggedIn && loading !== 'pending') && <ProfileButton place={place} /> }
+                                { (isLoggedIn && loading !== 'pending') && <ProfileInfo /> }
                                 { (!isLoggedIn && loading !== 'pending') && <AuthMenu place={place} /> }
                             </div>
                         </div>

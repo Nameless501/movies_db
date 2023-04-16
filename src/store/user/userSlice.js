@@ -2,17 +2,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 
+// get user profile data
+
 export const fetchProfileData = createAsyncThunk(
     'user/fetchProfileData',
     async (arg, { getState }) => {
         const { getUrl, options } = dbApiConfig.user.profile;
-
         const { session_id } = getState().authorization;
 
         const response = await handleFetch(getUrl(session_id), options);
         const profileData = await response.json();
 
-        return profileData;
+        return (profileData.success === false) ? Promise.reject(profileData.status_message) : profileData;
     }
 );
 
@@ -24,7 +25,12 @@ export const userSlice = createSlice({
         loading: 'idle',
         error: '',
     },
-    reducers: {},
+    reducers: {
+        signOut: (state) => {
+            state.data = {};
+            state.isLoggedIn = false;
+        }
+    },
     extraReducers: builder => {
 
         // profile data
@@ -34,21 +40,19 @@ export const userSlice = createSlice({
                 state.loading = 'pending';
             })
             .addCase(fetchProfileData.fulfilled, (state, { payload }) => {
-                if(payload.success === false) {
-                    state.error = 'Что-то пошло не так, попробуйте еще раз позже.';
-                    state.loading = 'rejected';
-                    state.isLoggedIn = false;
-                } else {
+                    state.data = payload;
                     state.loading = 'fulfilled';
                     state.error = '';
                     state.isLoggedIn = true;
-                }
             })
             .addCase(fetchProfileData.rejected, (state, { error }) => {
                 state.error = error.message;
                 state.loading = 'rejected';
+                state.isLoggedIn = false;
             });
     }
 })
+
+export const { signOut } = userSlice.actions
 
 export default userSlice.reducer;

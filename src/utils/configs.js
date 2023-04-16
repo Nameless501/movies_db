@@ -9,6 +9,7 @@ import {
     AUTHORIZATION_API_PATH_REQUEST_TOKEN,
     AUTHORIZATION_API_PATH_LOGIN,
     AUTHORIZATION_API_PATH_SESSION_ID,
+    AUTHORIZATION_API_PATH_SIGN_OUT,
     USER_API_PATH_PROFILE_DATA,
     DB_API_KEY,
     getMovieInfoPath,
@@ -255,6 +256,17 @@ export const dbApiConfig = {
             },
             getUrl: () => {
                 return `${AUTHORIZATION_API_PATH_SESSION_ID}${DB_API_KEY}`;
+            }
+        },
+        signOut: {
+            options: {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+            getUrl: () => {
+                return `${AUTHORIZATION_API_PATH_SIGN_OUT}${DB_API_KEY}`;
             }
         },
     },

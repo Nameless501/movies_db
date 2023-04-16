@@ -42,12 +42,12 @@ export const fetchSessionId = createAsyncThunk(
         const { getUrl, options } = dbApiConfig.authorization.session;
         const { request_token } = getState().authorization;
 
-        const sessionIdResponse = await handleFetch(
+        const response = await handleFetch(
             getUrl(),
             options,
             { request_token }
         );
-        const { success, status_message, session_id } = await sessionIdResponse.json();
+        const { success, status_message, session_id } = await response.json();
 
         return success ? session_id : Promise.reject(status_message);
     }
@@ -83,6 +83,25 @@ export const getSessionIdFromStorage = createAsyncThunk(
         } else {
             return Promise.reject();
         }
+    }
+);
+
+// delete session
+
+export const fetchSessionDelete = createAsyncThunk(
+    'authorization/fetchSessionDelete',
+    async (args, { getState }) => {
+        const { getUrl, options } = dbApiConfig.authorization.signOut;
+        const { session_id } = getState().authorization;
+
+        const response = await handleFetch(
+            getUrl(),
+            options,
+            { session_id }
+        );
+        const { success } = await response.json();
+
+        return success;
     }
 );
 
@@ -162,6 +181,17 @@ export const authorizationSlice = createSlice({
         builder
             .addCase(getSessionIdFromStorage.fulfilled, (state, { payload }) => {
                 state.session_id = payload;
+                state.loading = 'fulfilled';
+                state.error = '';
+            });
+
+        // delete session
+
+        builder
+            .addCase(fetchSessionDelete.fulfilled, (state, { payload }) => {
+                state.session_id = null;
+                localStorage.removeItem('session_id');
+
                 state.loading = 'fulfilled';
                 state.error = '';
             });
