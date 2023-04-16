@@ -6,9 +6,10 @@ import {
     SHOWS_API_PATH_POPULAR,
     SEARCH_API_PATH_MOVIES,
     SEARCH_API_PATH_SHOWS,
-    USER_API_PATH_REQUEST_TOKEN,
-    USER_API_PATH_LOGIN,
-    USER_API_PATH_SESSION_ID,
+    AUTHORIZATION_API_PATH_REQUEST_TOKEN,
+    AUTHORIZATION_API_PATH_LOGIN,
+    AUTHORIZATION_API_PATH_SESSION_ID,
+    USER_API_PATH_PROFILE_DATA,
     DB_API_KEY,
     getMovieInfoPath,
     getMovieCreditsPath,
@@ -23,6 +24,7 @@ import {
     getLangParam,
     getPageParam,
     getQueryParam,
+    getSessionIdParam,
 } from "./constants";
 
 
@@ -224,13 +226,13 @@ export const dbApiConfig = {
             }
         },
     },
-    user: {
-        requestToken: {
+    authorization: {
+        token: {
             options: {
                 method: 'GET',
             },
             getUrl: () => {
-                return `${USER_API_PATH_REQUEST_TOKEN}${DB_API_KEY}`;
+                return `${AUTHORIZATION_API_PATH_REQUEST_TOKEN}${DB_API_KEY}`;
             }
         },
         login: {
@@ -241,10 +243,10 @@ export const dbApiConfig = {
                 },
             },
             getUrl: () => {
-                return `${USER_API_PATH_LOGIN}${DB_API_KEY}`;
+                return `${AUTHORIZATION_API_PATH_LOGIN}${DB_API_KEY}`;
             }
         },
-        sessionId: {
+        session: {
             options: {
                 method: 'POST',
                 headers: {
@@ -252,7 +254,17 @@ export const dbApiConfig = {
                 },
             },
             getUrl: () => {
-                return `${USER_API_PATH_SESSION_ID}${DB_API_KEY}`;
+                return `${AUTHORIZATION_API_PATH_SESSION_ID}${DB_API_KEY}`;
+            }
+        },
+    },
+    user: {
+        profile: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (sessionId) => {
+                return `${USER_API_PATH_PROFILE_DATA}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
             }
         },
     }

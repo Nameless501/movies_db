@@ -58,15 +58,18 @@ export const SEARCH_API_PATH_MOVIES = DB_API_BASE_URL + '/search/movie';
 export const SEARCH_API_PATH_SHOWS = DB_API_BASE_URL + '/search/tv';
 
 
-export const USER_API_PATH_REQUEST_TOKEN = DB_API_BASE_URL + '/authentication/token/new';
+export const AUTHORIZATION_API_PATH_REQUEST_TOKEN = DB_API_BASE_URL + '/authentication/token/new';
 
-export const USER_API_PATH_LOGIN = DB_API_BASE_URL + '/authentication/token/validate_with_login';
+export const AUTHORIZATION_API_PATH_LOGIN = DB_API_BASE_URL + '/authentication/token/validate_with_login';
 
-export const USER_API_PATH_SESSION_ID = DB_API_BASE_URL + '/authentication/session/new';
+export const AUTHORIZATION_API_PATH_SESSION_ID = DB_API_BASE_URL + '/authentication/session/new';
 
-export const USER_API_PATH_REGISTRATION = 'https://www.themoviedb.org/authenticate/';
+export const AUTHORIZATION_API_PATH_REGISTRATION = 'https://www.themoviedb.org/authenticate/';
 
-export const getRegistrationLink = (requestToken) => `${USER_API_PATH_REGISTRATION}${requestToken}?redirect_to=${encodeURIComponent(window.location.href)}`;
+export const getRegistrationLink = (requestToken) => `${AUTHORIZATION_API_PATH_REGISTRATION}${requestToken}?redirect_to=${encodeURIComponent(window.location.protocol + '//' + window.location.host + '/movies_db/#/sign-in')}`;
+
+
+export const USER_API_PATH_PROFILE_DATA = DB_API_BASE_URL + '/account';
 
 
 export const getLangParam = (lang) => `&language=${lang}`;
@@ -74,6 +77,8 @@ export const getLangParam = (lang) => `&language=${lang}`;
 export const getPageParam = (page) => `&page=${page}`;
 
 export const getQueryParam = (query) => `&query=${query}`;
+
+export const getSessionIdParam = (sessionId) => `&session_id=${sessionId}`;
 
 
 export const POSTER_HORIZONTAL_SMALL = 'https://image.tmdb.org/t/p/w500/';

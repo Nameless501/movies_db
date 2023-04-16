@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSessionIdWithLogin } from '../../../store/user/userSlice';
+import { fetchRequestToken, fetchTokenAuthentication, fetchSessionId, getTokenFromQueryAsync } from '../../../store/authorization/authorizationSlice';
 import SignInForm from '../../modules/SignInForm/SignInForm';
 import Header from '../../modules/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -9,13 +9,36 @@ import { routesConfig } from '../../../utils/configs';
 import './SignInPage.css';
 
 function SignInPage() {
-    const { isLoggedIn, loading, error } = useSelector((state) => state.user);
+    const { loading, error } = useSelector((state) => state.authorization);
+    const { isLoggedIn } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
 
-    function handleSignIn(inputsValue) {
-        dispatch(fetchSessionIdWithLogin(inputsValue));
+    async function handleSignIn(inputsValue) {
+        dispatch(fetchRequestToken())
+            .then(() => dispatch(fetchTokenAuthentication(inputsValue)))
+            .then(({ payload }) => {
+                if(payload) {
+                    dispatch(fetchSessionId());
+                }
+            })
     };
+
+    useEffect(() => {
+        async function handleSignInByQueryParam() {
+            dispatch(getTokenFromQueryAsync(location.search))
+                .then(({ payload }) => {
+                    if(payload) {
+                        dispatch(fetchSessionId())
+                    }
+                });
+        }
+
+        if (!isLoggedIn) {
+            handleSignInByQueryParam();
+        }
+    }, [location, dispatch, isLoggedIn]);
 
     useEffect(() => {
         if(isLoggedIn) {

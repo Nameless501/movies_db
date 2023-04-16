@@ -8,6 +8,7 @@ import reviewsReducer from './reviews/reviewsSlice';
 import searchReducer from './search/searchSlice';
 import trailerReducer from './trailer/trailerSlice';
 import popularReducer from './popular/popularSlice';
+import authorizationReducer from './authorization/authorizationSlice';
 import userReducer from './user/userSlice';
 
 export default configureStore({
@@ -21,6 +22,7 @@ export default configureStore({
         recommendations: recommendationsReducer,
         nowPlaying: nowPlayingReducer,
         topRated: topRatedReducer,
+        authorization: authorizationReducer,
         user: userReducer,
     },
 });

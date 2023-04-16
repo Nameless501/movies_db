@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { fetchRequestToken } from '../../../store/user/userSlice';
+import { fetchRequestToken } from '../../../store/authorization/authorizationSlice';
 import Link from '../../UI/Link/Link';
 import { getRegistrationLink } from '../../../utils/constants';
 
@@ -11,11 +11,9 @@ function RegistrationLink({ place }) {
     async function handleRegister(evt) {
         evt.preventDefault();
 
-        const requestTokenResponse = await dispatch(fetchRequestToken());
-        const requestToken = requestTokenResponse.payload.request_token;
-
-        const url = getRegistrationLink(requestToken);
-        window.open(url, "_blank", "noreferrer");
+        dispatch(fetchRequestToken())
+            .then(({ payload }) => getRegistrationLink(payload))
+            .then(url => window.open(url, "_blank", "noreferrer"));
     };
 
     return (

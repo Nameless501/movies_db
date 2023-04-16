@@ -2,107 +2,52 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 
-export const fetchRequestToken = createAsyncThunk(
-    'user/fetchRequestToken',
-    async () => {
-        const { getUrl, options } = dbApiConfig.user.requestToken;
-        const requestTokenResponse = await handleFetch(getUrl(), options);
-        const requestTokenResponseEncoded = await requestTokenResponse.json();
+export const fetchProfileData = createAsyncThunk(
+    'user/fetchProfileData',
+    async (arg, { getState }) => {
+        const { getUrl, options } = dbApiConfig.user.profile;
 
-        return requestTokenResponseEncoded;
-    }
-);
+        const { session_id } = getState().authorization;
 
-export const fetchSessionId = createAsyncThunk(
-    'user/fetchSessionId',
-    async (requestToken) => {
-        const { getUrl, options } = dbApiConfig.user.sessionId;
+        const response = await handleFetch(getUrl(session_id), options);
+        const profileData = await response.json();
 
-        const sessionIdResponse = await handleFetch(
-            getUrl(),
-            options,
-            { request_token: requestToken }
-        );
-        const sessionIdResponseEncoded = await sessionIdResponse.json();
+        console.log(profileData);
 
-        return sessionIdResponseEncoded;
-    }
-);
-
-export const fetchSessionIdWithLogin = createAsyncThunk(
-    'user/fetchSessionIdWithLogin',
-    async (inputsValue, { dispatch }) => {
-        const { getUrl, options } = dbApiConfig.user.login;
-
-        const requestTokenResponse = await dispatch(fetchRequestToken());
-        const requestTokenResponseEncoded = requestTokenResponse.payload.request_token;
-
-        const loginResponse = await handleFetch(
-            getUrl(),
-            options,
-            { ...inputsValue, request_token: requestTokenResponseEncoded }
-        );
-        const loginResponseEncoded = await loginResponse.json();
-
-        if (loginResponseEncoded.success) {
-            dispatch(fetchSessionId(loginResponseEncoded.request_token));
-        } else {
-            console.log()
-            return Promise.reject(loginResponseEncoded.status_message);
-        }
+        return profileData;
     }
 );
 
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        sessionId: null,
+        data: {},
         isLoggedIn: false,
         loading: 'idle',
         error: '',
     },
     reducers: {},
     extraReducers: builder => {
+
+        // profile data
+
         builder
-            .addCase(fetchSessionIdWithLogin.pending, (state) => {
+            .addCase(fetchProfileData.pending, (state) => {
                 state.loading = 'pending';
             })
-            .addCase(fetchSessionIdWithLogin.fulfilled, (state, { payload }) => {
-                state.loading = 'fulfilled';
-                state.error = '';
+            .addCase(fetchProfileData.fulfilled, (state, { payload }) => {
+                if(payload.success === false) {
+                    state.error = 'Что-то пошло не так, попробуйте еще раз позже.';
+                    state.loading = 'rejected';
+                    state.isLoggedIn = false;
+                } else {
+                    state.loading = 'fulfilled';
+                    state.error = '';
+                    state.isLoggedIn = true;
+                }
             })
-            .addCase(fetchSessionIdWithLogin.rejected, (state, { error }) => {
+            .addCase(fetchProfileData.rejected, (state, { error }) => {
                 state.error = error.message;
-                state.loading = 'rejected';
-            });
-
-        builder
-            .addCase(fetchRequestToken.pending, (state) => {
-                state.loading = 'pending';
-            })
-            .addCase(fetchRequestToken.fulfilled, (state) => {
-                state.loading = 'fulfilled';
-                state.error = '';
-            })
-            .addCase(fetchRequestToken.rejected, (state) => {
-                state.error = 'Что-то пошло не так, попробуйте еще раз позже';
-                state.loading = 'rejected';
-            });
-
-        builder
-            .addCase(fetchSessionId.pending, (state) => {
-                state.loading = 'pending';
-            })
-            .addCase(fetchSessionId.fulfilled, (state, { payload }) => {
-                state.sessionId = payload.session_id;
-                state.loading = 'fulfilled';
-                state.isLoggedIn = true;
-                state.error = '';
-
-                localStorage.setItem('sessionId', payload.session_id);
-            })
-            .addCase(fetchSessionId.rejected, (state) => {
-                state.error = 'Что-то пошло не так, попробуйте еще раз позже';
                 state.loading = 'rejected';
             });
     }

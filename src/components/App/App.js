@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { routesConfig } from '../../utils/configs';
 import { usePortalContext } from '../../contexts/PortalContext';
+import { fetchProfileData } from '../../store/user/userSlice';
 import useResize from '../../hooks/useResize';
 import usePageScroll from '../../hooks/usePageScroll';
 import MainPage from '../pages/Main/MainPage';
@@ -19,9 +22,17 @@ import SideBar from '../modules/SideBar/SideBar';
 import './App.css';
 
 function App() {
+    const { session_id } = useSelector((state) => state.authorization);
     const { trailerPopupIsOpen, sharePopupIsOpen, constructionPopupIsOpen } = usePortalContext();
     const { isTablet, isMobile } = useResize();
+    const dispatch = useDispatch();
     usePageScroll();
+
+    useEffect(() => {
+        if (session_id) {
+            dispatch(fetchProfileData());
+        }
+    }, [dispatch, session_id]);
 
     return (
         <div className="App">
