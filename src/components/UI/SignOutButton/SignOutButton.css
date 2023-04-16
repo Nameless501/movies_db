@@ -17,9 +17,16 @@
     line-height: 18px;
 }
 
+@media screen and (max-width: 1023px) {
+    .sign-out-button {
+        font-size: 20px;
+        line-height: 25px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .sign-out-button {
-        font-size: 12px;
-        line-height: 15px;
+        font-size: 18px;
+        line-height: 22px;
     }
 }

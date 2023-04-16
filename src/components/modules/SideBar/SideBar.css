@@ -1,6 +1,6 @@
 .side-bar {
     margin: 0;
-    padding: 90px 80px 120px;
+    padding: 90px 80px 140px;
     box-sizing: border-box;
     width: 500px;
     height: 100vh;
@@ -25,7 +25,7 @@
 
 @media screen and (max-width: 767px) {
     .side-bar {
-        padding: 70px 10px 90px;
+        padding: 60px 10px 90px;
         width: 320px;
     }
 }

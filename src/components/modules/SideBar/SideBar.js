@@ -4,6 +4,7 @@ import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import BurgerButton from '../../UI/BurgerButton/BurgerButton';
 import AuthMenu from '../../components/AuthMenu/AuthMenu';
+import ProfileMenu from '../../components/ProfileMenu/ProfileMenu';
 import './SideBar.css';
 
 function SideBar() {
@@ -38,8 +39,7 @@ function SideBar() {
                     />
                     {
                         isLoggedIn ?
-                            // <ProfileButton place='side-bar' />
-                            <></>
+                            <ProfileMenu place='side-bar' />
                             :
                             <AuthMenu place='side-bar' />
                     }

@@ -1,0 +1,23 @@
+.profile-menu {
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-menu_place_header {
+    min-width: 100px;
+    gap: 20px;
+}
+
+.profile-menu_place_side-bar {
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-info__menu-item {
+    margin: 0;
+    padding: 0;
+}
