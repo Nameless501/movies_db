@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { routesConfig } from '../../utils/configs';
 import { usePortalContext } from '../../contexts/PortalContext';
 import { fetchProfileData } from '../../store/user/userSlice';
+import { getSessionIdFromStorage } from '../../store/authorization/authorizationSlice';
 import useResize from '../../hooks/useResize';
 import usePageScroll from '../../hooks/usePageScroll';
 import MainPage from '../pages/Main/MainPage';
@@ -33,6 +34,10 @@ function App() {
             dispatch(fetchProfileData());
         }
     }, [dispatch, session_id]);
+
+    useEffect(() => {
+        dispatch(getSessionIdFromStorage());
+    }, [dispatch]);
 
     return (
         <div className="App">

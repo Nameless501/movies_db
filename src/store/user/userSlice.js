@@ -12,8 +12,6 @@ export const fetchProfileData = createAsyncThunk(
         const response = await handleFetch(getUrl(session_id), options);
         const profileData = await response.json();
 
-        console.log(profileData);
-
         return profileData;
     }
 );

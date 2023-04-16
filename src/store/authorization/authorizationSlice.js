@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { handleFetch } from '../../utils/Api';
 import { dbApiConfig } from '../../utils/configs';
 
+// fetch for request token
+
 export const fetchRequestToken = createAsyncThunk(
     'authorization/fetchRequestToken',
     async () => {
@@ -12,6 +14,8 @@ export const fetchRequestToken = createAsyncThunk(
         return success ? request_token : Promise.reject(status_message);
     }
 );
+
+// request token authorization with login
 
 export const fetchTokenAuthentication = createAsyncThunk(
     'authorization/fetchTokenAuthentication',
@@ -30,6 +34,8 @@ export const fetchTokenAuthentication = createAsyncThunk(
     }
 );
 
+// fetch for session id
+
 export const fetchSessionId = createAsyncThunk(
     'authorization/fetchSessionId',
     async (args, { getState }) => {
@@ -47,6 +53,8 @@ export const fetchSessionId = createAsyncThunk(
     }
 );
 
+// get request token from query params
+
 export const getTokenFromQueryAsync = createAsyncThunk(
     'authorization/setRequestTokenAsync',
     async (query) => {
@@ -55,8 +63,23 @@ export const getTokenFromQueryAsync = createAsyncThunk(
         const request_token = queryParams.get('request_token');
         const approved = queryParams.get('approved');
 
-        if(request_token && approved) {
+        if (request_token && approved) {
             return request_token;
+        } else {
+            return Promise.reject();
+        }
+    }
+);
+
+// check for session id in local storage
+
+export const getSessionIdFromStorage = createAsyncThunk(
+    'authorization/getSessionIdFromStorage',
+    async () => {
+        const session_id = localStorage.getItem('session_id');
+
+        if (session_id) {
+            return session_id;
         } else {
             return Promise.reject();
         }
@@ -106,15 +129,6 @@ export const authorizationSlice = createSlice({
                 state.loading = 'rejected';
             });
 
-        // set request token
-
-        builder
-            .addCase(getTokenFromQueryAsync.fulfilled, (state, { payload }) => {
-                state.request_token = payload;
-                state.loading = 'fulfilled';
-                state.error = '';
-            });
-
         // session id
 
         builder
@@ -123,12 +137,33 @@ export const authorizationSlice = createSlice({
             })
             .addCase(fetchSessionId.fulfilled, (state, { payload }) => {
                 state.session_id = payload;
+                localStorage.setItem('session_id', payload);
+
                 state.loading = 'fulfilled';
                 state.error = '';
             })
             .addCase(fetchSessionId.rejected, (state, { error }) => {
                 state.error = error.message;
                 state.loading = 'rejected';
+            });
+
+        // get request token from query params
+
+        builder
+            .addCase(getTokenFromQueryAsync.fulfilled, (state, { payload }) => {
+                state.request_token = payload;
+                state.loading = 'fulfilled';
+                state.error = '';
+            });
+
+
+        // get session id from local storage
+
+        builder
+            .addCase(getSessionIdFromStorage.fulfilled, (state, { payload }) => {
+                state.session_id = payload;
+                state.loading = 'fulfilled';
+                state.error = '';
             });
     }
 });
