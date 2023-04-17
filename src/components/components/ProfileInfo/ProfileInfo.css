@@ -31,6 +31,11 @@
     background-color: rgb(0,0,0, .9);
 }
 
+.profile-info:hover {
+    cursor: pointer;
+}
+
 .profile-info:hover > .profile-info__menu-wrapper {
     display: block;
+    cursor: pointer;
 }
