@@ -1,18 +1,16 @@
 import { useSelector } from 'react-redux';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
+import AvatarImage from '../AvatarImage/AvatarImage';
 import './ProfileInfo.css'
-
-import avatarFallback from '../../../images/icon_photo_fallback.png';
 
 function ProfileInfo() {
     const { data } = useSelector((state) => state.user);
 
     return (
         <div className='profile-info' >
-            <img
-                src={avatarFallback}
-                alt='Аватар пользователя'
-                className='profile-info__avatar'
+            <AvatarImage
+                src={data.avatar.tmdb.avatar_path}
+                place='header'
             />
             <p className='profile-info__username' >
                 {data.username}

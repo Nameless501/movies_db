@@ -1,25 +1,13 @@
-import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
-import useImageLoad from '../../../hooks/useImageLoad';
-import photoFallback from '../../../images/icon_photo_fallback.png';
+import AvatarImage from '../AvatarImage/AvatarImage';
 import './ActorCard.css';
 
 function ActorCard({ actor }) {
-    const { imageState, checkImageLoading } = useImageLoad();
-
     return (
         <figure className='actor-card' >
-            <div
-                className='actor-card__photo-wrapper'
-                style={{'backgroundImage': `url(${ imageState !== 'loaded' && photoFallback })`}}
-            >
-                <img
-                    src={POSTER_VERTICAL_SMALL + actor?.profile_path}
-                    alt='Фото актера'
-                    className='actor-card__photo'
-                    style={{'display': `${ imageState === 'loaded' && 'block'}`}}
-                    onLoad={checkImageLoading}
-                />
-            </div>
+            <AvatarImage
+                src={actor?.profile_path}
+                place='actor-card'
+            />
             <figcaption className='actor-card__caption' >
                 <p className='actor-card__name'>
                     {actor?.name}

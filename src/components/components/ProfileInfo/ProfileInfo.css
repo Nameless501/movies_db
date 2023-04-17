@@ -8,17 +8,6 @@
     position: relative;
 }
 
-.profile-info__avatar {
-    margin: 0;
-    padding: 0;
-    display: block;
-    width: 40px;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    object-position: center;
-    object-fit: cover;
-}
-
 .profile-info__username {
     margin: 0;
     padding: 0;
