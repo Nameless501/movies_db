@@ -71,6 +71,10 @@ export const userSlice = createSlice({
     reducers: {
         signOut: (state) => {
             state.user = {};
+            state.states = {
+                tv: {},
+                movie: {},
+            };
             state.isLoggedIn = false;
         }
     },
