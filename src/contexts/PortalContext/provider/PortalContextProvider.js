@@ -4,6 +4,7 @@ import PortalContext from "../context/PortalContext";
 
 export function PortalContextProvider({ children }) {
     const [data, setData] = useState({ type: 'movie', id: null });
+    const [text, setText] = useState('');
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
 
@@ -17,6 +18,7 @@ export function PortalContextProvider({ children }) {
         setConstructionPopupState(false);
 
         setData({ type: 'movie', id: null });
+        setText('');
     };
 
     function openTrailerPopup(type, id) {
@@ -29,8 +31,9 @@ export function PortalContextProvider({ children }) {
         setSharePopupState(true);
     }
 
-    function openConstructionPopup() {
+    function openConstructionPopup(text) {
         setConstructionPopupState(true);
+        setText(text);
     }
 
     // Автоматическое закритие попапов, если перейти на другой роут
@@ -43,6 +46,7 @@ export function PortalContextProvider({ children }) {
         <PortalContext.Provider
             value={{
                 data,
+                text,
                 trailerPopupIsOpen,
                 sharePopupIsOpen,
                 constructionPopupIsOpen,

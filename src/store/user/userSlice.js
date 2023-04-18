@@ -134,8 +134,8 @@ export const userSlice = createSlice({
                 state.states[type][id].loading = 'rejected';
             })
     }
-})
+});
 
-export const { signOut } = userSlice.actions
+export const { signOut } = userSlice.actions;
 
 export default userSlice.reducer;

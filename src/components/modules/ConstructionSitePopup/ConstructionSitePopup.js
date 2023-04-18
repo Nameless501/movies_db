@@ -5,7 +5,7 @@ import constructionIcon from '../../../images/icon_construction.png';
 import './ConstructionSitePopup.css';
 
 function SharePopup() {
-    const { closeAll } = usePortalContext();
+    const { closeAll, text } = usePortalContext();
 
     return (
         <PopupWrapper
@@ -18,7 +18,7 @@ function SharePopup() {
                     className='construction-popup__image'
                 />
                 <p className='construction-popup__text' >
-                    Тут еще ведутся строительные работы
+                    {text}
                 </p>
                 <CloseButton
                     place='popup'

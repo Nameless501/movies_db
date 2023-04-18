@@ -7,8 +7,11 @@ import './ProfileMenu.css'
 
 function ProfileMenu({ place }) {
     const dispatch = useDispatch();
-
     const { openConstructionPopup } = usePortalContext();
+
+    function openTemporaryPopup() {
+        openConstructionPopup('Тут пока еще ведутся работы');
+    }
 
     function handleSignOut() {
         dispatch(fetchSessionDelete())
@@ -25,7 +28,7 @@ function ProfileMenu({ place }) {
             <li className='profile-menu-item' >
                 <button
                     className={`navigation-link navigation-link_place_${place}`}
-                    onClick={openConstructionPopup}
+                    onClick={openTemporaryPopup}
                 >
                     Профиль
                 </button>
@@ -33,7 +36,7 @@ function ProfileMenu({ place }) {
             <li className='profile-menu-item' >
                 <button
                     className={`navigation-link navigation-link_place_${place}`}
-                    onClick={openConstructionPopup}
+                    onClick={openTemporaryPopup}
                 >
                     Сохраненное
                 </button>

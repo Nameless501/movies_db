@@ -1,7 +1,8 @@
 .construction-popup {
     margin: 0;
-    padding: 80px 40px;
+    padding: 60px 40px;
     box-sizing: border-box;
+    max-width: 600px;
     position: relative;
     border-radius: 8px;
     background-color: var(--colors_bg_main);
@@ -35,5 +36,9 @@
     .construction-popup {
         padding: 40px 30px;
         max-width: 75vw;
+    }
+
+    .construction-popup__text {
+        font-size: 16px;
     }
 }

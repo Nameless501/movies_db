@@ -11,7 +11,7 @@ import './CardButtons.css';
 function CardButtons({ place, id, type }) {
     const buttonsRef = useRef();
     const [isIntersecting, setIsIntersecting] = useState(false);
-    const { openTrailerPopup, openSharePopup } = usePortalContext();
+    const { openTrailerPopup, openSharePopup, openConstructionPopup } = usePortalContext();
     const { isLoggedIn, states } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
@@ -37,15 +37,19 @@ function CardButtons({ place, id, type }) {
 
     function handleAddToWatchlist() {
         dispatch(addToWatchList({ id, type }))
-    }
+    };
+
+    function handleDeleteFromWatchlist() {
+        openConstructionPopup('В настоящий момент API TMDB не поддерживает удаление элементов из пользовательских списков. Как только эта возможность будет добавлена, то она будет реализована и на этой странице. Пока это можно сделать на сайте TMDB в своем профиле.')
+    };
 
     function handleTrailerPopupOpen() {
         openTrailerPopup(type, id);
-    }
+    };
 
     function handleShapePopupOpen() {
         openSharePopup(type, id);
-    }
+    };
 
     return (
         <div
@@ -58,7 +62,7 @@ function CardButtons({ place, id, type }) {
             <CardButton
                 place={place}
                 isSaved={states?.[type]?.[id]?.watchlist}
-                handleClick={handleAddToWatchlist}
+                handleClick={states?.[type]?.[id]?.watchlist ? handleDeleteFromWatchlist : handleAddToWatchlist}
             />
             <ShareButton
                 place={place}
