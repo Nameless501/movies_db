@@ -6,9 +6,9 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchRecommendations = createAsyncThunk(
     'recommendations/fetchRecommendations',
     async ({ type, id }) => {
-        const { getUrl, options } = dbApiConfig[type].recommendations;
+        const { getUrl, options } = dbApiConfig.data.recommendations;
 
-        const response = await handleFetch(getUrl(id), options);
+        const response = await handleFetch(getUrl(type, id), options);
         return response.json();
     },
     {

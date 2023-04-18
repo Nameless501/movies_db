@@ -32,7 +32,7 @@ function NowPlayingPage() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 handleLoadMore={handleLoadMore}
-                type='movies'
+                type='movie'
             />
         </FeedPageWrapper>
     );

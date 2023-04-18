@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import './CreditsSlider.css';
 
-function CreditsSlider({ type = 'movies' }) {
+function CreditsSlider({ type }) {
     const { id } = useParams();
     const { cast } = useSelector(state => state.credits);
     const dispatch = useDispatch();

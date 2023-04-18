@@ -9,7 +9,7 @@ import RecommendationsSlider from '../../modules/RecommendationsSlider/Recommend
 import Reviews from '../../modules/Reviews/Reviews';
 import './InfoPage.css';
 
-function InfoPage({ type = 'movies' }) {
+function InfoPage({ type }) {
     const { info } = useSelector(store => store.info);
 
     useLayoutEffect(() => {

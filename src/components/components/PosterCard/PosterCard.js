@@ -9,7 +9,7 @@ import { routesConfig } from '../../../utils/configs';
 import posterFallback from '../../../images/poster_fallback.png';
 import './PosterCard.css';
 
-const PosterCard = memo(function MovieCard({ movie, place, type = 'movies', vertical = true }) {
+const PosterCard = memo(function MovieCard({ movie, place, type, vertical = true }) {
     const { isDesktop } = useResize();
     const { imageState, checkImageLoading } = useImageLoad();
 

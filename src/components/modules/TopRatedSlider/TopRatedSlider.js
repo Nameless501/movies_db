@@ -5,7 +5,7 @@ import { routesConfig } from '../../../utils/configs';
 import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
-function TopRatedSlider({ type = 'movies' }) {
+function TopRatedSlider({ type }) {
     const { results, loading, error } = useSelector(state => state.topRated[type]);
     const dispatch = useDispatch();
 

@@ -5,7 +5,7 @@ import { routesConfig } from '../../../utils/configs';
 import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
-function NowPlayingSlider({ type = 'movies' }) {
+function NowPlayingSlider({ type }) {
     const { results, loading, error } = useSelector(state => state.nowPlaying);
     const dispatch = useDispatch();
 

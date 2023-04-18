@@ -6,7 +6,7 @@ import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import MoreButton from '../../UI/MoreButton/MoreButton';
 import './Reviews.css';
 
-function Reviews({ type = 'movies' }) {
+function Reviews({ type }) {
     const { id } = useParams();
     const { reviews, loading, error, currentPage, totalPages } = useSelector(state => state.reviews);
     const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
 import { getRandomElement } from '../../../utils/utils';
 
-function PopularPage({ title, type = 'movies' }) {
+function PopularPage({ title, type }) {
     const { results, loading, error, currentPage, totalPages } = useSelector(state => state.popular[type]);
     const dispatch = useDispatch();
 

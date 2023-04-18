@@ -6,7 +6,7 @@ import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallW
 import PosterCard from '../../components/PosterCard/PosterCard';
 import './TopRatedGrid.css';
 
-function TopRatedGrid({ type = 'movies' }) {
+function TopRatedGrid({ type }) {
     const { results, loading, error } = useSelector(state => state.topRated[type]);
     const dispatch = useDispatch();
 

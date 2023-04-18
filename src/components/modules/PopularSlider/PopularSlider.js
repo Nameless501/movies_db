@@ -5,7 +5,7 @@ import { routesConfig } from '../../../utils/configs';
 import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
-function PopularSlider({ type = 'movies' }) {
+function PopularSlider({ type }) {
     const { results, loading, error } = useSelector(state => state.popular[type]);
     const dispatch = useDispatch();
 

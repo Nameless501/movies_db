@@ -9,7 +9,7 @@ import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import posterFallback from '../../../images/poster_fallback.png';
 import './Description.css';
 
-function Description({ type = 'movies' }) {
+function Description({ type }) {
     const { id } = useParams();
     const { info, loading } = useSelector(store => store.info);
     const { imageState, checkImageLoading } = useImageLoad();
@@ -37,13 +37,13 @@ function Description({ type = 'movies' }) {
                 loading === 'fulfilled' ?
                     <>
                         <h2 className='description__title' >
-                            {type === 'movies' && `${info?.title} ${info?.release_date && '(' + new Date(info?.release_date).getFullYear() + ')'}`}
-                            {type === 'shows' && `${info?.name} ${info?.first_air_date && '(' + new Date(info?.first_air_date).getFullYear() + ')'}`}
+                            {type === 'movie' && `${info?.title} ${info?.release_date && '(' + new Date(info?.release_date).getFullYear() + ')'}`}
+                            {type === 'tv' && `${info?.name} ${info?.first_air_date && '(' + new Date(info?.first_air_date).getFullYear() + ')'}`}
                         </h2>
                         <div className='description__subtitle' >
                             <p className='description__text-fade'>
-                                {type === 'movies' && info?.runtime?.toLocaleString('ru', { style: 'unit', unit: 'minute', unitDisplay: 'long' })}
-                                {type === 'shows' && 'Сезонов: ' + info?.number_of_seasons}
+                                {type === 'movie' && info?.runtime?.toLocaleString('ru', { style: 'unit', unit: 'minute', unitDisplay: 'long' })}
+                                {type === 'tv' && 'Сезонов: ' + info?.number_of_seasons}
                             </p>
                             <ul className='description__genres'>
                                 {info?.genres?.map(genre => {

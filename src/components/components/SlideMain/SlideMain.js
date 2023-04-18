@@ -8,7 +8,7 @@ import PosterLazyLoad from '../PosterLazyLoad/PosterLazyLoad';
 import { routesConfig } from '../../../utils/configs';
 import './SlideMain.css';
 
-function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, release_date, id }) {
+function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, release_date, id, type }) {
     const slideRef = useRef();
     const [slideIsVisible, setSlideIsVisible] = useState(false);
     const { isMobile } = useResize();
@@ -55,10 +55,10 @@ function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, 
                 <CardButtons
                     place='slide-main'
                     id={id}
-                    type='movies'
+                    type={type}
                 />
                 <LinkButton
-                    link={routesConfig.movies.info + '/' + id}
+                    link={routesConfig[type].info + '/' + id}
                     text='Подробнее'
                     place='slide-main'
                 />

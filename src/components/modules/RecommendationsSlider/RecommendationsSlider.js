@@ -5,7 +5,7 @@ import { fetchRecommendations } from '../../../store/recommendations/recommendat
 import SliderSmall from '../../components/SliderSmall/SliderSmall';
 import SliderSmallWrapper from '../../components/SliderSmallWrapper/SliderSmallWrapper';
 
-function RecommendationsSlider({ type = 'movies' }) {
+function RecommendationsSlider({ type }) {
     const { id } = useParams();
     const { recommendations, loading, error } = useSelector(state => state.recommendations);
     const dispatch = useDispatch();

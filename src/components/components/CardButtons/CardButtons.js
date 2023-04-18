@@ -8,7 +8,7 @@ import CardButton from '../../UI/CardButton/CardButton';
 import PlayButton from '../../UI/PlayButton/PlayButton';
 import './CardButtons.css';
 
-function CardButtons({ isSaved, place, id, type = 'movies' }) {
+function CardButtons({ place, id, type }) {
     const buttonsRef = useRef();
     const [isIntersecting, setIsIntersecting] = useState(false);
     const { openTrailerPopup, openSharePopup } = usePortalContext();
@@ -29,18 +29,14 @@ function CardButtons({ isSaved, place, id, type = 'movies' }) {
 
     useEffect(() => {
         if(isIntersecting && isLoggedIn) {
-            dispatch(fetchAccountStates({ id, type: type === 'movies' ? 'movie' : 'tv' }));
+            dispatch(fetchAccountStates({ id, type }));
         }
     }, [isIntersecting, isLoggedIn, dispatch, id, type]);
 
     // buttons click handlers
 
-    function addToWtachlist() {
-        dispatch(addToWatchList({ id, type: type === 'movies' ? 'movie' : 'tv' }))
-    }
-
-    function deleteFromWtachlist() {
-
+    function handleAddToWatchlist() {
+        dispatch(addToWatchList({ id, type }))
     }
 
     function handleTrailerPopupOpen() {
@@ -61,8 +57,8 @@ function CardButtons({ isSaved, place, id, type = 'movies' }) {
         >
             <CardButton
                 place={place}
-                isSaved={states?.[type === 'movies' ? 'movie' : 'tv']?.[id]?.watchlist}
-                handleClick={addToWtachlist}
+                isSaved={states?.[type]?.[id]?.watchlist}
+                handleClick={handleAddToWatchlist}
             />
             <ShareButton
                 place={place}

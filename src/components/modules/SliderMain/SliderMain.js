@@ -7,7 +7,7 @@ import useResize from '../../../hooks/useResize';
 import SlideMain from '../../components/SlideMain/SlideMain';
 import './SliderMain.css';
 
-function SliderMain() {
+function SliderMain({ type }) {
     const { results } = useSelector((state) => state.nowPlaying);
     const dispatch = useDispatch();
     const { isMobile } = useResize();
@@ -30,7 +30,7 @@ function SliderMain() {
                     results.slice(0, 5).map(movie => {
                         return(
                             <SwiperSlide key={movie.id}>
-                                <SlideMain {...movie} />
+                                <SlideMain {...movie} type={type} />
                             </SwiperSlide>
                         )
                     })

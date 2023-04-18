@@ -21,41 +21,23 @@ export const DB_API_BASE_URL = 'https://api.themoviedb.org/3';
 export const DB_API_KEY = '?api_key=7dc59b842d86576bd986dae0db4b7703';
 
 
-export const MOVIES_API_PATH_TOP_RATED = DB_API_BASE_URL + '/movie/top_rated';
+export const getApiTopRatedPath = (type) => `${DB_API_BASE_URL}/${type}/top_rated`;
 
-export const MOVIES_API_PATH_NOW_PLAYING = DB_API_BASE_URL + '/movie/now_playing';
+export const getApiNowPlayingPath = (type) => `${DB_API_BASE_URL}/${type}/now_playing`;
 
-export const MOVIES_API_PATH_POPULAR = DB_API_BASE_URL + '/movie/popular';
+export const getApiPopularPath = (type) => `${DB_API_BASE_URL}/${type}/popular`;
 
-export const getMovieInfoPath = (id) => `${DB_API_BASE_URL}/movie/${id}`;
+export const geApiInfoPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}`;
 
-export const getMovieCreditsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/credits`;
+export const geApiCreditsPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/credits`;
 
-export const getMovieReviewsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/reviews`;
+export const geApiReviewsPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/reviews`;
 
-export const getMovieRecommendationsPath = (id) => `${DB_API_BASE_URL}/movie/${id}/recommendations`;
+export const geApiRecommendationsPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/recommendations`;
 
-export const getMovieTrailerPath = (id) => `${DB_API_BASE_URL}/movie/${id}/videos`;
+export const geApiTrailerPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/videos`;
 
-
-export const SHOWS_API_PATH_TOP_RATED = DB_API_BASE_URL + '/tv/top_rated';
-
-export const SHOWS_API_PATH_POPULAR = DB_API_BASE_URL + '/tv/popular';
-
-export const getShowInfoPath = (id) => `${DB_API_BASE_URL}/tv/${id}`;
-
-export const getShowCreditsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/credits`;
-
-export const getShowReviewsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/reviews`;
-
-export const getShowRecommendationsPath = (id) => `${DB_API_BASE_URL}/tv/${id}/recommendations`;
-
-export const getShowTrailerPath = (id) => `${DB_API_BASE_URL}/tv/${id}/videos`;
-
-
-export const SEARCH_API_PATH_MOVIES = DB_API_BASE_URL + '/search/movie';
-
-export const SEARCH_API_PATH_SHOWS = DB_API_BASE_URL + '/search/tv';
+export const geApiSearchPath = (type) => `${DB_API_BASE_URL}/search/${type}`;
 
 
 export const AUTHORIZATION_API_PATH_REQUEST_TOKEN = DB_API_BASE_URL + '/authentication/token/new';
@@ -75,7 +57,7 @@ export const USER_API_PATH_PROFILE = DB_API_BASE_URL + '/account';
 
 export const getAccountStatesPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/account_states`;
 
-export const getUserWatchlistPath = (userId) => `${USER_API_PATH_PROFILE}/${userId}/watchlist`;
+export const getAddToWatchlistPath = (userId) => `${USER_API_PATH_PROFILE}/${userId}/watchlist`;
 
 
 export const getLangParam = (lang) => `&language=${lang}`;

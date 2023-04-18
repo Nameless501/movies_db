@@ -51,47 +51,47 @@ function App() {
 
                 {/* Top rated pages */}
 
-                <Route path={routesConfig.movies.topRated}>
+                <Route path={routesConfig.movie.topRated}>
                     <TopRatedPage
-                        type='movies'
+                        type='movie'
                         title='Фильмы с высоким рейтингом'
                     />
                 </Route>
-                <Route path={routesConfig.shows.topRated}>
+                <Route path={routesConfig.tv.topRated}>
                     <TopRatedPage
-                        type='shows'
+                        type='tv'
                         title='Сериалы с высоким рейтингом'
                     />
                 </Route>
 
                 {/* Popular pages */}
 
-                <Route path={routesConfig.movies.popular}>
+                <Route path={routesConfig.movie.popular}>
                     <PopularPage
-                        type='movies'
+                        type='movie'
                         title='Популярные фильмы'
                     />
                 </Route>
-                <Route path={routesConfig.shows.popular}>
+                <Route path={routesConfig.tv.popular}>
                     <PopularPage
-                        type='shows'
+                        type='tv'
                         title='Популярные сериалы'
                     />
                 </Route>
 
                 {/* Now playing page */}
 
-                <Route path={routesConfig.movies.nowPlaying}>
+                <Route path={routesConfig.movie.nowPlaying}>
                     <NowPlayingPage />
                 </Route>
 
                 {/* Info pages */}
 
-                <Route path={routesConfig.movies.info + '/:id'}>
-                    <InfoPage type='movies' />
+                <Route path={routesConfig.movie.info + '/:id'}>
+                    <InfoPage type='movie' />
                 </Route>
-                <Route path={routesConfig.shows.info + '/:id'}>
-                    <InfoPage type='shows' />
+                <Route path={routesConfig.tv.info + '/:id'}>
+                    <InfoPage type='tv' />
                 </Route>
 
                 {/* Search page */}

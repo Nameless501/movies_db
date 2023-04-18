@@ -6,9 +6,9 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchSearchQuery = createAsyncThunk(
     'search/fetchSearchQuery',
     async ({ type, keyword }) => {
-        const { getUrl, options } = dbApiConfig.search[type];
+        const { getUrl, options } = dbApiConfig.data.search;
 
-        const response = await handleFetch(getUrl(keyword), options);
+        const response = await handleFetch(getUrl(type, keyword), options);
         return response.json();
     },
     {
@@ -24,16 +24,16 @@ export const fetchSearchQuery = createAsyncThunk(
 
 export const fetchNextPage = createAsyncThunk('search/fetchNextPage', async (arg, { getState }) => {
     const { search } = getState();
-    const { getUrl, options } = dbApiConfig.search[search.prev.type];
+    const { getUrl, options } = dbApiConfig.data.search;
 
-    const response = await handleFetch(getUrl(search.prev.keyword, 'ru-RU', search.currentPage + 1), options);
+    const response = await handleFetch(getUrl(search.prev.type, search.prev.keyword, 'ru-RU', search.currentPage + 1), options);
     return response.json();
 });
 
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
-        prev: { keyword: '', type: 'movies' },
+        prev: { keyword: '', type: 'movie' },
         totalPages: 1,
         currentPage: 1,
         result: [],

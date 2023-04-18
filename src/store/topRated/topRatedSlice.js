@@ -6,8 +6,8 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchTopRated = createAsyncThunk(
     'topRated/fetchTopRated',
     async (type) => {
-        const { getUrl, options } = dbApiConfig[type].topRated;
-        const response = await handleFetch(getUrl(), options);
+        const { getUrl, options } = dbApiConfig.data.topRated;
+        const response = await handleFetch(getUrl(type), options);
         const data = await response.json();
 
         return data;
@@ -26,9 +26,9 @@ export const fetchTopRated = createAsyncThunk(
 
 export const fetchMoreTopRated = createAsyncThunk('topRated/fetchMoreTopRated', async (type, { getState }) => {
     const { topRated } = getState();
-    const { getUrl, options } = dbApiConfig[type].topRated;
+    const { getUrl, options } = dbApiConfig.data.topRated;
 
-    const response = await handleFetch(getUrl('ru-RU', topRated[type].currentPage + 1), options);
+    const response = await handleFetch(getUrl(type, 'ru-RU', topRated[type].currentPage + 1), options);
     const data = await response.json();
 
     return data;
@@ -37,14 +37,14 @@ export const fetchMoreTopRated = createAsyncThunk('topRated/fetchMoreTopRated', 
 export const topRatedSlice = createSlice({
     name: 'topRated',
     initialState: {
-        movies: {
+        movie: {
             totalPages: 1,
             currentPage: 1,
             results: [],
             loading: 'idle',
             error: '',
         },
-        shows: {
+        tv: {
             totalPages: 1,
             currentPage: 1,
             results: [],

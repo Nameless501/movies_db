@@ -9,13 +9,13 @@ function PopupWrapper({ handleClose, disabled = false, children }) {
         }
     }
 
-    function handleEscapeClose(evt) {
-        if (evt.code === 'Escape') {
-            handleClose();
-        }
-    }
-
     useEffect(() => {
+        function handleEscapeClose(evt) {
+            if (evt.code === 'Escape') {
+                handleClose();
+            }
+        }
+
         window.addEventListener('keydown', handleEscapeClose);
 
         return () => {

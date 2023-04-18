@@ -14,13 +14,13 @@ function MainPage() {
                 place='main-page'
             />
             <main className='main-page__content'>
-                <SliderMain />
+                <SliderMain type='movie' />
                 <div className='main-page__content-wrapper' >
-                    <TopRatedSlider type='movies' />
-                    <PopularSlider type='movies' />
-                    <NowPlayingSlider type='movies' />
-                    <TopRatedGrid type='shows' />
-                    <PopularSlider type='shows' />
+                    <TopRatedSlider type='movie' />
+                    <PopularSlider type='movie' />
+                    <NowPlayingSlider type='movie' />
+                    <TopRatedGrid type='tv' />
+                    <PopularSlider type='tv' />
                 </div>
             </main>
             <Footer />

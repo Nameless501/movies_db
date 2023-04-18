@@ -1,29 +1,21 @@
 import {
-    MOVIES_API_PATH_TOP_RATED,
-    MOVIES_API_PATH_POPULAR,
-    MOVIES_API_PATH_NOW_PLAYING,
-    SHOWS_API_PATH_TOP_RATED,
-    SHOWS_API_PATH_POPULAR,
-    SEARCH_API_PATH_MOVIES,
-    SEARCH_API_PATH_SHOWS,
+    getApiTopRatedPath,
+    getApiNowPlayingPath,
+    getApiPopularPath,
+    geApiInfoPath,
+    geApiCreditsPath,
+    geApiReviewsPath,
+    geApiRecommendationsPath,
+    geApiTrailerPath,
+    geApiSearchPath,
     AUTHORIZATION_API_PATH_REQUEST_TOKEN,
     AUTHORIZATION_API_PATH_LOGIN,
     AUTHORIZATION_API_PATH_SESSION_ID,
     AUTHORIZATION_API_PATH_SIGN_OUT,
     USER_API_PATH_PROFILE,
     DB_API_KEY,
-    getMovieInfoPath,
-    getMovieCreditsPath,
-    getMovieReviewsPath,
-    getMovieRecommendationsPath,
-    getMovieTrailerPath,
-    getShowInfoPath,
-    getShowCreditsPath,
-    getShowReviewsPath,
-    getShowRecommendationsPath,
-    getShowTrailerPath,
     getAccountStatesPath,
-    getUserWatchlistPath,
+    getAddToWatchlistPath,
     getLangParam,
     getPageParam,
     getQueryParam,
@@ -38,16 +30,16 @@ import {
 
 export const routesConfig = {
     main: '/',
-    movies: {
-        info: '/movies',
-        topRated: '/movies/top-rated',
-        nowPlaying: '/movies/now-playing',
-        popular: '/movies/popular',
+    movie: {
+        info: '/movie',
+        topRated: '/movie/top-rated',
+        nowPlaying: '/movie/now-playing',
+        popular: '/movie/popular',
     },
-    shows: {
-        info: '/shows',
-        topRated: '/shows/top-rated',
-        popular: '/shows/popular',
+    tv: {
+        info: '/tv',
+        topRated: '/tv/top-rated',
+        popular: '/tv/popular',
     },
     search: '/search',
     saved: '/saved',
@@ -66,15 +58,15 @@ export const navBarConfig = [
     { title: 'Главная', link: routesConfig.main, isDropdown: false },
     {
         title: 'Фильмы', isDropdown: true, links: [
-            { link: routesConfig.movies.popular, title: 'Популярные' },
-            { link: routesConfig.movies.topRated, title: 'С высоким рейтингом' },
-            { link: routesConfig.movies.nowPlaying, title: 'Сейчас в кино' },
+            { link: routesConfig.movie.popular, title: 'Популярные' },
+            { link: routesConfig.movie.topRated, title: 'С высоким рейтингом' },
+            { link: routesConfig.movie.nowPlaying, title: 'Сейчас в кино' },
         ]
     },
     {
         title: 'Сериалы', isDropdown: true, links: [
-            { link: routesConfig.shows.popular, title: 'Популярные' },
-            { link: routesConfig.shows.topRated, title: 'С высоким рейтингом' },
+            { link: routesConfig.tv.popular, title: 'Популярные' },
+            { link: routesConfig.tv.topRated, title: 'С высоким рейтингом' },
         ]
     },
     { title: 'Поиск', link: routesConfig.search, isDropdown: false },
@@ -87,145 +79,77 @@ export const navBarConfig = [
 
 
 export const dbApiConfig = {
-    movies: {
+    data: {
         topRated: {
             options: {
                 method: 'GET',
             },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${MOVIES_API_PATH_TOP_RATED}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            getUrl: (type, lang = 'ru-RU', page = 1) => {
+                return `${getApiTopRatedPath(type)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         nowPlaying: {
             options: {
                 method: 'GET',
             },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${MOVIES_API_PATH_NOW_PLAYING}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            getUrl: (type, lang = 'ru-RU', page = 1) => {
+                return `${getApiNowPlayingPath(type)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         popular: {
             options: {
                 method: 'GET',
             },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${MOVIES_API_PATH_POPULAR}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            getUrl: (type, lang = 'ru-RU', page = 1) => {
+                return `${getApiPopularPath(type)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         info: {
             options: {
                 method: 'GET',
             },
-            getUrl: (id, lang = 'ru-RU') => {
-                return `${getMovieInfoPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            getUrl: (type, id, lang = 'ru-RU') => {
+                return `${geApiInfoPath(type, id)}${DB_API_KEY}${getLangParam(lang)}`;
             }
         },
         credits: {
             options: {
                 method: 'GET',
             },
-            getUrl: (id, lang = 'en-US') => {
-                return `${getMovieCreditsPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            getUrl: (type, id, lang = 'en-US') => {
+                return `${geApiCreditsPath(type, id)}${DB_API_KEY}${getLangParam(lang)}`;
             }
         },
         reviews: {
             options: {
                 method: 'GET',
             },
-            getUrl: (id, lang = 'en-US', page = 1) => {
-                return `${getMovieReviewsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            getUrl: (type, id, lang = 'en-US', page = 1) => {
+                return `${geApiReviewsPath(type, id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         recommendations: {
             options: {
                 method: 'GET',
             },
-            getUrl: (id, lang = 'ru-RU', page = 1) => {
-                return `${getMovieRecommendationsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
+            getUrl: (type, id, lang = 'ru-RU', page = 1) => {
+                return `${geApiRecommendationsPath(type, id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
             }
         },
         trailer: {
             options: {
                 method: 'GET',
             },
-            getUrl: (id, lang = 'en-US') => {
-                return `${getMovieTrailerPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
+            getUrl: (type, id, lang = 'en-US') => {
+                return `${geApiTrailerPath(type, id)}${DB_API_KEY}${getLangParam(lang)}`;
             }
         },
-    },
-    shows: {
-        topRated: {
+        search: {
             options: {
                 method: 'GET',
             },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${SHOWS_API_PATH_TOP_RATED}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
-            }
-        },
-        popular: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (lang = 'ru-RU', page = 1) => {
-                return `${SHOWS_API_PATH_POPULAR}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
-            }
-        },
-        info: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (id, lang = 'ru-RU') => {
-                return `${getShowInfoPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
-            }
-        },
-        credits: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (id, lang = 'en-US') => {
-                return `${getShowCreditsPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
-            }
-        },
-        reviews: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (id, lang = 'en-US', page = 1) => {
-                return `${getShowReviewsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
-            }
-        },
-        recommendations: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (id, lang = 'ru-RU', page = 1) => {
-                return `${getShowRecommendationsPath(id)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}`;
-            }
-        },
-        trailer: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (id, lang = 'en-US') => {
-                return `${getShowTrailerPath(id)}${DB_API_KEY}${getLangParam(lang)}`;
-            }
-        },
-    },
-    search: {
-        movies: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (keyword, lang = 'ru-RU', page = 1) => {
-                return `${SEARCH_API_PATH_MOVIES}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}${getQueryParam(encodeURI(keyword))}`;
-            }
-        },
-        shows: {
-            options: {
-                method: 'GET',
-            },
-            getUrl: (keyword, lang = 'ru-RU', page = 1) => {
-                return `${SEARCH_API_PATH_SHOWS}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}${getQueryParam(encodeURI(keyword))}`;
+            getUrl: (type, keyword, lang = 'ru-RU', page = 1) => {
+                return `${geApiSearchPath(type)}${DB_API_KEY}${getLangParam(lang)}${getPageParam(page)}${getQueryParam(encodeURI(keyword))}`;
             }
         },
     },
@@ -297,9 +221,9 @@ export const dbApiConfig = {
                 },
             },
             getUrl: (sessionId, userId) => {
-                return `${getUserWatchlistPath(userId)}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
+                return `${getAddToWatchlistPath(userId)}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
             }
-        }
+        },
     }
 }
 

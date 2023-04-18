@@ -6,9 +6,9 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchInfo = createAsyncThunk(
     'info/fetchMovieInfo',
     async ({ type, id }) => {
-        const { getUrl, options } = dbApiConfig[type].info;
+        const { getUrl, options } = dbApiConfig.data.info;
 
-        const response = await handleFetch(getUrl(id), options);
+        const response = await handleFetch(getUrl(type, id), options);
         return response.json();
     },
     {

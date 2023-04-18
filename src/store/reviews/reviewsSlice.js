@@ -6,9 +6,9 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchReviews = createAsyncThunk(
     'reviews/fetchMovieReviews',
     async ({ type, id }) => {
-        const { getUrl, options } = dbApiConfig[type].reviews;
+        const { getUrl, options } = dbApiConfig.data.reviews;
 
-        const response = await handleFetch(getUrl(id), options);
+        const response = await handleFetch(getUrl(type, id), options);
         return response.json();
     },
     {
@@ -24,9 +24,9 @@ export const fetchReviews = createAsyncThunk(
 
 export const fetchMoreReviews = createAsyncThunk('reviews/fetchMoreReviews', async ({ type, id }, { getState }) => {
     const { reviews } = getState();
-    const { getUrl, options } = dbApiConfig[type].reviews;
+    const { getUrl, options } = dbApiConfig.data.reviews;
 
-    const response = await handleFetch(getUrl(id, 'en-US', reviews.currentPage + 1), options);
+    const response = await handleFetch(getUrl(type, id, 'en-US', reviews.currentPage + 1), options);
     return response.json();
 });
 

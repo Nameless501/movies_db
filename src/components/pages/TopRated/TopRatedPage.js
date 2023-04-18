@@ -5,7 +5,7 @@ import CardsFeed from '../../components/CardsFeed/CardsFeed';
 import FeedPageWrapper from '../../components/FeedPageWrapper/FeedPageWrapper';
 import { getRandomElement } from '../../../utils/utils';
 
-function TopRatedPage({ title, type = 'movies' }) {
+function TopRatedPage({ title, type }) {
     const { results, loading, error, currentPage, totalPages } = useSelector(state => state.topRated[type]);
     const dispatch = useDispatch();
 

@@ -6,9 +6,9 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 export const fetchPopular = createAsyncThunk(
     'popular/fetchPopular',
     async (type) => {
-        const { getUrl, options } = dbApiConfig[type].popular;
+        const { getUrl, options } = dbApiConfig.data.popular;
 
-        const response = await handleFetch(getUrl(), options);
+        const response = await handleFetch(getUrl(type), options);
         const data = await response.json();
 
         return data;
@@ -27,9 +27,9 @@ export const fetchPopular = createAsyncThunk(
 
 export const fetchMorePopular = createAsyncThunk('popular/fetchMorePopular', async (type, { getState }) => {
     const { popular } = getState();
-    const { getUrl, options } = dbApiConfig[type].popular;
+    const { getUrl, options } = dbApiConfig.data.popular;
 
-    const response = await handleFetch(getUrl('ru-RU', popular[type].currentPage + 1), options);
+    const response = await handleFetch(getUrl(type, 'ru-RU', popular[type].currentPage + 1), options);
     const data = await response.json();
 
     return data;
@@ -38,14 +38,14 @@ export const fetchMorePopular = createAsyncThunk('popular/fetchMorePopular', asy
 export const popularSlice = createSlice({
     name: 'popular',
     initialState: {
-        movies: {
+        movie: {
             totalPages: 1,
             currentPage: 1,
             results: [],
             loading: 'idle',
             error: '',
         },
-        shows: {
+        tv: {
             totalPages: 1,
             currentPage: 1,
             results: [],

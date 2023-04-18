@@ -16,7 +16,7 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
     useIntersectionObserver(
         listEndRef,
         ([{ isIntersecting }]) => {
-            if (isIntersecting) {
+            if (isIntersecting && loading !== 'pendingNextPage') {
                 handleLoadMore();
             }
         },

@@ -5,10 +5,10 @@ import { ERROR_MOVIES_FETCH } from '../../utils/constants';
 
 export const fetchNowPlaying = createAsyncThunk(
     'nowPlaying/fetchNowPlaying',
-    async () => {
-        const { getUrl, options } = dbApiConfig.movies.nowPlaying;
+    async (type = 'movie') => {
+        const { getUrl, options } = dbApiConfig.data.nowPlaying;
 
-        const response = await handleFetch(getUrl(), options);
+        const response = await handleFetch(getUrl(type), options);
         return response.json();
     },
     {
@@ -21,11 +21,11 @@ export const fetchNowPlaying = createAsyncThunk(
     }
 );
 
-export const fetchMoreNowPlaying = createAsyncThunk('nowPlaying/fetchMoreNowPlayingMovies', async (arg, { getState }) => {
+export const fetchMoreNowPlaying = createAsyncThunk('nowPlaying/fetchMoreNowPlayingMovies', async (type = 'movie', { getState }) => {
     const { nowPlaying } = getState();
-    const { getUrl, options } = dbApiConfig.movies.nowPlaying;
+    const { getUrl, options } = dbApiConfig.data.nowPlaying;
 
-    const response = await handleFetch(getUrl('ru-RU', nowPlaying.currentPage + 1), options);
+    const response = await handleFetch(getUrl(type, 'ru-RU', nowPlaying.currentPage + 1), options);
     return response.json();
 });
 
