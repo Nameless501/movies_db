@@ -4,16 +4,16 @@ import AvatarImage from '../AvatarImage/AvatarImage';
 import './ProfileInfo.css'
 
 function ProfileInfo() {
-    const { data } = useSelector((state) => state.user);
+    const { user } = useSelector((state) => state.user);
 
     return (
         <div className='profile-info' >
             <AvatarImage
-                src={data.avatar.tmdb.avatar_path}
+                src={user?.avatar?.tmdb?.avatar_path}
                 place='header'
             />
             <p className='profile-info__username' >
-                {data.username}
+                {user?.username}
             </p>
             <div className='profile-info__menu-wrapper'  >
                 <ProfileMenu

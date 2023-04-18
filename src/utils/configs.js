@@ -10,7 +10,7 @@ import {
     AUTHORIZATION_API_PATH_LOGIN,
     AUTHORIZATION_API_PATH_SESSION_ID,
     AUTHORIZATION_API_PATH_SIGN_OUT,
-    USER_API_PATH_PROFILE_DATA,
+    USER_API_PATH_PROFILE,
     DB_API_KEY,
     getMovieInfoPath,
     getMovieCreditsPath,
@@ -22,6 +22,8 @@ import {
     getShowReviewsPath,
     getShowRecommendationsPath,
     getShowTrailerPath,
+    getAccountStatesPath,
+    getUserWatchlistPath,
     getLangParam,
     getPageParam,
     getQueryParam,
@@ -276,9 +278,28 @@ export const dbApiConfig = {
                 method: 'GET',
             },
             getUrl: (sessionId) => {
-                return `${USER_API_PATH_PROFILE_DATA}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
+                return `${USER_API_PATH_PROFILE}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
             }
         },
+        states: {
+            options: {
+                method: 'GET',
+            },
+            getUrl: (type, movieId, sessionId) => {
+                return `${getAccountStatesPath(type, movieId)}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
+            }
+        },
+        watchlistAdd: {
+            options: {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+            getUrl: (sessionId, userId) => {
+                return `${getUserWatchlistPath(userId)}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
+            }
+        }
     }
 }
 

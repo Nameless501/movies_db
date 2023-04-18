@@ -71,7 +71,11 @@ export const AUTHORIZATION_API_PATH_SIGN_OUT = DB_API_BASE_URL + '/authenticatio
 export const getRegistrationLink = (requestToken) => `${AUTHORIZATION_API_PATH_REGISTRATION}${requestToken}?redirect_to=${encodeURIComponent(window.location.protocol + '//' + window.location.host + '/movies_db/#/sign-in')}`;
 
 
-export const USER_API_PATH_PROFILE_DATA = DB_API_BASE_URL + '/account';
+export const USER_API_PATH_PROFILE = DB_API_BASE_URL + '/account';
+
+export const getAccountStatesPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/account_states`;
+
+export const getUserWatchlistPath = (userId) => `${USER_API_PATH_PROFILE}/${userId}/watchlist`;
 
 
 export const getLangParam = (lang) => `&language=${lang}`;

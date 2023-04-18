@@ -188,6 +188,9 @@ export const authorizationSlice = createSlice({
         // delete session
 
         builder
+            .addCase(fetchSessionDelete.pending, (state) => {
+                state.loading = 'pending';
+            })
             .addCase(fetchSessionDelete.fulfilled, (state, { payload }) => {
                 state.session_id = null;
                 localStorage.removeItem('session_id');
@@ -195,7 +198,7 @@ export const authorizationSlice = createSlice({
                 state.loading = 'fulfilled';
                 state.error = '';
             });
-    }
+}
 });
 
 export default authorizationSlice.reducer;
