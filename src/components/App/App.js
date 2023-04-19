@@ -18,13 +18,14 @@ import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import Portal from '../components/Portal/Portal';
 import TrailerPopup from '../modules/TrailerPopup/TrailerPopup';
 import SharePopup from '../modules/SharePopup/SharePopup';
+import RatingPopup from '../modules/RatingPopup/RatingPopup';
 import ConstructionSitePopup from '../modules/ConstructionSitePopup/ConstructionSitePopup';
 import SideBar from '../modules/SideBar/SideBar';
 import './App.css';
 
 function App() {
     const { session_id } = useSelector((state) => state.authorization);
-    const { trailerPopupIsOpen, sharePopupIsOpen, constructionPopupIsOpen } = usePortalContext();
+    const { trailerPopupIsOpen, sharePopupIsOpen, ratingPopupIsOpen, constructionPopupIsOpen } = usePortalContext();
     const { isTablet, isMobile } = useResize();
     const dispatch = useDispatch();
     usePageScroll();
@@ -119,6 +120,7 @@ function App() {
             <Portal>
                 { trailerPopupIsOpen && <TrailerPopup /> }
                 { sharePopupIsOpen && <SharePopup /> }
+                { ratingPopupIsOpen && <RatingPopup /> }
                 { constructionPopupIsOpen && <ConstructionSitePopup /> }
                 { (isTablet || isMobile) && <SideBar /> }
             </Portal>

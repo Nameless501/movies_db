@@ -5,8 +5,10 @@ import PortalContext from "../context/PortalContext";
 export function PortalContextProvider({ children }) {
     const [data, setData] = useState({ type: 'movie', id: null });
     const [text, setText] = useState('');
+
     const [trailerPopupIsOpen, setTrailerPopupState] = useState(false);
     const [sharePopupIsOpen, setSharePopupState] = useState(false);
+    const [ratingPopupIsOpen, setRatingPopupState] = useState(false);
 
     const [constructionPopupIsOpen, setConstructionPopupState] = useState(false);
 
@@ -16,6 +18,7 @@ export function PortalContextProvider({ children }) {
         setTrailerPopupState(false);
         setSharePopupState(false);
         setConstructionPopupState(false);
+        setRatingPopupState(false);
 
         setData({ type: 'movie', id: null });
         setText('');
@@ -29,6 +32,11 @@ export function PortalContextProvider({ children }) {
     function openSharePopup(type, id) {
         setData({ type, id });
         setSharePopupState(true);
+    }
+
+    function openRatingPopup(type, id) {
+        setData({ type, id });
+        setRatingPopupState(true);
     }
 
     function openConstructionPopup(text) {
@@ -49,9 +57,11 @@ export function PortalContextProvider({ children }) {
                 text,
                 trailerPopupIsOpen,
                 sharePopupIsOpen,
+                ratingPopupIsOpen,
                 constructionPopupIsOpen,
                 openTrailerPopup,
                 openSharePopup,
+                openRatingPopup,
                 openConstructionPopup,
                 closeAll
             }}

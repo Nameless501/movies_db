@@ -1,4 +1,4 @@
-.sign-form-button {
+.form-button {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -13,24 +13,24 @@
     line-height: 17px;
 }
 
-.sign-form-button:hover {
+.form-button:hover {
     cursor: pointer;
     background-color: var(--colors_btn_crimson_hover);
 }
 
-.sign-form-button:disabled {
+.form-button:disabled {
     background-color: transparent;
     color: var(--fonts_colors_fade);
     border: 1px solid var(--fonts_colors_fade);
 }
 
-.sign-form-button:disabled:hover {
+.form-button:disabled:hover {
     cursor: auto;
     background-color: transparent;
 }
 
 @media screen and (max-width: 767px) {
-    .sign-form-button {
+    .form-button {
         font-size: 12px;
         line-height: 15px;
     }

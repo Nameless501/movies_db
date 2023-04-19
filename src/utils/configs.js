@@ -8,6 +8,7 @@ import {
     geApiRecommendationsPath,
     geApiTrailerPath,
     geApiSearchPath,
+    geApiRatingPath,
     AUTHORIZATION_API_PATH_REQUEST_TOKEN,
     AUTHORIZATION_API_PATH_LOGIN,
     AUTHORIZATION_API_PATH_SESSION_ID,
@@ -224,6 +225,17 @@ export const dbApiConfig = {
                 return `${getAddToWatchlistPath(userId)}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
             }
         },
+        rating: {
+            options: {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+            getUrl: (type, id, sessionId) => {
+                return `${geApiRatingPath(type, id)}${DB_API_KEY}${getSessionIdParam(sessionId)}`;
+            }
+        }
     }
 }
 

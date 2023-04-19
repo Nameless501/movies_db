@@ -39,6 +39,8 @@ export const geApiTrailerPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/
 
 export const geApiSearchPath = (type) => `${DB_API_BASE_URL}/search/${type}`;
 
+export const geApiRatingPath = (type, id) => `${DB_API_BASE_URL}/${type}/${id}/rating`;
+
 
 export const AUTHORIZATION_API_PATH_REQUEST_TOKEN = DB_API_BASE_URL + '/authentication/token/new';
 

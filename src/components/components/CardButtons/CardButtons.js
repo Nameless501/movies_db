@@ -6,12 +6,13 @@ import { fetchAccountStates, addToWatchList } from '../../../store/user/userSlic
 import ShareButton from '../../UI/ShareButton/ShareButton';
 import CardButton from '../../UI/CardButton/CardButton';
 import PlayButton from '../../UI/PlayButton/PlayButton';
+import RatingButton from '../../UI/RatingButton/RatingButton';
 import './CardButtons.css';
 
 function CardButtons({ place, id, type }) {
     const buttonsRef = useRef();
     const [isIntersecting, setIsIntersecting] = useState(false);
-    const { openTrailerPopup, openSharePopup, openConstructionPopup } = usePortalContext();
+    const { openTrailerPopup, openSharePopup, openRatingPopup, openConstructionPopup } = usePortalContext();
     const { isLoggedIn, states } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
@@ -51,6 +52,10 @@ function CardButtons({ place, id, type }) {
         openSharePopup(type, id);
     };
 
+    function handleRate() {
+        openRatingPopup(type, id);
+    }
+
     return (
         <div
             className={`
@@ -75,6 +80,11 @@ function CardButtons({ place, id, type }) {
                         handleClick={handleTrailerPopupOpen}
                     />
             }
+            <RatingButton
+                place={place}
+                isRated={states?.[type]?.[id]?.rated}
+                handleClick={handleRate}
+            />
         </div>
     );
 }
