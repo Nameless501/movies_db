@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movies_db/static/css/main.739206ac.css",
-    "main.js": "/movies_db/static/js/main.76fc84c1.js",
+    "main.css": "/movies_db/static/css/main.ee569801.css",
+    "main.js": "/movies_db/static/js/main.15a052cd.js",
     "static/media/Inter-Bold.woff?v=3.19": "/movies_db/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff?v=3.19": "/movies_db/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Medium.woff?v=3.19": "/movies_db/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
@@ -16,7 +16,9 @@
     "static/media/logo_tmdb.svg": "/movies_db/static/media/logo_tmdb.bb8aa703cb92c9aa31fc1e0b17850ed9.svg",
     "static/media/icon_telegram.svg": "/movies_db/static/media/icon_telegram.6b000d35c471ffaf2c596dab3f555529.svg",
     "static/media/icon_vote.svg": "/movies_db/static/media/icon_vote.da191bfdf29fe6d48f93.svg",
+    "static/media/icon_star.svg": "/movies_db/static/media/icon_star.3f5d133bdf1f1447e6fa.svg",
     "static/media/icon_whatsapp.svg": "/movies_db/static/media/icon_whatsapp.81e1aa1ee8bd9038062e85b1cae08e9f.svg",
+    "static/media/icon_star_active.svg": "/movies_db/static/media/icon_star_active.5d5d2f796ccbd71e8448.svg",
     "index.html": "/movies_db/index.html",
     "static/media/icon_share.svg": "/movies_db/static/media/icon_share.547ebe6524caf7b080de.svg",
     "static/media/icon_share_crimson.svg": "/movies_db/static/media/icon_share_crimson.916a864e29c4bca6add8.svg",
@@ -29,11 +31,11 @@
     "static/media/icon_copy.svg": "/movies_db/static/media/icon_copy.8f9ec6bc6bb1962990bb70c7fbfe8eee.svg",
     "static/media/icon_arrow.svg": "/movies_db/static/media/icon_arrow.fbe039773c0bd5110c69.svg",
     "static/media/icon_arrow_crimson.svg": "/movies_db/static/media/icon_arrow_crimson.e2d8868dbfa2acea3e2b.svg",
-    "main.739206ac.css.map": "/movies_db/static/css/main.739206ac.css.map",
-    "main.76fc84c1.js.map": "/movies_db/static/js/main.76fc84c1.js.map"
+    "main.ee569801.css.map": "/movies_db/static/css/main.ee569801.css.map",
+    "main.15a052cd.js.map": "/movies_db/static/js/main.15a052cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.739206ac.css",
-    "static/js/main.76fc84c1.js"
+    "static/css/main.ee569801.css",
+    "static/js/main.15a052cd.js"
   ]
 }
