@@ -10,7 +10,6 @@ body {
     --colors_bg_main_transparent: rgb(2, 3, 19, .7);
     --colors_bg_dark_transparent: rgb(0, 0, 0, .15);
     --colors_bg_black_transparent: rgb(0, 0, 0, .5);
-    --colors_bg_accent_purple: #F3C1F8;
     --colors_bg_accent_gray: #F5F5F5;
     --colors_bg_accent_lightGray: #F2F2F2;
     --colors_bg_accent_darkGray: #747687;
@@ -18,7 +17,7 @@ body {
     --colors_btn_white: #F7F8FF;
     --colors_btn_gray: #F9F9F9;
     --colors_btn_crimson: #E67776;
-    --colors_btn_crimson_hover: #AA4346;
+    --colors_btn_crimson_hover: #C05657;
     --colors_checkbox_bg: #F7F8FF;
     --colors_checkbox_bg_checked: #E67776;
     --colors_checkbox_slider: #E67776;

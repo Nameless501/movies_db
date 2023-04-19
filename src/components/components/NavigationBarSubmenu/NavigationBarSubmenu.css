@@ -39,7 +39,7 @@
     list-style: none;
     display: none;
     flex-direction: column;
-    border-radius: 3px;
+    border-radius: 10px;
     gap: 20px;
     position: absolute;
     z-index: 11;

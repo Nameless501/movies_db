@@ -79,7 +79,7 @@
 
 .poster-card__caption {
     margin: 0;
-    padding: 15px 10px 20px;
+    padding: 15px 15px 20px;
     box-sizing: border-box;
     border-radius: 10px;
     width: 100cqw;
@@ -92,10 +92,9 @@
     z-index: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: .15fr .15fr 1fr;
+    grid-template-rows: 1fr .5fr;
     grid-template-areas:
         'rating buttons'
-        '. buttons'
         'title title';
     row-gap: 20px;
     justify-items: center;
@@ -176,8 +175,8 @@
     }
 
     .poster-card:hover .poster-card__title {
-        -webkit-line-clamp: 7;
-        line-clamp: 7;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
         align-self: flex-start;
     }
 

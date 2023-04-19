@@ -1,10 +1,12 @@
 .profile-menu {
     margin: 0;
-    padding: 0;
     width: max-content;
     list-style: none;
     display: flex;
     flex-direction: column;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(0,0,0, .9);
 }
 
 .profile-menu_place_header {

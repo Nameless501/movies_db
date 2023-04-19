@@ -3,7 +3,7 @@
     padding: 6px 14px;
     box-sizing: border-box;
     border: 0;
-    border-radius: 6px;
+    border-radius: 10px;
     text-decoration: none;
     color: var(--fonts_colors_btn);
     font-family: var(--fonts_family);
@@ -33,10 +33,6 @@
     }
 
     .link-button_place_sign-in:hover {
-        opacity: .8;
-    }
-
-    .link-button_place_sign-up:hover {
         background-color: var(--colors_btn_crimson_hover);
     }
 }
@@ -45,19 +41,10 @@
     .link-button_place_sign-in {
         font-size: 16px;
     }
-
-    .link-button_place_sign-up {
-        font-size: 16px;
-    }
 }
 
 @media screen and (max-width: 767px) {
     .link-button_place_sign-in {
-        padding: 5px 12px;
-        font-size: 14px;
-    }
-
-    .link-button_place_sign-up {
         padding: 5px 12px;
         font-size: 14px;
     }
