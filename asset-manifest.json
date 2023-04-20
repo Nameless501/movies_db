@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/movies_db/static/css/main.ee569801.css",
+    "main.css": "/movies_db/static/css/main.449c1ee0.css",
     "main.js": "/movies_db/static/js/main.15a052cd.js",
     "static/media/Inter-Bold.woff?v=3.19": "/movies_db/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff?v=3.19": "/movies_db/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
@@ -31,11 +31,11 @@
     "static/media/icon_copy.svg": "/movies_db/static/media/icon_copy.8f9ec6bc6bb1962990bb70c7fbfe8eee.svg",
     "static/media/icon_arrow.svg": "/movies_db/static/media/icon_arrow.fbe039773c0bd5110c69.svg",
     "static/media/icon_arrow_crimson.svg": "/movies_db/static/media/icon_arrow_crimson.e2d8868dbfa2acea3e2b.svg",
-    "main.ee569801.css.map": "/movies_db/static/css/main.ee569801.css.map",
+    "main.449c1ee0.css.map": "/movies_db/static/css/main.449c1ee0.css.map",
     "main.15a052cd.js.map": "/movies_db/static/js/main.15a052cd.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee569801.css",
+    "static/css/main.449c1ee0.css",
     "static/js/main.15a052cd.js"
   ]
 }
