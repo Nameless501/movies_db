@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movies_db/static/css/main.fb6b1878.css",
-    "main.js": "/movies_db/static/js/main.6328c239.js",
+    "main.css": "/movies_db/static/css/main.5472517f.css",
+    "main.js": "/movies_db/static/js/main.d797366c.js",
     "static/media/Inter-Bold.woff?v=3.19": "/movies_db/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
     "static/media/Inter-SemiBold.woff?v=3.19": "/movies_db/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Medium.woff?v=3.19": "/movies_db/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
@@ -12,30 +12,16 @@
     "static/media/Inter-Regular.woff2?v=3.19": "/movies_db/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
     "static/media/logo.png": "/movies_db/static/media/logo.6055ddf933ca061d9e52.png",
     "static/media/poster_fallback.png": "/movies_db/static/media/poster_fallback.c75b4ff4f102e705e483.png",
-    "static/media/icon_twitter.svg": "/movies_db/static/media/icon_twitter.77da5272b08d9ea6f142561ed8c61f21.svg",
     "static/media/logo_tmdb.svg": "/movies_db/static/media/logo_tmdb.bb8aa703cb92c9aa31fc1e0b17850ed9.svg",
-    "static/media/icon_telegram.svg": "/movies_db/static/media/icon_telegram.6b000d35c471ffaf2c596dab3f555529.svg",
     "static/media/icon_vote.svg": "/movies_db/static/media/icon_vote.da191bfdf29fe6d48f93.svg",
-    "static/media/icon_star.svg": "/movies_db/static/media/icon_star.3f5d133bdf1f1447e6fa.svg",
-    "static/media/icon_whatsapp.svg": "/movies_db/static/media/icon_whatsapp.81e1aa1ee8bd9038062e85b1cae08e9f.svg",
-    "static/media/icon_star_active.svg": "/movies_db/static/media/icon_star_active.5d5d2f796ccbd71e8448.svg",
     "index.html": "/movies_db/index.html",
-    "static/media/icon_share.svg": "/movies_db/static/media/icon_share.547ebe6524caf7b080de.svg",
-    "static/media/icon_share_crimson.svg": "/movies_db/static/media/icon_share_crimson.916a864e29c4bca6add8.svg",
-    "static/media/icon_search.svg": "/movies_db/static/media/icon_search.b5445e755c49a8f57fdc.svg",
-    "static/media/icon_spinner.svg": "/movies_db/static/media/icon_spinner.b5118a6e97eb035e9e5a.svg",
-    "static/media/icon_play.svg": "/movies_db/static/media/icon_play.e03f25028f73d04b9585.svg",
-    "static/media/icon_play_crimson.svg": "/movies_db/static/media/icon_play_crimson.77592d276a13e6fa8504.svg",
-    "static/media/icon_save.svg": "/movies_db/static/media/icon_save.2bd8bf24e3c195b77586.svg",
-    "static/media/icon_save_active.svg": "/movies_db/static/media/icon_save_active.19838eb1b938816bcf13.svg",
-    "static/media/icon_copy.svg": "/movies_db/static/media/icon_copy.8f9ec6bc6bb1962990bb70c7fbfe8eee.svg",
     "static/media/icon_arrow.svg": "/movies_db/static/media/icon_arrow.fbe039773c0bd5110c69.svg",
     "static/media/icon_arrow_crimson.svg": "/movies_db/static/media/icon_arrow_crimson.e2d8868dbfa2acea3e2b.svg",
-    "main.fb6b1878.css.map": "/movies_db/static/css/main.fb6b1878.css.map",
-    "main.6328c239.js.map": "/movies_db/static/js/main.6328c239.js.map"
+    "main.5472517f.css.map": "/movies_db/static/css/main.5472517f.css.map",
+    "main.d797366c.js.map": "/movies_db/static/js/main.d797366c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb6b1878.css",
-    "static/js/main.6328c239.js"
+    "static/css/main.5472517f.css",
+    "static/js/main.d797366c.js"
   ]
 }
