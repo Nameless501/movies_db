@@ -49,7 +49,7 @@ function CardButtons({ place, id, type }) {
         const isInWatchlist = states?.[type]?.[id]?.watchlist;
 
         if(isLoggedIn) {
-            isInWatchlist ?
+            !isInWatchlist ?
                 dispatch(addToWatchList({ id, type }))
                 :
                 openConstructionPopup('В настоящий момент API TMDB не поддерживает удаление элементов из пользовательских списков. Как только эта возможность будет добавлена, то она будет реализована и на этой странице. Пока это можно сделать на сайте TMDB в своем профиле.');
