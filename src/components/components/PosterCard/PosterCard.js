@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import useResize from '../../../hooks/useResize';
 import useImageLoad from '../../../hooks/useImageLoad';
-import CardButtons from '../CardButtons/CardButtons';
+import CardButtons from '../../modules/CardButtons/CardButtons';
 import Rating from '../../UI/Rating/Rating';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import { routesConfig } from '../../../utils/configs';

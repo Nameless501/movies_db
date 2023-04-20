@@ -23,11 +23,12 @@
     background:
         linear-gradient(45deg, transparent 95%, var(--colors_bg_main)),
         linear-gradient(315deg, transparent 95%, var(--colors_bg_main)),
-        linear-gradient(135deg, transparent 95%, var(--colors_bg_main)),
-        linear-gradient(225deg, transparent 95%, var(--colors_bg_main)),
+        linear-gradient(135deg, transparent 92.5%, var(--colors_bg_main)),
+        linear-gradient(225deg, transparent 92.5%, var(--colors_bg_main)),
         linear-gradient(90deg, transparent 70%, var(--colors_bg_main)),
         linear-gradient(270deg, transparent 70%, var(--colors_bg_main)),
-        linear-gradient(to right, rgb(0, 0, 0, .3) 50%, transparent);
+        linear-gradient(to bottom, transparent 92.5%, var(--colors_bg_main)),
+        linear-gradient(to right, rgb(2, 3, 19, .3) 50%, transparent);
 }
 
 .slide-main__content-wrapper {

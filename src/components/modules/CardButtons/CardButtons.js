@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { usePortalContext } from '../../../contexts/PortalContext';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { fetchAccountStates, addToWatchList } from '../../../store/user/userSlice';
@@ -7,14 +8,18 @@ import ShareButton from '../../UI/ShareButton/ShareButton';
 import CardButton from '../../UI/CardButton/CardButton';
 import PlayButton from '../../UI/PlayButton/PlayButton';
 import RatingButton from '../../UI/RatingButton/RatingButton';
+import { routesConfig } from '../../../utils/configs';
 import './CardButtons.css';
 
 function CardButtons({ place, id, type }) {
     const buttonsRef = useRef();
     const [isIntersecting, setIsIntersecting] = useState(false);
+
     const { openTrailerPopup, openSharePopup, openRatingPopup, openConstructionPopup } = usePortalContext();
     const { isLoggedIn, states } = useSelector((state) => state.user);
+
     const dispatch = useDispatch();
+    const history = useHistory();
 
     // check if in watch list when user logged in and card is visible
 
@@ -36,12 +41,21 @@ function CardButtons({ place, id, type }) {
 
     // buttons click handlers
 
-    function handleAddToWatchlist() {
-        dispatch(addToWatchList({ id, type }))
-    };
+    function redirectToSignIn() {
+        history.push(routesConfig.signIn);
+    }
 
-    function handleDeleteFromWatchlist() {
-        openConstructionPopup('В настоящий момент API TMDB не поддерживает удаление элементов из пользовательских списков. Как только эта возможность будет добавлена, то она будет реализована и на этой странице. Пока это можно сделать на сайте TMDB в своем профиле.')
+    function handleAddToWatchlist() {
+        const isInWatchlist = states?.[type]?.[id]?.watchlist;
+
+        if(isLoggedIn) {
+            isInWatchlist ?
+                dispatch(addToWatchList({ id, type }))
+                :
+                openConstructionPopup('В настоящий момент API TMDB не поддерживает удаление элементов из пользовательских списков. Как только эта возможность будет добавлена, то она будет реализована и на этой странице. Пока это можно сделать на сайте TMDB в своем профиле.');
+        } else {
+            redirectToSignIn();
+        }
     };
 
     function handleTrailerPopupOpen() {
@@ -53,7 +67,7 @@ function CardButtons({ place, id, type }) {
     };
 
     function handleRate() {
-        openRatingPopup(type, id);
+        isLoggedIn ? openRatingPopup(type, id) : redirectToSignIn();
     }
 
     return (
@@ -67,7 +81,7 @@ function CardButtons({ place, id, type }) {
             <CardButton
                 place={place}
                 isSaved={states?.[type]?.[id]?.watchlist}
-                handleClick={states?.[type]?.[id]?.watchlist ? handleDeleteFromWatchlist : handleAddToWatchlist}
+                handleClick={handleAddToWatchlist}
             />
             <ShareButton
                 place={place}

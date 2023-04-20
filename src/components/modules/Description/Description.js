@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchInfo } from '../../../store/info/infoSlice';
 import useImageLoad from '../../../hooks/useImageLoad';
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
-import CardButtons from '../../components/CardButtons/CardButtons';
+import CardButtons from '../CardButtons/CardButtons';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import posterFallback from '../../../images/poster_fallback.png';
 import './Description.css';

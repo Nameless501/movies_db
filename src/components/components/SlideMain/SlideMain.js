@@ -3,7 +3,7 @@ import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import useResize from '../../../hooks/useResize';
 import Rating from '../../UI/Rating/Rating';
 import LinkButton from '../../UI/LinkButton/LinkButton';
-import CardButtons from '../CardButtons/CardButtons';
+import CardButtons from '../../modules/CardButtons/CardButtons';
 import PosterLazyLoad from '../PosterLazyLoad/PosterLazyLoad';
 import { routesConfig } from '../../../utils/configs';
 import './SlideMain.css';
