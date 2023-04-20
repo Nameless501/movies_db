@@ -6,6 +6,8 @@ import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import CloseButton from '../../UI/CloseButton/CloseButton';
 import FormButton from '../../UI/FormButton/FormButton';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
+import IconButton from '../../UI/IconButton/IconButton';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 import './RatingPopup.css';
 
 function RatingPopup() {
@@ -41,18 +43,18 @@ function RatingPopup() {
                     {[...Array(10)].map((star, index) => {
                         index += 1;
                         return (
-                            <li key={index} >
-                                <button
-                                    type="button"
-                                    className={`
-                                        rating-popup__star-button
-                                        ${index <= (hover || value) && 'rating-popup__star-button_active'}
-                                    `}
-                                    onClick={() => handleClick(index)}
-                                    onMouseEnter={() => setHover(index)}
-                                    onMouseLeave={() => setHover(value)}
-                                >
-                                </button>
+                            <li
+                                key={index}
+                                className='rating-popup__button'
+                                onMouseEnter={() => setHover(index)}
+                                onMouseLeave={() => setHover(value)}
+                            >
+                                <IconButton
+                                    Icon={ index <= (hover || value) ? FaStar : FaRegStar }
+                                    active={ index <= (hover || value) }
+                                    place='rating-popup'
+                                    handleClick={() => handleClick(index)}
+                                />
                             </li>
                         );
                     })}

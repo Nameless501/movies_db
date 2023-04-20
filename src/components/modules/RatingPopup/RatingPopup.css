@@ -29,26 +29,10 @@
     list-style: none;
 }
 
-.rating-popup__star-button {
+.rating-popup__button {
     margin: 0;
     padding: 0 5px;
     box-sizing: border-box;
-    width: 50px;
-    height: 40px;
-    background-color: transparent;
-    border: 0;
-    background-image: url('../../../images/icon_star.svg');
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.rating-popup__star-button_active {
-    background-image: url('../../../images/icon_star_active.svg');
-}
-
-.rating-popup__star-button:hover {
-    cursor: pointer;
 }
 
 @media screen and (max-width: 1023px) {
@@ -66,15 +50,5 @@
     .rating-popup__title {
         font-size: 18px;
         font-weight: 600;
-    }
-
-    .rating-popup__buttons {
-        gap: 5px;
-    }
-
-    .rating-popup__star-button {
-        padding: 0;
-        width: 25px;
-        height: 25px;
     }
 }

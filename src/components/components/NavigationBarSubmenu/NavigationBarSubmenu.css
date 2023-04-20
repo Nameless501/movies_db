@@ -5,29 +5,6 @@
     position: relative;
 }
 
-.navigation-submenu__title-wrapper {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.navigation-submenu__title-icon {
-    margin: 0;
-    padding: 0;
-    width: 10px;
-    height: 14px;
-    box-sizing: border-box;
-    display: block;
-    background-image: url('../../../images/icon_arrow.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 7px 7px;
-    transform: rotate(90deg);
-}
-
 .navigation-submenu__title {
     margin: 0;
 }

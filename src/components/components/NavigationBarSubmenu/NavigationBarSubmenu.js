@@ -9,22 +9,14 @@ function NavigationBarSubmenu({ place, title, links = [] }) {
                     ${place && 'navigation-submenu_place_' + place}
                 `}
         >
-            <div className='navigation-submenu__title-wrapper' >
-                <h3
-                    className={`
+            <h3
+                className={`
                         navigation-submenu__title navigation-link
                         ${place && 'navigation-link_place_' + place}
                     `}
-                >
-                    {title}
-                </h3>
-                <span
-                    className={`
-                        navigation-submenu__title-icon
-                        ${place && 'navigation-submenu__title-icon_place_' + place}
-                    `}
-                />
-            </div>
+            >
+                {title}
+            </h3>
             <ul
                 className={`
                     navigation-submenu__links-list

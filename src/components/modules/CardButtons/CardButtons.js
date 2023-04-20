@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom';
 import { usePortalContext } from '../../../contexts/PortalContext';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { fetchAccountStates, addToWatchList } from '../../../store/user/userSlice';
-import ShareButton from '../../UI/ShareButton/ShareButton';
-import CardButton from '../../UI/CardButton/CardButton';
-import PlayButton from '../../UI/PlayButton/PlayButton';
-import RatingButton from '../../UI/RatingButton/RatingButton';
+import IconButton from '../../UI/IconButton/IconButton';
+import { BsBookmarkStarFill, BsBookmarkPlus } from 'react-icons/bs';
+import { FaRegStar, FaStar, FaRegPlayCircle } from 'react-icons/fa';
+import { HiShare } from 'react-icons/hi';
 import { routesConfig } from '../../../utils/configs';
 import './CardButtons.css';
 
@@ -78,25 +78,26 @@ function CardButtons({ place, id, type }) {
             `}
             ref={buttonsRef}
         >
-            <CardButton
+            <IconButton
+                Icon={ states?.[type]?.[id]?.watchlist ? BsBookmarkStarFill : BsBookmarkPlus }
+                active={states?.[type]?.[id]?.watchlist}
                 place={place}
-                isSaved={states?.[type]?.[id]?.watchlist}
                 handleClick={handleAddToWatchlist}
             />
-            <ShareButton
+            <IconButton
+                Icon={HiShare}
                 place={place}
                 handleClick={handleShapePopupOpen}
             />
-            {
-                place !== 'movie-card' &&
-                    <PlayButton
-                        place={place}
-                        handleClick={handleTrailerPopupOpen}
-                    />
-            }
-            <RatingButton
+            <IconButton
+                Icon={FaRegPlayCircle}
                 place={place}
-                isRated={states?.[type]?.[id]?.rated}
+                handleClick={handleTrailerPopupOpen}
+            />
+            <IconButton
+                Icon={ states?.[type]?.[id]?.rated ? FaStar : FaRegStar }
+                active={states?.[type]?.[id]?.rated}
+                place={place}
                 handleClick={handleRate}
             />
         </div>

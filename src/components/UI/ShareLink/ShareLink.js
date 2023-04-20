@@ -1,6 +1,7 @@
+import { IconContext } from 'react-icons';
 import './ShareLink.css';
 
-function ShareLink({ link, text, icon, handleClick, button = false }) {
+function ShareLink({ Icon, link, text, handleClick, button = false }) {
     return (
         <>
             {
@@ -12,11 +13,11 @@ function ShareLink({ link, text, icon, handleClick, button = false }) {
                         <span className='share-link__text' >
                             {text}
                         </span>
-                        <img
-                            src={icon}
-                            alt={text + ' иконка'}
-                            className='share-link__icon'
-                        />
+                        <IconContext.Provider
+                            value={{ className: 'share-link__icon' }}
+                        >
+                            { Icon && <Icon /> }
+                        </IconContext.Provider>
                     </button>
                     :
                     <a
@@ -28,11 +29,11 @@ function ShareLink({ link, text, icon, handleClick, button = false }) {
                         <span className='share-link__text' >
                             {text}
                         </span>
-                        <img
-                            src={icon}
-                            alt={text + ' иконка'}
-                            className='share-link__icon'
-                        />
+                        <IconContext.Provider
+                            value={{ className: 'share-link__icon' }}
+                        >
+                            { Icon && <Icon /> }
+                        </IconContext.Provider>
                     </a>
             }
         </>

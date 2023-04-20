@@ -20,12 +20,9 @@
     margin: 0;
     padding: 0;
     width: 5%;
-    min-width: 25px;
+    min-width: 40px;
     aspect-ratio: 1/1;
     box-sizing: border-box;
-    background-image: url('../../../images/icon_spinner.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    color: var(--fonts_colors_main);
     animation: spinner .6s infinite linear;
 }

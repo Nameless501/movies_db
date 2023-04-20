@@ -1,6 +1,7 @@
 import TextInput from '../../UI/TextInput/TextInput';
-import SearchButton from '../../UI/SearchButton/SearchButton';
+import IconButton from '../../UI/IconButton/IconButton';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
+import { BiSearch } from 'react-icons/bi';
 import './SearchInput.css';
 
 function SearchInput({ value, handleChange, isValid, error, placeholder }) {
@@ -21,8 +22,11 @@ function SearchInput({ value, handleChange, isValid, error, placeholder }) {
                 value={value}
                 handleChange={handleChange}
             />
-            <SearchButton
+            <IconButton
+                type='submit'
+                place='search'
                 disabled={!isValid}
+                Icon={BiSearch}
             />
         </fieldset>
     );

@@ -1,3 +1,5 @@
+import { IconContext } from 'react-icons';
+import { IoClose } from 'react-icons/io5';
 import './CloseButton.css';
 
 function CloseButton({ place, handleClick }) {
@@ -10,8 +12,11 @@ function CloseButton({ place, handleClick }) {
                     ${place ? 'close-button_place_' + place : null}
                 `}
         >
-            <div className='close-button__line close-button__line_vertical' />
-            <div className='close-button__line close-button__line_horizontal' />
+            <IconContext.Provider
+                value={{ className: 'close-button__icon' }}
+            >
+                <IoClose />
+            </IconContext.Provider>
         </button>
     );
 }
