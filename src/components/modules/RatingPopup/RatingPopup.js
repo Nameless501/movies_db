@@ -10,9 +10,9 @@ import './RatingPopup.css';
 
 function RatingPopup() {
     const { data, closeAll } = usePortalContext();
-    const { rated, loading } = useSelector((state) => state.user?.states?.[data.type]?.[data.id])
+    const state = useSelector((state) => state.user?.states?.[data.type]?.[data.id])
 
-    const [value, setValue] = useState(rated?.value ?? 0);
+    const [value, setValue] = useState(() => state?.rated?.value ?? 0);
     const [hover, setHover] = useState(0);
     const [isChanged, setIsChanged] = useState(false);
 
@@ -58,7 +58,7 @@ function RatingPopup() {
                     })}
                 </ul>
                 {
-                    loading === 'pending' ?
+                    state?.loading === 'pending' ?
                         <PreloaderSmall />
                         :
                         <FormButton
