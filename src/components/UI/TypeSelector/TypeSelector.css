@@ -32,7 +32,7 @@
 }
 
 .type-selector__input:checked + .type-selector__label {
-    color: var(--fonts_colors_crimson);
+    color: var(--colors_btn_crimson_hover);
     transition: color .2s ease;
 }
 
