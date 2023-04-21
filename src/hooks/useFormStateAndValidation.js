@@ -62,12 +62,12 @@ function useFormStateAndValidation(initialValue = {}) {
         }
     }
 
-    function handleToggleChange(evt) {
-        const { name, checked } = evt.target;
+    function handleRadioChange(evt) {
+        const { name, value } = evt.target;
 
         setInputsValues(current => ({
             ...current,
-            [name]: checked,
+            [name]: value,
         }));
     }
 
@@ -88,7 +88,7 @@ function useFormStateAndValidation(initialValue = {}) {
         setFormValidity(() => isValid && !isError);
     }, [inputsValues, errorMessages]);
 
-    return { inputsValues, errorMessages, formIsValid, handleInputChange, handleToggleChange, resetFormValues }
+    return { inputsValues, errorMessages, formIsValid, handleInputChange, handleRadioChange, resetFormValues }
 }
 
 export default useFormStateAndValidation;

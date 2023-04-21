@@ -15,8 +15,7 @@ function SearchPage() {
     };
 
     function handleSubmit(inputsValues) {
-        const { keyword, tvShows } = inputsValues;
-        const type = tvShows ? 'tv' : 'movie';
+        const { keyword, type } = inputsValues;
 
         dispatch(fetchSearchQuery({ type, keyword }));
 
@@ -30,7 +29,7 @@ function SearchPage() {
             />
             <main className='search-page__content' >
                 <SearchForm
-                    initialState={{ keyword: prev.keyword, tvShows: prev.type === 'tv' }}
+                    initialState={prev}
                     handleSubmit={handleSubmit}
                 />
                 <CardsFeed

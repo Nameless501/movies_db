@@ -5,7 +5,7 @@
     border: 0;
     width: 100%;
     background-color: var(--colors_btn_gray);
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
@@ -24,7 +24,7 @@
 .text-input_place_search {
     padding: 15px 19px;
     max-width: 100%;
-    border-radius: 8px 0 0 8px;
+    border-radius: 15px 0 0 15px;
     border: 1px solid var(--fonts_colors_fade);
     background-color: transparent;
     height: 48px;
@@ -37,7 +37,7 @@
 .text-input_place_form {
     padding: 15px;
     max-width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid var(--fonts_colors_fade);
     background-color: transparent;
 }

@@ -44,7 +44,7 @@
     width: 48px;
     height: 48px;
     background-color: var(--colors_btn_crimson);
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 15px 15px 0;
 }
 
 @media screen and (min-width: 1024px) {

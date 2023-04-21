@@ -1,10 +1,10 @@
 import useFormStateAndValidation from '../../../hooks/useFormStateAndValidation';
 import SearchInput from '../../components/SearchInput/SearchInput';
-import ToggleInput from '../../UI/ToggleInput/ToggleInput';
+import TypeSelector from '../../UI/TypeSelector/TypeSelector';
 import './SearchForm.css';
 
 function SearchForm({ initialState, handleSubmit }) {
-    const { inputsValues, formIsValid, errorMessages, handleInputChange, handleToggleChange } = useFormStateAndValidation(initialState);
+    const { inputsValues, formIsValid, errorMessages, handleInputChange, handleRadioChange } = useFormStateAndValidation(initialState);
 
     function onSubmit(evt) {
         evt.preventDefault();
@@ -26,14 +26,11 @@ function SearchForm({ initialState, handleSubmit }) {
                     handleChange={handleInputChange}
                     isValid={formIsValid}
                     error={errorMessages.keyword}
-                    placeholder={inputsValues.tvShows ? 'Название сериала' : 'Название фильма'}
+                    placeholder={inputsValues.type === 'tv' ? 'Название сериала' : 'Название фильма'}
                 />
-                <ToggleInput
-                    name='tvShows'
-                    id='tvShows-selector'
-                    title={inputsValues.tvShows ? 'Сериалы' : 'Фильмы'}
-                    handleChange={handleToggleChange}
-                    checked={inputsValues.tvShows}
+                <TypeSelector
+                    handleChange={handleRadioChange}
+                    type={inputsValues.type}
                 />
             </form>
         </section>
