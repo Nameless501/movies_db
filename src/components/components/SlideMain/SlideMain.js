@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import useResize from '../../../hooks/useResize';
 import Rating from '../../UI/Rating/Rating';
-import LinkButton from '../../UI/LinkButton/LinkButton';
+import ButtonMain from '../../UI/ButtonMain/ButtonMain';
 import CardButtons from '../../modules/CardButtons/CardButtons';
 import PosterLazyLoad from '../PosterLazyLoad/PosterLazyLoad';
 import { routesConfig } from '../../../utils/configs';
@@ -57,8 +58,9 @@ function SlideMain({ title, backdrop_path, poster_path, overview, vote_average, 
                     id={id}
                     type={type}
                 />
-                <LinkButton
-                    link={routesConfig[type].info + '/' + id}
+                <ButtonMain
+                    as={Link}
+                    to={routesConfig[type].info + '/' + id}
                     text='Подробнее'
                     place='slide-main'
                 />

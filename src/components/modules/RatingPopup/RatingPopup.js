@@ -4,7 +4,7 @@ import { setRating } from '../../../store/user/userSlice';
 import { usePortalContext } from '../../../contexts/PortalContext';
 import PopupWrapper from '../../components/PopupWrapper/PopupWrapper';
 import CloseButton from '../../UI/CloseButton/CloseButton';
-import FormButton from '../../UI/FormButton/FormButton';
+import ButtonMain from '../../UI/ButtonMain/ButtonMain';
 import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import IconButton from '../../UI/IconButton/IconButton';
 import { FaRegStar, FaStar } from 'react-icons/fa';
@@ -63,11 +63,11 @@ function RatingPopup() {
                     state?.loading === 'pending' ?
                         <PreloaderSmall />
                         :
-                        <FormButton
+                        <ButtonMain
                             text='Оценить'
-                            type='button'
                             disabled={!isChanged}
                             handleClick={handleRatingSet}
+                            place='form'
                         />
                 }
                 <CloseButton

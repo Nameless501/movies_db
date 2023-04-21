@@ -1,4 +1,5 @@
-import LinkButton from '../../UI/LinkButton/LinkButton';
+import { Link } from 'react-router-dom';
+import ButtonMain from '../../UI/ButtonMain/ButtonMain';
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import { routesConfig } from '../../../utils/configs';
 import './AuthMenu.css';
@@ -18,9 +19,10 @@ function AuthMenu({ place }) {
                     />
                 </li>
                 <li>
-                    <LinkButton
+                    <ButtonMain
+                        as={Link}
                         text='Войти'
-                        link={routesConfig.signIn}
+                        to={routesConfig.signIn}
                         place='sign-in'
                     />
                 </li>

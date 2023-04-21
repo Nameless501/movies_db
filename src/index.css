@@ -13,11 +13,11 @@ body {
     --colors_bg_accent_gray: #F5F5F5;
     --colors_bg_accent_lightGray: #F2F2F2;
     --colors_bg_accent_darkGray: #747687;
-    --colors_btn_black: #000000;
     --colors_btn_white: #F7F8FF;
     --colors_btn_gray: #F9F9F9;
     --colors_btn_crimson: #E67776;
-    --colors_btn_crimson_hover: #C05657;
+    --colors_btn_crimson_hover: #e15a59;
+    --colors_btn_crimson_active: #db3d3b;
     --colors_checkbox_bg: #E67776;
     --colors_checkbox_slider: #f8d6d6;
 

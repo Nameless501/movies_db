@@ -1,4 +1,4 @@
-import FormButton from '../../UI/FormButton/FormButton';
+import ButtonMain from '../../UI/ButtonMain/ButtonMain';
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
 import './SignFormWrapper.css';
@@ -17,9 +17,11 @@ function SignFormWrapper({ type, disabled, onSubmit, error, children }) {
                     text={error}
                     place='sign-form'
                 />
-                <FormButton
+                <ButtonMain
                     text='Войти'
+                    type='submit'
                     disabled={disabled}
+                    place='form'
                 />
                 <div className='sign-form__link' >
                     <span className='sign-form__link-text' >

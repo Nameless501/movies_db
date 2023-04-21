@@ -1,0 +1,83 @@
+.button-main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--fonts_colors_btn);
+    font-family: var(--fonts_family);
+    background-color: var(--colors_btn_crimson);
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.button-main_place_slide-main {
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.button-main_place_sign-in {
+    width: 70px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.button-main_place_reviews {
+    width: 70px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.button-main_place_form {
+    width: 75%;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.button-main_place_form:disabled {
+    background-color: transparent;
+    color: var(--fonts_colors_fade);
+    border: 1px solid var(--fonts_colors_fade);
+    line-height: 38px;
+}
+
+@media screen and (min-width: 1024px) {
+    .button-main:hover {
+        cursor: pointer;
+        background-color: var(--colors_btn_crimson_hover);
+    }
+
+    .button-main:active {
+        background-color: var(--colors_btn_crimson_active);
+    }
+
+    .button-main_place_form:disabled:hover {
+        background-color: transparent;
+        cursor: auto;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .button-main_place_sign-in {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .button-main_place_sign-in {
+        font-size: 14px;
+    }
+}

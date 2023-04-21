@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchReviews, fetchMoreReviews } from '../../../store/reviews/reviewsSlice';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
-import MoreButton from '../../UI/MoreButton/MoreButton';
+import ButtonMain from '../../UI/ButtonMain/ButtonMain';
 import './Reviews.css';
 
 function Reviews({ type }) {
@@ -40,9 +40,10 @@ function Reviews({ type }) {
                 </ul>
                 {
                     (reviews?.length > 0 && currentPage < totalPages) &&
-                    <MoreButton
+                    <ButtonMain
                         handleClick={handleLoadMore}
                         place='reviews'
+                        text='Еще'
                     />
                 }
             </div>
