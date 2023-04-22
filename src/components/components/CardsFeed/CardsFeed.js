@@ -42,7 +42,7 @@ function CardsFeed({ movies, loading, error, handleLoadMore, currentPage, totalP
                     style={{ 'height': `${100 / (movies.length / columnsCount)}%` }}  // get dynamic size of last row in %
                     ref={listEndRef}
                 >
-                    { loading !== 'rejected' && <PreloaderSmall /> }
+                    { loading !== 'rejected' && <PreloaderSmall place='cards-feed' /> }
                 </div>
             }
             {

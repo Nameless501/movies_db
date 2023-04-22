@@ -17,7 +17,7 @@ function PopularSlider({ type }) {
 
     return (
         <SliderSmallWrapper
-            title={type === 'movies' ? 'Популярные фильмы' : 'Популяные сериалы'}
+            title={type === 'movie' ? 'Популярные фильмы' : 'Популяные сериалы'}
             link={routesConfig[type].popular}
             loading={loading}
             error={error}

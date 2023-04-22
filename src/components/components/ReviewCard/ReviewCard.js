@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import AvatarImage from '../AvatarImage/AvatarImage';
+import IconButton from '../../UI/IconButton/IconButton';
+import { MdOutlineExpandMore, MdOutlineExpandLess } from 'react-icons/md';
 import './ReviewCard.css';
 
 function ReviewCard({ review }) {
@@ -37,12 +39,11 @@ function ReviewCard({ review }) {
                 }
             </p>
             {isLongRead &&
-                <button
-                    className={`
-                            review-card__button
-                            ${isOpen && 'review-card__button_active'}
-                        `}
-                    onClick={toggleComment}
+                <IconButton
+                    // className='review-card__button'
+                    handleClick={toggleComment}
+                    Icon={ isOpen ? MdOutlineExpandLess : MdOutlineExpandMore }
+                    place='review'
                 />
             }
         </article>

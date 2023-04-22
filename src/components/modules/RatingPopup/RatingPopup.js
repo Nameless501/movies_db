@@ -25,7 +25,12 @@ function RatingPopup() {
             .then(() => closeAll());
     };
 
-    function handleClick(value) {
+    function handleClick(evt, value) {
+        const button = evt.currentTarget
+
+        button.classList.add('animation-bounce');
+        setTimeout(() => button.classList.remove('animation-bounce'), 500);
+
         setValue(value);
         setIsChanged(true);
     }
@@ -50,10 +55,10 @@ function RatingPopup() {
                                 onMouseLeave={() => setHover(value)}
                             >
                                 <IconButton
-                                    Icon={ index <= (hover || value) ? FaStar : FaRegStar }
-                                    active={ index <= (hover || value) }
+                                    Icon={index <= (hover || value) ? FaStar : FaRegStar}
+                                    active={index <= (hover || value)}
                                     place='rating-popup'
-                                    handleClick={() => handleClick(index)}
+                                    handleClick={(evt) => handleClick(evt, index)}
                                 />
                             </li>
                         );
@@ -61,7 +66,9 @@ function RatingPopup() {
                 </ul>
                 {
                     state?.loading === 'pending' ?
-                        <PreloaderSmall />
+                        <PreloaderSmall
+                            place='form'
+                        />
                         :
                         <ButtonMain
                             text='Оценить'

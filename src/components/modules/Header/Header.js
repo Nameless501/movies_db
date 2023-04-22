@@ -18,7 +18,7 @@ function Header({ place }) {
                         <div className='header__menu-desktop'>
                             <NavigationBar place='header' />
                             <div className='header__authorization'>
-                                { loading === 'pending' && <PreloaderSmall /> }
+                                { loading === 'pending' && <PreloaderSmall place='header' /> }
                                 { (isLoggedIn && loading !== 'pending') && <ProfileInfo /> }
                                 { (!isLoggedIn && loading !== 'pending') && <AuthMenu place={place} /> }
                             </div>

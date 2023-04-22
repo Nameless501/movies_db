@@ -27,29 +27,9 @@
     font-weight: 700;
 }
 
-.slider-small-wrapper__icon {
-    margin: 0 0 0 5px;
-    padding: 0;
-    box-sizing: border-box;
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    background-image: url('../../../images/icon_arrow.svg');
-    background-size: 17px 17px;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: margin .1s linear;
-}
-
 @media screen and (min-width: 1024px) {
     .slider-small-wrapper__link:hover {
         cursor: pointer;
-    }
-
-    .slider-small-wrapper__link:hover .slider-small-wrapper__icon {
-        margin-left: 15px;
-        background-image: url('../../../images/icon_arrow_crimson.svg');
-        transition: margin .1s linear;
     }
 }
 

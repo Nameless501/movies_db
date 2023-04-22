@@ -11,6 +11,8 @@
     display: inline-block;
     text-align: center;
     vertical-align: middle;
+    transform: scale(1);
+    transition: transform .15s ease;
 }
 
 .button-main_place_slide-main {
@@ -58,15 +60,20 @@
     .button-main:hover {
         cursor: pointer;
         background-color: var(--colors_btn_crimson_hover);
+        transform: scale(1.05);
+        transition: transform .15s ease;
     }
 
     .button-main:active {
         background-color: var(--colors_btn_crimson_active);
+        transform: scale(1.025);
+        transition: transform .1s ease;
     }
 
     .button-main_place_form:disabled:hover {
         background-color: transparent;
         cursor: auto;
+        transform: scale(1);
     }
 }
 

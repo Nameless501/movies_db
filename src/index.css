@@ -18,6 +18,7 @@ body {
     --colors_btn_crimson: #E67776;
     --colors_btn_crimson_hover: #e15a59;
     --colors_btn_crimson_active: #db3d3b;
+    --colors_btn_crimson_disabled: #f5c9c8;
     --colors_checkbox_bg: #E67776;
     --colors_checkbox_slider: #f9dddd;
 
@@ -51,4 +52,28 @@ body {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+}
+
+/* Animations */
+
+.animation-bounce {
+    animation: bounce .5s ease-in-out;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.5);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

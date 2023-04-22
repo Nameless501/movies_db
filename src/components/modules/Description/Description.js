@@ -34,7 +34,7 @@ function Description({ type }) {
                 />
             </div>
             {
-                loading === 'fulfilled' ?
+                loading === 'fulfilled' &&
                     <>
                         <h2 className='description__title' >
                             {type === 'movie' && `${info?.title} ${info?.release_date && '(' + new Date(info?.release_date).getFullYear() + ')'}`}
@@ -61,9 +61,11 @@ function Description({ type }) {
                             {info?.overview ? info?.overview : 'Кажется описание пока не добавили'}
                         </p>
                     </>
-                    :
+            }
+            {
+                loading === 'pending' &&
                     <div className='description__preloader' >
-                        <PreloaderSmall />
+                        <PreloaderSmall place='description' />
                     </div>
             }
             <CardButtons

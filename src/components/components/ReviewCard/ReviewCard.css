@@ -69,32 +69,6 @@
     grid-area: text;
 }
 
-.review-card__button {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    border: 0;
-    width: 15px;
-    height: 15px;
-    background-color: transparent;
-    background-image: url('../../../images/icon_arrow.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    transform: rotate(90deg);
-    align-self: center;
-    grid-area: button;
-}
-
-.review-card__button:hover {
-    cursor: pointer;
-    opacity: .8;
-}
-
-.review-card__button_active {
-    transform: rotate(-90deg);
-}
-
 @media screen and (max-width: 1023px) {
     .review-card {
         grid-template-columns: 50px 1fr;
@@ -126,10 +100,5 @@
 
     .review-card__text {
         font-size: 11px;
-    }
-
-    .review-card__button {
-        width: 20px;
-        height: 20px;
     }
 }

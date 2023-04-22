@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchReviews, fetchMoreReviews } from '../../../store/reviews/reviewsSlice';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import ButtonMain from '../../UI/ButtonMain/ButtonMain';
+import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './Reviews.css';
 
 function Reviews({ type }) {
@@ -27,24 +28,35 @@ function Reviews({ type }) {
                 Рецензии
             </h2>
             <div className='reviews__wrapper'>
-                <ul className="reviews__list" >
-                    {
-                        reviews?.map(review => {
-                            return (
-                                <li key={review.id} >
-                                    <ReviewCard review={review} />
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
                 {
-                    (reviews?.length > 0 && currentPage < totalPages) &&
-                    <ButtonMain
-                        handleClick={handleLoadMore}
-                        place='reviews'
-                        text='Еще'
-                    />
+                    loading === 'fulfilled' &&
+                        <>
+                            <ul className="reviews__list" >
+                                {
+                                    reviews?.map(review => {
+                                        return (
+                                            <li key={review.id} >
+                                                <ReviewCard review={review} />
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                            {
+                                (reviews?.length > 0 && currentPage < totalPages) &&
+                                <ButtonMain
+                                    handleClick={handleLoadMore}
+                                    place='reviews'
+                                    text='Еще'
+                                />
+                            }
+                        </>
+                }
+                {
+                    loading === 'pending' &&
+                        <PreloaderSmall
+                            place='reviews'
+                        />
                 }
             </div>
             {

@@ -34,7 +34,7 @@ function CardButtons({ place, id, type }) {
     );
 
     useEffect(() => {
-        if(isIntersecting && isLoggedIn) {
+        if (isIntersecting && isLoggedIn) {
             dispatch(fetchAccountStates({ id, type }));
         }
     }, [isIntersecting, isLoggedIn, dispatch, id, type]);
@@ -45,16 +45,21 @@ function CardButtons({ place, id, type }) {
         history.push(routesConfig.signIn);
     }
 
-    function handleAddToWatchlist() {
+    function handleAddToWatchlist(evt) {
         const isInWatchlist = states?.[type]?.[id]?.watchlist;
+        const button = evt.currentTarget;
 
-        if(isLoggedIn) {
-            !isInWatchlist ?
-                dispatch(addToWatchList({ id, type }))
-                :
-                openConstructionPopup('В настоящий момент API TMDB не поддерживает удаление элементов из пользовательских списков. Как только эта возможность будет добавлена, то она будет реализована и на этой странице. Пока это можно сделать на сайте TMDB в своем профиле.');
-        } else {
+        if (!isLoggedIn) {
             redirectToSignIn();
+            return;
+        }
+
+        if (isInWatchlist) {
+            openConstructionPopup('В настоящий момент API TMDB не поддерживает удаление элементов из пользовательских списков. Как только эта возможность будет добавлена, то она будет реализована и на этой странице. Пока это можно сделать на сайте TMDB в своем профиле.');
+        } else {
+            dispatch(addToWatchList({ id, type }))
+                .then(() => button.classList.add('animation-bounce'))
+                .then(() => setTimeout(() => button.classList.remove('animation-bounce'), 500));
         }
     };
 
@@ -79,7 +84,7 @@ function CardButtons({ place, id, type }) {
             ref={buttonsRef}
         >
             <IconButton
-                Icon={ states?.[type]?.[id]?.watchlist ? BsBookmarkStarFill : BsBookmarkPlus }
+                Icon={states?.[type]?.[id]?.watchlist ? BsBookmarkStarFill : BsBookmarkPlus}
                 active={states?.[type]?.[id]?.watchlist}
                 place={place}
                 handleClick={handleAddToWatchlist}
@@ -95,7 +100,7 @@ function CardButtons({ place, id, type }) {
                 handleClick={handleTrailerPopupOpen}
             />
             <IconButton
-                Icon={ states?.[type]?.[id]?.rated ? FaStar : FaRegStar }
+                Icon={states?.[type]?.[id]?.rated ? FaStar : FaRegStar}
                 active={states?.[type]?.[id]?.rated}
                 place={place}
                 handleClick={handleRate}

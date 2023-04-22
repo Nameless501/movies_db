@@ -14,7 +14,6 @@ function SliderSmallWrapper({ title, link, loading, error, children }) {
                     >
                         <h2 className='slider-small-wrapper__title' >
                             {title}
-                            <span className='slider-small-wrapper__icon' />
                         </h2>
                     </Link>
                     :
@@ -23,7 +22,10 @@ function SliderSmallWrapper({ title, link, loading, error, children }) {
                     </h2>
             }
             {
-                loading === 'pending' && <PreloaderSmall />
+                loading === 'pending' &&
+                    <PreloaderSmall
+                        place='slider-small'
+                    />
             }
             {
                 loading === 'rejected' &&

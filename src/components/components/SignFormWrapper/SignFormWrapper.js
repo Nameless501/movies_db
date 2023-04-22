@@ -1,9 +1,10 @@
 import ButtonMain from '../../UI/ButtonMain/ButtonMain';
 import RegistrationLink from '../RegistrationLink/RegistrationLink';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
+import PreloaderSmall from '../../UI/PreloaderSmall/PreloaderSmall';
 import './SignFormWrapper.css';
 
-function SignFormWrapper({ type, disabled, onSubmit, error, children }) {
+function SignFormWrapper({ loading, disabled, onSubmit, error, children }) {
     return (
         <form
             className='sign-form'
@@ -17,12 +18,19 @@ function SignFormWrapper({ type, disabled, onSubmit, error, children }) {
                     text={error}
                     place='sign-form'
                 />
-                <ButtonMain
-                    text='Войти'
-                    type='submit'
-                    disabled={disabled}
-                    place='form'
-                />
+                {
+                    loading === 'pending' ?
+                        <PreloaderSmall
+                            place='form'
+                        />
+                        :
+                        <ButtonMain
+                            text='Войти'
+                            type='submit'
+                            disabled={disabled}
+                            place='form'
+                        />
+                }
                 <div className='sign-form__link' >
                     <span className='sign-form__link-text' >
                         Ещё не зарегистрированы?

@@ -43,3 +43,13 @@
         color: var(--fonts_colors_main);
     }
 }
+
+@media screen and (max-width: 1023px) {
+    .share-link__icon {
+        color: var(--fonts_colors_main);
+    }
+
+    .share-link__text {
+        color: var(--fonts_colors_main);
+    }
+}
