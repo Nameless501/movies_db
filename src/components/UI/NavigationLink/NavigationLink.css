@@ -7,7 +7,8 @@
     display: block;
     box-sizing: border-box;
     text-decoration: none;
-    color: var(--fonts_colors_fade);
+    color: var(--fonts_colors_main);
+    opacity: .7;
     background-color: transparent;
     border: 0;
 }
@@ -62,15 +63,11 @@
 @media screen and (min-width: 1024px) {
     .navigation-link:hover {
         cursor: pointer;
-        color: var(--fonts_colors_main);
+        opacity: 1;
     }
 }
 
 @media screen and (max-width: 1023px) {
-    .navigation-link {
-        color: var(--fonts_colors_main);
-    }
-
     .navigation-link_active {
         font-weight: 600;
         color: var(--fonts_colors_crimson);

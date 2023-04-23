@@ -33,7 +33,7 @@ function TopRatedGrid({ type }) {
                                 <PosterCard
                                     movie={show}
                                     type={type}
-                                    vertical={index < 2 ? false : true}
+                                    orientation={ index < 2 ? 'horizontal' : 'vertical' }
                                 />
                             </li>
                         )

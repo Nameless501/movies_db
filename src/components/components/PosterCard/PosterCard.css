@@ -4,7 +4,6 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    aspect-ratio: 2/3;
     border-radius: 10px;
     box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
     background-color: transparent;
@@ -13,11 +12,11 @@
     container-type: size;
 }
 
-.poster-card_vertical {
+.poster-card_orientation_vertical {
     aspect-ratio: 2/3;
 }
 
-.poster-card_horizontal {
+.poster-card_orientation_horizontal {
     aspect-ratio: 16/9;
 }
 
@@ -42,39 +41,6 @@
     right: 0;
     z-index: 0;
     background: linear-gradient(transparent, var(--colors_bg_main_transparent));
-}
-
-.poster-card__poster-wrapper {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: block;
-    width: 100cqw;
-    height: 100cqh;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform .3s linear;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.poster-card__poster {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    object-position: center;
-    object-fit: cover;
-    background-color: transparent;
-    transform: scale(1);
-    transition: transform .2s linear;
-    display: none;
 }
 
 .poster-card__caption {
@@ -167,11 +133,6 @@
         background-color: var(--colors_bg_main_transparent);
         backdrop-filter: blur(5px);
         transition: all .2s linear;
-    }
-
-    .poster-card:hover .poster-card__poster {
-        transform: scale(1.15);
-        transition: transform .2s linear;
     }
 
     .poster-card:hover .poster-card__title {

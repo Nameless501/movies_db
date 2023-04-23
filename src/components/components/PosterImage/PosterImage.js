@@ -1,23 +1,23 @@
 import { POSTER_VERTICAL_SMALL } from '../../../utils/constants';
 import useImageLoad from '../../../hooks/useImageLoad';
-import avatarFallback from '../../../images/avatar_fallback.png';
-import './AvatarImage.css';
+import posterFallback from '../../../images/poster_fallback.png';
+import './PosterImage.css';
 
-function AvatarImage({ src, place }) {
+function PosterImage({ src, place }) {
     const { imageState, checkImageLoading } = useImageLoad();
 
     return (
         <div
             className={`
-                avatar
-                ${ place && 'avatar_place_' + place }
+                poster
+                ${ place && 'poster_place_' + place }
             `}
-            style={{ 'backgroundImage': `url(${imageState !== 'loaded' && avatarFallback})` }}
+            style={{ 'backgroundImage': `url(${imageState !== 'loaded' && posterFallback})` }}
         >
             <img
                 src={ POSTER_VERTICAL_SMALL + src }
-                alt='Аватар'
-                className='avatar__image'
+                alt=' Постер фильма'
+                className='poster__image'
                 style={{ 'display': `${imageState === 'loaded' && 'block'}` }}
                 onLoad={checkImageLoading}
             />
@@ -25,4 +25,4 @@ function AvatarImage({ src, place }) {
     );
 }
 
-export default AvatarImage;
+export default PosterImage;
