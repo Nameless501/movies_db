@@ -6,7 +6,7 @@
     height: 100%;
     aspect-ratio: 2/3;
     border-radius: 10px;
-    box-shadow: 0px 4px 30px rgba(255, 255, 255, 0.05);
+    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
     background-color: transparent;
     overflow: hidden;
     position: relative;

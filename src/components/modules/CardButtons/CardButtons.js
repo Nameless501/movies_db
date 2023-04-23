@@ -5,6 +5,7 @@ import { usePortalContext } from '../../../contexts/PortalContext';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
 import { fetchAccountStates, addToWatchList } from '../../../store/user/userSlice';
 import IconButton from '../../UI/IconButton/IconButton';
+import ButtonTooltip from '../../UI/ButtonTooltip/ButtonTooltip';
 import { BsBookmarkStarFill, BsBookmarkPlus } from 'react-icons/bs';
 import { FaRegStar, FaStar, FaRegPlayCircle } from 'react-icons/fa';
 import { HiShare } from 'react-icons/hi';
@@ -83,28 +84,48 @@ function CardButtons({ place, id, type }) {
             `}
             ref={buttonsRef}
         >
-            <IconButton
-                Icon={states?.[type]?.[id]?.watchlist ? BsBookmarkStarFill : BsBookmarkPlus}
-                active={states?.[type]?.[id]?.watchlist}
+            <ButtonTooltip
+                text='Смотреть позже'
                 place={place}
-                handleClick={handleAddToWatchlist}
-            />
-            <IconButton
-                Icon={HiShare}
+            >
+                <IconButton
+                    Icon={states?.[type]?.[id]?.watchlist ? BsBookmarkStarFill : BsBookmarkPlus}
+                    active={states?.[type]?.[id]?.watchlist}
+                    place={place}
+                    handleClick={handleAddToWatchlist}
+                />
+            </ButtonTooltip>
+            <ButtonTooltip
+                text='Поделиться'
                 place={place}
-                handleClick={handleShapePopupOpen}
-            />
-            <IconButton
-                Icon={FaRegPlayCircle}
+            >
+                <IconButton
+                    Icon={HiShare}
+                    place={place}
+                    handleClick={handleShapePopupOpen}
+                />
+            </ButtonTooltip>
+            <ButtonTooltip
+                text='Трейлер'
                 place={place}
-                handleClick={handleTrailerPopupOpen}
-            />
-            <IconButton
-                Icon={states?.[type]?.[id]?.rated ? FaStar : FaRegStar}
-                active={states?.[type]?.[id]?.rated}
+            >
+                <IconButton
+                    Icon={FaRegPlayCircle}
+                    place={place}
+                    handleClick={handleTrailerPopupOpen}
+                />
+            </ButtonTooltip>
+            <ButtonTooltip
+                text='Оценить'
                 place={place}
-                handleClick={handleRate}
-            />
+            >
+                <IconButton
+                    Icon={states?.[type]?.[id]?.rated ? FaStar : FaRegStar}
+                    active={states?.[type]?.[id]?.rated}
+                    place={place}
+                    handleClick={handleRate}
+                />
+            </ButtonTooltip>
         </div>
     );
 }
