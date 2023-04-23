@@ -5,14 +5,14 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
-    border-radius: 10px;
-    background-color: var(--colors_bg_main);
-    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
 }
 
 .profile-menu_place_header {
     min-width: 100px;
     gap: 20px;
+    border-radius: 10px;
+    background-color: var(--colors_bg_main);
+    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
 }
 
 .profile-menu_place_side-bar {
