@@ -8,12 +8,20 @@
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
+}
+
+.poster_orientation_vertical {
+    aspect-ratio: 2/3;
+}
+
+.poster_orientation_horizontal {
+    aspect-ratio: 16/9;
 }
 
 .poster_place_description {
     grid-area: poster;
-    border-radius: 10px;
-    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
 }
 
 .poster__image {

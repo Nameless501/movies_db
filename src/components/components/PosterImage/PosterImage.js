@@ -3,7 +3,7 @@ import useImageLoad from '../../../hooks/useImageLoad';
 import posterFallback from '../../../images/poster_fallback.png';
 import './PosterImage.css';
 
-function PosterImage({ src, place }) {
+function PosterImage({ src, place, orientation = 'vertical' }) {
     const { imageState, checkImageLoading } = useImageLoad();
 
     return (
@@ -11,6 +11,7 @@ function PosterImage({ src, place }) {
             className={`
                 poster
                 ${ place && 'poster_place_' + place }
+                ${ 'poster_orientation_' + orientation }
             `}
             style={{ 'backgroundImage': `url(${imageState !== 'loaded' && posterFallback})` }}
         >

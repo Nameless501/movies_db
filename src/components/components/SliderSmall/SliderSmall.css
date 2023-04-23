@@ -15,7 +15,7 @@
 }
 
 .slider-small__swiper .swiper-slide {
-    aspect-ratio: 2/3;
+    padding-top: 25px;
 }
 
 .slider-small__swiper .swiper-button-prev {
