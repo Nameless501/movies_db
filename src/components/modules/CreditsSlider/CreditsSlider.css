@@ -67,7 +67,7 @@
 }
 
 .credits-slider__swiper .swiper-button-disabled {
-    opacity: 0;
+    visibility: hidden;
 }
 
 @media screen and (max-width: 1023px) {

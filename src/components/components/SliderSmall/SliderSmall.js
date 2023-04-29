@@ -12,7 +12,7 @@ function SliderSmall({ movies, type }) {
     return (
         <div className='slider-small'>
             <Swiper
-                loop={true}
+                loop={false}
                 slidesPerView={isMobile ? 3 : isTablet ? 4 : 6}
                 spaceBetween={isMobile ? 10 : isTablet ? 15 : 30}
                 navigation={true}

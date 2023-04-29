@@ -30,8 +30,8 @@
 }
 
 .poster-card__poster-wrapper_hover {
-    transform: translateY(-5%) scale(1.05);
-    transition: transform .15s linear;
+    transform: translateY(-5%) scale(1.075);
+    transition: transform .15s linear .2s;
 }
 
 .poster-card__poster-wrapper_place_cards-grid {
@@ -60,7 +60,7 @@
 .poster-card__poster-cover_hover {
     visibility: visible;
     opacity: 1;
-    transition: opacity .15s linear;
+    transition: opacity .15s linear .2s;
 }
 
 .poster-card__caption {
