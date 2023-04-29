@@ -23,6 +23,7 @@ const PosterCard = memo(function MovieCard({ movie, place, type, orientation = '
                     className={`
                         poster-card__poster-wrapper
                         ${hover && 'poster-card__poster-wrapper_hover'}
+                        ${place && 'poster-card__poster-wrapper_place_' + place}
                     `}
                 >
                     <PosterImage
@@ -58,21 +59,6 @@ const PosterCard = memo(function MovieCard({ movie, place, type, orientation = '
                     {movie.title ?? movie.name}
                 </figcaption>
             </figure>
-            {/* {
-                isDesktop &&
-                <div
-                    className={`
-                        poster-card__buttons-wrapper
-                        ${hover && 'poster-card__buttons-wrapper_hover'}
-                    `}
-                >
-                    <CardButtons
-                        place='poster-card'
-                        id={movie.id}
-                        type={type}
-                    />
-                </div>
-            } */}
         </Link>
     );
 })

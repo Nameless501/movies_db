@@ -33,7 +33,8 @@
     box-sizing: border-box;
     width: 100%;
     height: 1px;
-    background-color: var(--colors_bg_accent_darkGray);
+    background-color: var(--fonts_colors_fade);
+    opacity: .5;
 }
 
 .footer__content-wrapper {

@@ -34,6 +34,7 @@ function TopRatedGrid({ type }) {
                                     movie={show}
                                     type={type}
                                     orientation={ index < 2 ? 'horizontal' : 'vertical' }
+                                    place='cards-grid'
                                 />
                             </li>
                         )
