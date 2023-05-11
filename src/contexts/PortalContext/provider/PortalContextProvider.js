@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import PortalContext from "../context/PortalContext";
 
@@ -14,7 +14,7 @@ export function PortalContextProvider({ children }) {
 
     const location = useLocation();
 
-    function closeAll() {
+    const closeAll = useCallback(() => {
         setTrailerPopupState(false);
         setSharePopupState(false);
         setConstructionPopupState(false);
@@ -22,7 +22,7 @@ export function PortalContextProvider({ children }) {
 
         setData({ type: 'movie', id: null });
         setText('');
-    };
+    }, []);
 
     function openTrailerPopup(type, id) {
         setData({ type, id });
@@ -48,7 +48,7 @@ export function PortalContextProvider({ children }) {
 
     useEffect(() => {
         closeAll();
-    }, [location]);
+    }, [location, closeAll]);
 
     return (
         <PortalContext.Provider

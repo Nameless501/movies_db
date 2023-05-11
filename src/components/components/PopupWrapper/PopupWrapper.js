@@ -21,7 +21,7 @@ function PopupWrapper({ handleClose, disabled = false, children }) {
         return () => {
             window.removeEventListener('keydown', handleEscapeClose);
         }
-    }, []);
+    }, [handleClose]);
 
     return (
         <PopupBackground
