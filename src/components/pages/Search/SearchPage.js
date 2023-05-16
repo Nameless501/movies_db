@@ -29,7 +29,7 @@ function SearchPage() {
 
   return (
     <div className="search-page">
-      <Header place="search" />
+      <Header />
       <main className="search-page__content">
         <SearchForm initialState={prev} handleSubmit={handleSubmit} />
         <CardsFeed

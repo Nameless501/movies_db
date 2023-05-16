@@ -18,7 +18,7 @@ function InfoPage({ type }) {
 
   return (
     <div className="info-page">
-      <Header place="movies" />
+      <Header />
       <main className="info-page__content">
         <PagePoster
           posterHorizontal={info?.backdrop_path}

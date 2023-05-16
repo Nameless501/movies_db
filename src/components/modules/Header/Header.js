@@ -6,7 +6,7 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import PreloaderSmall from "../../UI/PreloaderSmall/PreloaderSmall";
 import "./Header.css";
 
-function Header({ place }) {
+function Header() {
   const { isLoggedIn, loading } = useSelector((state) => state.user);
 
   return (
@@ -21,7 +21,7 @@ function Header({ place }) {
                 {loading === "pending" && <PreloaderSmall place="header" />}
                 {isLoggedIn && loading !== "pending" && <ProfileInfo />}
                 {!isLoggedIn && loading !== "pending" && (
-                  <AuthMenu place={place} />
+                  <AuthMenu place="header" />
                 )}
               </div>
             </div>

@@ -10,7 +10,7 @@ import "./MainPage.css";
 function MainPage() {
   return (
     <div className="main-page">
-      <Header place="main-page" />
+      <Header />
       <main className="main-page__content">
         <SliderMain type="movie" />
         <div className="main-page__content-wrapper">

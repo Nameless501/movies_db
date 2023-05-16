@@ -12,7 +12,7 @@ function FeedPageWrapper({
 }) {
   return (
     <div className="feed-page">
-      <Header place="movies" />
+      <Header />
       <main className="feed-page__content">
         <PagePoster
           posterHorizontal={posterHorizontal}
