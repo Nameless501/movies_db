@@ -1,19 +1,19 @@
 .auth-menu {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .auth-menu__buttons {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .auth-menu__buttons_place_side-bar {
-    flex-direction: column;
-    gap: 20px;
+  flex-direction: column;
+  gap: 20px;
 }

@@ -1,88 +1,88 @@
 .poster-card {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  position: relative;
 }
 
 .poster-card__figure {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .poster-card__poster-wrapper {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    transform: translateY(0) scale(1);
-    transition: transform .15s linear;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  transition: transform 0.15s linear;
 }
 
 .poster-card__poster-wrapper_hover {
-    transform: translateY(-5%) scale(1.075);
-    transition: transform .15s linear .2s;
+  transform: translateY(-5%) scale(1.075);
+  transition: transform 0.15s linear 0.2s;
 }
 
 .poster-card__poster-wrapper_place_cards-grid {
-    transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1);
 }
 
 .poster-card__poster-cover {
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: var(--colors_bg_main_transparent);
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .15s linear;
-    container-type: block-size;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--colors_bg_main_transparent);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s linear;
+  container-type: block-size;
 }
 
 .poster-card__poster-cover_hover {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .15s linear .2s;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.15s linear 0.2s;
 }
 
 .poster-card__caption {
-    margin: 0;
-    padding: 0 5px;
-    box-sizing: border-box;
-    font-weight: 600;
-    font-size: clamp(16px, 2vw, 20px);
-    line-height: 1.2em;
-    color: var(--fonts_colors_main);
-    text-align: center;
-    white-space: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-align: center;
+  margin: 0;
+  padding: 0 5px;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.2em;
+  color: var(--fonts_colors_main);
+  text-align: center;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
 }
 
 .poster-card__buttons-wrapper {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }

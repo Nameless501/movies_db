@@ -1,76 +1,75 @@
-@import url('./vendor/fonts/inter.css');
+@import url("./vendor/fonts/inter.css");
 
 body {
-    /* css variables */
+  /* css variables */
 
-    /* colors variables */
+  /* colors variables */
 
-    --colors_bg_main: #020313;
-    --colors_bg_main_transparent: rgb(2, 3, 19, .7);
-    --colors_bg_dark_transparent: rgb(0, 0, 0, .15);
-    --colors_bg_black_transparent: rgb(0, 0, 0, .5);
-    --colors_btn_white: #F7F8FF;
-    --colors_btn_gray: #F9F9F9;
-    --colors_btn_crimson: #E67776;
-    --colors_btn_crimson_hover: #e15a59;
-    --colors_btn_crimson_active: #db3d3b;
-    --colors_btn_crimson_disabled: #f5c9c8;
-    --colors_checkbox_bg: #E67776;
-    --colors_checkbox_slider: #f9dddd;
-    --colors_shadow_white: rgb(247, 248, 255, .1);
+  --colors_bg_main: #020313;
+  --colors_bg_main_transparent: rgb(2, 3, 19, 0.7);
+  --colors_bg_dark_transparent: rgb(0, 0, 0, 0.15);
+  --colors_bg_black_transparent: rgb(0, 0, 0, 0.5);
+  --colors_btn_white: #f7f8ff;
+  --colors_btn_gray: #f9f9f9;
+  --colors_btn_crimson: #e67776;
+  --colors_btn_crimson_hover: #e15a59;
+  --colors_btn_crimson_active: #db3d3b;
+  --colors_btn_crimson_disabled: #f5c9c8;
+  --colors_checkbox_bg: #e67776;
+  --colors_checkbox_slider: #f9dddd;
+  --colors_shadow_white: rgb(247, 248, 255, 0.1);
 
-    /* fonts variables */
+  /* fonts variables */
 
-    --fonts_family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-    --fonts_colors_main: #F7F8FF;
-    --fonts_colors_fade: #A8AABC;
-    --fonts_colors_btn: #F7F8FF;
-    --fonts_colors_dark: #02051E;
-    --fonts_colors_crimson: #E67776;
-    --fonts_colors_error: #FF4062;
+  --fonts_family: "Inter", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --fonts_colors_main: #f7f8ff;
+  --fonts_colors_fade: #a8aabc;
+  --fonts_colors_btn: #f7f8ff;
+  --fonts_colors_dark: #02051e;
+  --fonts_colors_crimson: #e67776;
+  --fonts_colors_error: #ff4062;
 
-    /* section variables */
+  /* section variables */
 
-    --section_max_width: 1440px;
+  --section_max_width: 1440px;
 
-    /* global styles */
+  /* global styles */
 
-    margin: 0;
-    padding: 0;
-    font-family: var(--fonts_family);
-    background-color: var(--colors_bg_main);
-    color: var(--fonts_colors_main);
+  margin: 0;
+  padding: 0;
+  font-family: var(--fonts_family);
+  background-color: var(--colors_bg_main);
+  color: var(--fonts_colors_main);
 
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 /* Animations */
 
 .animation-bounce {
-    animation: bounce .5s ease-in-out;
+  animation: bounce 0.5s ease-in-out;
 }
 
 @keyframes bounce {
-    0% {
-        transform: scale(1);
-    }
-    25% {
-        transform: scale(1.5);
-    }
-    50% {
-        transform: scale(0.9);
-    }
-    75% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

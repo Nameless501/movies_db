@@ -1,22 +1,21 @@
 .page-title {
-    margin: 0;
-    padding: 0;
-    color: var(--fonts_colors_btn);
-    font-weight: 700;
-    font-size: 45px;
-    line-height: 1.2em;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  color: var(--fonts_colors_btn);
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 1.2em;
+  text-align: center;
 }
 
-
 @media screen and (max-width: 1023px) {
-    .page-title {
-        font-size: 35px;
-    }
+  .page-title {
+    font-size: 35px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .page-title {
-        font-size: 30px;
-    }
+  .page-title {
+    font-size: 30px;
+  }
 }

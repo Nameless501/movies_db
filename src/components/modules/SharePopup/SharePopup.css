@@ -1,27 +1,27 @@
 .share-popup {
-    margin: 0;
-    padding: 15px;
-    box-sizing: border-box;
-    min-width: 300px;
-    position: relative;
-    border-radius: 10px;
-    background-color: var(--colors_bg_main);
-    box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.1);
+  margin: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  min-width: 300px;
+  position: relative;
+  border-radius: 10px;
+  background-color: var(--colors_bg_main);
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.1);
 }
 
 .share-popup__options {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .share-popup__options-item {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }

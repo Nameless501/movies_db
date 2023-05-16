@@ -1,84 +1,84 @@
 .top-rated-grid {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    list-style: none;
-    display: grid;
-    gap: 15px 20px;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: auto;
-    grid-template-areas:
-    'first first third third fourth fifth'
-    'sixth seventh third third fourth fifth'
-    'sixth seventh third third second second';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  list-style: none;
+  display: grid;
+  gap: 15px 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  grid-template-areas:
+    "first first third third fourth fifth"
+    "sixth seventh third third fourth fifth"
+    "sixth seventh third third second second";
 }
 
 .top-rated-grid__item {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    border-radius: 8px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
 
 .top-rated-grid__item_number_1 {
-    grid-area: first;
+  grid-area: first;
 }
 
 .top-rated-grid__item_number_2 {
-    grid-area: second;
+  grid-area: second;
 }
 
 .top-rated-grid__item_number_3 {
-    grid-area: third;
+  grid-area: third;
 }
 
 .top-rated-grid__item_number_4 {
-    grid-area: fourth;
+  grid-area: fourth;
 }
 
 .top-rated-grid__item_number_5 {
-    grid-area: fifth;
+  grid-area: fifth;
 }
 
 .top-rated-grid__item_number_6 {
-    grid-area: sixth;
+  grid-area: sixth;
 }
 
 .top-rated-grid__item_number_7 {
-    grid-area: seventh;
+  grid-area: seventh;
 }
 
 @media screen and (max-width: 1023px) {
-    .top-rated-grid {
-        gap: 20px 10px;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: auto;
-        grid-template-areas:
-        'first first first'
-        'third fifth fifth'
-        'fourth fifth fifth'
-        'second second second';
-        align-items: center;
-    }
+  .top-rated-grid {
+    gap: 20px 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas:
+      "first first first"
+      "third fifth fifth"
+      "fourth fifth fifth"
+      "second second second";
+    align-items: center;
+  }
 
-    .top-rated-grid__item_number_6 {
-        display: none;
-    }
+  .top-rated-grid__item_number_6 {
+    display: none;
+  }
 
-    .top-rated-grid__item_number_7 {
-        display: none;
-    }
+  .top-rated-grid__item_number_7 {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .top-rated-grid {
-        gap: 15px 5px;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: auto;
-        grid-template-areas:
-        'first first first'
-        'fourth fifth third'
-        'second second second';
-    }
+  .top-rated-grid {
+    gap: 15px 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas:
+      "first first first"
+      "fourth fifth third"
+      "second second second";
+  }
 }

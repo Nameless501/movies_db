@@ -1,38 +1,38 @@
 .profile-info {
-    margin: 0;
-    padding: 5px 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    position: relative;
+  margin: 0;
+  padding: 5px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
 }
 
 .profile-info__username {
-    margin: 0;
-    padding: 0;
-    color: var(--fonts_colors_main);
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 500;
+  margin: 0;
+  padding: 0;
+  color: var(--fonts_colors_main);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
 }
 
 .profile-info__menu-wrapper {
-    margin: 0;
-    padding: 0;
-    display: none;
-    position: absolute;
-    z-index: 11;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 100%);
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: absolute;
+  z-index: 11;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
 }
 
 .profile-info:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .profile-info:hover > .profile-info__menu-wrapper {
-    display: block;
-    cursor: pointer;
+  display: block;
+  cursor: pointer;
 }

@@ -1,50 +1,54 @@
 .cards-feed {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 50vh;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 50vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  position: relative;
 }
 
 .cards-feed__movies-list {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 500px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 500px;
 }
 
 .cards-feed__more-button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: calc(100% + 20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        linear-gradient(180deg, rgba(2, 3, 19, 0) 0%, rgba(2, 3, 19, 0.84) 52.77%, var(--colors_bg_main) 94.27%),
-        linear-gradient(135deg, transparent 70%, var(--colors_bg_main)),
-        linear-gradient(225deg, transparent 70%, var(--colors_bg_main)),
-        rgba(2, 3, 19, 0.3);
-    backdrop-filter: blur(2px);
-    position: absolute;
-    bottom: -10px;
-    left: -10px;
-    right: -10px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: calc(100% + 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      180deg,
+      rgba(2, 3, 19, 0) 0%,
+      rgba(2, 3, 19, 0.84) 52.77%,
+      var(--colors_bg_main) 94.27%
+    ),
+    linear-gradient(135deg, transparent 70%, var(--colors_bg_main)),
+    linear-gradient(225deg, transparent 70%, var(--colors_bg_main)),
+    rgba(2, 3, 19, 0.3);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
 }
 
 .cards-feed__preloader {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }

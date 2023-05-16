@@ -1,16 +1,16 @@
-import './ErrorMessage.css';
+import "./ErrorMessage.css";
 
 function ErrorMessage({ text, place }) {
-    return (
-        <span
-            className={`
+  return (
+    <span
+      className={`
                 error-message
                 error-message_place_${place}
             `}
-        >
-            {text}
-        </span>
-    );
+    >
+      {text}
+    </span>
+  );
 }
 
 export default ErrorMessage;

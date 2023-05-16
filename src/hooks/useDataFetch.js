@@ -1,34 +1,32 @@
 import { useCallback } from "react";
 
 function useDataFetch() {
-    function handleResponseCheck(response) {
-        return response.ok ? response.json() : Promise.reject(response.status);
+  function handleResponseCheck(response) {
+    return response.ok ? response.json() : Promise.reject(response.status);
+  }
+
+  const handleFetch = useCallback((config, payload = null) => {
+    const { url, method, credentials, headers } = config;
+    const options = { method, credentials, headers };
+
+    if (payload) {
+      options.body = JSON.stringify({ ...payload });
     }
 
-    const handleFetch = useCallback((config, payload = null) => {
-        const { url, method, credentials, headers } = config;
-        const options = { method, credentials, headers };
+    return fetch(url, options).then(handleResponseCheck);
+  }, []);
 
-        if (payload) {
-            options.body = JSON.stringify({ ...payload });
-        }
+  const handleFetchById = useCallback((config, id) => {
+    const { url, method, credentials, headers } = config;
 
-        return fetch(url, options)
-            .then(handleResponseCheck);
-    }, []);
+    return fetch(`${url}/${id}`, {
+      method,
+      credentials,
+      headers,
+    }).then(handleResponseCheck);
+  }, []);
 
-    const handleFetchById = useCallback((config, id) => {
-        const { url, method, credentials, headers } = config;
-
-        return fetch(`${url}/${id}`, {
-            method,
-            credentials,
-            headers,
-        })
-            .then(handleResponseCheck);
-    }, []);
-
-    return { handleFetch, handleFetchById };
+  return { handleFetch, handleFetchById };
 }
 
 export default useDataFetch;

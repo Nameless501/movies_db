@@ -1,78 +1,78 @@
 .reviews {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .reviews__title {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--fonts_colors_main);
-    font-size: 30px;
-    font-weight: 700;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--fonts_colors_main);
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .reviews__wrapper {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
 }
 
 .reviews__list {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .review__list li {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .reviews__empty-message {
-    margin: 0;
-    padding: 0;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: var(--fonts_colors_main);
-    opacity: .8;
-    align-self: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--fonts_colors_main);
+  opacity: 0.8;
+  align-self: center;
 }
 
 @media screen and (max-width: 1023px) {
-    .reviews__wrapper {
-        gap: 35px;
-    }
+  .reviews__wrapper {
+    gap: 35px;
+  }
 
-    .reviews__title  {
-        font-size: 25px;
-    }
+  .reviews__title {
+    font-size: 25px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .reviews__wrapper {
-        gap: 30px;
-    }
+  .reviews__wrapper {
+    gap: 30px;
+  }
 
-    .reviews__title  {
-        font-size: 18px;
-        font-weight: 600;
-    }
+  .reviews__title {
+    font-size: 18px;
+    font-weight: 600;
+  }
 }

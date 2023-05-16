@@ -1,32 +1,32 @@
 .sign-out-button {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-    color: var(--colors_btn_crimson);
-    font-weight: 500;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--colors_btn_crimson);
+  font-weight: 500;
 }
 
 .sign-out-button:hover {
-    cursor: pointer;
-    color: var(--colors_btn_crimson_hover);
+  cursor: pointer;
+  color: var(--colors_btn_crimson_hover);
 }
 
 .sign-out-button_place_header {
-    font-size: 14px;
-    line-height: 18px;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 @media screen and (max-width: 1023px) {
-    .sign-out-button {
-        font-size: 20px;
-        line-height: 25px;
-    }
+  .sign-out-button {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .sign-out-button {
-        font-size: 18px;
-        line-height: 22px;
-    }
+  .sign-out-button {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

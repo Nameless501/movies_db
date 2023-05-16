@@ -1,18 +1,18 @@
-import './Rating.css';
+import "./Rating.css";
 
 function Rating({ rating, place }) {
-    return (
-        <div
-            className={`
+  return (
+    <div
+      className={`
                 rating
-                ${place && 'rating_place_' + place}
+                ${place && "rating_place_" + place}
             `}
-        >
-            <span className='rating__count' >
-                {rating === Math.trunc(rating) ? rating : rating.toFixed(1)}
-            </span>
-        </div>
-    );
+    >
+      <span className="rating__count">
+        {rating === Math.trunc(rating) ? rating : rating.toFixed(1)}
+      </span>
+    </div>
+  );
 }
 
 export default Rating;

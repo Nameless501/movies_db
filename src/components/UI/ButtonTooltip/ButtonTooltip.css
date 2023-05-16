@@ -1,42 +1,43 @@
 .button-tooltip {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .button-tooltip__text {
-    margin: 0;
-    padding: 5px 7px;
-    position: absolute;
-    top: -7px;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    background-color: var(--colors_bg_main);
-    border-radius: 8px;
-    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
-    font-size: 12px;
-    line-height: 15px;
-    font-weight: 500px;
-    color: var(--fonts_colors_main);
-    text-align: center;
-    width: max-content;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .15s ease;
+  margin: 0;
+  padding: 5px 7px;
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background-color: var(--colors_bg_main);
+  border-radius: 8px;
+  box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px,
+    var(--colors_shadow_white) 0px 0px 1px 0px;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500px;
+  color: var(--fonts_colors_main);
+  text-align: center;
+  width: max-content;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 
 .button-tooltip__text_place_poster-card {
-    top: 50%;
-    left: -5px;
-    transform: translate(-100%, -60%);
-    width: fit-content;
+  top: 50%;
+  left: -5px;
+  transform: translate(-100%, -60%);
+  width: fit-content;
 }
 
 @media screen and (min-width: 1024px) {
-    .button-tooltip:hover>.button-tooltip__text {
-        visibility: visible;
-        opacity: 1;
-        transition: opacity .15s ease;
-    }
+  .button-tooltip:hover > .button-tooltip__text {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
 }

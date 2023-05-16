@@ -1,84 +1,84 @@
 .actor-card {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    width: 200px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .actor-card__caption {
-    margin: 0;
-    padding: 0;
-    width: fit-content;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 .actor-card__name {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--fonts_colors_main);
-    font-size: 14px;
-    line-height: 1.2em;
-    font-weight: 500;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--fonts_colors_main);
+  font-size: 14px;
+  line-height: 1.2em;
+  font-weight: 500;
+  text-align: center;
 }
 
 .actor-card__character {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: var(--fonts_colors_fade);
-    font-size: 12px;
-    line-height: 1.2em;
-    font-weight: 400;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    -webkit-box-orient: vertical;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--fonts_colors_fade);
+  font-size: 12px;
+  line-height: 1.2em;
+  font-weight: 400;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 @media screen and (max-width: 1023px) {
-    .actor-card {
-        width: 20%;
-        min-width: 100px;
-        height: fit-content;
-        flex-direction: column;
-        gap: 15px;
-    }
+  .actor-card {
+    width: 20%;
+    min-width: 100px;
+    height: fit-content;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-    .actor-card__name {
-        font-size: 12px;
-        line-height: 15px;
-    }
+  .actor-card__name {
+    font-size: 12px;
+    line-height: 15px;
+  }
 
-    .actor-card__character {
-        font-size: 12px;
-        line-height: 15px;
-    }
+  .actor-card__character {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .actor-card {
-        max-width: 100px;
-        min-width: 80px;
-        width: fit-content;
-        height: fit-content;
-        gap: 10px;
-    }
+  .actor-card {
+    max-width: 100px;
+    min-width: 80px;
+    width: fit-content;
+    height: fit-content;
+    gap: 10px;
+  }
 
-    .actor-card__character {
-        font-size: 11px;
-        line-height: 13px;
-    }
+  .actor-card__character {
+    font-size: 11px;
+    line-height: 13px;
+  }
 }

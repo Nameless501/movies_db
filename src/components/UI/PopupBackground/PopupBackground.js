@@ -1,17 +1,17 @@
-import './PopupBackground.css';
+import "./PopupBackground.css";
 
 function PopupBackground({ handleClick, disabled = false, children }) {
-    return (
-        <div
-            className={`
+  return (
+    <div
+      className={`
                 popup-background
-                ${ disabled && 'popup-background_disabled' }
+                ${disabled && "popup-background_disabled"}
             `}
-            onClick={handleClick}
-        >
-            {children}
-        </div>
-    );
+      onClick={handleClick}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default PopupBackground;

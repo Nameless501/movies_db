@@ -1,18 +1,17 @@
 import { useState } from "react";
 
 function useImageLoad() {
-    const [imageState, setImageState] = useState('pending');
+  const [imageState, setImageState] = useState("pending");
 
-    function checkImageLoading () {
-        setImageState('loaded');
-    }
+  function checkImageLoading() {
+    setImageState("loaded");
+  }
 
-    function checkImageError () {
-        setImageState('error');
-    }
+  function checkImageError() {
+    setImageState("error");
+  }
 
-
-    return { imageState, checkImageLoading, checkImageError };
+  return { imageState, checkImageLoading, checkImageError };
 }
 
 export default useImageLoad;

@@ -1,23 +1,23 @@
 .card-buttons {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
 }
 
 .card-buttons_place_description {
-    align-items: center;
-    gap: 20px;
-    grid-area: buttons;
+  align-items: center;
+  gap: 20px;
+  grid-area: buttons;
 }
 
-.card-buttons_place_poster-card{
-    flex-direction: column;
-    gap: 10px;
+.card-buttons_place_poster-card {
+  flex-direction: column;
+  gap: 10px;
 }
 
 .card-buttons_place_slide-main {
-    align-items: center;
-    gap: 20px;
-    grid-area: buttons;
+  align-items: center;
+  gap: 20px;
+  grid-area: buttons;
 }

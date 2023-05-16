@@ -1,26 +1,27 @@
 .profile-menu {
-    margin: 0;
-    width: max-content;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
+  margin: 0;
+  width: max-content;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
 }
 
 .profile-menu_place_header {
-    min-width: 100px;
-    gap: 20px;
-    border-radius: 10px;
-    background-color: var(--colors_bg_main);
-    box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px, var(--colors_shadow_white) 0px 0px 1px 0px;
+  min-width: 100px;
+  gap: 20px;
+  border-radius: 10px;
+  background-color: var(--colors_bg_main);
+  box-shadow: var(--colors_shadow_white) 0px 0px 5px 0px,
+    var(--colors_shadow_white) 0px 0px 1px 0px;
 }
 
 .profile-menu_place_side-bar {
-    gap: 20px;
-    align-items: center;
+  gap: 20px;
+  align-items: center;
 }
 
 .profile-info__menu-item {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
